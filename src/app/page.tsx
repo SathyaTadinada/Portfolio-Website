@@ -276,10 +276,9 @@ export default async function Home() {
             Hi, I&rsquo;m Sathya! <span className='wave-emoji'>👋</span>
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            A software designer and entrepreneur based in New York
-            City. I’m the founder and CEO of Planetaria, where we develop
-            technologies that empower regular people to explore space on their
-            own terms.
+            An avid software developer and college student based in Salt Lake
+            City. I am excited to contribute to the tech industry and make a positive impact 
+            through my work.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
