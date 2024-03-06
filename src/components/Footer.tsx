@@ -12,7 +12,7 @@ function NavLink({
   return (
     <Link
       href={href}
-      className="transition hover:text-teal-500 dark:hover:text-teal-400"
+      className="transition hover:text-blue-500 dark:hover:text-blue-400"
     >
       {children}
     </Link>
@@ -29,11 +29,12 @@ export function Footer() {
               <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200">
                 <NavLink href="/about">About</NavLink>
                 <NavLink href="/projects">Projects</NavLink>
+                {/* <NavLink href="/speaking">Research</NavLink> */}
                 <NavLink href="/articles">Blogs</NavLink>
-                <NavLink href="/speaking">Contact</NavLink>
+                <NavLink href="/uses">Contact</NavLink>
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
-                &copy; {new Date().getFullYear()} Sathya Tadinada. All rights reserved.
+                &copy; {new Date().getFullYear()} Sathya Tadinada
               </p>
             </div>
           </ContainerInner>
