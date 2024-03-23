@@ -209,9 +209,9 @@ function ThemeToggle() {
       <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition 
         group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden 
         [@media(prefers-color-scheme:dark)]:fill-blue-50 [@media(prefers-color-scheme:dark)]:stroke-blue-500 
-        [@media(prefers-color-scheme:dark)]:group-hover:fill-blue-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-blue-600" />
-      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block 
-        [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 
+        [@media(prefers-color-scheme:dark)]:group-hover:fill-blue-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-blue-700" />
+      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-blue-400 transition dark:block 
+        [@media(prefers-color-scheme:dark)]:group-hover:stroke-blue-200 
         [@media_not_(prefers-color-scheme:dark)]:fill-blue-400/10 
         [@media_not_(prefers-color-scheme:dark)]:stroke-blue-500" />
     </button>

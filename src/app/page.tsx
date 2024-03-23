@@ -190,7 +190,7 @@ function Role({ role }: { role: Role }) {
   )
 }
 
-function Resume() {
+function Resume(options: { className?: string }) {
   let resume: Array<Role> = [
     {
       company: 'Planetaria',
@@ -225,23 +225,39 @@ function Resume() {
     },
   ]
 
-  return (
-    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <BriefcaseIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Work</span>
-      </h2>
-      <ol className="mt-6 space-y-4">
-        {resume.map((role, roleIndex) => (
-          <Role key={roleIndex} role={role} />
-        ))}
-      </ol>
-      <Button href="https://docs.google.com/document/d/1qoloAiEeFZYTryBJ_qGTgVuhbRAjfRNjqamEzzrNH6w/edit?usp=sharing" target="_blank" variant="secondary" className="group mt-6 w-full">
-        Download Resume
-        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
-      </Button>
-    </div>
-  )
+  if (options.className === 'Education') {
+    return (
+      <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+        <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+          <BriefcaseIcon className="h-6 w-6 flex-none" />
+          <span className="ml-3">Education</span>
+        </h2>
+        <ol className="mt-6 space-y-4">
+          {resume.map((role, roleIndex) => (
+            <Role key={roleIndex} role={role} />
+          ))}
+        </ol>
+      </div>
+    )
+  } else {
+    return (
+      <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+        <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+          <BriefcaseIcon className="h-6 w-6 flex-none" />
+          <span className="ml-3">Work</span>
+        </h2>
+        <ol className="mt-6 space-y-4">
+          {resume.map((role, roleIndex) => (
+            <Role key={roleIndex} role={role} />
+          ))}
+        </ol>
+        <Button href="/resume.pdf" target="_blank" variant="secondary" className="group mt-6 w-full">
+          Download Resume
+          <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
+        </Button>
+      </div>
+    )
+  }
 }
 
 function Photos() {
@@ -279,11 +295,11 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Hi, I&rsquo;m Sathya! <span className='wave-emoji'>👋</span>
+            Hey, I&rsquo;m Sathya! <span className='wave-emoji'>👋</span>
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             An avid software developer and college student based in Salt Lake
-            City. I am excited to contribute to the tech industry and make a positive impact 
+            City. I am excited to contribute to the tech industry and make a positive impact
             through my work.
           </p>
           <div className="mt-6 flex gap-6">
@@ -297,15 +313,21 @@ export default async function Home() {
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
             />
-            <SocialLink 
-              href="https://x.com/SathyaTadinada/" 
-              aria-label="Follow on X" 
-              icon={XIcon} 
+            <SocialLink
+              href="https://x.com/SathyaTadinada/"
+              aria-label="Follow on X"
+              icon={XIcon}
             />
             <SocialLink
               href="https://instagram.com/sathya.tadinada/"
               aria-label="Follow on Instagram"
               icon={InstagramIcon}
+            />
+            <SocialLink
+              rel="me"
+              href="https://mastodon.social/@tadinada"
+              aria-label="Follow on Mastodon"
+              icon={LinkedInIcon}
             />
           </div>
         </div>
@@ -319,8 +341,9 @@ export default async function Home() {
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Newsletter />
-            <Resume />
+            {/* <Newsletter /> */}
+            <Resume className='Education' />
+            <Resume className='Work' />
           </div>
         </div>
       </Container>

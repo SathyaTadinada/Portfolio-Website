@@ -50,7 +50,7 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'I’m Spencer Sharp. I live in New York City, where I design the future.',
+    'I’m Sathya Tadinada. I live in Salt Lake City, where I shape tomorrow’s potential.',
 }
 
 export default function About() {
@@ -69,8 +69,7 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            I’m Spencer Sharp. I live in New York City, where I design the
-            future.
+            I’m Sathya Tadinada. 
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
@@ -103,24 +102,23 @@ export default function About() {
         </div>
         <div className="lg:pl-20">
           <ul role="list">
-            <SocialLink href="#" icon={XIcon}>
-              Follow on X
-            </SocialLink>
-            <SocialLink href="#" icon={InstagramIcon} className="mt-4">
-              Follow on Instagram
-            </SocialLink>
-            <SocialLink href="#" icon={GitHubIcon} className="mt-4">
+            <SocialLink href="https://github.com/SathyaTadinada/" icon={GitHubIcon} className="mt-4">
               Follow on GitHub
             </SocialLink>
-            <SocialLink href="#" icon={LinkedInIcon} className="mt-4">
+            <SocialLink href="https://linkedin.com/in/sathya-tadinada/" icon={LinkedInIcon} className="mt-4">
               Follow on LinkedIn
             </SocialLink>
+            <SocialLink href="https://x.com/SathyaTadinada/" icon={XIcon}>
+              Follow on X
+            </SocialLink>
+            <SocialLink href="https://instagram.com/sathya.tadinada/" icon={InstagramIcon} className="mt-4">
+              Follow on Instagram
+            </SocialLink>
             <SocialLink
-              href="mailto:spencer@planetaria.tech"
+              href="mailto:sathyav.tadinada@gmail.com"
               icon={MailIcon}
-              className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
-            >
-              spencer@planetaria.tech
+              className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40">
+              sathyav.tadinada@gmail.com
             </SocialLink>
           </ul>
         </div>
