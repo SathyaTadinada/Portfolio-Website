@@ -9,6 +9,7 @@ import {
   GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
+  MastodonIcon,
   XIcon,
 } from '@/components/SocialIcons'
 import logoAirbnb from '@/images/logos/airbnb.svg'
@@ -327,7 +328,7 @@ export default async function Home() {
               rel="me"
               href="https://mastodon.social/@tadinada"
               aria-label="Follow on Mastodon"
-              icon={LinkedInIcon}
+              icon={MastodonIcon}
             />
           </div>
         </div>

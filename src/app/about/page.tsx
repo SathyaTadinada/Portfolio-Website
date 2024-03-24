@@ -8,6 +8,7 @@ import {
   GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
+  MastodonIcon,
   XIcon,
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.jpg'
@@ -108,11 +109,14 @@ export default function About() {
             <SocialLink href="https://linkedin.com/in/sathya-tadinada/" icon={LinkedInIcon} className="mt-4">
               Follow on LinkedIn
             </SocialLink>
-            <SocialLink href="https://x.com/SathyaTadinada/" icon={XIcon}>
+            <SocialLink href="https://x.com/SathyaTadinada/" icon={XIcon} className="mt-4">
               Follow on X
             </SocialLink>
             <SocialLink href="https://instagram.com/sathya.tadinada/" icon={InstagramIcon} className="mt-4">
               Follow on Instagram
+            </SocialLink>
+            <SocialLink href="https://mastodon.social/@tadinada/" icon={MastodonIcon} className="mt-4">
+              Follow on Mastodon
             </SocialLink>
             <SocialLink
               href="mailto:sathyav.tadinada@gmail.com"
