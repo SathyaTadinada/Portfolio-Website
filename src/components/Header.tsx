@@ -131,12 +131,13 @@ function MobileNavigation(
               </h2>
             </div>
             <nav className="mt-6">
-              <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
+              <ul className="-my-2 divide-y 
+              divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/about">About</MobileNavItem>
                 <MobileNavItem href="/projects">Projects</MobileNavItem>
                 <MobileNavItem href="/blogs">Blogs</MobileNavItem>
                 <MobileNavItem href="/speaking">Speaking</MobileNavItem>
-                <MobileNavItem href="/uses">Uses</MobileNavItem>
+                <MobileNavItem href="/contact">Contact</MobileNavItem>
               </ul>
             </nav>
           </Popover.Panel>
@@ -185,9 +186,9 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
       dark:text-zinc-200 dark:ring-white/10">
         <NavItem href="/about">About</NavItem>
         <NavItem href="/projects">Projects</NavItem>
+        {/* <NavItem href="/speaking">Speaking</NavItem> */}
         <NavItem href="/blogs">Blogs</NavItem>
-        <NavItem href="/speaking">Speaking</NavItem>
-        <NavItem href="/uses">Contact</NavItem>
+        <NavItem href="/contact">Contact</NavItem>
       </ul>
     </nav>
   )

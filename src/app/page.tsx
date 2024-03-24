@@ -16,6 +16,7 @@ import logoAirbnb from '@/images/logos/airbnb.svg'
 import logoFacebook from '@/images/logos/facebook.svg'
 import logoPlanetaria from '@/images/logos/planetaria.svg'
 import logoStarbucks from '@/images/logos/starbucks.svg'
+import logoUniversityOfUtah from '@/images/logos/university-of-utah.svg'
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
@@ -147,7 +148,7 @@ function Newsletter() {
 }
 
 interface Role {
-  company: string
+  organization: string
   title: string
   logo: ImageProps['src']
   start: string | { label: string; dateTime: string }
@@ -169,13 +170,9 @@ function Role({ role }: { role: Role }) {
         <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
       </div>
       <dl className="flex flex-auto flex-wrap gap-x-2">
-        <dt className="sr-only">Company</dt>
-        <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
-          {role.company}
-        </dd>
-        <dt className="sr-only">Role</dt>
-        <dd className="text-xs text-zinc-500 dark:text-zinc-400">
-          {role.title}
+        <dt className="sr-only">Organization</dt>
+        <dd className="flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
+          {role.organization}
         </dd>
         <dt className="sr-only">Date</dt>
         <dd
@@ -186,47 +183,30 @@ function Role({ role }: { role: Role }) {
           <span aria-hidden="true">—</span>{' '}
           <time dateTime={endDate}>{endLabel}</time>
         </dd>
+        <dt className="sr-only">Role</dt>
+        <dd className="w-full text-xs text-zinc-500 dark:text-zinc-400">
+          {role.title}
+        </dd>
+        
       </dl>
     </li>
   )
 }
 
 function Resume(options: { className?: string }) {
-  let resume: Array<Role> = [
-    {
-      company: 'Planetaria',
-      title: 'CEO',
-      logo: logoPlanetaria,
-      start: '2019',
-      end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear().toString(),
-      },
-    },
-    {
-      company: 'Airbnb',
-      title: 'Product Designer',
-      logo: logoAirbnb,
-      start: '2014',
-      end: '2019',
-    },
-    {
-      company: 'Facebook',
-      title: 'iOS Software Engineer',
-      logo: logoFacebook,
-      start: '2011',
-      end: '2014',
-    },
-    {
-      company: 'Starbucks',
-      title: 'Shift Supervisor',
-      logo: logoStarbucks,
-      start: '2008',
-      end: '2011',
-    },
-  ]
-
   if (options.className === 'Education') {
+    let resume: Array<Role> = [
+      {
+        organization: 'University of Utah',
+        title: 'BS in Computer Science & Applied Mathematics',
+        logo: logoUniversityOfUtah,
+        start: '2022',
+        end: {
+          label: 'Present',
+          dateTime: new Date().getFullYear().toString(),
+        },
+      },
+    ]
     return (
       <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
         <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
@@ -241,6 +221,39 @@ function Resume(options: { className?: string }) {
       </div>
     )
   } else {
+    let resume: Array<Role> = [
+      {
+        organization: 'Planetaria',
+        title: 'CEO',
+        logo: logoPlanetaria,
+        start: '2019',
+        end: {
+          label: 'Present',
+          dateTime: new Date().getFullYear().toString(),
+        },
+      },
+      {
+        organization: 'Airbnb',
+        title: 'Product Designer',
+        logo: logoAirbnb,
+        start: '2014',
+        end: '2019',
+      },
+      {
+        organization: 'Facebook',
+        title: 'iOS Software Engineer',
+        logo: logoFacebook,
+        start: '2011',
+        end: '2014',
+      },
+      {
+        organization: 'Starbucks',
+        title: 'Shift Supervisor',
+        logo: logoStarbucks,
+        start: '2008',
+        end: '2011',
+      },
+    ]
     return (
       <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
         <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
