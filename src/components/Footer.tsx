@@ -30,7 +30,7 @@ export function Footer() {
                 <NavLink href="/about">About</NavLink>
                 <NavLink href="/projects">Projects</NavLink>
                 {/* <NavLink href="/speaking">Research</NavLink> */}
-                <NavLink href="/articles">Blogs</NavLink>
+                <NavLink href="/blogs">Blogs</NavLink>
                 <NavLink href="/uses">Contact</NavLink>
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
