@@ -62,7 +62,7 @@ export default function About() {
           <div className="max-w-xs px-2.5 lg:max-w-none">
             <Image
               src={portraitImage}
-              alt=""
+              alt="Sathya Tadinada Portrait"
               sizes="(min-width: 1024px) 32rem, 20rem"
               className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
             />
@@ -118,11 +118,9 @@ export default function About() {
             <SocialLink href="https://mastodon.social/@tadinada/" icon={MastodonIcon} className="mt-4">
               Follow on Mastodon
             </SocialLink>
-            <SocialLink
-              href="mailto:sathyav.tadinada@gmail.com"
-              icon={MailIcon}
+            <SocialLink href="mailto:sathya@tadinada.com" icon={MailIcon}
               className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40">
-              sathyav.tadinada@gmail.com
+              sathya@tadinada.com
             </SocialLink>
           </ul>
         </div>
