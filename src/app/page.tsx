@@ -218,7 +218,7 @@ function Resume(options: { className?: string }) {
     let resume: Array<Role> = [
       {
         organization: 'University of Utah',
-        title: 'BS in Computer Science & Applied Mathematics',
+        title: 'BS in Computer Science & Applied Mathematics\nMinor in Psychology',
         logo: logoUniversityOfUtah,
         start: '2022',
         end: {
