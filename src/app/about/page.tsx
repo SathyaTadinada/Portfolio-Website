@@ -103,12 +103,12 @@ export default function About() {
         </div>
         <div className="lg:pl-20">
           <ul role="list">
-            <SocialLink href="https://github.com/SathyaTadinada/" icon={GitHubIcon} className="mt-4">
+            {/* <SocialLink href="https://github.com/SathyaTadinada/" icon={GitHubIcon} className="mt-4">
               Follow on GitHub
             </SocialLink>
             <SocialLink href="https://linkedin.com/in/sathya-tadinada/" icon={LinkedInIcon} className="mt-4">
               Follow on LinkedIn
-            </SocialLink>
+            </SocialLink> */}
             <SocialLink href="https://x.com/SathyaTadinada/" icon={XIcon} className="mt-4">
               Follow on X
             </SocialLink>

@@ -215,10 +215,10 @@ function Role({ role }: { role: Role }) {
 
 function Resume(options: { className?: string }) {
   if (options.className === 'Education') {
-    let resume: Array<Role> = [
+    let educationHistory: Array<Role> = [
       {
         organization: 'University of Utah',
-        title: 'BS in Computer Science & Applied Mathematics\nMinor in Psychology',
+        title: 'BS in Computer Science and Applied Mathematics, Minor in Psychology',
         logo: logoUniversityOfUtah,
         start: '2022',
         end: {
@@ -234,14 +234,14 @@ function Resume(options: { className?: string }) {
           <span className="ml-3">Education</span>
         </h2>
         <ol className="mt-6 space-y-4">
-          {resume.map((role, roleIndex) => (
+          {educationHistory.map((role, roleIndex) => (
             <Role key={roleIndex} role={role} />
           ))}
         </ol>
       </div>
     )
   } else {
-    let resume: Array<Role> = [
+    let workExperience: Array<Role> = [
       {
         organization: 'PeDEL Lab',
         title: 'Undergraduate Researcher',
@@ -267,7 +267,7 @@ function Resume(options: { className?: string }) {
           <span className="ml-3">Work</span>
         </h2>
         <ol className="mt-6 space-y-4">
-          {resume.map((role, roleIndex) => (
+          {workExperience.map((role, roleIndex) => (
             <Role key={roleIndex} role={role} />
           ))}
         </ol>
