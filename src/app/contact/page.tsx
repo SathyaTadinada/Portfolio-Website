@@ -30,7 +30,7 @@ function Appearance({
 }) {
   return (
     <Card as="article">
-      <Card.Title as="h3">
+      <Card.Title as="h3" href={href}>
         {title}
       </Card.Title>
       <Card.Link href={href} target='_blank'></Card.Link>
@@ -81,7 +81,7 @@ export default function Speaking() {
           <Appearance
             href="https://x.com/SathyaTadinada/"
             title="@SathyaTadinada"
-            description="Follow me on Twitter for my latest thoughts and updates."
+            description="Follow me here for my latest thoughts and updates."
             event="X / Twitter"
             cta="Visit X / Twitter"
           />

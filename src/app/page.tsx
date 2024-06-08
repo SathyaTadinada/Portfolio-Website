@@ -324,28 +324,28 @@ export default async function Home() {
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href="https://github.com/SathyaTadinada/"
-              aria-label="Follow on GitHub"
-              icon={GitHubIcon}
-            />
-            <SocialLink
-              href="https://linkedin.com/in/sathya-tadinada/"
-              aria-label="Follow on LinkedIn"
+              href="https://linkedin.com/in/sathya-tadinada/" target='_blank'
+              aria-label="Connect on LinkedIn"
               icon={LinkedInIcon}
             />
             <SocialLink
-              href="https://x.com/SathyaTadinada/"
+              href="https://github.com/SathyaTadinada/" target='_blank'
+              aria-label="View on GitHub"
+              icon={GitHubIcon}
+            />
+            <SocialLink
+              href="https://x.com/SathyaTadinada/" target='_blank'
               aria-label="Follow on X"
               icon={XIcon}
             />
             <SocialLink
-              href="https://instagram.com/sathya.tadinada/"
+              href="https://instagram.com/sathya.tadinada/" target='_blank'
               aria-label="Follow on Instagram"
               icon={InstagramIcon}
             />
             <SocialLink
               rel="me"
-              href="https://mastodon.social/@tadinada"
+              href="https://mastodon.social/@tadinada" target='_blank'
               aria-label="Follow on Mastodon"
               icon={MastodonIcon}
             />

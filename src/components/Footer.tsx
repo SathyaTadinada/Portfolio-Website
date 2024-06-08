@@ -30,7 +30,7 @@ export function Footer() {
                 <NavLink href="/about">About</NavLink>
                 <NavLink href="/projects">Projects</NavLink>
                 {/* <NavLink href="/speaking">Research</NavLink> */}
-                <NavLink href="/blogs">Blogs</NavLink>
+                <NavLink /* href="https://tadinada.medium.com/" */ href="/blogs">Blogs</NavLink>
                 <NavLink href="/contact">Contact</NavLink>
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
