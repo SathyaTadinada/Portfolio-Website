@@ -221,7 +221,7 @@ export default function About() {
               which further solidified my interest in the field. I was particularly
               fascinated by the idea of using computers to solve complex problems and
               create new technologies that could leave a positive impact on the world.
-              As a result of this, I've been very interested in pursuing any
+              As a result of this, I’ve been very interested in pursuing any
               opportunities that allow me to study mathematics and theoretical computer science - 
               along with the practical applications of these fields in software development.
             </p>
