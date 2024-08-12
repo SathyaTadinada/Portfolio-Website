@@ -18,11 +18,12 @@ import logoPlanetaria from '@/images/logos/planetaria.svg'
 import logoStarbucks from '@/images/logos/starbucks.svg'
 import logoUniversityOfUtah from '@/images/logos/university-of-utah.svg'
 import logoCanyons from '@/images/logos/canyons.svg'
-import image1 from '@/images/photos/image-1.jpg'
-import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
+import logoSIE from '@/images/logos/sie.svg'
+import image1 from '@/images/photos/capitol.jpg'
+import image2 from '@/images/photos/bell-canyon.jpg'
+import image3 from '@/images/photos/crocodile.jpg'
+import image4 from '@/images/photos/santa-barbara-beach.jpg'
+import image5 from '@/images/photos/tulip-festival.jpg'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 
@@ -243,12 +244,22 @@ function Resume(options: { className?: string }) {
   } else {
     let workExperience: Array<Role> = [
       {
+        organization: 'Success in Education',
+        title: 'Tech Track Summer Camp Mentor',
+        logo: logoSIE,
+        start: 'July 2024',
+        end: {
+          label: 'Aug 2024',
+          dateTime: new Date().getFullYear().toString(),
+        },
+      },
+      {
         organization: 'PeDEL Lab',
         title: 'Undergraduate Researcher',
         logo: logoUniversityOfUtah,
         start: 'Feb 2022',
         end: {
-          label: 'Present',
+          label: 'Aug 2022',
           dateTime: new Date().getFullYear().toString(),
         },
       },

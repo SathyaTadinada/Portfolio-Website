@@ -4,7 +4,7 @@ import { Card } from '@/components/Card'
 import { Section } from '@/components/Section'
 import { SimpleLayout } from '@/components/SimpleLayout'
 
-function SpeakingSection({
+function ContactSection({
   children,
   ...props
 }: React.ComponentPropsWithoutRef<typeof Section>) {
@@ -15,7 +15,7 @@ function SpeakingSection({
   )
 }
 
-function Appearance({
+function ContactCard({
   title,
   description,
   event,
@@ -41,65 +41,97 @@ function Appearance({
   )
 }
 
+function DashedDivider({padding}: {padding: number}) {
+  if (padding === 4) {
+    return (
+      <ul className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4">
+        <div></div>
+        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-4"></div>
+        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-4"></div>
+        <div></div>
+      </ul>
+    )
+  } else if (padding === 8) {
+    return (
+      <ul className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4">
+        <div></div>
+        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-8"></div>
+        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-8"></div>
+        <div></div>
+      </ul>
+    )
+  } else {
+    return (
+      <ul className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4">
+        <div></div>
+        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-12"></div>
+        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-12"></div>
+        <div></div>
+      </ul>
+    )
+  }
+}
+
 export const metadata: Metadata = {
   title: 'Contact',
   description:
     'Let’s stay in touch!',
 }
 
-export default function Speaking() {
+export default function Contact() {
   return (
     <SimpleLayout
       title="Let’s stay in touch!"
       intro="Whether you have a question, want to work with me, or just want to say hi, I’ll try my best to get back to you!"
     >
       <div className="space-y-20">
-        <SpeakingSection title="Primary Contact Methods">
-          <Appearance
+        <ContactSection title="Primary Contact">
+          <ContactCard
             href="mailto:sathya@tadinada.com"
             title="sathya@tadinada.com"
             description="This is the best way to reach me, I check my email every day."
             event="Email"
             cta="Send email"
           />
-          <Appearance
+          <ContactCard
             href="https://linkedin.com/in/sathya-tadinada/"
             title="sathya-tadinada"
             description="Connect with me on LinkedIn, where I share my professional updates."
             event="LinkedIn"
             cta="Visit LinkedIn"
           />
-        </SpeakingSection>
-        <SpeakingSection title="Other Profiles">
-          <Appearance
+        </ContactSection>
+        <DashedDivider padding={8} />
+        <ContactSection title="Other Profiles">
+          <ContactCard
             href="https://github.com/SathyaTadinada/"
             title="SathyaTadinada"
             description="I'm an active open-source contributor and developer, check out my projects on GitHub."
             event="GitHub"
             cta="Visit GitHub"
           />
-          <Appearance
+          <ContactCard
             href="https://x.com/SathyaTadinada/"
             title="@SathyaTadinada"
             description="Follow me here for my latest thoughts and updates."
-            event="X / Twitter"
-            cta="Visit X / Twitter"
+            event="X"
+            cta="Visit X"
           />
-          <Appearance
+          <ContactCard
             href="https://instagram.com/sathya.tadinada/"
             title="@sathya.tadinada"
-            description="Check out my Instagram for photos of my travels and hobbies."
+            description="Check out my profile for pictures of my travels and hobbies."
             event="Instagram"
             cta="Visit Instagram"
           />
-          <Appearance
+          <ContactCard
             href="https://mastodon.social/@tadinada/"
             title="@tadinada"
-            description="I cross-post all my thoughts to Mastodon, check out my profile for all my latest updates."
+            description="I cross-post all my thoughts here, follow for all my latest updates."
             event="Mastodon"
             cta="Visit Mastodon"
           />
-        </SpeakingSection>
+        </ContactSection>
       </div>
     </SimpleLayout>
   )
