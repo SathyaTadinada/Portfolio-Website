@@ -5,12 +5,15 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import {
-  GitHubIcon,
-  InstagramIcon,
-  LinkedInIcon,
-  MastodonIcon,
-  XIcon,
-} from '@/components/SocialIcons'
+  JavaIcon,
+  PythonIcon,
+  RustIcon,
+  JavaScriptIcon,
+  CPlusPlusIcon,
+  PyTorchIcon,
+  NextJSIcon,
+  FlutterIcon,
+} from '@/components/CodingIcons'
 import portraitImage from '@/images/portrait.jpg'
 import { Card } from '@/components/Card'
 import logoAnimaginary from '@/images/logos/animaginary.svg'
@@ -28,12 +31,12 @@ function SocialLink({
   className?: string
   href: string
   icon: React.ComponentType<{ className?: string }>
-  children: React.ReactNode
+  children?: React.ReactNode
 }) {
   return (
     <li className={clsx(className, 'flex')}>
       <Link
-        href={href}
+        href={href} target='_blank'
         className="group flex text-sm font-medium text-zinc-800 transition hover:text-blue-500 dark:text-zinc-200 dark:hover:text-blue-500"
       >
         <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-blue-500" />
@@ -54,19 +57,34 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-function DashedDivider({padding}: {padding: number}) {
-  if (padding === 4) {
+function DashedDivider({ padding }: { padding: number }) {
+  if (padding === 0) {
     return (
-      <ul className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4">
+      <ul className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1">
+        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-8"></div>
+      </ul>
+    )
+  } else if (padding === 4) {
+    return (
+      <ul className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4">
         <div></div>
         <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-4"></div>
         <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-4"></div>
         <div></div>
       </ul>
     )
+  } else if (padding === 6) {
+    return (
+      <ul className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4">
+        <div></div>
+        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-6"></div>
+        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-6"></div>
+        <div></div>
+      </ul>
+    )
   } else if (padding === 8) {
     return (
-      <ul className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4">
+      <ul className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4">
         <div></div>
         <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-8"></div>
         <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-8"></div>
@@ -75,7 +93,7 @@ function DashedDivider({padding}: {padding: number}) {
     )
   } else {
     return (
-      <ul className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4">
+      <ul className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4">
         <div></div>
         <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-12"></div>
         <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-12"></div>
@@ -147,29 +165,29 @@ const frameworks = [
   },
 ]
 
-// const tools = [
-//   {
-//     name: 'JetBrains IDEs',
-//     description:
-//       'Creating technology to empower civilians to explore space on their own terms.',
-//     link: { href: 'https://java.com/', label: 'java.com' },
-//     logo: logoPlanetaria,
-//   },
-//   {
-//     name: 'Git',
-//     description:
-//       'High performance web animation library, hand-written in optimized WASM.',
-//     link: { href: 'https://python.org/', label: 'python.org' },
-//     logo: logoAnimaginary,
-//   },
-//   {
-//     name: 'Flutter',
-//     description:
-//       'Real-time video streaming library, optimized for interstellar transmission.',
-//     link: { href: 'https://www.rust-lang.org/', label: 'rust-lang.org' },
-//     logo: logoHelioStream,
-//   },
-// ]
+const tools = [
+  {
+    name: 'JetBrains IDEs',
+    description:
+      'Creating technology to empower civilians to explore space on their own terms.',
+    link: { href: 'https://java.com/', label: 'java.com' },
+    logo: logoPlanetaria,
+  },
+  {
+    name: 'Git',
+    description:
+      'High performance web animation library, hand-written in optimized WASM.',
+    link: { href: 'https://python.org/', label: 'python.org' },
+    logo: logoAnimaginary,
+  },
+  {
+    name: 'Flutter',
+    description:
+      'Real-time video streaming library, optimized for interstellar transmission.',
+    link: { href: 'https://www.rust-lang.org/', label: 'rust-lang.org' },
+    logo: logoHelioStream,
+  },
+]
 
 function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -208,58 +226,70 @@ export default function About() {
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              My journey in computer science started all the way back in middle school, 
-              when I first interacted with computers and realized their potential and 
-              usefulness as a vessel for creativity and problem-solving, along with 
+              My journey in computer science started all the way back in middle school,
+              when I first interacted with computers and realized their potential and
+              usefulness as a vessel for creativity and problem-solving, along with
               providing a personal platform to solve any problems I came across in my
-              day-to-day life. As such, I was very intrigued by the realm of software 
-              development - as a professional parallel to my personal interests.
+              day-to-day life. As such, I was very intrigued by the realm of software
+              development as a professional parallel to my personal interests.
             </p>
             <p>
-              In high school and college, I was introduced to the world of theoretical 
+              In high school and college, I was introduced to the world of theoretical
               computer science (including the mathematical underpinnings of computation),
               which further solidified my interest in the field. I was particularly
               fascinated by the idea of using computers to solve complex problems and
               create new technologies that could leave a positive impact on the world.
-              As a result of this, I’ve been very interested in pursuing any
-              opportunities that allow me to study mathematics and theoretical computer science - 
-              along with the practical applications of these fields in software development.
+              As a result, I’ve been very interested in pursuing any opportunities that
+              allow me to study mathematics and theoretical computer science - along with
+              the practical applications of these fields in software development.
             </p>
-            <p>
-              Today, I’m the founder of Planetaria, where we’re working on
-              civilian space suits and manned shuttle kits you can assemble at
-              home so that the next generation of kids really <em>can</em> make
-              it to orbit — from the comfort of their own backyards.
-            </p>
+
           </div>
         </div>
         <div className="lg:pl-20">
-          <ul role="list">
-            {/* <SocialLink href="https://github.com/SathyaTadinada/" icon={GitHubIcon} className="mt-4">
-              Follow on GitHub
+          <ul
+            role="list"
+            className="grid grid-cols-7 gap-x-12 gap-y-12 sm:grid-cols-7 lg:grid-cols-7"
+          >
+            <div></div>
+            <SocialLink href="https://www.java.com/en/" icon={JavaIcon} className="mt-4">
             </SocialLink>
-            <SocialLink href="https://linkedin.com/in/sathya-tadinada/" icon={LinkedInIcon} className="mt-4">
-              Follow on LinkedIn
-            </SocialLink> */}
-            <SocialLink href="https://x.com/SathyaTadinada/" icon={XIcon} className="mt-4">
-              Follow on X
+            <SocialLink href="https://www.python.org/" icon={PythonIcon} className="mt-4">
             </SocialLink>
-            <SocialLink href="https://instagram.com/sathya.tadinada/" icon={InstagramIcon} className="mt-4">
-              Follow on Instagram
+            <SocialLink href="https://www.rust-lang.org/" icon={RustIcon} className="mt-4">
             </SocialLink>
-            <SocialLink href="https://mastodon.social/@tadinada/" icon={MastodonIcon} className="mt-4">
-              Follow on Mastodon
+            <SocialLink href="https://www.javascript.com/" icon={JavaScriptIcon} className="mt-4">
             </SocialLink>
+            <SocialLink href="https://cplusplus.com/" icon={CPlusPlusIcon} className="mt-4">
+            </SocialLink>
+            <div></div>
           </ul>
-          <DashedDivider padding={4}/>
-          <SocialLink href="mailto:sathya@tadinada.com" icon={MailIcon}
-            className=" border-zinc-100 pt-4 dark:border-zinc-700/40">
-            sathya@tadinada.com
-          </SocialLink>
+          <DashedDivider padding={0} />
+          <ul
+            role="list"
+            className="grid grid-cols-7 gap-x-12 gap-y-12 sm:grid-cols-7 lg:grid-cols-7"
+          >
+            <div></div>
+            <div></div>
+            <SocialLink href="https://pytorch.org/" icon={PyTorchIcon} className="mt-6">
+            </SocialLink>
+            <SocialLink href="https://nextjs.org/" icon={NextJSIcon} className="mt-6">
+            </SocialLink>
+            <SocialLink href="https://flutter.dev/" icon={FlutterIcon} className="mt-6">
+            </SocialLink>
+            <div></div>
+            <div></div>
+          </ul>
         </div>
       </div>
-      <div className="border-t border-zinc-100 dark:border-zinc-700/40 mt-8"></div> {/* full-page divider line */}
+
+      <div className="border-t border-zinc-100 dark:border-zinc-700/40 mt-8"></div>
       <div className="mt-8">
+        <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
+          Skills and Education
+        </h2>
+      </div>
+      {/*<div className="mt-8">
         <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
           Languages and Frameworks
         </h2>
@@ -322,7 +352,7 @@ export default function About() {
             ))}
           </ul>
 
-          {/* <DashedDivider padding={8}/>
+          <DashedDivider padding={8}/>
 
           <ul
             role="list"
@@ -348,10 +378,10 @@ export default function About() {
                 </p>
               </Card>
             ))}
-          </ul> */}
+          </ul>
         </div>
 
-      </div>
+      </div> */}
     </Container>
   )
 }

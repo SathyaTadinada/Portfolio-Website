@@ -136,7 +136,7 @@ function MobileNavigation(
                 <MobileNavItem href="/about">About</MobileNavItem>
                 <MobileNavItem href="/projects">Projects</MobileNavItem>
                 <MobileNavItem href="/blogs">Blogs</MobileNavItem>
-                <MobileNavItem href="/speaking">Speaking</MobileNavItem>
+                {/* <MobileNavItem href="/speaking">Speaking</MobileNavItem> */}
                 <MobileNavItem href="/contact">Contact</MobileNavItem>
               </ul>
             </nav>

@@ -11,6 +11,7 @@ import {
   LinkedInIcon,
   MastodonIcon,
   XIcon,
+  MailIcon,
 } from '@/components/SocialIcons'
 import logoAirbnb from '@/images/logos/airbnb.svg'
 import logoFacebook from '@/images/logos/facebook.svg'
@@ -27,7 +28,7 @@ import image5 from '@/images/photos/tulip-festival.jpg'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 
-function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function MailIcon_Newsletter(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -105,17 +106,17 @@ function ArrowDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-function Article({ article }: { article: ArticleWithSlug }) {
+function Article({ post: post }: { post: ArticleWithSlug }) {
   return (
     <Card as="article">
-      <Card.Title href={`/blogs/${article.slug}`}>
-        {article.title}
+      <Card.Title href={`/blogs/${post.slug}`}>
+        {post.title}
       </Card.Title>
-      <Card.Eyebrow as="time" dateTime={article.date} decorate>
-        {formatDate(article.date)}
+      <Card.Eyebrow as="time" dateTime={post.date} decorate>
+        {formatDate(post.date)}
       </Card.Eyebrow>
-      <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
+      <Card.Description>{post.description}</Card.Description>
+      <Card.Cta>Read post</Card.Cta>
     </Card>
   )
 }
@@ -127,7 +128,7 @@ function SocialLink({
   icon: React.ComponentType<{ className?: string }>
 }) {
   return (
-    <Link className="group -m-1 p-1" {...props}>
+    <Link className="group -m-1 p-1" {...props} target='_blank'>
       <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
     </Link>
   )
@@ -140,7 +141,7 @@ function Newsletter() {
       className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
     >
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <MailIcon className="h-6 w-6 flex-none" />
+        <MailIcon_Newsletter className="h-6 w-6 flex-none" />
         <span className="ml-3">Stay up to date</span>
       </h2>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
@@ -335,30 +336,35 @@ export default async function Home() {
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href="https://linkedin.com/in/sathya-tadinada/" target='_blank'
+              href="https://linkedin.com/in/sathya-tadinada/"
               aria-label="Connect on LinkedIn"
               icon={LinkedInIcon}
             />
             <SocialLink
-              href="https://github.com/SathyaTadinada/" target='_blank'
+              href="https://github.com/SathyaTadinada/"
               aria-label="View on GitHub"
               icon={GitHubIcon}
             />
             <SocialLink
-              href="https://x.com/SathyaTadinada/" target='_blank'
+              href="https://x.com/SathyaTadinada/"
               aria-label="Follow on X"
               icon={XIcon}
             />
             <SocialLink
-              href="https://instagram.com/sathya.tadinada/" target='_blank'
+              href="https://instagram.com/sathya.tadinada/"
               aria-label="Follow on Instagram"
               icon={InstagramIcon}
             />
             <SocialLink
               rel="me"
-              href="https://mastodon.social/@tadinada" target='_blank'
+              href="https://mastodon.social/@tadinada"
               aria-label="Follow on Mastodon"
               icon={MastodonIcon}
+            />
+            <SocialLink
+              href="mailto:sathya@tadinada.com"
+              aria-label="Send an email"
+              icon={MailIcon}
             />
           </div>
         </div>
@@ -368,7 +374,7 @@ export default async function Home() {
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
             {articles.map((article) => (
-              <Article key={article.slug} article={article} />
+              <Article key={article.slug} post={article} />
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
