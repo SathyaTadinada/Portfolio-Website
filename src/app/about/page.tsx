@@ -36,7 +36,7 @@ function SocialLink({
   return (
     <li className={clsx(className, 'flex')}>
       <Link
-        href={href} target='_blank'
+        href={href} target='_blank' aria-label={"Website " + href}
         className="group flex text-sm font-medium text-zinc-800 transition hover:text-blue-500 dark:text-zinc-200 dark:hover:text-blue-500"
       >
         <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-blue-500" />
@@ -153,14 +153,14 @@ const frameworks = [
     name: 'Next.js',
     description:
       'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: 'https://python.org/', label: 'python.org' },
+    link: { href: 'https://nextjs.org/', label: 'nextjs.org' },
     logo: logoAnimaginary,
   },
   {
     name: 'Flutter',
     description:
       'Real-time video streaming library, optimized for interstellar transmission.',
-    link: { href: 'https://www.rust-lang.org/', label: 'rust-lang.org' },
+    link: { href: 'https://flutter.dev/', label: 'flutter.dev' },
     logo: logoHelioStream,
   },
 ]
