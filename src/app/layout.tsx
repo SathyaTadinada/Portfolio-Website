@@ -2,9 +2,6 @@ import { type Metadata } from 'next'
 
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
-import { Monitoring } from 'react-scan/dist/core/monitor/params/next'
-
-<Monitoring apiKey="3KW-3l-29aa7t-1zIFd0zye_xrv1V_N8" url="https://monitoring.react-scan.com/api/v1/ingest" />
 
 import '@/styles/tailwind.css'
 
