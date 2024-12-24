@@ -4,11 +4,11 @@ import Image from 'next/image'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 
-import logoAnimaginary from '@/images/logos/animaginary.svg'
-import logoCosmos from '@/images/logos/cosmos.svg'
-import logoHelioStream from '@/images/logos/helio-stream.svg'
-import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
+import logoGithub from '@/images/logos/github.svg'
+import logoX from '@/images/logos/x.svg'
+import logoInstagram from '@/images/logos/instagram.svg'
+import logoMastodon from '@/images/logos/mastodon.svg'
+import logoMail from '@/images/logos/mail.svg'
 
 import logoLinkedIn from '@/images/logos/linkedin.svg'
 
@@ -87,7 +87,7 @@ const primaryContact = [
     description:
       'This is the best way to reach me, I check my email every day and respond promptly.',
     link: { href: 'mailto:sathya@tadinada.com', label: 'sathya@tadinada.com', hover: 'Send email' },
-    logo: logoPlanetaria,
+    logo: logoMail,
   },
   {
     name: 'LinkedIn',
@@ -104,28 +104,28 @@ const otherProfiles = [
     description:
       "I'm an active open-source contributor and developer, check out my projects on GitHub.",
     link: { href: 'https://github.com/SathyaTadinada', label: 'SathyaTadinada', hover: 'Visit GitHub' },
-    logo: logoCosmos,
+    logo: logoGithub,
   },
   {
     name: 'X',
     description:
       'Follow me here for my latest thoughts and updates, I tend to post here more frequently.',
     link: { href: 'https://x.com/@SathyaTadinada', label: '@SathyaTadinada', hover: 'Visit X' },
-    logo: logoHelioStream,
+    logo: logoX,
   },
   {
     name: 'Instagram',
     description:
       'Check out my profile for pictures of my travels and hobbies.',
     link: { href: 'https://instagram.com/sathya.tadinada/', label: '@sathya.tadinada', hover: 'Visit Instagram' },
-    logo: logoOpenShuttle,
+    logo: logoInstagram,
   },
   {
     name: 'Mastodon',
     description:
       'I cross-post all my thoughts here, follow for all my latest updates.',
     link: { href: 'https://mastodon.social/@tadinada', label: '@tadinada', hover: 'Visit Mastodon' },
-    logo: logoOpenShuttle,
+    logo: logoMastodon,
   },
 ]
 
