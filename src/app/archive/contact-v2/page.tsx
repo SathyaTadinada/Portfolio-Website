@@ -33,7 +33,7 @@ function ContactCard({
       <Card.Title as="h3" href={href}>
         {title}
       </Card.Title>
-      <Card.Link href={href} target='_blank'></Card.Link>
+      <Card.Link href={href} target='_blank' rel='noreferrer'></Card.Link>
       <Card.Eyebrow decorate>{event}</Card.Eyebrow>
       <Card.Description>{description}</Card.Description>
       <Card.Cta>{cta}</Card.Cta>

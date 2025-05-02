@@ -128,7 +128,7 @@ function SocialLink({
   icon: React.ComponentType<{ className?: string }>
 }) {
   return (
-    <Link className="group -m-1 p-1" {...props} target='_blank'>
+    <Link className="group -m-1 p-1" {...props} target='_blank' rel='noreferrer'>
       <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
     </Link>
   )
@@ -283,7 +283,7 @@ function Resume(options: { className?: string }) {
             <Role key={roleIndex} role={role} />
           ))}
         </ol>
-        <Button href="/resume.pdf" target="_blank" variant="secondary" className="group mt-6 w-full">
+        <Button href="/resume.pdf" target="_blank" rel='noreferrer' variant="secondary" className="group mt-6 w-full">
           Download Resume
           <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
         </Button>
@@ -338,32 +338,37 @@ export default async function Home() {
             <SocialLink
               href="https://linkedin.com/in/sathya-tadinada/"
               aria-label="Connect on LinkedIn"
+              rel='noreferrer'
               icon={LinkedInIcon}
             />
             <SocialLink
               href="https://github.com/SathyaTadinada/"
               aria-label="View on GitHub"
+              rel='noreferrer'
               icon={GitHubIcon}
             />
             <SocialLink
               href="https://x.com/SathyaTadinada/"
               aria-label="Follow on X"
+              rel='noreferrer'
               icon={XIcon}
             />
             <SocialLink
               href="https://instagram.com/sathya.tadinada/"
               aria-label="Follow on Instagram"
+              rel='noreferrer'
               icon={InstagramIcon}
             />
             <SocialLink
-              rel="me"
               href="https://mastodon.social/@tadinada"
               aria-label="Follow on Mastodon"
+              rel="me noreferrer"
               icon={MastodonIcon}
             />
             <SocialLink
               href="mailto:sathya@tadinada.com"
               aria-label="Send an email"
+              rel='noreferrer'
               icon={MailIcon}
             />
           </div>

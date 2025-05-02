@@ -34,7 +34,7 @@ export function Footer() {
                 <NavLink href="/contact">Contact</NavLink>
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
-                <a href="mailto:sathya@tadinada.com" target='_blank'>&copy; {new Date().getFullYear()} Sathya Tadinada. All rights reserved.</a> 
+                <a href="mailto:sathya@tadinada.com" target='_blank' rel='noreferrer'>&copy; {new Date().getFullYear()} Sathya Tadinada. All rights reserved.</a> 
               </p>
             </div>
           </ContainerInner>
