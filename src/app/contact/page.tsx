@@ -164,7 +164,7 @@ export default function Contact() {
                   />
                 </div>
                 <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                  <Card.Link href={contact.link.href} target='_blank'>{contact.name}</Card.Link>
+                  <Card.Link href={contact.link.href} target='_blank' rel='noreferrer'>{contact.name}</Card.Link>
                 </h2>
                 <Card.Description>{contact.description}</Card.Description>
                 <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-blue-500 dark:text-zinc-200">
@@ -203,7 +203,7 @@ export default function Contact() {
                   />
                 </div>
                 <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                  <Card.Link href={contact.link.href} target='_blank'>{contact.name}</Card.Link>
+                  <Card.Link href={contact.link.href} target='_blank' rel='noreferrer'>{contact.name}</Card.Link>
                 </h2>
                 <Card.Description>{contact.description}</Card.Description>
                 <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-blue-500 dark:text-zinc-200">
