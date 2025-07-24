@@ -135,7 +135,7 @@ function MobileNavigation(
               divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/about">About</MobileNavItem>
                 <MobileNavItem href="/projects">Projects</MobileNavItem>
-                <MobileNavItem href="/blogs">Blogs</MobileNavItem>
+                <MobileNavItem href="/blog">Blog</MobileNavItem>
                 {/* <MobileNavItem href="/speaking">Speaking</MobileNavItem> */}
                 <MobileNavItem href="/contact">Contact</MobileNavItem>
               </ul>
@@ -188,7 +188,7 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
         <NavItem href="/about">About</NavItem>
         <NavItem href="/projects">Projects</NavItem>
         {/* <NavItem href="/speaking">Speaking</NavItem> */}
-        <NavItem /* href="https://tadinada.medium.com/" */ href="/blogs">Blogs</NavItem>
+        <NavItem /* href="https://tadinada.medium.com/" */ href="/blog">Blog</NavItem>
         <NavItem href="/contact">Contact</NavItem>
       </ul>
     </nav>
