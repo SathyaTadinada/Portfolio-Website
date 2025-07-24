@@ -56,10 +56,14 @@ Card.Title = function CardTitle<T extends React.ElementType = 'h2'>({
   as?: T
   href?: string
 }) {
-  let Component = as ?? 'h2'
-
+  const Component = as ?? 'h2'
   return (
-    <Component className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+    <Component
+      className="
+        m-0 text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100
+        [&>a]:no-underline [&>a]:text-inherit
+      "
+    >
       {href ? <Card.Link href={href}>{children}</Card.Link> : children}
     </Component>
   )
