@@ -1,4 +1,15 @@
-@import 'tailwindcss/base';
+/* @import 'tailwindcss/base';
 @import 'tailwindcss/components';
+@import './prism.css'; */
+/* @import 'tailwindcss/utilities'; */
+/* @tailwind base;
+@tailwind components;
+
 @import './prism.css';
-@import 'tailwindcss/utilities';
+
+@tailwind utilities; */
+
+@config "../../tailwind.config.ts";
+@import "tailwindcss";
+@import "./prism.css";
+@plugin "@tailwindcss/typography";
