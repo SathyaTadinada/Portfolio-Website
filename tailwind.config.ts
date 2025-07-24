@@ -5,14 +5,12 @@ import typographyStyles from './typography'
 export default {
   // content: ['./src/**/*.{js,jsx,ts,tsx,mdx}'],
   darkMode: 'selector',
-  plugins: [
-    typographyPlugin,
-  ],
+  // plugins: [typographyPlugin],
   theme: {
     extend: {
-      typography: {
-        DEFAULT: typographyStyles,
-      },
+      // typography: {
+      //   DEFAULT: typographyStyles,
+      // },
       fontSize: {
         xs: ['0.8125rem', { lineHeight: '1.5rem' }],
         sm: ['0.875rem', { lineHeight: '1.5rem' }],

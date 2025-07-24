@@ -10,6 +10,6 @@
 @tailwind utilities; */
 
 @config "../../tailwind.config.ts";
+@plugin "@tailwindcss/typography";
 @import "tailwindcss";
 @import "./prism.css";
-@plugin "@tailwindcss/typography";
