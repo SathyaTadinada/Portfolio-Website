@@ -20,7 +20,6 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@types/webpack-env": "^1.18.8",
-    "autoprefixer": "^10.4.21",
     "cheerio": "^1.1.2",
     "clsx": "^2.1.1",
     "fast-glob": "^3.3.3",
@@ -30,15 +29,20 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "remark-gfm": "^4.0.1",
-    "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3"
   },
   "devDependencies": {
     "@types/node": "^24.1.0",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9.31.0",
     "eslint-config-next": "^15.4.3",
+    "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "sharp": "0.34.3"
+    "sharp": "0.34.3",
+    "tailwindcss": "^4.1.11"
+  },
+  "engines": {
+    "node": "22.x"
   }
 }
