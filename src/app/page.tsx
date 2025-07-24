@@ -13,10 +13,10 @@ import {
   XIcon,
   MailIcon,
 } from '@/components/SocialIcons'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
+// import logoAirbnb from '@/images/logos/airbnb.svg'
+// import logoFacebook from '@/images/logos/facebook.svg'
+// import logoPlanetaria from '@/images/logos/planetaria.svg'
+// import logoStarbucks from '@/images/logos/starbucks.svg'
 import logoUniversityOfUtah from '@/images/logos/university-of-utah.svg'
 import logoCanyons from '@/images/logos/canyons.svg'
 import logoSIE from '@/images/logos/sie.svg'
@@ -109,7 +109,7 @@ function ArrowDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 function Article({ post: post }: { post: ArticleWithSlug }) {
   return (
     <Card as="article">
-      <Card.Title href={`/blogs/${post.slug}`}>
+      <Card.Title href={`/blog/${post.slug}`}>
         {post.title}
       </Card.Title>
       <Card.Eyebrow as="time" dateTime={post.date} decorate>
@@ -209,7 +209,7 @@ function Role({ role }: { role: Role }) {
         <dd className="w-full text-xs text-zinc-500 dark:text-zinc-400">
           {role.title}
         </dd>
-        
+
       </dl>
     </li>
   )
