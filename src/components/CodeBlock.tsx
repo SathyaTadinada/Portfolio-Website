@@ -57,7 +57,7 @@ export default function CodeBlock({ children, className = '', ...rest }: PreProp
         >
             {/* language badge */}
             {lang && (
-                <span className="absolute left-4 top-2 select-none text-[12px] lowercase tracking-wider text-zinc-400/80">
+                <span className="absolute left-4 top-2 select-none text-[10px] lowercase tracking-wider text-zinc-400/80">
                     {lang}
                 </span>
             )}
