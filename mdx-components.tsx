@@ -56,9 +56,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     wrapper: ({ children }) => (
       <article
         data-mdx
-        className="prose prose-zinc dark:prose-invert max-w-none
-                   [--tw-prose-links:theme(colors.blue.500)]
-                   prose-a:underline"
+        className="max-w-none"
       >
         {children}
       </article>
