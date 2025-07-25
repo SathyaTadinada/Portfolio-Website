@@ -7,8 +7,6 @@ import {
     isValidElement,
 } from 'react';
 
-/* ---------------- helpers ---------------- */
-
 function hasProps(
     node: ReactNode,
 ): node is ReactElement<{ className?: string; children?: ReactNode }> {
@@ -29,8 +27,6 @@ function getLang(node: ReactNode, fallback = ''): string {
     return m?.[1] ?? '';
 }
 
-/* ---------------- component ---------------- */
-
 type PreProps = React.ComponentProps<'pre'> & { children: ReactNode };
 
 export default function CodeBlock({ children, className = '', ...rest }: PreProps) {
@@ -47,7 +43,6 @@ export default function CodeBlock({ children, className = '', ...rest }: PreProp
     return (
         <pre
             {...rest}
-            /* not-prose = ignore typography defaults; bg-[#0f0f10] is very dark */
             className="
                 not-prose group relative whitespace-pre
                 rounded-3xl bg-[#18181a] dark:bg-[#0b0b0d] pt-10 pb-4 px-4
@@ -55,14 +50,11 @@ export default function CodeBlock({ children, className = '', ...rest }: PreProp
             "
             data-language={lang}
         >
-            {/* language badge */}
             {lang && (
                 <span className="absolute left-4 top-2 select-none text-[10px] lowercase tracking-wider text-zinc-400/80">
                     {lang}
                 </span>
             )}
-
-            {/* copy button */}
             <button
                 onClick={copy}
                 aria-label="Copy code"
@@ -71,7 +63,7 @@ export default function CodeBlock({ children, className = '', ...rest }: PreProp
                     text-[11px] font-mono opacity-0 transition group-hover:opacity-100
                 "
             >
-                {copied ? '✓' : 'Copy'}
+                {copied ? 'Copied!' : 'Copy'}
             </button>
 
             <div className="overflow-x-auto">
