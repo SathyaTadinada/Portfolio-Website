@@ -60,7 +60,7 @@ export default function CodeBlock({ children, className = '', ...rest }: PreProp
                 aria-label="Copy code"
                 className="
                     absolute right-2 top-2 rounded-md border border-zinc-700 px-2 py-0.5
-                    text-[11px] font-mono opacity-0 transition group-hover:opacity-100
+                    text-[11px] font-mono sm:opacity-100 md:opacity-0 transition md:group-hover:opacity-100
                 "
             >
                 {copied ? 'Copied!' : 'Copy'}
