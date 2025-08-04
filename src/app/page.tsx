@@ -20,6 +20,7 @@ import {
 import logoUniversityOfUtah from '@/images/logos/university-of-utah.svg'
 import logoCanyons from '@/images/logos/canyons.svg'
 import logoSIE from '@/images/logos/sie.svg'
+import logoSPS from '@/images/logos/sps.svg'
 import image1 from '@/images/photos/capitol.jpg'
 import image2 from '@/images/photos/bell-canyon.jpg'
 import image3 from '@/images/photos/crocodile.jpg'
@@ -202,7 +203,7 @@ function Role({ role }: { role: Role }) {
           aria-label={`${startLabel} until ${endLabel}`}
         >
           <time dateTime={startDate}>{startLabel}</time>{' '}
-          <span aria-hidden="true">—</span>{' '}
+          <span aria-hidden="true">–</span>{' '}
           <time dateTime={endDate}>{endLabel}</time>
         </dd>
         <dt className="sr-only">Role</dt>
@@ -245,31 +246,56 @@ function Resume(options: { className?: string }) {
   } else {
     let workExperience: Array<Role> = [
       {
+        organization: 'Select Portfolio Servicing',
+        title: 'Software Engineering Intern',
+        logo: logoSPS,
+        start: {
+          label: 'May 2025',
+          dateTime: '2025-05'
+        },
+        end: {
+          label: 'Aug 2025',
+          dateTime: '2025-08'
+        },
+      },
+      {
         organization: 'Success in Education',
         title: 'Tech Track Summer Camp Mentor',
         logo: logoSIE,
-        start: 'July 2024',
+        start: {
+          label: 'July 2024',
+          dateTime: '2024-07'
+        },
         end: {
           label: 'Aug 2024',
-          dateTime: new Date().getFullYear().toString(),
+          dateTime: '2024-08'
         },
       },
       {
         organization: 'PeDEL Lab',
         title: 'Undergraduate Researcher',
         logo: logoUniversityOfUtah,
-        start: 'Feb 2022',
+        start: {
+          label: 'Feb 2022',
+          dateTime: '2022-02'
+        },
         end: {
           label: 'Aug 2022',
-          dateTime: new Date().getFullYear().toString(),
+          dateTime: '2022-08'
         },
       },
       {
         organization: 'Canyons School District',
         title: 'IT Summer Intern',
         logo: logoCanyons,
-        start: 'May 2021',
-        end: 'Aug 2021',
+        start: {
+          label: 'May 2021',
+          dateTime: '2021-05'
+        },
+        end: {
+          label: 'Aug 2021',
+          dateTime: '2021-08'
+        },
       },
     ]
     return (
