@@ -88,9 +88,9 @@ function Article({ article: post }: { article: ArticleWithSlug }) {
 export default async function ArticlesIndex({
   searchParams,
 }: {
-  searchParams: { tags?: string }
+  searchParams: Promise<{ tags?: string }>
 }) {
-  const selected = normalizeTags(searchParams.tags)
+  const selected = normalizeTags((await searchParams).tags)
 
   const articles = await getAllArticles()
 
