@@ -1,5 +1,6 @@
 import type { MDXComponents } from 'mdx/types'
 import CodeBlock from '@/components/CodeBlock'
+import YouTube from '@/components/YouTube'
 import NextImage, { type ImageProps } from 'next/image'
 import type { ComponentPropsWithoutRef } from 'react'
 
@@ -7,6 +8,7 @@ type ImgProps = ComponentPropsWithoutRef<'img'> & { src: string }
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    YouTube,
     ...components,
 
     pre: (props) => <CodeBlock {...props} />,

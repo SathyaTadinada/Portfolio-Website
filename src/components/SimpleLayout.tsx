@@ -4,10 +4,12 @@ export function SimpleLayout({
   title,
   intro,
   children,
+  gapClass = 'mt-16 sm:mt-20',
 }: {
   title: string
   intro: string
   children?: React.ReactNode
+  gapClass?: string
 }) {
   return (
     <Container className="mt-16 sm:mt-32">
@@ -19,7 +21,7 @@ export function SimpleLayout({
           {intro}
         </p>
       </header>
-      {children && <div className="mt-16 sm:mt-20">{children}</div>}
+      {children && <div className={gapClass}>{children}</div>}
     </Container>
   )
 }
