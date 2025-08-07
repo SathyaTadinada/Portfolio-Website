@@ -1,4 +1,5 @@
 import glob from 'fast-glob'
+import path from 'path'
 
 interface Article {
   title: string
@@ -27,11 +28,21 @@ async function importArticle(
 }
 
 export async function getAllArticles() {
-  let articleFilenames = await glob('*/page.mdx', {
-    cwd: './src/app/blog',
-  })
+  const blogDir = path.join(process.cwd(), 'src/app/blog');
 
-  let articles = await Promise.all(articleFilenames.map(importArticle))
+  const articleFilenames = await glob('*/page.mdx', { cwd: blogDir });
 
-  return articles.sort((a, z) => +new Date(z.date) - +new Date(a.date))
+  const articles = await Promise.all(articleFilenames.map(importArticle));
+
+  return articles.sort((a, z) => +new Date(z.date) - +new Date(a.date));
 }
+
+// export async function getAllArticles() {
+//   let articleFilenames = await glob('*/page.mdx', {
+//     cwd: './src/app/blog',
+//   })
+
+//   let articles = await Promise.all(articleFilenames.map(importArticle))
+
+//   return articles.sort((a, z) => +new Date(z.date) - +new Date(a.date))
+// }
