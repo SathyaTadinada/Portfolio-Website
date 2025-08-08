@@ -7,15 +7,10 @@ import path from 'path'
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
 
-  outputFileTracingIncludes: {
-    './src/lib/articles.ts': ['./src/app/blog/**/*.mdx'],
+  experimental: {
+    mdxRs: true,
   },
-
-  webpack(config) {
-    config.resolve.alias['@'] = path.resolve(process.cwd(), 'src');
-    return config;
-  },
-};
+}
 
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
