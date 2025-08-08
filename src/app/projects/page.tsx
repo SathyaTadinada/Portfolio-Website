@@ -33,7 +33,7 @@ const projects: Project[] = [
       label: 'github.com',
     },
     logo: logoPlanetaria,
-    tags: ['TypeScript', 'Next.js', 'Tailwind', 'Vercel'],
+    tags: ['TypeScript', 'Next.js', 'Tailwind', 'React'],
   },
   {
     name: 'Animaginary',
@@ -68,9 +68,6 @@ const projects: Project[] = [
   },
 ]
 
-/* -------------------------------------------------------------------------- */
-/*  Tag-filter helpers                                                        */
-/* -------------------------------------------------------------------------- */
 
 function normalizeTags(input?: string) {
   if (!input) return []
@@ -117,18 +114,10 @@ function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-/* -------------------------------------------------------------------------- */
-/*  Page metadata                                                              */
-/* -------------------------------------------------------------------------- */
-
 export const metadata: Metadata = {
   title: 'Projects',
   description: 'Things I’ve made trying to put my dent in the universe.',
 }
-
-/* -------------------------------------------------------------------------- */
-/*  Page component                                                             */
-/* -------------------------------------------------------------------------- */
 
 export default async function Projects({
   searchParams,
