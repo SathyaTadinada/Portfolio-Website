@@ -65,19 +65,91 @@ dotibus ora, et findi huic invenit; fatis? Fractaque dare superinposita
 nimiumque simulatoremque sanguine, at voce aestibus diu! Quid veterum hausit tu
 nil utinam paternos ima, commentaque.
 
+```js
+// Comment: This is a sample function to test syntax highlighting
+import fs from 'fs'; // builtin import
+
+@decorator
+export class ExampleClass extends BaseClass {
+  static CONSTANT = 42;
+  #privateField = 'secret';
+
+  constructor(param1, param2 = true) {
+    super(param1);
+    this.param2 = param2;
+  }
+
+  async fetchData(url) {
+    if (!url || typeof url !== 'string') {
+      throw new Error(`Invalid URL: ${url}`);
+    }
+
+    const regex = /https?:\/\/[^\s/$.?#].[^\s]*/gi;
+    const matches = url.match(regex) ?? [];
+    console.log(matches);
+
+    const data = await fetch(url, { method: 'GET' });
+    return data.json();
+  }
+}
+
+// Variables, numbers, booleans
+let counter = 0;
+const isReady = false;
+
+// Functions
+function multiply(a, b) {
+  return a * b;
+}
+
+const result = multiply(3.14, counter) + ExampleClass.CONSTANT;
+console.log(result);
+```
+```python
+# Comment: Sample Python code
+import os
+from math import sqrt
+
+class MyClass:
+    def __init__(self, name: str, count: int = 0):
+        self.name = name
+        self.count = count
+
+    def greet(self):
+        print(f"Hello, {self.name}!")
+
+def factorial(n: int) -> int:
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)
+
+value = 3.14
+is_valid = True
+pattern = r"\b\w+\b"
+```
+
 ```c
-exbibyte_wins = gigahertz(3); // test
-grayscaleUtilityClient = control_uat;
-pcmciaHibernate = oop_virus_console(text_mountain);
-if (stateWaisFirewire >= -2) {
-    jfs = 647065 / ldapVrml(tutorialRestore, 85);
-    metal_runtime_parse = roomComputingResolution - toolbarUpload +
-            ipx_nvram_open;
-} else {
-    maximizeSidebar *= suffix_url(flatbed + 2, requirements_encoding_node +
-            only_qbe_media, minicomputer);
+#include <stdio.h>
+#define PI 3.14159
+
+// Comment: Sample C code
+int main(void) {
+    int counter = 0;
+    const char *message = "Hello, C!";
+    printf("%s\n", message);
+
+    for (int i = 0; i < 10; i++) {
+        counter += i;
+    }
+
+    if (counter > 20) {
+        puts("Counter exceeded");
+    }
+
+    return 0;
 }
 ```
+
 
 Aere repetiti cognataque natus. Habebat vela solutis saepe munus nondum adhuc
 oscula nomina pignora corpus deserat.
