@@ -1,5 +1,12 @@
+code[class*='language-'],
 pre[class*='language-'] {
-  color: theme('colors.zinc.100');
+  color: theme('colors.zinc.200');
+  background: transparent;
+  text-shadow: none;
+  white-space: pre;
+  word-break: normal;
+  word-wrap: normal;
+  tab-size: 2;
 }
 
 .token.tag,
@@ -16,7 +23,7 @@ pre[class*='language-'] {
 .token.rule,
 .token.pseudo-class,
 .token.important {
-  color: theme('colors.zinc.300');
+  color: theme('colors.teal.300');
 }
 
 .token.module {
@@ -30,9 +37,27 @@ pre[class*='language-'] {
   color: theme('colors.blue.300');
 }
 
+.token.number,
+.token.boolean {
+  color: theme('colors.amber.400');
+}
+
+.token.regex,
+.token.regex .token.anchor {
+  color: theme('colors.emerald.300');
+}
+
 .token.punctuation,
 .token.attr-equals {
   color: theme('colors.zinc.500');
+}
+
+.token.entity,
+.token.url,
+.token.email {
+  color: theme('colors.indigo.300');
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .token.unit,
@@ -40,8 +65,12 @@ pre[class*='language-'] {
   color: theme('colors.sky.200');
 }
 
-.token.comment,
+.token.comment {
+  color: theme('colors.zinc.700');
+  font-style: italic;
+}
+
 .token.operator,
 .token.combinator {
-  color: theme('colors.zinc.400');
+  color: theme('colors.red.400');
 }
