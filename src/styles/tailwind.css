@@ -13,3 +13,14 @@
 @plugin "@tailwindcss/typography";
 @import "tailwindcss";
 @import "./prism.css";
+
+@layer utilities {
+  /* Hide scrollbar but keep scrolling */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE/old Edge */
+    scrollbar-width: none;    /* Firefox */
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;            /* Chrome/Safari/Opera */
+  }
+}

@@ -319,27 +319,30 @@ function Resume(options: { className?: string }) {
 }
 
 function Photos() {
-  let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
+  const rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
 
   return (
     <div className="mt-16 sm:mt-20">
-      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
-          <div
-            key={image.src}
-            className={clsx(
-              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800',
-              rotations[imageIndex % rotations.length],
-            )}
-          >
-            <Image
-              src={image}
-              alt=""
-              sizes="(min-width: 640px) 18rem, 11rem"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
-        ))}
+      {/* mobile: swipe horizontally; desktop: no horizontal scrolling */}
+      <div className="-my-4 w-full overflow-x-auto sm:overflow-x-hidden py-4 [-webkit-overflow-scrolling:touch] no-scrollbar">
+        <div className="flex gap-5 sm:gap-8 justify-start sm:justify-center px-4 sm:px-0 snap-x snap-mandatory">
+          {[image1, image2, image3, image4, image5].map((image, i) => (
+            <div
+              key={image.src}
+              className={clsx(
+                'relative aspect-[9/10] w-44 sm:w-72 flex-none overflow-hidden rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-800 snap-center',
+                rotations[i % rotations.length],
+              )}
+            >
+              <Image
+                src={image}
+                alt=""
+                sizes="(min-width: 640px) 18rem, 11rem"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
