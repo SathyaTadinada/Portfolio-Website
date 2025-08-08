@@ -1,7 +1,5 @@
 import { type Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
-import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import {
@@ -9,196 +7,94 @@ import {
   PythonIcon,
   RustIcon,
   JavaScriptIcon,
+  TypeScriptIcon,
   CPlusPlusIcon,
   PyTorchIcon,
   NextJSIcon,
   FlutterIcon,
+  CSharpIcon,
+  CIcon,
+  RIcon,
+  SQLIcon,
 } from '@/components/CodingIcons'
 import portraitImage from '@/images/portrait.jpg'
-import { Card } from '@/components/Card'
-import logoAnimaginary from '@/images/logos/animaginary.svg'
-import logoCosmos from '@/images/logos/cosmos.svg'
-import logoHelioStream from '@/images/logos/helio-stream.svg'
-import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
 
-function SocialLink({
-  className,
-  href,
-  children,
-  icon: Icon,
-}: {
-  className?: string
-  href: string
-  icon: React.ComponentType<{ className?: string }>
-  children?: React.ReactNode
-}) {
-  return (
-    <li className={clsx(className, 'flex')}>
-      <Link
-        href={href} target='_blank' rel='noreferrer' aria-label={"Website " + href}
-        className="group flex text-sm font-medium text-zinc-800 transition hover:text-blue-500 dark:text-zinc-200 dark:hover:text-blue-500"
-      >
-        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-blue-500" />
-        <span className="ml-4">{children}</span>
-      </Link>
-    </li>
-  )
-}
+import {
+  BriefcaseIcon,
+  AcademicCapIcon,
+  CodeBracketIcon,
+  CheckBadgeIcon,
+  SparklesIcon,
+} from '@heroicons/react/24/outline'
 
-function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path
-        fillRule="evenodd"
-        d="M6 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6Zm.245 2.187a.75.75 0 0 0-.99 1.126l6.25 5.5a.75.75 0 0 0 .99 0l6.25-5.5a.75.75 0 0 0-.99-1.126L12 12.251 6.245 7.187Z"
-      />
-    </svg>
-  )
-}
+function QuickNavChips() {
+  const items = [
+    { href: '#experience', label: 'Experience',    Icon: BriefcaseIcon,  color: 'blue'  },
+    { href: '#education',  label: 'Education',     Icon: AcademicCapIcon, color: 'green' },
+    { href: '#tech',       label: 'Tech',          Icon: CodeBracketIcon, color: 'purple'},
+    { href: '#certs',      label: 'Certifications',Icon: CheckBadgeIcon, color: 'amber' },
+    { href: '#fun',        label: 'Fun Facts',     Icon: SparklesIcon,    color: 'pink'  },
+  ] as const
 
-function DashedDivider({ padding }: { padding: number }) {
-  if (padding === 0) {
-    return (
-      <ul className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1">
-        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-8"></div>
-      </ul>
-    )
-  } else if (padding === 4) {
-    return (
-      <ul className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4">
-        <div></div>
-        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-4"></div>
-        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-4"></div>
-        <div></div>
-      </ul>
-    )
-  } else if (padding === 6) {
-    return (
-      <ul className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4">
-        <div></div>
-        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-6"></div>
-        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-6"></div>
-        <div></div>
-      </ul>
-    )
-  } else if (padding === 8) {
-    return (
-      <ul className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4">
-        <div></div>
-        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-8"></div>
-        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-8"></div>
-        <div></div>
-      </ul>
-    )
-  } else {
-    return (
-      <ul className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4">
-        <div></div>
-        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-12"></div>
-        <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-12"></div>
-        <div></div>
-      </ul>
-    )
+  const COLOR: Record<string, { light: string; dark: string }> = {
+    blue: {
+      light: 'hover:bg-blue-100 hover:text-blue-800 hover:ring-blue-300 focus-visible:ring-blue-400/60',
+      dark:  'dark:hover:bg-blue-400/10 dark:hover:text-blue-200 dark:hover:ring-blue-300/40',
+    },
+    green: {
+      light: 'hover:bg-green-100 hover:text-green-800 hover:ring-green-300 focus-visible:ring-green-400/60',
+      dark:  'dark:hover:bg-green-400/10 dark:hover:text-green-200 dark:hover:ring-green-300/40',
+    },
+    purple: {
+      light: 'hover:bg-purple-100 hover:text-purple-800 hover:ring-purple-300 focus-visible:ring-purple-400/60',
+      dark:  'dark:hover:bg-purple-400/10 dark:hover:text-purple-200 dark:hover:ring-purple-300/40',
+    },
+    amber: {
+      light: 'hover:bg-amber-100 hover:text-amber-800 hover:ring-amber-300 focus-visible:ring-amber-400/60',
+      dark:  'dark:hover:bg-amber-400/10 dark:hover:text-amber-200 dark:hover:ring-amber-300/40',
+    },
+    pink: {
+      light: 'hover:bg-pink-100 hover:text-pink-800 hover:ring-pink-300 focus-visible:ring-pink-400/60',
+      dark:  'dark:hover:bg-pink-400/10 dark:hover:text-pink-200 dark:hover:ring-pink-300/40',
+    },
   }
-}
 
-const languages = [
-  {
-    name: 'Java',
-    description:
-      'Creating technology to empower civilians to explore space on their own terms.',
-    link: { href: 'https://java.com/', label: 'java.com' },
-    logo: logoPlanetaria,
-  },
-  {
-    name: 'Python',
-    description:
-      'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: 'https://python.org/', label: 'python.org' },
-    logo: logoAnimaginary,
-  },
-  {
-    name: 'Rust',
-    description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
-    link: { href: 'https://www.rust-lang.org/', label: 'rust-lang.org' },
-    logo: logoHelioStream,
-  },
-  {
-    name: 'JavaScript',
-    description:
-      'The operating system that powers our Planetaria space shuttles.',
-    link: { href: 'https://www.javascript.com/', label: 'javascript.com' },
-    logo: logoCosmos,
-  },
-  {
-    name: 'C++',
-    description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
-    link: { href: 'https://cplusplus.com/', label: 'cplusplus.com' },
-    logo: logoOpenShuttle,
-  },
-]
-
-const frameworks = [
-  {
-    name: 'PyTorch',
-    description:
-      'Creating technology to empower civilians to explore space on their own terms.',
-    link: { href: 'https://java.com/', label: 'java.com' },
-    logo: logoPlanetaria,
-  },
-  {
-    name: 'Next.js',
-    description:
-      'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: 'https://nextjs.org/', label: 'nextjs.org' },
-    logo: logoAnimaginary,
-  },
-  {
-    name: 'Flutter',
-    description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
-    link: { href: 'https://flutter.dev/', label: 'flutter.dev' },
-    logo: logoHelioStream,
-  },
-]
-
-const tools = [
-  {
-    name: 'JetBrains IDEs',
-    description:
-      'Creating technology to empower civilians to explore space on their own terms.',
-    link: { href: 'https://java.com/', label: 'java.com' },
-    logo: logoPlanetaria,
-  },
-  {
-    name: 'Git',
-    description:
-      'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: 'https://python.org/', label: 'python.org' },
-    logo: logoAnimaginary,
-  },
-  {
-    name: 'Flutter',
-    description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
-    link: { href: 'https://www.rust-lang.org/', label: 'rust-lang.org' },
-    logo: logoHelioStream,
-  },
-]
-
-function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path
-        d="M15.712 11.823a.75.75 0 1 0 1.06 1.06l-1.06-1.06Zm-4.95 1.768a.75.75 0 0 0 1.06-1.06l-1.06 1.06Zm-2.475-1.414a.75.75 0 1 0-1.06-1.06l1.06 1.06Zm4.95-1.768a.75.75 0 1 0-1.06 1.06l1.06-1.06Zm3.359.53-.884.884 1.06 1.06.885-.883-1.061-1.06Zm-4.95-2.12 1.414-1.415L12 6.344l-1.415 1.413 1.061 1.061Zm0 3.535a2.5 2.5 0 0 1 0-3.536l-1.06-1.06a4 4 0 0 0 0 5.656l1.06-1.06Zm4.95-4.95a2.5 2.5 0 0 1 0 3.535L17.656 12a4 4 0 0 0 0-5.657l-1.06 1.06Zm1.06-1.06a4 4 0 0 0-5.656 0l1.06 1.06a2.5 2.5 0 0 1 3.536 0l1.06-1.06Zm-7.07 7.07.176.177 1.06-1.06-.176-.177-1.06 1.06Zm-3.183-.353.884-.884-1.06-1.06-.884.883 1.06 1.06Zm4.95 2.121-1.414 1.414 1.06 1.06 1.415-1.413-1.06-1.061Zm0-3.536a2.5 2.5 0 0 1 0 3.536l1.06 1.06a4 4 0 0 0 0-5.656l-1.06 1.06Zm-4.95 4.95a2.5 2.5 0 0 1 0-3.535L6.344 12a4 4 0 0 0 0 5.656l1.06-1.06Zm-1.06 1.06a4 4 0 0 0 5.657 0l-1.061-1.06a2.5 2.5 0 0 1-3.535 0l-1.061 1.06Zm7.07-7.07-.176-.177-1.06 1.06.176.178 1.06-1.061Z"
-        fill="currentColor"
-      />
-    </svg>
+    <div className="mt-6">
+      <p className="text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+        Jump to
+      </p>
+      <ul className="mt-2 flex flex-wrap gap-3">
+        {items.map(({ href, label, Icon, color }) => {
+          const { light, dark } = COLOR[color]
+          return (
+            <li key={href}>
+              <a
+                href={href}
+                className={[
+                  'group inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition backdrop-blur',
+                  'bg-zinc-100 ring-1 ring-inset ring-zinc-300 text-zinc-700',
+                  'dark:bg-white/5 dark:ring-white/10 dark:text-zinc-200',
+
+                  'focus:outline-none',
+                  'focus-visible:ring-2',
+
+                  light,
+                  dark,
+                ].join(' ')}
+              >
+                {/* icon follows text color on hover via text-current */}
+                <Icon className="h-4 w-4 text-current" />
+                <span className="text-current">{label}</span>
+              </a>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
   )
 }
+
 
 export const metadata: Metadata = {
   title: 'About',
@@ -219,7 +115,10 @@ export default function About() {
               className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
             />
           </div>
+          <QuickNavChips />
         </div>
+
+        {/* Intro */}
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
             I’m Sathya Tadinada.
@@ -243,145 +142,371 @@ export default function About() {
               allow me to study mathematics and theoretical computer science - along with
               the practical applications of these fields in software development.
             </p>
-
           </div>
         </div>
-        <div className="lg:pl-20">
-          <ul
-            role="list"
-            className="grid grid-cols-7 gap-x-12 gap-y-12 sm:grid-cols-7 lg:grid-cols-7"
-          >
-            <div></div>
-            <SocialLink href="https://www.java.com/en/" icon={JavaIcon} className="mt-4">
-            </SocialLink>
-            <SocialLink href="https://www.python.org/" icon={PythonIcon} className="mt-4">
-            </SocialLink>
-            <SocialLink href="https://www.rust-lang.org/" icon={RustIcon} className="mt-4">
-            </SocialLink>
-            <SocialLink href="https://www.javascript.com/" icon={JavaScriptIcon} className="mt-4">
-            </SocialLink>
-            <SocialLink href="https://cplusplus.com/" icon={CPlusPlusIcon} className="mt-4">
-            </SocialLink>
-            <div></div>
-          </ul>
-          <DashedDivider padding={0} />
-          <ul
-            role="list"
-            className="grid grid-cols-7 gap-x-12 gap-y-12 sm:grid-cols-7 lg:grid-cols-7"
-          >
-            <div></div>
-            <div></div>
-            <SocialLink href="https://pytorch.org/" icon={PyTorchIcon} className="mt-6">
-            </SocialLink>
-            <SocialLink href="https://nextjs.org/" icon={NextJSIcon} className="mt-6">
-            </SocialLink>
-            <SocialLink href="https://flutter.dev/" icon={FlutterIcon} className="mt-6">
-            </SocialLink>
-            <div></div>
-            <div></div>
-          </ul>
-        </div>
       </div>
 
-      <div className="border-t border-zinc-100 dark:border-zinc-700/40 mt-8"></div>
-      <div className="mt-8">
-        <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
-          Skills and Education
-        </h2>
-      </div>
-      {/*<div className="mt-8">
-        <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
-          Languages and Frameworks
-        </h2>
-        <div className="mt-6 space-y-8">
-          <p className="text-base text-zinc-600 dark:text-zinc-400">
-            I’ve worked with a lot of different technologies over the years, but
-            these are the ones that I’m most excited about right now.
+      {/* Experience Section */}
+      <section id="experience" className="scroll-mt-28 mt-16 rounded-xl bg-zinc-50 dark:bg-zinc-800/25 p-8 shadow-sm">
+        <div className="flex items-center space-x-3">
+          <BriefcaseIcon className="h-7 w-7 text-blue-500" />
+          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Experience</h2>
+        </div>
+
+        <div className="mt-8 space-y-10 text-zinc-600 dark:text-zinc-400">
+          {/* SPS Internship */}
+          <div>
+            <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+              Data Analytics Intern — Select Portfolio Servicing
+            </h3>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">Jun 2025 – Present · Salt Lake City, UT</p>
+            <ul className="list-disc list-inside mt-3 space-y-1.5 text-[15px] leading-relaxed">
+              <li>Converted SAS code to SQL and Python for the Advance Continuation Model (ACM), replicating a full backward elimination regression model.</li>
+              <li>Debugged and improved a real-time LLM-powered Call Summarization tool used in the company’s call center.</li>
+            </ul>
+          </div>
+
+          {/* Teaching Assistant */}
+          <div>
+            <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+              Undergraduate Teaching Assistant — Kahlert School of Computing
+            </h3>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">Aug 2024 – Present · Salt Lake City, UT</p>
+            <ul className="list-disc list-inside mt-3 space-y-1.5 text-[15px] leading-relaxed">
+              <li>Graded exams and assignments in automata theory, Turing machines, and formal languages, offering detailed feedback to enhance understanding.</li>
+              <li>Led weekly review sessions for 100+ students, resulting in a 15% increase in exam performance.</li>
+            </ul>
+          </div>
+
+          {/* Ken Garff Esports */}
+          <div>
+            <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+              Tech Track Mentor — Ken Garff Esports (Success in Education)
+            </h3>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">Jul 2024 – Aug 2024 · West Valley City, UT</p>
+            <ul className="list-disc list-inside mt-3 space-y-1.5 text-[15px] leading-relaxed">
+              <li>Taught students foundational cybersecurity and software development using the GameMaker engine, culminating in two completed projects.</li>
+              <li>Delivered four technology career seminars, boosting summer camp engagement by 25% and inspiring long-term interest in tech pathways.</li>
+            </ul>
+          </div>
+
+          {/* HCC Research */}
+          <div>
+            <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+              Undergraduate Research Assistant — Human-Centered Computing Lab
+            </h3>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">Feb 2023 – Aug 2023 · Salt Lake City, UT</p>
+            <ul className="list-disc list-inside mt-3 space-y-1.5 text-[15px] leading-relaxed">
+              <li>Resolved code inconsistencies and improved code clarity by 25%, accelerating project delivery timelines.</li>
+              <li>Synthesized qualitative data into eight actionable instructional recommendations, improving student code quality metrics by 10%.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section (shrunk to match Experience title sizes) */}
+      <section id="education" className="scroll-mt-28 mt-16 rounded-xl bg-zinc-50 dark:bg-zinc-800/25 p-8 shadow-sm">
+        <div className="flex items-center space-x-3">
+          <AcademicCapIcon className="h-7 w-7 text-green-500" />
+          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Education</h2>
+        </div>
+
+        <div className="mt-8 text-zinc-600 dark:text-zinc-400">
+          {/* Match Experience item title size */}
+          <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+            University of Utah
+          </h3>
+
+          {/* Keep degrees on one line from sm and up; match Experience meta sizing */}
+          <p className="mt-2 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 sm:whitespace-nowrap">
+            Honors B.S. Computer Science · B.S. Applied Mathematics · Minor in Psychology
           </p>
-          <ul
-            role="list"
-            className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-1 lg:grid-cols-5"
-          >
-            {languages.map((language) => (
-              <Card as="li" key={language.name}>
-                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                  <Image
-                    src={language.logo}
-                    alt=""
-                    className="h-8 w-8"
-                    unoptimized
-                  />
-                </div>
-                <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                  <Card.Link href={language.link.href}>{language.name}</Card.Link>
-                </h2>
-                <Card.Description>{language.description}</Card.Description>
-                <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-blue-500 dark:text-zinc-200">
-                  <LinkIcon className="h-6 w-6 flex-none" />
-                  <span className="ml-2">{language.link.label}</span>
-                </p>
-              </Card>
-            ))}
-          </ul>
+          <p className="mt-1 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
+            Expected Graduation: May 2026
+          </p>
 
-          <DashedDivider padding={8}/>
+          <div className="my-6 border-t border-dashed border-zinc-200 dark:border-zinc-700/50" />
 
-          <ul
-            role="list"
-            className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-1 lg:grid-cols-5"
-          >
-            {frameworks.map((framework) => (
-              <Card as="li" key={framework.name}>
-                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                  <Image
-                    src={framework.logo}
-                    alt=""
-                    className="h-8 w-8"
-                    unoptimized
-                  />
-                </div>
-                <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                  <Card.Link href={framework.link.href}>{framework.name}</Card.Link>
-                </h2>
-                <Card.Description>{framework.description}</Card.Description>
-                <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-blue-500 dark:text-zinc-200">
-                  <LinkIcon className="h-6 w-6 flex-none" />
-                  <span className="ml-2">{framework.link.label}</span>
-                </p>
-              </Card>
-            ))}
-          </ul>
+          {/* Columns (unchanged) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+            <div>
+              <h4 className="text-base font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+                GPA &amp; Honors
+              </h4>
+              <p className="mt-2 text-sm leading-relaxed">
+                GPA: 3.98 · Dean’s List
+              </p>
+            </div>
 
-          <DashedDivider padding={8}/>
+            <div>
+              <h4 className="text-base font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+                Relevant Coursework
+              </h4>
+              <p className="mt-2 text-sm leading-relaxed">
+                Data Structures &amp; Algorithms, Software Practice I–II, Discrete Mathematics, Linear Algebra,
+                Models of Computation, Computer Systems, Number Theory
+              </p>
+            </div>
+          </div>
 
-          <ul
-            role="list"
-            className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-1 lg:grid-cols-5"
-          >
-            {tools.map((tool) => (
-              <Card as="li" key={tool.name}>
-                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                  <Image
-                    src={tool.logo}
-                    alt=""
-                    className="h-8 w-8"
-                    unoptimized
-                  />
-                </div>
-                <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                  <Card.Link href={tool.link.href}>{tool.name}</Card.Link>
-                </h2>
-                <Card.Description>{tool.description}</Card.Description>
-                <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-blue-500 dark:text-zinc-200">
-                  <LinkIcon className="h-6 w-6 flex-none" />
-                  <span className="ml-2">{tool.link.label}</span>
-                </p>
-              </Card>
-            ))}
-          </ul>
+          <div className="mt-8">
+            <h4 className="text-base font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+              Notable Projects
+            </h4>
+            <ul className="mt-2 list-disc list-inside space-y-1.5 text-sm leading-relaxed">
+              <li>Built a spreadsheet app with C# + MAUI using the MVC pattern.</li>
+              <li>Developed a C# chat application using HTTPS/TCP.</li>
+              <li>Implemented a multiplayer snake game (networking &amp; sockets).</li>
+              <li>Wrote a fully functional custom malloc in C.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+
+
+      {/* Proficient Technologies Section */}
+      <section id="tech" className="mt-16 rounded-xl bg-zinc-50 dark:bg-zinc-800/25 p-8 shadow-sm">
+        <div className="flex items-center space-x-3">
+          <CodeBracketIcon className="h-7 w-7 text-purple-500" />
+          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Proficient Technologies</h2>
         </div>
 
-      </div> */}
+        {/* ↓ gap is a bit tighter on mobile to give labels more room */}
+        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 text-zinc-700 dark:text-zinc-300">
+          <div className="flex min-w-0 items-center space-x-3">
+            <JavaIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
+            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Java</span>
+          </div>
+
+          <div className="flex min-w-0 items-center space-x-3">
+            <RustIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
+            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Rust</span>
+          </div>
+
+          <div className="flex min-w-0 items-center space-x-3">
+            <PythonIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
+            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Python</span>
+          </div>
+
+          <div className="flex min-w-0 items-center space-x-3">
+            <TypeScriptIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
+            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+              TypeScript
+            </span>
+          </div>
+
+          <div className="flex min-w-0 items-center space-x-3">
+            <CIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
+            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">C</span>
+          </div>
+
+          <div className="flex min-w-0 items-center space-x-3">
+            <CPlusPlusIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
+            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">C++</span>
+          </div>
+
+          <div className="flex min-w-0 items-center space-x-3">
+            <CSharpIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
+            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">C#</span>
+          </div>
+          
+          <div className="flex min-w-0 items-center space-x-3">
+            <SQLIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
+            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">SQL</span>
+          </div>
+          
+          <div className="flex min-w-0 items-center space-x-3">
+            <RIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
+            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">R</span>
+          </div>
+
+          <div className="flex min-w-0 items-center space-x-3">
+            <NextJSIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
+            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Next.js</span>
+          </div>
+
+          <div className="flex min-w-0 items-center space-x-3">
+            <FlutterIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
+            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Flutter</span>
+          </div>
+
+          <div className="flex min-w-0 items-center space-x-3">
+            <PyTorchIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
+            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">PyTorch</span>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Certifications Section */}
+      <section id="certs" className="mt-16 rounded-xl bg-zinc-50 dark:bg-zinc-800/25 p-8 shadow-sm">
+        <div className="flex items-center space-x-3">
+          <CheckBadgeIcon className="h-7 w-7 text-yellow-500" />
+          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Certifications</h2>
+        </div>
+        <ul className="mt-6 list-disc list-inside space-y-2 text-base text-zinc-600 dark:text-zinc-400">
+          <li>MTA: Introduction to Programming Using Java (Microsoft)</li>
+        </ul>
+      </section>
+
+      {/* Fun Facts Section */}
+      <section id="fun" className="scroll-mt-28 mt-16 rounded-xl bg-zinc-50 dark:bg-zinc-800/25 p-8 shadow-sm">
+        <div className="flex items-center space-x-3">
+          <SparklesIcon className="h-7 w-7 text-pink-500" />
+          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Fun Facts</h2>
+        </div>
+        <ul className="mt-6 list-disc list-inside space-y-2 text-base text-zinc-600 dark:text-zinc-400">
+          <li>I compose music and play badminton in my free time.</li>
+          <li>I enjoy watching TV shows and movies.</li>
+          <li>I love traveling!</li>
+        </ul>
+      </section>
     </Container>
   )
 }
+
+
+// function Proficiency({ level = 3 }: { level?: 1 | 2 | 3 }) {
+//   return (
+//     <div className="mt-1 flex gap-1" aria-label={`Proficiency ${level} of 3`}>
+//       {[0, 1, 2].map(i => (
+//         <span
+//           key={i}
+//           className={clsx(
+//             'h-1.5 w-3 rounded-full transition',
+//             i < level
+//               ? 'bg-blue-500/80 dark:bg-blue-400/80'
+//               : 'bg-zinc-300 dark:bg-zinc-700'
+//           )}
+//         />
+//       ))}
+//     </div>
+//   )
+// }
+
+// function TechBadge({
+//   icon: Icon,
+//   label,
+//   href,
+//   level = 3,
+// }: {
+//   icon: React.ComponentType<{ className?: string }>
+//   label: string
+//   href?: string
+//   level?: 1 | 2 | 3
+// }) {
+//   const Inner = (
+//     <div
+//       className="group relative flex items-center gap-3 rounded-lg bg-white/60 p-3 shadow-sm ring-1 ring-inset ring-zinc-900/5
+//                  dark:bg-white/5 dark:ring-white/10 transition-all hover:-translate-y-0.5 hover:shadow-md"
+//     >
+//       {/* gradient “glow” on hover */}
+//       <span className="pointer-events-none absolute inset-0 rounded-lg opacity-0 transition-opacity group-hover:opacity-100
+//                        bg-gradient-to-tr from-blue-500/15 via-cyan-400/10 to-emerald-400/15" />
+
+//       <span className="grid h-9 w-9 place-content-center rounded-md bg-zinc-100 ring-1 ring-zinc-900/5 shadow
+//                        dark:bg-zinc-800 dark:ring-white/10">
+//         {/* both stroke & fill icons look good with these classes */}
+//         <Icon className="h-5 w-5 text-zinc-600 fill-zinc-600 dark:text-zinc-200 dark:fill-zinc-200 transition group-hover:scale-105" />
+//       </span>
+
+//       <div className="relative">
+//         <div className="font-medium text-zinc-800 dark:text-zinc-100">{label}</div>
+//         <Proficiency level={level} />
+//       </div>
+//     </div>
+//   )
+
+//   return (
+//     <li>
+//       {href ? (
+//         <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+//           {Inner}
+//         </a>
+//       ) : (
+//         Inner
+//       )}
+//     </li>
+//   )
+// }
+
+// function StrengthPills() {
+//   const items = [
+//     { Icon: ChartBarIcon,  label: 'Data Analytics' },
+//     { Icon: Cog6ToothIcon, label: 'Backend Systems' },
+//     { Icon: CpuChipIcon,   label: 'ML / AI' },
+//     { Icon: SparklesIcon,  label: 'UX-minded' },
+//   ]
+
+//   return (
+//     <div className="mt-6">
+//       <p className="text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+//         Core strengths
+//       </p>
+//       <ul className="mt-2 flex flex-wrap gap-3">
+//         {items.map(({ Icon, label }) => (
+//           <li key={label}>
+//             <span
+//               title={label}
+//               aria-label={label}
+//               className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm
+//                          bg-white/60 ring-1 ring-inset ring-zinc-900/5 backdrop-blur
+//                          dark:bg-white/5 dark:ring-white/10
+//                          hover:-translate-y-0.5 hover:shadow-md transition"
+//             >
+//               <Icon className="h-4 w-4 text-zinc-700 dark:text-zinc-200" />
+//               <span className="text-zinc-700 dark:text-zinc-200">{label}</span>
+//             </span>
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   )
+// }
+
+// function DashedDivider({ padding }: { padding: number }) {
+//   if (padding === 0) {
+//     return (
+//       <ul className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1">
+//         <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-8"></div>
+//       </ul>
+//     )
+//   } else if (padding === 4) {
+//     return (
+//       <ul className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4">
+//         <div></div>
+//         <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-4"></div>
+//         <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-4"></div>
+//         <div></div>
+//       </ul>
+//     )
+//   } else if (padding === 6) {
+//     return (
+//       <ul className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4">
+//         <div></div>
+//         <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-6"></div>
+//         <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-6"></div>
+//         <div></div>
+//       </ul>
+//     )
+//   } else if (padding === 8) {
+//     return (
+//       <ul className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4">
+//         <div></div>
+//         <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-8"></div>
+//         <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-8"></div>
+//         <div></div>
+//       </ul>
+//     )
+//   } else {
+//     return (
+//       <ul className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4">
+//         <div></div>
+//         <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-12"></div>
+//         <div className="border-dashed border-t border-zinc-100 dark:border-zinc-700/40 mt-12"></div>
+//         <div></div>
+//       </ul>
+//     )
+//   }
+// }
