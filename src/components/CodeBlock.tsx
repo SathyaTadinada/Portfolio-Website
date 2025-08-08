@@ -45,7 +45,7 @@ export default function CodeBlock({ children, className = '', ...rest }: PreProp
             {...rest}
             className="
                 not-prose group relative whitespace-pre
-                rounded-3xl bg-[#18181a] dark:bg-[#0b0b0d] pt-10 pb-4 px-4
+                rounded-3xl bg-[#282c34] dark:bg-[#101016] pt-10 pb-4 px-4 my-6
                 text-xs leading-7 text-zinc-50
             "
             data-language={lang}

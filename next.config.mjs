@@ -1,4 +1,4 @@
-import rehypePrism from '@mapbox/rehype-prism'
+import rehypePrism from 'rehype-prism-plus'
 import nextMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
 import path from 'path'
