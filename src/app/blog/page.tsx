@@ -13,10 +13,7 @@ export const metadata: Metadata = {
 
 function normalizeTags(input?: string) {
   if (!input) return []
-  return input
-    .split(',')
-    .filter(Boolean)
-    .map(decodeURIComponent)
+  return input.split(',').filter(Boolean).map(decodeURIComponent)
 }
 
 function hrefFor(tag: string, selected: string[]) {
@@ -24,29 +21,24 @@ function hrefFor(tag: string, selected: string[]) {
     ? selected.filter((t) => t !== tag)
     : [...selected, tag]
 
-  if (next.length === 0) return '/blog'     // "all" = clear filter
+  if (next.length === 0) return '/blog' // "all" = clear filter
 
   const csv = next.map(encodeURIComponent).join(',')
   return `/blog?tags=${csv}`
 }
 
-function TagChip({
-  tag,
-  selected,
-}: {
-  tag: string
-  selected: string[]
-}) {
+function TagChip({ tag, selected }: { tag: string; selected: string[] }) {
   const isActive = tag !== 'All' && selected.includes(tag)
   const href = tag === 'All' ? '/blog' : hrefFor(tag, selected)
 
   return (
     <Link
       href={href}
-      className={`rounded-full px-3 py-1 text-sm font-medium ring-1 ring-zinc-300 dark:ring-zinc-700 transition
-        ${isActive
+      className={`rounded-full px-3 py-1 text-sm font-medium ring-1 ring-zinc-300 transition dark:ring-zinc-700 ${
+        isActive
           ? 'bg-zinc-800 text-white dark:bg-zinc-200 dark:text-zinc-900'
-          : 'text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700'}`}
+          : 'text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700'
+      }`}
     >
       {tag}
     </Link>
@@ -58,27 +50,39 @@ function Article({ article: post }: { article: ArticleWithSlug }) {
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
         <Card.Title href={`/blog/${post.slug}`}>{post.title}</Card.Title>
-        <Card.Eyebrow as="time" dateTime={post.date} className="md:hidden" decorate>
+        <Card.Eyebrow
+          as="time"
+          dateTime={post.date}
+          className="md:hidden"
+          decorate
+        >
           {formatDate(post.date)}
         </Card.Eyebrow>
         <Card.Description>{post.description}</Card.Description>
 
         {post.tags?.length && (
           <div className="relative z-10 mt-4 flex flex-wrap gap-2">
-            {post.tags.slice().sort().map((t) => (
-              <span
-                key={t}
-                className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-600 dark:bg-zinc-700/40 dark:text-zinc-300"
-              >
-                {t}
-              </span>
-            ))}
+            {post.tags
+              .slice()
+              .sort()
+              .map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-600 dark:bg-zinc-700/40 dark:text-zinc-300"
+                >
+                  {t}
+                </span>
+              ))}
           </div>
         )}
 
         <Card.Cta>Read post</Card.Cta>
       </Card>
-      <Card.Eyebrow as="time" dateTime={post.date} className="mt-1 hidden md:block">
+      <Card.Eyebrow
+        as="time"
+        dateTime={post.date}
+        className="mt-1 hidden md:block"
+      >
         {formatDate(post.date)}
       </Card.Eyebrow>
     </article>
@@ -94,7 +98,9 @@ export default async function ArticlesIndex({
 
   const articles = await getAllArticles()
 
-  const allTags = Array.from(new Set(articles.flatMap((a) => a.tags ?? []))).sort()
+  const allTags = Array.from(
+    new Set(articles.flatMap((a) => a.tags ?? [])),
+  ).sort()
 
   // keep only posts that contain all selected tags
   const visible =
@@ -126,8 +132,12 @@ export default async function ArticlesIndex({
 
           {visible.length === 0 && (
             <p className="text-zinc-500 dark:text-zinc-400">
-              No posts match {[...selected].sort((a, b) => a.localeCompare(b))
-                .map((s) => `"${s}"`).join(', ')}.
+              No posts match{' '}
+              {[...selected]
+                .sort((a, b) => a.localeCompare(b))
+                .map((s) => `"${s}"`)
+                .join(', ')}
+              .
             </p>
           )}
         </div>
