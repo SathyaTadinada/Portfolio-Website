@@ -64,7 +64,7 @@ function Article({ article: post }: { article: ArticleWithSlug }) {
         <Card.Description>{post.description}</Card.Description>
 
         {post.tags?.length && (
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="relative z-10 mt-4 flex flex-wrap gap-2">
             {post.tags.slice().sort().map((t) => (
               <span
                 key={t}
@@ -126,7 +126,8 @@ export default async function ArticlesIndex({
 
           {visible.length === 0 && (
             <p className="text-zinc-500 dark:text-zinc-400">
-              No posts match {selected.map((s) => `"${s}"`).join(', ')}.
+              No posts match {[...selected].sort((a, b) => a.localeCompare(b))
+                .map((s) => `"${s}"`).join(', ')}.
             </p>
           )}
         </div>
