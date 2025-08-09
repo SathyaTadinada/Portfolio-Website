@@ -1,4 +1,4 @@
-import rehypePrism from 'rehype-prism-plus'
+// Using rehype-shiki for server-side syntax highlighting
 import nextMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
 import path from 'path'
@@ -7,21 +7,16 @@ import path from 'path'
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
 
-  outputFileTracingIncludes: {
-    './src/lib/articles.ts': ['./src/app/blog/**/*.mdx'],
+  experimental: {
+    mdxRs: true,
+    // reactCompiler: true, // consider adding this.
   },
-
-  webpack(config) {
-    config.resolve.alias['@'] = path.resolve(process.cwd(), 'src');
-    return config;
-  },
-};
+}
 
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [rehypePrism],
   },
 })
 
