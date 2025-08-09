@@ -1,28 +1,18 @@
-/* @import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import './prism.css'; */
-/* @import 'tailwindcss/utilities'; */
-/* @tailwind base;
-@tailwind components;
-
-@import './prism.css';
-
-@tailwind utilities; */
-
 @config "../../tailwind.config.ts";
 @plugin "@tailwindcss/typography";
-@import "tailwindcss";
-@import "./prism.css";
+@import 'tailwindcss';
 
 @layer utilities {
   /* Hide scrollbar but keep scrolling */
   .no-scrollbar {
     -ms-overflow-style: none; /* IE/old Edge */
-    scrollbar-width: none;    /* Firefox */
+    scrollbar-width: none; /* Firefox */
   }
   .no-scrollbar::-webkit-scrollbar {
-    display: none;            /* Chrome/Safari/Opera */
+    display: none; /* Chrome/Safari/Opera */
   }
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
