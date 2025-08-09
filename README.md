@@ -1,19 +1,38 @@
-# Spotlight
+# Sathya Tadinada - Personal Portfolio
 
-Spotlight is a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
+Live site: [tadinada.com](https://tadinada.com)
 
-## Getting started
+My personal portfolio website: a single place to explore my work, projects, experience, and thoughts. Built with **Next.js** and **Tailwind CSS**, hosted on **Vercel**.
 
-To get started with this template, first install the npm dependencies:
+## Highlights
+
+- **About**: Background, education, work experience, skills, certifications, fun facts.
+- **Projects**: Selected personal and professional work.
+- **Blog**: MDX posts with code syntax highlighting, tag filtering, and RSS feed.
+- **Contact**: Easy ways to get in touch.
+
+## Tech Stack
+
+- [**Next.js**](https://nextjs.org/docs): Framework
+- [**Tailwind CSS**](https://tailwindcss.com/docs): Styling
+- [**MDX**](https://mdxjs.com/): Blog content
+- [**Vercel**](https://vercel.com): Hosting and deployment
+- [**GitHub**](https://github.com/): Version control
+
+## Getting Started
+
+Clone the repository and install dependencies:
 
 ```bash
+git clone https://github.com/SathyaTadinada/Portfolio-Website.git
+cd Portfolio-Website
 npm install
 ```
 
 Next, create a `.env.local` file in the root of your project and set the `NEXT_PUBLIC_SITE_URL` variable to your site's public URL:
 
 ```
-NEXT_PUBLIC_SITE_URL=https://example.com
+NEXT_PUBLIC_SITE_URL=https://tadinada.com
 ```
 
 Next, run the development server:
@@ -24,19 +43,10 @@ npm run dev
 
 Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
 
-## Customizing
+## Design and Origin
 
-You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
+This site began as the **Spotlight** template from [Tailwind UI](https://tailwindcss.com/plus/templates/spotlight), but has been significantly customized and extended to include my own layout changes, blog functionality, tag filtering, and more.
 
 ## License
 
-This site template is a commercial product and is licensed under the [Tailwind UI license](https://tailwindui.com/license).
-
-## Learn more
-
-To learn more about the technologies used in this site template, see the following resources:
-
-- [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
-- [Next.js](https://nextjs.org/docs) - the official Next.js documentation
-- [Headless UI](https://headlessui.dev) - the official Headless UI documentation
-- [MDX](https://mdxjs.com) - the MDX documentation
+The original **Spotlight** template is a commercial product licensed under the [Tailwind UI license](https://tailwindui.com/license). Customizations and additional features in this repository are my own work.
