@@ -72,12 +72,13 @@ function QuickNavChips() {
               <a
                 href={href}
                 className={[
-                  'group inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors duration-150 backdrop-blur',
+                  'group inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors duration-150',
+                  'backdrop-blur-sm dark:backdrop-blur-none',
+                  
                   'bg-zinc-100 ring-1 ring-inset ring-zinc-300 text-zinc-700',
                   'dark:bg-zinc-800/60 dark:ring-white/10 dark:text-zinc-200',
 
-                  'focus:outline-none',
-                  'focus-visible:ring-2',
+                  'focus:outline-none focus-visible:ring-2',
 
                   light,
                   dark,
@@ -157,9 +158,9 @@ export default function About() {
           {/* SPS Internship */}
           <div>
             <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
-              Data Analytics Intern — Select Portfolio Servicing
+              Software Engineering Intern: Select Portfolio Servicing
             </h3>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">Jun 2025 – Present · Salt Lake City, UT</p>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">May 2025 – Present · Salt Lake City, UT</p>
             <ul className="list-disc list-inside mt-3 space-y-1.5 text-[15px] leading-relaxed">
               <li>Converted SAS code to SQL and Python for the Advance Continuation Model (ACM), replicating a full backward elimination regression model.</li>
               <li>Debugged and improved a real-time LLM-powered Call Summarization tool used in the company’s call center.</li>
@@ -169,7 +170,7 @@ export default function About() {
           {/* Teaching Assistant */}
           <div>
             <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
-              Undergraduate Teaching Assistant — Kahlert School of Computing
+              Undergraduate Teaching Assistant: Kahlert School of Computing
             </h3>
             <p className="text-sm text-zinc-500 dark:text-zinc-400">Aug 2024 – Present · Salt Lake City, UT</p>
             <ul className="list-disc list-inside mt-3 space-y-1.5 text-[15px] leading-relaxed">
@@ -181,7 +182,7 @@ export default function About() {
           {/* Ken Garff Esports */}
           <div>
             <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
-              Tech Track Mentor — Ken Garff Esports (Success in Education)
+              Tech Track Mentor: Ken Garff Esports (Success in Education)
             </h3>
             <p className="text-sm text-zinc-500 dark:text-zinc-400">Jul 2024 – Aug 2024 · West Valley City, UT</p>
             <ul className="list-disc list-inside mt-3 space-y-1.5 text-[15px] leading-relaxed">
@@ -193,7 +194,7 @@ export default function About() {
           {/* HCC Research */}
           <div>
             <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
-              Undergraduate Research Assistant — Human-Centered Computing Lab
+              Undergraduate Research Assistant: Human-Centered Computing Lab
             </h3>
             <p className="text-sm text-zinc-500 dark:text-zinc-400">Feb 2023 – Aug 2023 · Salt Lake City, UT</p>
             <ul className="list-disc list-inside mt-3 space-y-1.5 text-[15px] leading-relaxed">
@@ -230,7 +231,7 @@ export default function About() {
           {/* Columns (unchanged) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
             <div>
-              <h4 className="text-base font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+              <h4 className="text-base font-semibold uppercase tracking-wide text-zinc-800 dark:text-zinc-100">
                 GPA &amp; Honors
               </h4>
               <p className="mt-2 text-sm leading-relaxed">
@@ -239,7 +240,7 @@ export default function About() {
             </div>
 
             <div>
-              <h4 className="text-base font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+              <h4 className="text-base font-semibold uppercase tracking-wide text-zinc-800 dark:text-zinc-100">
                 Relevant Coursework
               </h4>
               <p className="mt-2 text-sm leading-relaxed">
@@ -250,7 +251,7 @@ export default function About() {
           </div>
 
           <div className="mt-8">
-            <h4 className="text-base font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+            <h4 className="text-base font-semibold uppercase tracking-wide text-zinc-800 dark:text-zinc-100">
               Notable Projects
             </h4>
             <ul className="mt-2 list-disc list-inside space-y-1.5 text-sm leading-relaxed">
