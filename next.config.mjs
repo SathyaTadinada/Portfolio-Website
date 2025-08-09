@@ -1,4 +1,4 @@
-import rehypePrism from 'rehype-prism-plus'
+// Using rehype-shiki for server-side syntax highlighting
 import nextMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
 import path from 'path'
@@ -9,6 +9,7 @@ const nextConfig = {
 
   experimental: {
     mdxRs: true,
+    // reactCompiler: true, // consider adding this.
   },
 }
 
@@ -16,7 +17,6 @@ const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [rehypePrism],
   },
 })
 
