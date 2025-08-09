@@ -43,9 +43,11 @@ npm run dev
 
 Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
 
-## Design and Origin
+## Design and Contributors
 
-This site began as the **Spotlight** template from [Tailwind UI](https://tailwindcss.com/plus/templates/spotlight), but has been significantly customized and extended to include my own layout changes, blog functionality, tag filtering, and more.
+This site began as the **Spotlight** template from [Tailwind UI](https://tailwindcss.com/plus/templates/spotlight), but has been significantly customized and extended to include my own layout changes, blog functionality, tag filtering, and more. 
+
+While the vast majority of the code, design, and content for this site was created by me, I welcome occasional contributions and use [automated tools](https://github.com/dependabot) to help maintain the project.
 
 ## License
 
