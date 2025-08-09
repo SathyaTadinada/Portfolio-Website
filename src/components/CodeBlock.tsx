@@ -31,17 +31,16 @@ export default async function CodeBlock({
 }: PreProps) {
   const raw = nodeToString(children)
   const lang = getLang(children, className)
-
-  const code = 'const a = 1' // input code
+  
   const html = await codeToHtml(raw, {
     lang,
-    theme: 'vitesse-dark',
+    theme: 'one-dark-pro',
   })
 
   return (
     <pre
       {...rest}
-      className="not-prose group relative my-6 rounded-3xl bg-[#282c34] px-4 pt-10 pb-4 text-xs leading-7 whitespace-pre text-zinc-50 dark:bg-[#101016]"
+      className="not-prose group relative my-6 rounded-3xl bg-[#282c34] px-4 pt-10 pb-4 text-xs leading-7 whitespace-pre text-zinc-50"
       data-language={lang}
     >
       {lang && (
