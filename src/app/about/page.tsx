@@ -72,9 +72,9 @@ function QuickNavChips() {
               <a
                 href={href}
                 className={[
-                  'group inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition backdrop-blur',
+                  'group inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors duration-150 backdrop-blur',
                   'bg-zinc-100 ring-1 ring-inset ring-zinc-300 text-zinc-700',
-                  'dark:bg-white/5 dark:ring-white/10 dark:text-zinc-200',
+                  'dark:bg-zinc-800/60 dark:ring-white/10 dark:text-zinc-200',
 
                   'focus:outline-none',
                   'focus-visible:ring-2',
