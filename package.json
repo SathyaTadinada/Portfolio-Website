@@ -12,10 +12,10 @@
   "dependencies": {
     "@headlessui/react": "^2.2.5",
     "@heroicons/react": "^2.2.0",
-    "@mapbox/rehype-prism": "^0.9.0",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.4.3",
+    "@shikijs/rehype": "3",
     "@tailwindcss/typography": "^0.5.16",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
@@ -29,6 +29,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "remark-gfm": "^4.0.1",
+    "shiki": "3.9.2",
     "typescript": "^5.8.3"
   },
   "devDependencies": {
@@ -40,7 +41,6 @@
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "rehype-prism-plus": "^2.0.1",
     "sharp": "0.34.3",
     "tailwindcss": "^4.1.11",
     "ts-node": "^10.9.2"
