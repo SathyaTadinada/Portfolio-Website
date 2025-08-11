@@ -292,12 +292,11 @@ Safer alternatives:
 ### Example with Comments (PCRE/Python `re.VERBOSE`)
 
 ```regex
-(?x)                              # enable comments/whitespace
-^                                 # start of string
-(?<area>\(\d{3}\))\s           # (123) and a space
-(?<prefix>\d{3})-                # 456-
-(?<line>\d{4})                    # 7890
-$                                 # end of string
+^                                   # start of string
+(?<area>\(\d{3}\))\s                # (123) and a space
+(?<prefix>\d{3})-                   # 456-
+(?<line>\d{4})                      # 7890
+$                                   # end of string
 ```
 
 ## Mini-Exercises

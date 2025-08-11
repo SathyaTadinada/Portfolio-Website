@@ -56,6 +56,77 @@ export default {
             },
             'blockquote p:first-of-type::before': { content: '""' },
             'blockquote p:last-of-type::after': { content: '""' },
+
+            // Disclosure containers
+            ':where(details)': {
+              backgroundColor: theme('colors.zinc.50'),
+              border: `1px solid ${theme('colors.zinc.200')}`,
+              borderRadius: theme('borderRadius.xl'),
+              padding: theme('spacing.3'),
+              marginTop: theme('spacing.6'),
+              marginBottom: theme('spacing.6'),
+              overflow: 'hidden',
+              transitionProperty: 'background-color, border-color, box-shadow',
+              transitionDuration: theme('transitionDuration.200'),
+              transitionTimingFunction: theme('transitionTimingFunction.in-out'),
+            },
+
+            // Summary header
+            ':where(details) > :where(summary)': {
+              cursor: 'pointer',
+              listStyle: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              gap: theme('spacing.2'),
+              padding: theme('spacing.2'),
+              margin: `calc(${theme('spacing.1')} * -1)`, // expand hit area to edges
+              borderRadius: theme('borderRadius.lg'),
+              color: theme('colors.zinc.800'),
+              fontWeight: 600,
+              outline: 'none',
+              transitionProperty: 'background-color, color',
+              transitionDuration: theme('transitionDuration.150'),
+            },
+            ':where(details) > :where(summary):hover': {
+              backgroundColor: theme('colors.zinc.100'),
+            },
+            ':where(details) > :where(summary):focus-visible': {
+              boxShadow: `0 0 0 3px ${theme('colors.blue.200')}`,
+            },
+
+            // Hide default marker
+            ':where(details) > :where(summary)::-webkit-details-marker': { display: 'none' },
+
+            // Custom chevron
+            ':where(details) > :where(summary)::before': {
+              content: '""',
+              width: theme('spacing.4'),
+              height: theme('spacing.4'),
+              flexShrink: '0',
+              backgroundColor: theme('colors.zinc.600'),
+              WebkitClipPath: 'polygon(40% 5%, 85% 50%, 40% 95%, 30% 85%, 65% 50%, 30% 15%)',
+              clipPath:       'polygon(40% 5%, 85% 50%, 40% 95%, 30% 85%, 65% 50%, 30% 15%)',
+              transition: `transform ${theme('transitionDuration.200')} ${theme('transitionTimingFunction.in-out')}`,
+            },
+            ':where(details[open]) > :where(summary)::before': {
+              transform: 'rotate(90deg)',
+            },
+
+            // The content area
+            ':where(details) > *:not(summary)': {
+              paddingTop: theme('spacing.3'),
+              marginTop: theme('spacing.2'),
+              borderTop: `1px solid ${theme('colors.zinc.200')}`,
+              color: 'var(--tw-prose-body)', // match body text color
+            },
+
+            // Motion preference
+            '@media (prefers-reduced-motion: reduce)': {
+              ':where(details) > :where(summary)::before': {
+                transition: 'none',
+              },
+            },
+
           },
         },
         invert: {
@@ -76,6 +147,24 @@ export default {
             blockquote: {
               color: theme('colors.zinc.400'),
             },
+            ':where(details)': {
+              backgroundColor: theme('colors.zinc.900 / 0.4'),
+              borderColor: theme('colors.zinc.700'),
+            },
+            ':where(details) > :where(summary)': {
+              color: theme('colors.zinc.100'),
+            },
+            ':where(details) > :where(summary):hover': {
+              backgroundColor: theme('colors.zinc.800 / 0.5'),
+            },
+            ':where(details) > :where(summary)::before': {
+              backgroundColor: theme('colors.zinc.400'),
+            },
+            ':where(details) > *:not(summary)': {
+              borderTopColor: theme('colors.zinc.700'),
+              color: 'var(--tw-prose-invert-body)',
+            },
+
           },
         },
       }),
