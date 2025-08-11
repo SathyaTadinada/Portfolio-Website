@@ -1,0 +1,264 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import regexDiagram from './planetaria-design-system.png'
+
+export const article = {
+    author: 'Sathya Tadinada',
+    date: '2025-08-10',
+    title: 'Regex Demystified: Intro to Pattern Matching',
+    description:
+        'Regular expressions (regex) are a powerful tool for pattern matching and text manipulation. In this article, we will explore the fundamentals of regex, its syntax, and practical applications.',
+    tags: ['regex', 'tutorial', 'programming', 'theory']
+}
+
+export const metadata = {
+    title: article.title,
+    description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+Regular expressions (regex) have a reputation for looking like arcane symbols from a hacker movie.
+
+```regex
+^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$
+```
+
+If that looks like keyboard mash to you, you're not alone. The truth is, regex can be quite complex and intimidating at first glance.
+However, regex is nothing more than a language for describing patterns in text, and under the hood it works like a tiny machine that reads
+your string one character at a time.
+
+In this post, we'll walk through regex one step at a time, connect it to some interesting computer science theory, and leave 
+you with practical tips for writing patterns that you'll still be able to understand six months down the line.
+
+## What Regex Really Is
+
+Regex isn't "code" in the same sense that a regular programming language is (like Java, Rust, etc.). It's **declarative**, meaning 
+that you describe the shape of the text that you want it to match, and the regex engine figures out how to _find_ it.
+
+Behind the scenes, most regex engines turn your pattern into something called a **finite state machine** (FSM). An FSM is a 
+simple computational model that moves through your input and decides "match" or "no match".
+
+<Image src={regexDiagram} alt="State diagram for regex a(b|c)d+" />
+
+> TL;DR: Regex describes a set of strings. The engine checks whether your input is in that set.
+
+## The Building Blocks
+Regex has only a handful of core ideas, which we can combine to recognize pretty complex patterns in text.
+
+### Literals
+Match exact characters.
+```txt
+cat         # matches "cat" in text
+```
+
+### Character Classes
+Match _one_ character from a set.
+```regex
+[abc]       # "a" or "b" or "c"
+[0-9]       # any digit
+\w          # any letter, digit, or underscore
+\s          # any space, tab, or newline character
+.           # any character (except newline)
+```
+
+### Quantifiers
+Specify how many times to match the preceding element.
+```regex
+a+          # one or more a's
+b*          # zero or more b's
+c?          # zero or one c
+d{2,4}      # between 2 and 4 d's
+```
+
+### Anchors and Groups
+Specify positions and group patterns.
+```regex
+^abc$       # match exactly "abc" from start to end
+(abc)       # capture "abc"
+(?:abc)     # non-capturing group for "abc"
+```
+
+## Multi-Language Example
+To demonstrate a concrete example of regexes used in real-world scenarios, let's consider a few programming languages.
+
+```javascript
+const regex = /^\(\d{3}\) \d{3}-\d{4}$/;
+console.log(regex.test("(123) 456-7890")); // true
+```
+
+```rust
+use regex::Regex;
+
+fn main() {
+    let re = Regex::new(r"^\(\d{3}\) \d{3}-\d{4}$").unwrap();
+    println!("{}", re.is_match("(123) 456-7890")); // true
+}
+```
+
+## Step-by-Step Matching
+Let's take `a(?:b|c)d+` and walk through matching `"acddd"`.
+
+| Step | Current State | Read Char | Action     |
+| ---- | ------------- | --------- | ---------- |
+| 1    | Start         | `a`       | Match `a`  |
+| 2    | After `a`     | `c`       | Match `c`  |
+| 3    | After `c`     | `d`       | Match loop |
+| 4    | Loop          | `d`       | Loop again |
+| 5    | Loop          | `d`       | Loop again |
+| 6    | End           | —         | Accept!    |
+
+
+
+#### Test H4
+
+Body text
+
+- asdfasdf
+- asdfasdfasdf
+1. asdfasdf
+2. asdfasdf
+```py
+def main():
+    print("Hello, World!")
+```
+ 
+<YouTube id="dQw4w9WgXcQ"/>
+
+## Sermone fata
+
+Lorem markdownum, bracchia in redibam! Terque unda puppi nec, linguae posterior
+in utraque respicere candidus Mimasque formae; quae conantem cervice. Parcite
+variatus, redolentia adeunt. Tyrioque dies, naufraga sua adit partibus celanda
+torquere temptata, erit maneat et ramos, [iam](#) ait dominari
+potitus! Tibi litora matremque fumantia condi radicibus opusque.
+
+Deus feram verumque, fecit, ira tamen, terras per alienae victum. Mutantur
+levitate quas ubi arcum ripas oculos abest. Adest [commissaque
+victae](#) in gemitus nectareis ire diva
+dotibus ora, et findi huic invenit; fatis? Fractaque dare superinposita
+nimiumque simulatoremque sanguine, at voce aestibus diu! Quid veterum hausit tu
+nil utinam paternos ima, commentaque.
+
+```js
+// Comment: This is a sample function to test syntax highlighting
+import fs from 'fs'; // builtin import
+
+@decorator
+export class ExampleClass extends BaseClass {
+  static CONSTANT = 42;
+  #privateField = 'secret';
+
+  constructor(param1, param2 = true) {
+    super(param1);
+    this.param2 = param2;
+  }
+
+  async fetchData(url) {
+    if (!url || typeof url !== 'string') {
+      throw new Error(`Invalid URL: ${url}`);
+    }
+
+    const regex = /https?:\/\/[^\s/$.?#].[^\s]*/gi;
+    const matches = url.match(regex) ?? [];
+    console.log(matches);
+
+    const data = await fetch(url, { method: 'GET' });
+    return data.json();
+  }
+}
+
+// Variables, numbers, booleans
+let counter = 0;
+const isReady = false;
+
+// Functions
+function multiply(a, b) {
+  return a * b;
+}
+
+const result = multiply(3.14, counter) + ExampleClass.CONSTANT;
+console.log(result);
+```
+```python
+# Comment: Sample Python code
+import os
+from math import sqrt
+
+class MyClass:
+    def __init__(self, name: str, count: int = 0):
+        self.name = name
+        self.count = count
+
+    def greet(self):
+        print(f"Hello, {self.name}!")
+
+def factorial(n: int) -> int:
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)
+
+value = 3.14
+is_valid = True
+pattern = r"\b\w+\b"
+```
+
+```c
+#include <stdio.h>
+#define PI 3.14159
+
+// Comment: Sample C code
+int main(void) {
+    int counter = 0;
+    const char *message = "Hello, C!";
+    printf("%s\n", message);
+
+    for (int i = 0; i < 10; i++) {
+        counter += i;
+    }
+
+    if (counter > 20) {
+        puts("Counter exceeded");
+    }
+
+    return 0;
+}
+```
+
+
+Aere repetiti cognataque natus. Habebat vela solutis saepe munus nondum adhuc
+oscula nomina pignora corpus deserat.
+
+## Lethaei Pindumve me quae dinumerat Pavor
+
+Idem se saxa fata pollentibus geminos; quos pedibus. Est urnis Herses omnes nec
+divite: et ille illa furit sim verbis Cyllenius.
+
+1. Captus inpleverunt collo
+2. Nec nam placebant
+3. Siquos vulgus
+4. Dictis carissime fugae
+5. A tacitos nulla viginti
+
+Ungues fistula annoso, ille addit linoque motatque uberior verso
+[rubuerunt](#) confine desuetaque. _Sanguine_ anteit
+emerguntque expugnacior est pennas iniqui ecce **haeret** genus: peiora imagine
+fossas Cephisos formosa! Refugitque amata [refelli](#)
+supplex. Summa brevis vetuere tenebas, hostes vetantis, suppressit, arreptum
+regna. Postquam conpescit iuvenis habet corpus, et erratica, perdere, tot mota
+ars talis.
+
+```c
+digital.webcam_dual_frequency = webmasterMms;
+if (5 + language_standalone_google) {
+    cc_inbox_layout *= file_character;
+    task += p;
+    lockUnicode += enterprise_monochrome(tokenFunctionPersonal, keyVirtual,
+            adf);
+}
+windows_binary_esports(87734, array(restoreRomTopology, adRaw(407314),
+        dongleBashThumbnail), interpreter);
+```
+
+Sit volat naturam; motu Cancri. Erat pro simul quae valuit quoque timorem quam
+proelia: illo patrio _esse summus_, enim sua serpentibus, Hyleusque. Est coniuge
+recuso; refert Coroniden ignotos manat, adfectu.
