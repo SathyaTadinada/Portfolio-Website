@@ -86,6 +86,10 @@ export default {
               outline: 'none',
               transitionProperty: 'background-color, color',
               transitionDuration: theme('transitionDuration.150'),
+              userSelect: 'none',
+              WebkitUserSelect: 'none', 
+              MsUserSelect: 'none',     
+              WebkitTouchCallout: 'none', 
             },
             ':where(details) > :where(summary):hover': {
               backgroundColor: theme('colors.zinc.100'),
@@ -107,6 +111,7 @@ export default {
               WebkitClipPath: 'polygon(40% 5%, 85% 50%, 40% 95%, 30% 85%, 65% 50%, 30% 15%)',
               clipPath:       'polygon(40% 5%, 85% 50%, 40% 95%, 30% 85%, 65% 50%, 30% 15%)',
               transition: `transform ${theme('transitionDuration.200')} ${theme('transitionTimingFunction.in-out')}`,
+              pointerEvents: 'none',
             },
             ':where(details[open]) > :where(summary)::before': {
               transform: 'rotate(90deg)',
