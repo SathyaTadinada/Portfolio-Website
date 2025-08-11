@@ -30,11 +30,12 @@ export default {
             ':where(code):not(:where(pre code))': {
               backgroundColor: theme('colors.zinc.100'),
               color: theme('colors.zinc.800'),
-              padding: '0.125rem 0.375rem', // py-0.5 px-1.5
+              padding: '0.125rem 0.125rem', // py-0.5 px-0.5
               borderRadius: '0.375rem',     // rounded-md
               borderWidth: '1px',
               borderColor: theme('colors.zinc.300 / 0.6'),
               fontWeight: '500',
+              whiteSpace: 'nowrap'
             },
             ':where(code):not(:where(pre code))::before': { content: '""' },
             ':where(code):not(:where(pre code))::after': { content: '""' },
