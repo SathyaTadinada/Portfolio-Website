@@ -45,3 +45,17 @@ html {
     border: 0;
   }
 }
+
+@layer utilities {
+  /* Remove decorative quotes in blockquotes (keep the left border etc.) */
+  .prose blockquote { 
+    quotes: none; 
+    font-style: normal; 
+    font-weight: normal; 
+    color: var(--typography-gray-css---tw-prose-body) 
+  }
+  .prose blockquote p:first-of-type::before,
+  .prose blockquote p:last-of-type::after {
+    content: none;
+  }
+}
