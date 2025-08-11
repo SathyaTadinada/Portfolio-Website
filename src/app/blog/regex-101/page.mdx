@@ -339,10 +339,10 @@ The big idea: features like backreferences and some lookarounds make patterns mo
 | Concept | Pattern | Notes |
 | --- | --- | --- |
 | Digit / non-digit | `\d` / `\D` | ASCII vs Unicode depends on engine/flags |
-| Word char / non-word | `\w` / `\W` | Includes `_` |
-| Whitespace / non-space | `\s` / `\S` | Space, tab, newline |
-| Word boundary | `\b` | Opposite: `\B` |
-| Start / end | `^` / `$` | With `m`, apply per-line |
+| Word char / non-word | `\w` / `\W` | includes `_` |
+| Whitespace / non-space | `\s` / `\S` | space, tab, newline |
+| Word boundary | `\b` | opposite: `\B` |
+| Start / end | `^` / `$` | with `m`, apply per-line |
 | Optional | `x?` | zero or one |
 | One or more | `x+` | greedy |
 | Zero or more | `x*` | greedy |
@@ -351,7 +351,7 @@ The big idea: features like backreferences and some lookarounds make patterns mo
 | Range | `x{m,n}` | between m and n |
 | Grouping | `( ... )` | capturing |
 | Non-capturing | `(?: ... )` | groups without capturing |
-| Alternation | `x|y` | either x or y |
+| Alternation | `x\|y` | either x or y |
 | Lookahead | `(?=...)` / `(?!...)` | zero-width |
 | Lookbehind | `(?<=...)` / `(?<!...)` | engine support varies |
 
