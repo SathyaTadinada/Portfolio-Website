@@ -2,7 +2,7 @@
 
 Live site: [tadinada.com](https://tadinada.com)
 
-My personal portfolio website: a single place to explore my work, projects, experience, and thoughts. Built with **Next.js** and **Tailwind CSS**, hosted on **Vercel**.
+A single place to explore my work, projects, experience, and thoughts. Built with **Next.js** and **Tailwind CSS**, hosted on **Vercel**.
 
 ## Highlights
 
@@ -26,7 +26,7 @@ Clone the repository and install dependencies:
 ```bash
 git clone https://github.com/SathyaTadinada/Portfolio-Website.git
 cd Portfolio-Website
-npm install
+pnpm install
 ```
 
 Next, create a `.env.local` file in the root of your project and set the `NEXT_PUBLIC_SITE_URL` variable to your site's public URL:
@@ -38,7 +38,7 @@ NEXT_PUBLIC_SITE_URL=https://tadinada.com
 Next, run the development server:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.

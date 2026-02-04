@@ -22,15 +22,15 @@ function getLang(node: ReactNode, fallback = ''): string {
   return m?.[1] ?? ''
 }
 
-type PreProps = React.ComponentProps<'pre'> & { children: ReactNode }
+type PreProps = React.ComponentProps<'pre'> & { children?: ReactNode }
 
 export default async function CodeBlock({
   children,
   className = '',
   ...rest
 }: PreProps) {
-  const raw = nodeToString(children)
-  const lang = getLang(children, className)
+  const raw = nodeToString(children ?? '')
+  const lang = getLang(children ?? '', className)
   
   const html = await codeToHtml(raw, {
     lang,
