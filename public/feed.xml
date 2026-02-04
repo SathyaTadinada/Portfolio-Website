@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Sathya Tadinada</title>
+        <link>https://tadinada.com</link>
+        <description>This is my personal blog! I write about things I find interesting.</description>
+        <lastBuildDate>Wed, 04 Feb 2026 22:27:39 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <image>
+            <title>Sathya Tadinada</title>
+            <url>https://tadinada.com/favicon.ico</url>
+            <link>https://tadinada.com</link>
+        </image>
+        <copyright>All rights reserved 2026</copyright>
+        <item>
+            <title><![CDATA[Introducing Animaginary: High performance web animations]]></title>
+            <link>https://tadinada.com/blog/introducing-animaginary</link>
+            <guid isPermaLink="false">https://tadinada.com/blog/introducing-animaginary</guid>
+            <pubDate>Fri, 02 Sep 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[When you’re building a website for a company as ambitious as Planetaria, you need to make an impression. I wanted people to visit our website and see animations that looked more realistic than reality itself.]]></description>
+            <content:encoded><![CDATA[<p>When you’re building a website for a company as ambitious as Planetaria, you need to make an impression. I wanted people to visit our website and see animations that looked more realistic than reality itself.</p>
+<p>To make this possible, we needed to squeeze every drop of performance out of the browser possible. And so Animaginary was born.</p>
+<p>```js
+import { animate } from &#039;@planetaria/animaginary&#039;</p>
+<p>export function MyComponent({ open, children }) {
+  return (
+    &lt;animate.div
+      in={open}
+      animateFrom=&quot;opacity-0 scale-95&quot;
+      animateTo=&quot;opacity-100 scale-100&quot;
+      duration={350}
+    &gt;
+      {children}
+    &lt;/animate.div&gt;
+  )
+}
+```</p>
+<p>Animaginary is our new web animation library that redefines what you thought was possible on the web. Hand-written in optimized WASM, Animaginary can even animate the `height` property of an element at 60fps.</p>
+<p>## Sermone fata</p>
+<p>Lorem markdownum, bracchia in redibam! Terque unda puppi nec, linguae posterior
+in utraque respicere candidus Mimasque formae; quae conantem cervice. Parcite
+variatus, redolentia adeunt. Tyrioque dies, naufraga sua adit partibus celanda
+torquere temptata, erit maneat et ramos, [iam](#) ait dominari
+potitus! Tibi litora matremque fumantia condi radicibus opusque.</p>
+<p>Deus feram verumque, fecit, ira tamen, terras per alienae victum. Mutantur
+levitate quas ubi arcum ripas oculos abest. Adest [commissaque
+victae](#) in gemitus nectareis ire diva
+dotibus ora, et findi huic invenit; fatis? Fractaque dare superinposita
+nimiumque simulatoremque sanguine, at voce aestibus diu! Quid veterum hausit tu
+nil utinam paternos ima, commentaque.</p>
+<p>```c
+exbibyte_wins = gigahertz(3);
+grayscaleUtilityClient = control_uat;
+pcmciaHibernate = oop_virus_console(text_mountain);
+if (stateWaisFirewire &gt;= -2) {
+    jfs = 647065 / ldapVrml(tutorialRestore, 85);
+    metal_runtime_parse = roomComputingResolution - toolbarUpload +
+            ipx_nvram_open;
+} else {
+    maximizeSidebar *= suffix_url(flatbed + 2, requirements_encoding_node +
+            only_qbe_media, minicomputer);
+}
+```</p>
+<p>Aere repetiti cognataque natus. Habebat vela solutis saepe munus nondum adhuc
+oscula nomina pignora corpus deserat.</p>
+<p>## Lethaei Pindumve me quae dinumerat Pavor</p>
+<p>Idem se saxa fata pollentibus geminos; quos pedibus. Est urnis Herses omnes nec
+divite: et ille illa furit sim verbis Cyllenius.</p>
+<p>1. Captus inpleverunt collo
+2. Nec nam placebant
+3. Siquos vulgus
+4. Dictis carissime fugae
+5. A tacitos nulla viginti</p>
+<p>Ungues fistula annoso, ille addit linoque motatque uberior verso
+[rubuerunt](#) confine desuetaque. _Sanguine_ anteit
+emerguntque expugnacior est pennas iniqui ecce **haeret** genus: peiora imagine
+fossas Cephisos formosa! Refugitque amata [refelli](#)
+supplex. Summa brevis vetuere tenebas, hostes vetantis, suppressit, arreptum
+regna. Postquam conpescit iuvenis habet corpus, et erratica, perdere, tot mota
+ars talis.</p>
+<p>```c
+digital.webcam_dual_frequency = webmasterMms;
+if (5 + language_standalone_google) {
+    cc_inbox_layout *= file_character;
+    task += p;
+    lockUnicode += enterprise_monochrome(tokenFunctionPersonal, keyVirtual,
+            adf);
+}
+windows_binary_esports(87734, array(restoreRomTopology, adRaw(407314),
+        dongleBashThumbnail), interpreter);
+```</p>
+<p>Sit volat naturam; motu Cancri. Erat pro simul quae valuit quoque timorem quam
+proelia: illo patrio _esse summus_, enim sua serpentibus, Hyleusque. Est coniuge
+recuso; refert Coroniden ignotos manat, adfectu.</p>]]></content:encoded>
+            <author>sathya@tadinada.com (Sathya Tadinada)</author>
+        </item>
+        <item>
+            <title><![CDATA[Rewriting the cosmOS kernel in Rust]]></title>
+            <link>https://tadinada.com/blog/rewriting-the-cosmos-kernel-in-rust</link>
+            <guid isPermaLink="false">https://tadinada.com/blog/rewriting-the-cosmos-kernel-in-rust</guid>
+            <pubDate>Thu, 14 Jul 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[When we released the first version of cosmOS last year, it was written in Go. Go is a wonderful programming language, but it’s been a while since I’ve seen an article on the front page of Hacker News about rewriting some important tool in Go and I see articles on there about rewriting things in Rust every single week.]]></description>
+            <content:encoded><![CDATA[<p>When we released the first version of cosmOS last year, it was written in Go. Go is a wonderful programming language with a lot of benefits, but it’s been a while since I’ve seen an article on the front page of Hacker News about rewriting some important tool in Go and I see articles on there about rewriting things in Rust every single week.</p>
+<p>```rust
+use ferris_says::say;
+use std::io::{stdout, BufWriter};</p>
+<p>fn main() {
+    let stdout = stdout();
+    let message = String::from(&quot;Hello fellow hackers&quot;);
+    let width = message.chars().count();</p>
+<p>let mut writer = BufWriter::new(stdout.lock());
+    say(message.as_bytes(), width, &amp;mut writer).unwrap();
+}
+```</p>
+<p>I derive a large amount of my self-worth from whether or not Hacker News is impressed with the work I&#039;m doing, so when I realized this, I cancelled all of our existing projects and started migrating everything to Rust immediately.</p>
+<p>## Sermone fata</p>
+<p>Lorem markdownum, bracchia in redibam! Terque unda puppi nec, linguae posterior
+in utraque respicere candidus Mimasque formae; quae conantem cervice. Parcite
+variatus, redolentia adeunt. Tyrioque dies, naufraga sua adit partibus celanda
+torquere temptata, erit maneat et ramos, [iam](#) ait dominari
+potitus! Tibi litora matremque fumantia condi radicibus opusque.</p>
+<p>Deus feram verumque, fecit, ira tamen, terras per alienae victum. Mutantur
+levitate quas ubi arcum ripas oculos abest. Adest [commissaque
+victae](#) in gemitus nectareis ire diva
+dotibus ora, et findi huic invenit; fatis? Fractaque dare superinposita
+nimiumque simulatoremque sanguine, at voce aestibus diu! Quid veterum hausit tu
+nil utinam paternos ima, commentaque.</p>
+<p>```c
+exbibyte_wins = gigahertz(3);
+grayscaleUtilityClient = control_uat;
+pcmciaHibernate = oop_virus_console(text_mountain);
+if (stateWaisFirewire &gt;= -2) {
+    jfs = 647065 / ldapVrml(tutorialRestore, 85);
+    metal_runtime_parse = roomComputingResolution - toolbarUpload +
+            ipx_nvram_open;
+} else {
+    maximizeSidebar *= suffix_url(flatbed + 2, requirements_encoding_node +
+            only_qbe_media, minicomputer);
+}
+```</p>
+<p>Aere repetiti cognataque natus. Habebat vela solutis saepe munus nondum adhuc
+oscula nomina pignora corpus deserat.</p>
+<p>## Lethaei Pindumve me quae dinumerat Pavor</p>
+<p>Idem se saxa fata pollentibus geminos; quos pedibus. Est urnis Herses omnes nec
+divite: et ille illa furit sim verbis Cyllenius.</p>
+<p>1. Captus inpleverunt collo
+2. Nec nam placebant
+3. Siquos vulgus
+4. Dictis carissime fugae
+5. A tacitos nulla viginti</p>
+<p>Ungues fistula annoso, ille addit linoque motatque uberior verso
+[rubuerunt](#) confine desuetaque. _Sanguine_ anteit
+emerguntque expugnacior est pennas iniqui ecce **haeret** genus: peiora imagine
+fossas Cephisos formosa! Refugitque amata [refelli](#)
+supplex. Summa brevis vetuere tenebas, hostes vetantis, suppressit, arreptum
+regna. Postquam conpescit iuvenis habet corpus, et erratica, perdere, tot mota
+ars talis.</p>
+<p>```c
+digital.webcam_dual_frequency = webmasterMms;
+if (5 + language_standalone_google) {
+    cc_inbox_layout *= file_character;
+    task += p;
+    lockUnicode += enterprise_monochrome(tokenFunctionPersonal, keyVirtual,
+            adf);
+}
+windows_binary_esports(87734, array(restoreRomTopology, adRaw(407314),
+        dongleBashThumbnail), interpreter);
+```</p>
+<p>Sit volat naturam; motu Cancri. Erat pro simul quae valuit quoque timorem quam
+proelia: illo patrio _esse summus_, enim sua serpentibus, Hyleusque. Est coniuge
+recuso; refert Coroniden ignotos manat, adfectu.</p>]]></content:encoded>
+            <author>sathya@tadinada.com (Sathya Tadinada)</author>
+        </item>
+        <item>
+            <title><![CDATA[Regex Demystified: Intro to Pattern Matching]]></title>
+            <link>https://tadinada.com/blog/regex-101</link>
+            <guid isPermaLink="false">https://tadinada.com/blog/regex-101</guid>
+            <pubDate>Sun, 10 Aug 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Regular expressions (regex) are a powerful tool for pattern matching and text manipulation. In this article, we will explore the fundamentals of regex, its syntax, and practical applications.]]></description>
+            <content:encoded><![CDATA[<p>Regular expressions (regex) have a reputation for looking like arcane symbols from a hacker movie.</p>
+<p>```regex
+^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$
+```</p>
+<p>If that looks like keyboard mash to you, you&#039;re not alone. The truth is, regex can be complex and intimidating at first glance.
+However, regex is nothing more than a language for describing patterns in text, and under the hood it works like a tiny machine that reads
+your string one character at a time.</p>
+<p>In this post, we&#039;ll walk through regex one step at a time, connect it to some computer science theory, and leave 
+you with practical tips for writing patterns that you&#039;ll still be able to understand six months from now.</p>
+<p>## What Regex Really Is</p>
+<p>Regex isn&#039;t &quot;code&quot; in the same sense as a general-purpose language (like Java or Rust). It&#039;s **declarative**: you describe the shape of the text you want, and the regex engine figures out how to _find_ it.</p>
+<p>Behind the scenes, many regex engines turn your pattern into a **finite state machine** (FSM) and step through your input, deciding &quot;match&quot; or &quot;no match&quot;.</p>
+<p>&lt;Image src={regexDiagram} alt=&quot;State diagram for regex a(b|c)d+&quot; /&gt;</p>
+<p>&gt; TL;DR: Regex describes a set of strings. The engine checks whether your input is in that set.</p>
+<p>## The Building Blocks
+Regex has only a handful of core ideas. Combine them and you can recognize surprisingly complex patterns.</p>
+<p>### Literals
+Match exact characters.</p>
+<p>```txt
+cat                         # matches &quot;cat&quot; in text
+```</p>
+<p>### Character Classes
+Match _one_ character from a set.</p>
+<p>```regex
+[abc]                       # &quot;a&quot; or &quot;b&quot; or &quot;c&quot;
+[0-9]                       # any digit
+\w                          # any letter, digit, or underscore
+\s                          # whitespace (space, tab, newline)
+.                           # any character (except newline in many engines)
+```</p>
+<p>&gt; Pro tip: In a class, `-` creates ranges (`[A-Z]`). To match a literal `-`, put it first or last: `[-A-Z]` or `[A-Z-]`.</p>
+<p>### Quantifiers
+Specify how many times to match the preceding element.</p>
+<p>```regex
+a+                          # one or more a&#039;s
+b*                          # zero or more b&#039;s
+c?                          # zero or one c
+d{2,4}                      # between 2 and 4 d&#039;s
+```</p>
+<p>### Anchors and Groups
+Specify positions and group sub-patterns.</p>
+<p>```regex
+^abc$                       # match exactly &quot;abc&quot; from start to end
+(abc)                       # capture &quot;abc&quot; as group 1
+(?:abc)                     # non-capturing group
+```</p>
+<p>### Boundaries
+Control word/line boundaries.</p>
+<p>```regex
+\bword\b                    # &quot;word&quot; as a whole word
+^line                       # start of line (with multiline flag)
+line$                       # end of line (with multiline flag)
+```</p>
+<p>## Flags (aka Modifiers)
+Flags change how a pattern behaves.</p>
+<p>| Flag | Common name | Effect |
+| ---- | ----------- | ------ |
+| `i`  | ignore case | Case-insensitive matching |
+| `m`  | multiline   | `^` and `$` match line boundaries, not just start/end of whole string |
+| `s`  | dotall      | `.` also matches newlines |
+| `g`  | global      | (JS) find all matches, not just the first |
+| `u`  | unicode     | (JS) full Unicode mode (enables things like `\p{Letter}`) |
+| `x`  | extended    | (PCRE/Python) allow whitespace/comments inside the pattern |</p>
+<p>&gt; Python uses inline flags like `re.IGNORECASE` or `(?i)`. JavaScript uses regex literals like `/pattern/imsu`.</p>
+<p>## Greedy vs. Lazy
+By default, quantifiers are **greedy**: they match as much as possible.</p>
+<p>```regex
+&lt;.*&gt;                        # greedy: &quot;&lt;tag&gt;content&lt;/tag&gt;&quot; → one giant match
+&lt;.*?&gt;                       # lazy: minimal match, &quot;&lt;tag&gt;&quot;
+```</p>
+<p>&gt; If your pattern &quot;eats&quot; too much, try the lazy `?` variant: `*?`, `+?`, `??`, `{m,n}?`.</p>
+<p>## Alternation &amp; Precedence
+`|` means &quot;or&quot;. Group to control scope.</p>
+<p>```regex
+colou?r                     # &quot;color&quot; or &quot;colour&quot;
+(https?|ftp)                # &quot;http&quot;, &quot;https&quot;, or &quot;ftp&quot;
+```</p>
+<p>Without parentheses, alternation applies only to the nearest pieces: `ab|cd` ≠ `a(b|c)d`.</p>
+<p>## Capturing, Naming, and Reusing
+Capturing groups let you pull data out and reuse matches.</p>
+<p>```regex
+(\d{4})-(\d{2})-(\d{2})     # year-month-day
+```</p>
+<p>Named groups (engine-specific syntax):</p>
+<p>```regex
+(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})
+```</p>
+<p>Backreferences:</p>
+<p>```regex
+&lt;(\w+)[^&gt;]*&gt;.*?&lt;\/\1&gt;       # start/end tags must match the same name
+```</p>
+<p>&gt; JavaScript backreference to a named group: `\k&lt;year&gt;`. Python: `(?P&lt;year&gt;...)` and `(?P=year)`.</p>
+<p>## Lookarounds (Zero-Width Assertions)
+Lookarounds assert context without consuming characters.</p>
+<p>```regex
+(?=...)                     # positive lookahead
+(?!...)                     # negative lookahead
+(?&lt;=...)                    # positive lookbehind (engine support varies)
+(?&lt;!...)                    # negative lookbehind
+```</p>
+<p>Examples:</p>
+<p>```regex
+\d+(?=\sUSD)                # numbers followed by &quot; USD&quot;
+(?&lt;!\w)cat(?!\w)            # &quot;cat&quot; as a whole word (alternative to \b)
+```</p>
+<p>## Multi-Language Examples
+Same idea, different APIs.</p>
+<p>```javascript
+// JavaScript
+const phone = /^\(\d{3}\) \d{3}-\d{4}$/;
+phone.test(&#039;(123) 456-7890&#039;); // true
+```</p>
+<p>```python
+# Python
+import re
+phone = re.compile(r&quot;^\(\d{3}\) \d{3}-\d{4}$&quot;)
+bool(phone.fullmatch(&#039;(123) 456-7890&#039;))  # True
+```</p>
+<p>```rust
+// Rust (regex crate)
+use regex::Regex;
+fn main() {
+    let re = Regex::new(r&quot;^\(\d{3}\) \d{3}-\d{4}$&quot;).unwrap();
+    println!(&quot;{}&quot;, re.is_match(&quot;(123) 456-7890&quot;)); // true
+}
+```</p>
+<p>```java
+// Java
+import java.util.regex.*;
+var re = Pattern.compile(&quot;^\\(\\d{3}\\) \\d{3}-\\d{4}$&quot;);
+System.out.println(re.matcher(&quot;(123) 456-7890&quot;).matches()); // true
+```</p>
+<p>&gt; String literal escapes differ! In many languages you need to double backslashes in strings. Prefer raw strings when available (`r&quot;...&quot;` in Python, Rust).</p>
+<p>## Step-by-Step Matching
+Let&#039;s take `a(?:b|c)d+` and walk through matching `&quot;acddd&quot;`.</p>
+<p>| Step | Current State | Read Char | Action     |
+| ---- | ------------- | --------- | ---------- |
+| 1    | Start         | `a`       | Match `a`  |
+| 2    | After `a`     | `c`       | Match `c`  |
+| 3    | After `c`     | `d`       | Match loop |
+| 4    | Loop          | `d`       | Loop again |
+| 5    | Loop          | `d`       | Loop again |
+| 6    | End           | —         | Accept!    |</p>
+<p>## Practical Recipes
+A few patterns you can adapt.</p>
+<p>```regex
+# ISO date (YYYY-MM-DD)
+^(?&lt;year&gt;\d{4})-(?&lt;month&gt;0[1-9]|1[0-2])-(?&lt;day&gt;0[1-9]|[12]\d|3[01])$
+```</p>
+<p>```regex
+# Slug (lowercase words separated by dashes)
+^[a-z0-9]+(?:-[a-z0-9]+)*$
+```</p>
+<p>```regex
+# Trim from start/end (use in replace)
+^\s+|\s+$
+```</p>
+<p>```regex
+# Simple (not RFC-perfect) email — good enough for UI validation
+^[^\s@]+@[^\s@]+\.[^\s@]+$
+```</p>
+<p>&gt; For anything security-sensitive (like email parsing on a server), prefer a real parser over a single monstrous regex.</p>
+<p>## Replacing Text with Captures</p>
+<p>```javascript
+// Reformat YYYY-MM-DD → DD/MM/YYYY
+&#039;2025-08-10&#039;.replace(/(\d{4})-(\d{2})-(\d{2})/, &#039;$3/$2/$1&#039;)
+// → &#039;10/08/2025&#039;
+```</p>
+<p>```python
+import re
+re.sub(
+    r&quot;(?P&lt;y&gt;\d{4})-(?P&lt;m&gt;\d{2})-(?P&lt;d&gt;\d{2})&quot;, 
+    r&quot;\g&lt;d&gt;/\g&lt;m&gt;/\g&lt;y&gt;&quot;, &quot;2025-08-10&quot;
+)
+```</p>
+<p>## Unicode &amp; \p Properties
+Modern engines support Unicode character classes.</p>
+<p>```regex
+\p{Letter}+         # one or more letters in any language
+\p{Greek}+          # Greek letters
+\p{Emoji}           # depends on engine; alternatives exist
+```</p>
+<p>&gt; In JavaScript, use the `u` flag for Unicode escapes and categories. In Python, Unicode is default in 3.x.</p>
+<p>## Performance: Avoiding Catastrophic Backtracking
+Certain patterns can take exponential time on tricky inputs (&quot;catastrophic backtracking&quot;). Classic offenders combine nested quantifiers and wildcards:</p>
+<p>```regex
+^(a+)+$             # dangerous
+^(.+)+$             # dangerous
+```</p>
+<p>Safer alternatives:</p>
+<p>- Prefer explicit character classes over `.` when feasible.
+- Use lazy quantifiers with anchors: `^.*?foo` instead of `^.*foo` when appropriate.
+- Where supported (e.g., Java, PCRE), consider **possessive quantifiers** (`*+`, `++`, `?+`, `{m,n}+`) or **atomic groups** (`(?&gt;...)`) to prevent backtracking.
+- In Rust&#039;s `regex` crate, many problematic features (like backreferences and lookaround) are intentionally unsupported; patterns run in linear time.</p>
+<p>## When _Not_ to Use Regex
+- Parsing nested, recursive structures (HTML, JSON, source code) → use a parser/DOM/AST.
+- Handling complex, locale-sensitive formats (dates, numbers) → use libraries.
+- Anything where clarity and maintainability beat clever one-liners → write code.</p>
+<p>## A Method for Writing Maintainable Regex
+1. **Write the examples first**: What should match? What should not?
+2. **Build in layers**: Start with literals, then introduce classes and quantifiers.
+3. **Name your groups**: Future-you will thank you.
+4. **Comment your pattern**: Use the &quot;extended&quot; flag (`x`) where available and add inline comments.
+5. **Test against edge cases**: Empty strings, long strings, weird Unicode, punctuation.
+6. **Benchmark if needed**: Especially for user-supplied input.</p>
+<p>### Example with Comments (PCRE/Python `re.VERBOSE`)</p>
+<p>```regex
+^                                   # start of string
+(?&lt;area&gt;\(\d{3}\))\s                # (123) and a space
+(?&lt;prefix&gt;\d{3})-                   # 456-
+(?&lt;line&gt;\d{4})                      # 7890
+$                                   # end of string
+```</p>
+<p>## Mini-Exercises
+Try these before peeking at the answers.</p>
+<p>1. Match IPv4 addresses (0–255 in each octet).
+2. Extract the domain from a URL.
+3. Split a CSV line that allows quoted commas.</p>
+<p>&lt;details&gt;
+&lt;summary&gt;Show solutions&lt;/summary&gt;</p>
+<p>```regex
+# 1) IPv4 (concise, not perfect but reasonable)
+^(25[0-5]|2[0-4]\d|1?\d?\d)(?:\.(25[0-5]|2[0-4]\d|1?\d?\d)){3}$
+```</p>
+<p>```regex
+# 2) Domain from URL (scheme optional)
+^(?:https?:\/\/)?(?:www\.)?([^\/\n?#]+)
+```</p>
+<p>```regex
+# 3) CSV split (use a parser in production!)
+,(?=(?:[^\&quot;]*\&quot;[^\&quot;]*\&quot;)*[^\&quot;]*$)
+```</p>
+<p>&lt;/details&gt;</p>
+<p>## Theory Corner (Short &amp; Sweet)
+- **Regular languages** are those recognized by finite automata.
+- Most popular engines (PCRE, JS, Python) are **backtracking NFAs**: powerful, feature-rich, can backtrack.
+- Some (like Rust&#039;s `regex`) compile to automata that execute in **linear time** by avoiding backtracking-only features.</p>
+<p>The big idea: features like backreferences and some lookarounds make patterns more expressive than regular languages, which is why engines use richer algorithms than a pure DFA.</p>
+<p>## Quick Reference</p>
+<p>| Concept | Pattern | Notes |
+| --- | --- | --- |
+| Digit / non-digit | `\d` / `\D` | ASCII vs Unicode depends on engine/flags |
+| Word char / non-word | `\w` / `\W` | includes `_` |
+| Whitespace / non-space | `\s` / `\S` | space, tab, newline |
+| Word boundary | `\b` | opposite: `\B` |
+| Start / end | `^` / `$` | with `m`, apply per-line |
+| Optional | `x?` | zero or one |
+| One or more | `x+` | greedy |
+| Zero or more | `x*` | greedy |
+| Lazy quantifier | `x+?` | minimal |
+| Exactly n | `x{n}` | repeats |
+| Range | `x{m,n}` | between m and n |
+| Grouping | `( ... )` | capturing |
+| Non-capturing | `(?: ... )` | groups without capturing |
+| Alternation | `x\|y` | either x or y |
+| Lookahead | `(?=...)` / `(?!...)` | zero-width |
+| Lookbehind | `(?&lt;=...)` / `(?&lt;!...)` | engine support varies |</p>
+<p>## Wrap-Up
+Regex is a compact way to describe patterns. Start simple, add features deliberately, and test with real data. When you need more than pattern matching, reach for a parser. When regex _is_ the right tool, the techniques above will keep your patterns readable and fast.</p>]]></content:encoded>
+            <author>sathya@tadinada.com (Sathya Tadinada)</author>
+        </item>
+    </channel>
+</rss>
