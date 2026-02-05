@@ -132,7 +132,7 @@ const otherProfiles = [
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Let’s stay in touch!',
+    'Let’s stay in touch! Whether you have a question, want to work with me, or just want to say hi, I’ll try my best to get back to you!',
 }
 
 export default function Contact() {

@@ -277,64 +277,64 @@ export default function About() {
         <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 text-zinc-700 dark:text-zinc-300">
           <div className="flex min-w-0 items-center space-x-3">
             <JavaIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Java</span>
+            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Java</span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
             <RustIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Rust</span>
+            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Rust</span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
             <PythonIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Python</span>
+            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Python</span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
             <TypeScriptIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
               TypeScript
             </span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
             <CIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">C</span>
+            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">C</span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
             <CPlusPlusIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">C++</span>
+            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">C++</span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
             <CSharpIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">C#</span>
+            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">C#</span>
           </div>
           
           <div className="flex min-w-0 items-center space-x-3">
             <SQLIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">SQL</span>
+            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">SQL</span>
           </div>
           
           <div className="flex min-w-0 items-center space-x-3">
             <RIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">R</span>
+            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">R</span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
             <NextJSIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Next.js</span>
+            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Next.js</span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
             <FlutterIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Flutter</span>
+            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Flutter</span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
             <PyTorchIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 break-words text-sm sm:text-base text-zinc-600 dark:text-zinc-400">PyTorch</span>
+            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">PyTorch</span>
           </div>
         </div>
       </section>
