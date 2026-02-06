@@ -1,5 +1,7 @@
 import dotenv from 'dotenv'
+dotenv.config()      
 dotenv.config({ path: '.env.local' })
+
 
 import fs from 'node:fs/promises'
 import path from 'node:path'
@@ -149,7 +151,12 @@ function mdxBodyToBasicHtml(body) {
 
 async function main() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
-  if (!siteUrl) throw new Error('Missing NEXT_PUBLIC_SITE_URL env var')
+  if (!siteUrl) {
+    console.log(
+      '[generate-feed] Skipping feed generation: NEXT_PUBLIC_SITE_URL is not set.'
+    )
+    return
+  }
 
   const author = {
     name: 'Sathya Tadinada',
