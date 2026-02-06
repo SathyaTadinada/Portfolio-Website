@@ -2,7 +2,7 @@
 
 Live site: [tadinada.com](https://tadinada.com)
 
-A single place to explore my work, projects, experience, and thoughts. Built with **Next.js** and **Tailwind CSS**, hosted on **Vercel**.
+A single place to explore my work, projects, experience, and thoughts. Built with **Next.js** and **Tailwind CSS**, hosted on **Cloudflare Pages**.
 
 ## Highlights
 
@@ -16,7 +16,7 @@ A single place to explore my work, projects, experience, and thoughts. Built wit
 - [**Next.js**](https://nextjs.org/docs): Framework
 - [**Tailwind CSS**](https://tailwindcss.com/docs): Styling
 - [**MDX**](https://mdxjs.com/): Blog content
-- [**Vercel**](https://vercel.com): Hosting and deployment
+- [**Cloudflare Pages**](https://pages.cloudflare.com): Hosting and deployment
 - [**GitHub**](https://github.com/): Version control
 
 ## Getting Started
