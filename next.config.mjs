@@ -9,6 +9,8 @@ const nextConfig = {
     // mdxRs: true,
     // reactCompiler: true, // consider adding this.
   },
+
+  images: { unoptimized: true },
 }
 
 const withMDX = nextMDX({
