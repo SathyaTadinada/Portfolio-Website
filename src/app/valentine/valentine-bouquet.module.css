@@ -464,6 +464,49 @@
   color: var(--v-subtle);
 }
 
+.iconActions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.iconBtn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.9rem;
+  border: 1px solid var(--v-secondary-border);
+  background: var(--v-secondary-bg);
+  color: var(--v-secondary-fg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 120ms ease,
+    transform 120ms ease,
+    border-color 120ms ease,
+    opacity 120ms ease;
+}
+
+.iconBtn:hover {
+  background: var(--v-secondary-bg-hover);
+  transform: translateY(-1px);
+}
+
+.iconBtn:active {
+  transform: translateY(0px);
+}
+
+.iconBtn:focus-visible {
+  outline: none;
+  box-shadow: var(--v-focus-ring);
+}
+
+.iconBtn:disabled {
+  opacity: 0.45;
+  cursor: default;
+  transform: none;
+}
+
 @media (max-width: 420px) {
   .primaryBtn,
   .secondaryBtn {
