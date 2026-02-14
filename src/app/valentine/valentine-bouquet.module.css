@@ -226,3 +226,123 @@
   aspect-ratio: 4 / 5;
   display: block;
 }
+
+:global(html:not(.dark)) .sectionMask,
+:global(html.light) .sectionMask,
+:global(html[data-theme="light"]) .sectionMask {
+  color: #0b1026;
+}
+
+:global(html:not(.dark)) .blueSection,
+:global(html.light) .blueSection,
+:global(html[data-theme="light"]) .blueSection {
+  background:
+    radial-gradient(1200px circle at 15% 10%, rgba(255, 77, 109, 0.18), transparent 55%),
+    radial-gradient(900px circle at 85% 20%, rgba(199, 125, 255, 0.22), transparent 50%),
+    linear-gradient(180deg, #f6f7ff 0%, #fff1f6 55%, #f6f2ff 100%);
+  color: #0b1026;
+}
+
+:global(html:not(.dark)) .subtitle,
+:global(html.light) .subtitle,
+:global(html[data-theme="light"]) .subtitle {
+  color: rgba(11, 16, 38, 0.65);
+}
+
+:global(html:not(.dark)) .kbd,
+:global(html.light) .kbd,
+:global(html[data-theme="light"]) .kbd {
+  background: rgba(11, 16, 38, 0.08);
+  color: rgba(11, 16, 38, 0.85);
+}
+
+:global(html:not(.dark)) .card,
+:global(html.light) .card,
+:global(html[data-theme="light"]) .card {
+  border: 1px solid rgba(11, 16, 38, 0.12);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 20px 80px rgba(2, 6, 23, 0.12);
+}
+
+:global(html:not(.dark)) .label,
+:global(html.light) .label,
+:global(html[data-theme="light"]) .label {
+  color: rgba(11, 16, 38, 0.75);
+}
+
+:global(html:not(.dark)) .input,
+:global(html.light) .input,
+:global(html[data-theme="light"]) .input {
+  border: 1px solid rgba(11, 16, 38, 0.18);
+  background: rgba(255, 255, 255, 0.88);
+  color: #0b1026;
+}
+
+:global(html:not(.dark)) .input::placeholder,
+:global(html.light) .input::placeholder,
+:global(html[data-theme="light"]) .input::placeholder {
+  color: rgba(11, 16, 38, 0.35);
+}
+
+:global(html:not(.dark)) .input:focus,
+:global(html.light) .input:focus,
+:global(html[data-theme="light"]) .input:focus {
+  border-color: rgba(11, 16, 38, 0.28);
+  background: rgba(255, 255, 255, 0.94);
+}
+
+:global(html:not(.dark)) .secondaryBtn,
+:global(html.light) .secondaryBtn,
+:global(html[data-theme="light"]) .secondaryBtn {
+  border: 1px solid rgba(11, 16, 38, 0.18);
+  background: rgba(255, 255, 255, 0.65);
+  color: rgba(11, 16, 38, 0.85);
+}
+
+:global(html:not(.dark)) .secondaryBtn:hover,
+:global(html.light) .secondaryBtn:hover,
+:global(html[data-theme="light"]) .secondaryBtn:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+:global(html:not(.dark)) .helper,
+:global(html:not(.dark)) .mapping,
+:global(html.light) .helper,
+:global(html.light) .mapping,
+:global(html[data-theme="light"]) .helper,
+:global(html[data-theme="light"]) .mapping {
+  color: rgba(11, 16, 38, 0.62);
+}
+
+:global(html:not(.dark)) .mappingTitle,
+:global(html.light) .mappingTitle,
+:global(html[data-theme="light"]) .mappingTitle {
+  color: rgba(11, 16, 38, 0.78);
+}
+
+:global(html:not(.dark)) .hint,
+:global(html.light) .hint,
+:global(html[data-theme="light"]) .hint {
+  border: 1px solid rgba(11, 16, 38, 0.12);
+  background: rgba(255, 255, 255, 0.7);
+  color: rgba(11, 16, 38, 0.85);
+}
+
+:global(html:not(.dark)) .previewTitle,
+:global(html.light) .previewTitle,
+:global(html[data-theme="light"]) .previewTitle {
+  color: rgba(11, 16, 38, 0.75);
+}
+
+:global(html:not(.dark)) .previewName,
+:global(html.light) .previewName,
+:global(html[data-theme="light"]) .previewName {
+  color: rgba(11, 16, 38, 0.55);
+}
+
+:global(html:not(.dark)) .canvasFrame,
+:global(html.light) .canvasFrame,
+:global(html[data-theme="light"]) .canvasFrame {
+  border: 1px solid rgba(11, 16, 38, 0.12);
+  background: rgba(255, 255, 255, 0.65);
+}
