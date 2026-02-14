@@ -5,6 +5,9 @@ import styles from "./valentine-bouquet.module.css";
 
 type FlowerKind = "rose" | "tulip" | "daisy" | "lily" | "orchid" | "sunflower";
 
+const DEFAULT_DISPLAY_NAME = "Your Valentine";
+const DEFAULT_TAGLINE = "a special bouquet for you";
+
 function clamp(n: number, a: number, b: number) {
     return Math.max(a, Math.min(b, n));
 }
@@ -12,6 +15,13 @@ function clamp(n: number, a: number, b: number) {
 function normalizeName(raw: string) {
     return raw
         .replace(/[^\p{L}\s'\-]/gu, "")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+function normalizeTagline(raw: string) {
+    return raw
+        .replace(/[^\p{L}\p{N}\s'"\-.,!?&:;()/]/gu, "")
         .replace(/\s+/g, " ")
         .trim();
 }
@@ -279,29 +289,46 @@ function downloadCanvas(canvas: HTMLCanvasElement, filename: string) {
 export default function ValentineBouquet() {
     const [name, setName] = useState("");
     const [cleanName, setCleanName] = useState("");
+
+    const [tagline, setTagline] = useState("");
+    const [cleanTagline, setCleanTagline] = useState("");
+
     const [hint, setHint] = useState<string | null>(null);
+
+    // Variation lets the user "shuffle" while keeping the default deterministic.
+    const [variation, setVariation] = useState(0);
 
     const EXPORT_W = 1200;
     const EXPORT_H = 1500;
 
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-    const normalized = useMemo(() => normalizeName(name), [name]);
+    const normalizedName = useMemo(() => normalizeName(name), [name]);
+    const normalizedTagline = useMemo(() => normalizeTagline(tagline), [tagline]);
 
     useEffect(() => {
-        setCleanName(normalized);
-    }, [normalized]);
+        setCleanName(normalizedName);
+        // When the name changes, go back to the canonical (deterministic) version.
+        setVariation(0);
+    }, [normalizedName]);
+
+    useEffect(() => {
+        setCleanTagline(normalizedTagline);
+    }, [normalizedTagline]);
 
     const bouquetSpec = useMemo(() => {
-        const base = cleanName.length ? cleanName : "Your Valentine";
-        const seed = hashStringToSeed(base);
+        const baseName = cleanName.length ? cleanName : DEFAULT_DISPLAY_NAME;
 
-        const letters = base.replace(/[^A-Za-z]/g, "");
+        // Flowers depend on letters of the name (stable and intuitive).
+        const letters = baseName.replace(/[^A-Za-z]/g, "");
         const kinds: FlowerKind[] = [];
         for (const ch of letters) kinds.push(letterToFlowerKind(ch));
 
-        return { seed, kinds };
-    }, [cleanName]);
+        // Arrangement + styling can be shuffled via variation.
+        const seed = hashStringToSeed(`${baseName}#${variation}`);
+
+        return { seed, kinds, baseName };
+    }, [cleanName, variation]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -313,7 +340,9 @@ export default function ValentineBouquet() {
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-        const displayName = cleanName.length ? cleanName : "Your Valentine";
+        const displayName = bouquetSpec.baseName;
+        const displayTagline = cleanTagline.length ? cleanTagline : DEFAULT_TAGLINE;
+
         const rng = makeRng(bouquetSpec.seed);
 
         const bg = ctx.createLinearGradient(0, 0, EXPORT_W, EXPORT_H);
@@ -328,7 +357,14 @@ export default function ValentineBouquet() {
             const y = rng() * EXPORT_H * 0.65;
             const r = 80 + rng() * 180;
             const colors = ["#ff4d6d", "#c77dff", "#ffe066", "#ffd6e0", "#9d4edd"];
-            drawSoftGlow(ctx, x, y, r, colors[Math.floor(rng() * colors.length)], 0.12);
+            drawSoftGlow(
+                ctx,
+                x,
+                y,
+                r,
+                colors[Math.floor(rng() * colors.length)],
+                0.12,
+            );
         }
 
         const pad = 70;
@@ -345,7 +381,12 @@ export default function ValentineBouquet() {
         ctx.restore();
 
         ctx.save();
-        const cardGrad = ctx.createLinearGradient(cardX, cardY, cardX + cardW, cardY + cardH);
+        const cardGrad = ctx.createLinearGradient(
+            cardX,
+            cardY,
+            cardX + cardW,
+            cardY + cardH,
+        );
         cardGrad.addColorStop(0, "rgba(255,255,255,0.10)");
         cardGrad.addColorStop(1, "rgba(255,255,255,0.04)");
         ctx.fillStyle = cardGrad;
@@ -364,7 +405,15 @@ export default function ValentineBouquet() {
         ctx.shadowBlur = 0;
         ctx.fillStyle = "rgba(255,255,255,0.65)";
         ctx.font = `500 28px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial`;
-        ctx.fillText("a special bouquet for you", EXPORT_W / 2, 280);
+
+        // If someone types a long tagline, shrink slightly so it still fits.
+        const maxTagChars = 44;
+        const tag =
+            displayTagline.length > maxTagChars
+                ? displayTagline.slice(0, maxTagChars - 1) + "…"
+                : displayTagline;
+
+        ctx.fillText(tag, EXPORT_W / 2, 280);
         ctx.restore();
 
         const n = bouquetSpec.kinds.length;
@@ -487,7 +536,14 @@ export default function ValentineBouquet() {
         ctx.font = `500 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial`;
         ctx.fillText("tadinada.com/valentine", EXPORT_W / 2, EXPORT_H - 80);
         ctx.restore();
-    }, [bouquetSpec, cleanName]);
+    }, [bouquetSpec, cleanTagline]);
+
+    function onShuffle() {
+        // New random variation (kept until name changes)
+        setVariation(Math.floor(Math.random() * 1_000_000_000));
+        setHint("Shuffled! (Download when you like.)");
+        window.setTimeout(() => setHint(null), 2000);
+    }
 
     function onDownload() {
         const canvas = canvasRef.current;
@@ -513,8 +569,7 @@ export default function ValentineBouquet() {
                                 <h1 className={styles.title}>Valentine Bouquet</h1>
                                 <p className={styles.subtitle}>
                                     Type a name. Each letter becomes a flower. Press{" "}
-                                    <span className={styles.kbd}>Enter</span> to
-                                    download a PNG.
+                                    <span className={styles.kbd}>Enter</span> to download a PNG.
                                 </p>
                             </div>
 
@@ -532,16 +587,38 @@ export default function ValentineBouquet() {
                                         maxLength={32}
                                     />
 
+                                    <div className={styles.fieldGroup}>
+                                        <label className={styles.label}>Tagline (optional)</label>
+                                        <input
+                                            value={tagline}
+                                            onChange={(e) => setTagline(e.target.value)}
+                                            onKeyDown={(e) => {
+                                                if (e.key === "Enter") onDownload();
+                                            }}
+                                            placeholder={DEFAULT_TAGLINE}
+                                            className={styles.input}
+                                            maxLength={64}
+                                        />
+                                        <div className={styles.fieldHint}>
+                                            Shows under the title on the exported card.
+                                        </div>
+                                    </div>
+
                                     <div className={styles.actions}>
-                                        <button
-                                            onClick={onDownload}
-                                            className={styles.primaryBtn}
-                                        >
+                                        <button onClick={onDownload} className={styles.primaryBtn}>
                                             Download Bouquet
                                         </button>
 
+                                        <button onClick={onShuffle} className={styles.secondaryBtn}>
+                                            Shuffle
+                                        </button>
+
                                         <button
-                                            onClick={() => setName("")}
+                                            onClick={() => {
+                                                setName("");
+                                                setTagline("");
+                                                setVariation(0);
+                                            }}
                                             className={styles.secondaryBtn}
                                         >
                                             Clear
@@ -549,15 +626,14 @@ export default function ValentineBouquet() {
                                     </div>
 
                                     <div className={styles.helper}>
-                                        Each letter adds exactly one flower.
+                                        Each letter adds exactly one flower. Shuffle changes the
+                                        arrangement.
                                     </div>
 
                                     {hint && <div className={styles.hint}>{hint}</div>}
 
                                     <div className={styles.mapping}>
-                                        <div className={styles.mappingTitle}>
-                                            Flower mapping
-                                        </div>
+                                        <div className={styles.mappingTitle}>Flower mapping</div>
                                         <ul className={styles.mappingList}>
                                             <li>A-D: Rose</li>
                                             <li>E-H: Tulip</li>
@@ -573,17 +649,12 @@ export default function ValentineBouquet() {
                                     <div className={styles.previewHeader}>
                                         <div className={styles.previewTitle}>Preview</div>
                                         <div className={styles.previewName}>
-                                            {cleanName
-                                                ? `"${cleanName}"`
-                                                : "“Your Valentine”"}
+                                            {cleanName ? `"${cleanName}"` : "“Your Valentine”"}
                                         </div>
                                     </div>
 
                                     <div className={styles.canvasFrame}>
-                                        <canvas
-                                            ref={canvasRef}
-                                            className={styles.canvas}
-                                        />
+                                        <canvas ref={canvasRef} className={styles.canvas} />
                                     </div>
                                 </div>
                             </div>

@@ -454,6 +454,16 @@
   z-index: 1;
 }
 
+.fieldGroup {
+  margin-top: 1rem;
+}
+
+.fieldHint {
+  margin-top: 0.5rem;
+  font-size: 0.825rem;
+  color: var(--v-subtle);
+}
+
 @media (max-width: 420px) {
   .primaryBtn,
   .secondaryBtn {
