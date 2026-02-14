@@ -1,12 +1,14 @@
 .page {
   min-height: 100vh;
   width: 100%;
+  background: transparent;
 }
 
 .panelOuter {
   width: 100%;
-  max-width: 80rem; 
+  max-width: 80rem;
   margin: 0 auto;
+  position: relative;
 }
 
 .breathTop {
@@ -14,27 +16,166 @@
 }
 
 .breathBottom {
-  height: 2.5rem; 
+  height: 2.5rem;
+}
+
+:global(html.dark) .page,
+:global(html[data-theme='dark']) .page {
+  --v-fg: #f8fafc;
+  --v-muted: rgba(248, 250, 252, 0.72);
+  --v-subtle: rgba(248, 250, 252, 0.62);
+
+  --v-section-bg:
+    radial-gradient(
+      1100px circle at 18% 12%,
+      rgba(255, 77, 109, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px circle at 82% 18%,
+      rgba(199, 125, 255, 0.2),
+      transparent 52%
+    ),
+    radial-gradient(
+      700px circle at 55% 42%,
+      rgba(255, 224, 102, 0.1),
+      transparent 55%
+    ),
+    linear-gradient(145deg, #07081a 0%, #100a2b 45%, #0b1026 100%);
+
+  --v-kbd-bg: rgba(255, 255, 255, 0.1);
+  --v-kbd-fg: rgba(255, 255, 255, 0.9);
+
+  --v-card-bg: rgba(255, 255, 255, 0.055);
+  --v-card-border: rgba(255, 255, 255, 0.12);
+  --v-card-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+
+  --v-label: rgba(255, 255, 255, 0.82);
+
+  --v-input-bg: rgba(255, 255, 255, 0.06);
+  --v-input-bg-focus: rgba(255, 255, 255, 0.09);
+  --v-input-border: rgba(255, 255, 255, 0.14);
+  --v-input-border-focus: rgba(255, 255, 255, 0.3);
+  --v-placeholder: rgba(255, 255, 255, 0.42);
+
+  --v-secondary-bg: rgba(255, 255, 255, 0.05);
+  --v-secondary-bg-hover: rgba(255, 255, 255, 0.1);
+  --v-secondary-border: rgba(255, 255, 255, 0.18);
+  --v-secondary-fg: rgba(255, 255, 255, 0.86);
+
+  --v-hint-bg: rgba(255, 255, 255, 0.1);
+  --v-panel-bg: rgba(255, 255, 255, 0.05);
+
+  --v-preview-muted: rgba(255, 255, 255, 0.55);
+
+  --v-canvas-bg: rgba(0, 0, 0, 0.18);
+  --v-canvas-border: rgba(255, 255, 255, 0.12);
+
+  --v-divider: rgba(255, 255, 255, 0.1);
+  --v-focus-ring: 0 0 0 4px rgba(236, 72, 153, 0.2);
+
+  --v-btn-shadow: 0 10px 30px rgba(255, 77, 109, 0.25);
+  --v-btn-shadow-hover: 0 14px 38px rgba(255, 77, 109, 0.28);
+
+  --v-frame-inner: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --v-frame-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+}
+
+:global(html:not(.dark)) .page,
+:global(html.light) .page,
+:global(html[data-theme='light']) .page {
+  --v-fg: #0b1026;
+  --v-muted: rgba(11, 16, 38, 0.65);
+  --v-subtle: rgba(11, 16, 38, 0.58);
+
+  --v-section-bg:
+    radial-gradient(
+      1200px circle at 15% 10%,
+      rgba(255, 77, 109, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px circle at 85% 20%,
+      rgba(199, 125, 255, 0.22),
+      transparent 50%
+    ),
+    radial-gradient(
+      800px circle at 55% 52%,
+      rgba(255, 224, 102, 0.14),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #f6f7ff 0%, #fff1f6 55%, #f6f2ff 100%);
+
+  --v-kbd-bg: rgba(11, 16, 38, 0.08);
+  --v-kbd-fg: rgba(11, 16, 38, 0.86);
+
+  --v-card-bg: rgba(255, 255, 255, 0.72);
+  --v-card-border: rgba(11, 16, 38, 0.12);
+  --v-card-shadow: 0 20px 80px rgba(2, 6, 23, 0.12);
+
+  --v-label: rgba(11, 16, 38, 0.74);
+
+  --v-input-bg: rgba(255, 255, 255, 0.92);
+  --v-input-bg-focus: rgba(255, 255, 255, 0.96);
+  --v-input-border: rgba(11, 16, 38, 0.18);
+  --v-input-border-focus: rgba(11, 16, 38, 0.28);
+  --v-placeholder: rgba(11, 16, 38, 0.35);
+
+  --v-secondary-bg: rgba(255, 255, 255, 0.65);
+  --v-secondary-bg-hover: rgba(255, 255, 255, 0.85);
+  --v-secondary-border: rgba(11, 16, 38, 0.18);
+  --v-secondary-fg: rgba(11, 16, 38, 0.86);
+
+  --v-hint-bg: rgba(255, 255, 255, 0.75);
+  --v-panel-bg: rgba(255, 255, 255, 0.65);
+
+  --v-preview-muted: rgba(11, 16, 38, 0.55);
+
+  --v-canvas-bg: rgba(255, 255, 255, 0.68);
+  --v-canvas-border: rgba(11, 16, 38, 0.12);
+
+  --v-divider: rgba(11, 16, 38, 0.1);
+  --v-focus-ring: 0 0 0 4px rgba(139, 92, 246, 0.18);
+
+  --v-btn-shadow: 0 10px 30px rgba(236, 72, 153, 0.18);
+  --v-btn-shadow-hover: 0 14px 38px rgba(236, 72, 153, 0.22);
+
+  --v-frame-inner: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  --v-frame-shadow: 0 18px 60px rgba(2, 6, 23, 0.1);
 }
 
 .sectionMask {
   width: 100%;
   overflow: hidden;
-  color: white;
+  color: var(--v-fg);
+  isolation: isolate;
 
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 6%,
+    black 84%,
+    transparent 100%
+  );
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    black 5%,
-    black 80%,
+    black 6%,
+    black 84%,
     transparent 100%
   );
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 }
 
 .blueSection {
   width: 100%;
-  background: #07081a;
-  color: white;
+  background: var(--v-section-bg);
+  color: var(--v-fg);
   min-height: 130vh;
   display: flex;
   /* align-items: center; */
@@ -44,10 +185,14 @@
   width: 100%;
   max-width: 64rem;
   margin: 0 auto;
-  padding: 3rem 1.5rem; 
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
+  padding: 3rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .inner {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .headerBlock {
@@ -56,69 +201,95 @@
 
 .title {
   font-size: 2.25rem;
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: -0.02em;
+  line-height: 1.05;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
 .subtitle {
   margin-top: 0.5rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--v-muted);
 }
 
 .kbd {
-  border-radius: 0.375rem;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.125rem 0.5rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
+  border-radius: 0.45rem;
+  background: var(--v-kbd-bg);
+  padding: 0.125rem 0.55rem;
+  font-weight: 600;
+  color: var(--v-kbd-fg);
+  border: 1px solid var(--v-divider);
 }
 
 .grid {
   display: grid;
   gap: 2rem;
-  /* align-self: center; */
 }
 
 @media (min-width: 1024px) {
   .grid {
     grid-template-columns: 1fr 1.25fr;
+    align-items: start;
   }
 }
 
 .card {
   border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--v-card-border);
+  background: var(--v-card-bg);
   padding: 1.5rem;
   backdrop-filter: blur(12px);
-  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+  box-shadow: var(--v-card-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    800px circle at 20% 0%,
+    rgba(255, 255, 255, 0.12),
+    transparent 55%
+  );
+  opacity: 0.35;
 }
 
 .label {
   font-size: 0.875rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  color: var(--v-label);
+  letter-spacing: 0.01em;
 }
 
 .input {
   margin-top: 0.5rem;
   width: 100%;
   border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #0b1026;
+  border: 1px solid var(--v-input-border);
+  background: var(--v-input-bg);
   padding: 0.75rem 1rem;
   font-size: 1.125rem;
-  color: white;
+  color: var(--v-fg);
   outline: none;
+  transition:
+    border-color 120ms ease,
+    background 120ms ease,
+    box-shadow 120ms ease;
 }
 
 .input::placeholder {
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--v-placeholder);
 }
 
 .input:focus {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: #0c1330;
+  border-color: var(--v-input-border-focus);
+  background: var(--v-input-bg-focus);
+  box-shadow:
+    var(--v-focus-ring),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .actions {
@@ -126,68 +297,92 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .primaryBtn {
   border-radius: 1rem;
   padding: 0.75rem 1.25rem;
-  font-weight: 600;
+  font-weight: 700;
   color: white;
   background: linear-gradient(90deg, #ec4899, #fb7185, #8b5cf6);
-  box-shadow: 0 10px 30px rgba(255, 77, 109, 0.25);
-  transition: transform 120ms ease;
+  box-shadow: var(--v-btn-shadow);
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    filter 120ms ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .primaryBtn:hover {
-  transform: scale(1.01);
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: var(--v-btn-shadow-hover);
+  filter: saturate(1.05);
 }
 
 .primaryBtn:active {
-  transform: scale(0.99);
+  transform: translateY(0px) scale(0.99);
 }
 
 .secondaryBtn {
   border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--v-secondary-border);
+  background: var(--v-secondary-bg);
   padding: 0.75rem 1rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  color: var(--v-secondary-fg);
+  transition:
+    background 120ms ease,
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    border-color 120ms ease;
 }
 
 .secondaryBtn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--v-secondary-bg-hover);
+  transform: translateY(-1px);
+}
+
+.secondaryBtn:active {
+  transform: translateY(0px);
+}
+
+.primaryBtn:focus-visible,
+.secondaryBtn:focus-visible,
+.input:focus-visible {
+  outline: none;
+  box-shadow: var(--v-focus-ring);
 }
 
 .helper {
   margin-top: 1.25rem;
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--v-subtle);
 }
 
 .hint {
   margin-top: 1rem;
   border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--v-card-border);
+  background: var(--v-hint-bg);
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--v-fg);
 }
 
 .mapping {
   margin-top: 1.5rem;
   border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--v-card-border);
+  background: var(--v-panel-bg);
   padding: 1rem;
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--v-subtle);
 }
 
 .mappingTitle {
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
+  font-weight: 750;
+  color: var(--v-label);
 }
 
 .mappingList {
@@ -200,24 +395,54 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.75rem;
 }
 
 .previewTitle {
   font-size: 0.875rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  font-weight: 650;
+  color: var(--v-label);
 }
 
 .previewName {
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--v-preview-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 62%;
 }
 
 .canvasFrame {
   overflow: hidden;
   border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--v-canvas-border);
+  background: var(--v-canvas-bg);
+  box-shadow: var(--v-frame-shadow);
+  position: relative;
+}
+
+.canvasFrame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: var(--v-frame-inner);
+}
+
+.canvasFrame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+    900px circle at 50% 10%,
+    rgba(255, 255, 255, 0.18),
+    transparent 60%
+  );
+  opacity: 0.25;
 }
 
 .canvas {
@@ -225,124 +450,37 @@
   height: auto;
   aspect-ratio: 4 / 5;
   display: block;
+  position: relative;
+  z-index: 1;
 }
 
-:global(html:not(.dark)) .sectionMask,
-:global(html.light) .sectionMask,
-:global(html[data-theme="light"]) .sectionMask {
-  color: #0b1026;
+@media (max-width: 420px) {
+  .primaryBtn,
+  .secondaryBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .previewName {
+    max-width: 55%;
+  }
 }
 
-:global(html:not(.dark)) .blueSection,
-:global(html.light) .blueSection,
-:global(html[data-theme="light"]) .blueSection {
-  background:
-    radial-gradient(1200px circle at 15% 10%, rgba(255, 77, 109, 0.18), transparent 55%),
-    radial-gradient(900px circle at 85% 20%, rgba(199, 125, 255, 0.22), transparent 50%),
-    linear-gradient(180deg, #f6f7ff 0%, #fff1f6 55%, #f6f2ff 100%);
-  color: #0b1026;
-}
-
-:global(html:not(.dark)) .subtitle,
-:global(html.light) .subtitle,
-:global(html[data-theme="light"]) .subtitle {
-  color: rgba(11, 16, 38, 0.65);
-}
-
-:global(html:not(.dark)) .kbd,
-:global(html.light) .kbd,
-:global(html[data-theme="light"]) .kbd {
-  background: rgba(11, 16, 38, 0.08);
-  color: rgba(11, 16, 38, 0.85);
-}
-
-:global(html:not(.dark)) .card,
-:global(html.light) .card,
-:global(html[data-theme="light"]) .card {
-  border: 1px solid rgba(11, 16, 38, 0.12);
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 20px 80px rgba(2, 6, 23, 0.12);
-}
-
-:global(html:not(.dark)) .label,
-:global(html.light) .label,
-:global(html[data-theme="light"]) .label {
-  color: rgba(11, 16, 38, 0.75);
-}
-
-:global(html:not(.dark)) .input,
-:global(html.light) .input,
-:global(html[data-theme="light"]) .input {
-  border: 1px solid rgba(11, 16, 38, 0.18);
-  background: rgba(255, 255, 255, 0.88);
-  color: #0b1026;
-}
-
-:global(html:not(.dark)) .input::placeholder,
-:global(html.light) .input::placeholder,
-:global(html[data-theme="light"]) .input::placeholder {
-  color: rgba(11, 16, 38, 0.35);
-}
-
-:global(html:not(.dark)) .input:focus,
-:global(html.light) .input:focus,
-:global(html[data-theme="light"]) .input:focus {
-  border-color: rgba(11, 16, 38, 0.28);
-  background: rgba(255, 255, 255, 0.94);
-}
-
-:global(html:not(.dark)) .secondaryBtn,
-:global(html.light) .secondaryBtn,
-:global(html[data-theme="light"]) .secondaryBtn {
-  border: 1px solid rgba(11, 16, 38, 0.18);
-  background: rgba(255, 255, 255, 0.65);
-  color: rgba(11, 16, 38, 0.85);
-}
-
-:global(html:not(.dark)) .secondaryBtn:hover,
-:global(html.light) .secondaryBtn:hover,
-:global(html[data-theme="light"]) .secondaryBtn:hover {
-  background: rgba(255, 255, 255, 0.85);
-}
-
-:global(html:not(.dark)) .helper,
-:global(html:not(.dark)) .mapping,
-:global(html.light) .helper,
-:global(html.light) .mapping,
-:global(html[data-theme="light"]) .helper,
-:global(html[data-theme="light"]) .mapping {
-  color: rgba(11, 16, 38, 0.62);
-}
-
-:global(html:not(.dark)) .mappingTitle,
-:global(html.light) .mappingTitle,
-:global(html[data-theme="light"]) .mappingTitle {
-  color: rgba(11, 16, 38, 0.78);
-}
-
-:global(html:not(.dark)) .hint,
-:global(html.light) .hint,
-:global(html[data-theme="light"]) .hint {
-  border: 1px solid rgba(11, 16, 38, 0.12);
-  background: rgba(255, 255, 255, 0.7);
-  color: rgba(11, 16, 38, 0.85);
-}
-
-:global(html:not(.dark)) .previewTitle,
-:global(html.light) .previewTitle,
-:global(html[data-theme="light"]) .previewTitle {
-  color: rgba(11, 16, 38, 0.75);
-}
-
-:global(html:not(.dark)) .previewName,
-:global(html.light) .previewName,
-:global(html[data-theme="light"]) .previewName {
-  color: rgba(11, 16, 38, 0.55);
-}
-
-:global(html:not(.dark)) .canvasFrame,
-:global(html.light) .canvasFrame,
-:global(html[data-theme="light"]) .canvasFrame {
-  border: 1px solid rgba(11, 16, 38, 0.12);
-  background: rgba(255, 255, 255, 0.65);
+@media (max-width: 640px) {
+  .sectionMask {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 6%,
+      black 94%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 6%,
+      black 94%,
+      transparent 100%
+    );
+  }
 }
