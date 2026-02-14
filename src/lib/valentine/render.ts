@@ -161,7 +161,7 @@ export function renderBouquet({
   ctx.fill();
   ctx.restore();
 
-  // flowers on top (layered)
+  // flowers on top
   const sorted = [...flowers].sort((a, b) => b.layer - a.layer);
   for (const f of sorted) drawFlower(ctx, f.kind, f.px, f.py, f.size, f.rot, rng);
 

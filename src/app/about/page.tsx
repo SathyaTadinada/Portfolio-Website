@@ -21,47 +21,67 @@ import portraitImage from '@/images/portrait.jpg'
 
 import {
   BriefcaseIcon,
-  AcademicCapIcon,
-  CodeBracketIcon,
-  CheckBadgeIcon,
+  GraduationCapIcon as AcademicCapIcon,
+  CodeXmlIcon as CodeBracketIcon,
+  BadgeCheckIcon as CheckBadgeIcon,
   SparklesIcon,
-} from '@heroicons/react/24/outline'
+} from 'lucide-react'
 
 function QuickNavChips() {
   const items = [
-    { href: '#experience', label: 'Experience',    Icon: BriefcaseIcon,  color: 'blue'  },
-    { href: '#education',  label: 'Education',     Icon: AcademicCapIcon, color: 'green' },
-    { href: '#tech',       label: 'Tech',          Icon: CodeBracketIcon, color: 'purple'},
-    { href: '#certs',      label: 'Certifications',Icon: CheckBadgeIcon, color: 'amber' },
-    { href: '#fun',        label: 'Fun Facts',     Icon: SparklesIcon,    color: 'pink'  },
+    {
+      href: '#experience',
+      label: 'Experience',
+      Icon: BriefcaseIcon,
+      color: 'blue',
+    },
+    {
+      href: '#education',
+      label: 'Education',
+      Icon: AcademicCapIcon,
+      color: 'green',
+    },
+    { href: '#tech', label: 'Tech', Icon: CodeBracketIcon, color: 'purple' },
+    {
+      href: '#certs',
+      label: 'Certifications',
+      Icon: CheckBadgeIcon,
+      color: 'amber',
+    },
+    { href: '#fun', label: 'Fun Facts', Icon: SparklesIcon, color: 'pink' },
   ] as const
 
   const COLOR: Record<string, { light: string; dark: string }> = {
     blue: {
-      light: 'hover:bg-blue-100 hover:text-blue-800 hover:ring-blue-300 focus-visible:ring-blue-400/60',
-      dark:  'dark:hover:bg-blue-400/10 dark:hover:text-blue-200 dark:hover:ring-blue-300/40',
+      light:
+        'hover:bg-blue-100 hover:text-blue-800 hover:ring-blue-300 focus-visible:ring-blue-400/60',
+      dark: 'dark:hover:bg-blue-400/10 dark:hover:text-blue-200 dark:hover:ring-blue-300/40',
     },
     green: {
-      light: 'hover:bg-green-100 hover:text-green-800 hover:ring-green-300 focus-visible:ring-green-400/60',
-      dark:  'dark:hover:bg-green-400/10 dark:hover:text-green-200 dark:hover:ring-green-300/40',
+      light:
+        'hover:bg-green-100 hover:text-green-800 hover:ring-green-300 focus-visible:ring-green-400/60',
+      dark: 'dark:hover:bg-green-400/10 dark:hover:text-green-200 dark:hover:ring-green-300/40',
     },
     purple: {
-      light: 'hover:bg-purple-100 hover:text-purple-800 hover:ring-purple-300 focus-visible:ring-purple-400/60',
-      dark:  'dark:hover:bg-purple-400/10 dark:hover:text-purple-200 dark:hover:ring-purple-300/40',
+      light:
+        'hover:bg-purple-100 hover:text-purple-800 hover:ring-purple-300 focus-visible:ring-purple-400/60',
+      dark: 'dark:hover:bg-purple-400/10 dark:hover:text-purple-200 dark:hover:ring-purple-300/40',
     },
     amber: {
-      light: 'hover:bg-amber-100 hover:text-amber-800 hover:ring-amber-300 focus-visible:ring-amber-400/60',
-      dark:  'dark:hover:bg-amber-400/10 dark:hover:text-amber-200 dark:hover:ring-amber-300/40',
+      light:
+        'hover:bg-amber-100 hover:text-amber-800 hover:ring-amber-300 focus-visible:ring-amber-400/60',
+      dark: 'dark:hover:bg-amber-400/10 dark:hover:text-amber-200 dark:hover:ring-amber-300/40',
     },
     pink: {
-      light: 'hover:bg-pink-100 hover:text-pink-800 hover:ring-pink-300 focus-visible:ring-pink-400/60',
-      dark:  'dark:hover:bg-pink-400/10 dark:hover:text-pink-200 dark:hover:ring-pink-300/40',
+      light:
+        'hover:bg-pink-100 hover:text-pink-800 hover:ring-pink-300 focus-visible:ring-pink-400/60',
+      dark: 'dark:hover:bg-pink-400/10 dark:hover:text-pink-200 dark:hover:ring-pink-300/40',
     },
   }
 
   return (
     <div className="mt-6">
-      <p className="text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+      <p className="text-xs tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
         Jump to
       </p>
       <ul className="mt-2 flex flex-wrap gap-3">
@@ -74,9 +94,9 @@ function QuickNavChips() {
                 className={[
                   'group inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors duration-150',
                   'backdrop-blur-sm dark:backdrop-blur-none',
-                  
-                  'bg-zinc-100 ring-1 ring-inset ring-zinc-300 text-zinc-700',
-                  'dark:bg-zinc-800/60 dark:ring-white/10 dark:text-zinc-200',
+
+                  'bg-zinc-100 text-zinc-700 ring-1 ring-zinc-300 ring-inset',
+                  'dark:bg-zinc-800/60 dark:text-zinc-200 dark:ring-white/10',
 
                   'focus:outline-none focus-visible:ring-2',
 
@@ -95,7 +115,6 @@ function QuickNavChips() {
     </div>
   )
 }
-
 
 export const metadata: Metadata = {
   title: 'About',
@@ -126,56 +145,93 @@ export default function About() {
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              My journey in computer science started all the way back in middle school,
-              when I first interacted with computers and realized their potential and
-              usefulness as a vessel for creativity and problem-solving, along with
-              providing a personal platform to solve any problems I came across in my
-              day-to-day life. As such, I was very intrigued by the realm of software
-              development as a professional parallel to my personal interests.
+              My journey in computer science started all the way back in middle
+              school, when I first interacted with computers and realized their
+              potential and usefulness as a vessel for creativity and
+              problem-solving, along with providing a personal platform to solve
+              any problems I came across in my day-to-day life. As such, I was
+              very intrigued by the realm of software development as a
+              professional parallel to my personal interests.
             </p>
             <p>
-              In high school and college, I was introduced to the world of theoretical
-              computer science (including the mathematical underpinnings of computation),
-              which further solidified my interest in the field. I was particularly
-              fascinated by the idea of using computers to solve complex problems and
-              create new technologies that could leave a positive impact on the world.
-              As a result, I’ve been very interested in pursuing any opportunities that
-              allow me to study mathematics and theoretical computer science - along with
-              the practical applications of these fields in software development.
+              In high school and college, I was introduced to the world of
+              theoretical computer science (including the mathematical
+              underpinnings of computation), which further solidified my
+              interest in the field. I was particularly fascinated by the idea
+              of using computers to solve complex problems and create new
+              technologies that could leave a positive impact on the world. As a
+              result, I’ve been very interested in pursuing any opportunities
+              that allow me to study mathematics and theoretical computer
+              science - along with the practical applications of these fields in
+              software development.
             </p>
           </div>
         </div>
       </div>
 
       {/* Experience Section */}
-      <section id="experience" className="scroll-mt-28 mt-16 rounded-xl bg-zinc-50 dark:bg-zinc-800/25 p-8 shadow-sm">
+      <section
+        id="experience"
+        className="mt-16 scroll-mt-28 rounded-xl bg-zinc-50 p-8 shadow-sm dark:bg-zinc-800/25"
+      >
         <div className="flex items-center space-x-3">
           <BriefcaseIcon className="h-7 w-7 text-blue-500" />
-          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Experience</h2>
+          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
+            Experience
+          </h2>
         </div>
 
         <div className="mt-8 space-y-10 text-zinc-600 dark:text-zinc-400">
+          {/* Teaching Assistant */}
+          <div>
+            <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+              Lead Teaching Assistant: Kahlert School of Computing
+            </h3>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              Aug. 2024 – Present · Salt Lake City, UT
+            </p>
+            <ul className="mt-3 list-inside list-disc space-y-1.5 text-[15px] leading-relaxed">
+              <li>
+                Grade exams and assignments for CS 3100 (Models of Computation),
+                providing detailed feedback on automata theory, Turing machines,
+                and formal languages to reinforce rigorous proof techniques.
+              </li>
+              <li>
+                Develop practice materials and exam preparation resources on
+                various topics (e.g., pumping lemma, DFA/NFA design,
+                reductions).
+              </li>
+              <li>
+                Lead weekly review sessions for 100+ students, clarifying
+                complex theoretical concepts and formal proof strategies.
+              </li>
+            </ul>
+          </div>
+
           {/* SPS Internship */}
           <div>
             <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
               Software Engineering Intern: Select Portfolio Servicing
             </h3>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">May 2025 – Present · Salt Lake City, UT</p>
-            <ul className="list-disc list-inside mt-3 space-y-1.5 text-[15px] leading-relaxed">
-              <li>Converted SAS code to SQL and Python for the Advance Continuation Model (ACM), replicating a full backward elimination regression model.</li>
-              <li>Debugged and improved a real-time LLM-powered Call Summarization tool used in the company’s call center.</li>
-            </ul>
-          </div>
-
-          {/* Teaching Assistant */}
-          <div>
-            <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
-              Undergraduate Teaching Assistant: Kahlert School of Computing
-            </h3>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">Aug 2024 – Present · Salt Lake City, UT</p>
-            <ul className="list-disc list-inside mt-3 space-y-1.5 text-[15px] leading-relaxed">
-              <li>Graded exams and assignments in automata theory, Turing machines, and formal languages, offering detailed feedback to enhance understanding.</li>
-              <li>Led weekly review sessions for 100+ students, resulting in a 15% increase in exam performance.</li>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              May 2025 – Aug. 2025 · West Valley City, UT
+            </p>
+            <ul className="mt-3 list-inside list-disc space-y-1.5 text-[15px] leading-relaxed">
+              <li>
+                Rebuilt the Advance Continuation Model (ACM) pipeline by porting
+                10 SAS regression models into Python and SQL, reducing runtime
+                from 5 days to 30 seconds (99.99% improvement) while preserving
+                statistical fidelity.
+              </li>
+              <li>
+                Replicated a full backwards elimination regression workflow and
+                validated coefficient equivalence across platforms.
+              </li>
+              <li>
+                Improved reliability of an LLM-powered call summarization system
+                by implementing retry logic, structured error logging, and
+                pipeline validation - reducing failed summaries by 80%.
+              </li>
             </ul>
           </div>
 
@@ -184,10 +240,20 @@ export default function About() {
             <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
               Tech Track Mentor: Ken Garff Esports (Success in Education)
             </h3>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">Jul 2024 – Aug 2024 · West Valley City, UT</p>
-            <ul className="list-disc list-inside mt-3 space-y-1.5 text-[15px] leading-relaxed">
-              <li>Taught students foundational cybersecurity and software development using the GameMaker engine, culminating in two completed projects.</li>
-              <li>Delivered four technology career seminars, boosting summer camp engagement by 25% and inspiring long-term interest in tech pathways.</li>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              Jul. 2024 – Aug. 2024 · West Valley City, UT
+            </p>
+            <ul className="mt-3 list-inside list-disc space-y-1.5 text-[15px] leading-relaxed">
+              <li>
+                Taught students foundational cybersecurity and software
+                development using the GameMaker engine, culminating in two
+                completed projects.
+              </li>
+              <li>
+                Delivered four technology career seminars, boosting summer camp
+                engagement by 25% and inspiring long-term interest in tech
+                pathways.
+              </li>
             </ul>
           </div>
 
@@ -196,42 +262,53 @@ export default function About() {
             <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
               Undergraduate Research Assistant: Human-Centered Computing Lab
             </h3>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">Feb 2023 – Aug 2023 · Salt Lake City, UT</p>
-            <ul className="list-disc list-inside mt-3 space-y-1.5 text-[15px] leading-relaxed">
-              <li>Resolved code inconsistencies and improved code clarity by 25%, accelerating project delivery timelines.</li>
-              <li>Synthesized qualitative data into eight actionable instructional recommendations, improving student code quality metrics by 10%.</li>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              Feb 2023 – Aug 2023 · Salt Lake City, UT
+            </p>
+            <ul className="mt-3 list-inside list-disc space-y-1.5 text-[15px] leading-relaxed">
+              <li>
+                Resolved code inconsistencies and improved code clarity by 25%,
+                accelerating project delivery timelines.
+              </li>
+              <li>
+                Synthesized qualitative data into eight actionable instructional
+                recommendations, improving student code quality metrics by 10%.
+              </li>
             </ul>
           </div>
         </div>
       </section>
 
-      {/* Education Section (shrunk to match Experience title sizes) */}
-      <section id="education" className="scroll-mt-28 mt-16 rounded-xl bg-zinc-50 dark:bg-zinc-800/25 p-8 shadow-sm">
+      <section
+        id="education"
+        className="mt-16 scroll-mt-28 rounded-xl bg-zinc-50 p-8 shadow-sm dark:bg-zinc-800/25"
+      >
         <div className="flex items-center space-x-3">
           <AcademicCapIcon className="h-7 w-7 text-green-500" />
-          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Education</h2>
+          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
+            Education
+          </h2>
         </div>
 
         <div className="mt-8 text-zinc-600 dark:text-zinc-400">
-          {/* Match Experience item title size */}
           <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
             University of Utah
           </h3>
 
-          {/* Keep degrees on one line from sm and up; match Experience meta sizing */}
-          <p className="mt-2 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 sm:whitespace-nowrap">
-            Honors B.S. Computer Science · B.S. Applied Mathematics · Minor in Psychology
+          <p className="mt-2 text-xs text-zinc-500 sm:text-sm sm:whitespace-nowrap dark:text-zinc-400">
+            Honors B.S. Computer Science · B.S. Applied Mathematics · Minor in
+            Psychology
           </p>
-          <p className="mt-1 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="mt-1 text-xs text-zinc-500 sm:text-sm dark:text-zinc-400">
             Expected Graduation: May 2026
           </p>
 
           <div className="my-6 border-t border-dashed border-zinc-200 dark:border-zinc-700/50" />
 
-          {/* Columns (unchanged) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+          {/* Columns */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-10">
             <div>
-              <h4 className="text-base font-semibold uppercase tracking-wide text-zinc-800 dark:text-zinc-100">
+              <h4 className="text-base font-semibold tracking-wide text-zinc-800 uppercase dark:text-zinc-100">
                 GPA &amp; Honors
               </h4>
               <p className="mt-2 text-sm leading-relaxed">
@@ -240,124 +317,162 @@ export default function About() {
             </div>
 
             <div>
-              <h4 className="text-base font-semibold uppercase tracking-wide text-zinc-800 dark:text-zinc-100">
+              <h4 className="text-base font-semibold tracking-wide text-zinc-800 uppercase dark:text-zinc-100">
                 Relevant Coursework
               </h4>
               <p className="mt-2 text-sm leading-relaxed">
-                Data Structures &amp; Algorithms, Software Practice I–II, Discrete Mathematics, Linear Algebra,
-                Models of Computation, Computer Systems, Number Theory
+                Data Structures &amp; Algorithms, Software Practice I–II,
+                Discrete Mathematics, Linear Algebra, Models of Computation,
+                Computer Systems, Number Theory
               </p>
             </div>
           </div>
 
           <div className="mt-8">
-            <h4 className="text-base font-semibold uppercase tracking-wide text-zinc-800 dark:text-zinc-100">
+            <h4 className="text-base font-semibold tracking-wide text-zinc-800 uppercase dark:text-zinc-100">
               Notable Projects
             </h4>
-            <ul className="mt-2 list-disc list-inside space-y-1.5 text-sm leading-relaxed">
-              <li>Built a spreadsheet app with C# + MAUI using the MVC pattern.</li>
+            <ul className="mt-2 list-inside list-disc space-y-1.5 text-sm leading-relaxed">
+              <li>
+                Built a spreadsheet app with C# + MAUI using the MVC pattern.
+              </li>
               <li>Developed a C# chat application using HTTPS/TCP.</li>
-              <li>Implemented a multiplayer snake game (networking &amp; sockets).</li>
+              <li>
+                Implemented a multiplayer snake game (networking &amp; sockets).
+              </li>
               <li>Wrote a fully functional custom malloc in C.</li>
             </ul>
           </div>
         </div>
       </section>
 
-
-
       {/* Proficient Technologies Section */}
-      <section id="tech" className="mt-16 rounded-xl bg-zinc-50 dark:bg-zinc-800/25 p-8 shadow-sm">
+      <section
+        id="tech"
+        className="mt-16 rounded-xl bg-zinc-50 p-8 shadow-sm dark:bg-zinc-800/25"
+      >
         <div className="flex items-center space-x-3">
           <CodeBracketIcon className="h-7 w-7 text-purple-500" />
-          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Proficient Technologies</h2>
+          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
+            Proficient Technologies
+          </h2>
         </div>
 
-        {/* ↓ gap is a bit tighter on mobile to give labels more room */}
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 text-zinc-700 dark:text-zinc-300">
+        <div className="mt-6 grid grid-cols-2 gap-4 text-zinc-700 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 dark:text-zinc-300">
           <div className="flex min-w-0 items-center space-x-3">
-            <JavaIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Java</span>
+            <JavaIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+              Java
+            </span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
-            <RustIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Rust</span>
+            <RustIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+              Rust
+            </span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
-            <PythonIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Python</span>
+            <PythonIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+              Python
+            </span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
-            <TypeScriptIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+            <TypeScriptIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
               TypeScript
             </span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
-            <CIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">C</span>
+            <CIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+              C
+            </span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
-            <CPlusPlusIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">C++</span>
+            <CPlusPlusIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+              C++
+            </span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
-            <CSharpIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">C#</span>
-          </div>
-          
-          <div className="flex min-w-0 items-center space-x-3">
-            <SQLIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">SQL</span>
-          </div>
-          
-          <div className="flex min-w-0 items-center space-x-3">
-            <RIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">R</span>
+            <CSharpIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+              C#
+            </span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
-            <NextJSIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Next.js</span>
+            <SQLIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+              SQL
+            </span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
-            <FlutterIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Flutter</span>
+            <RIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+              R
+            </span>
           </div>
 
           <div className="flex min-w-0 items-center space-x-3">
-            <PyTorchIcon className="h-6 w-6 flex-none fill-zinc-700 dark:fill-zinc-200 transition" />
-            <span className="min-w-0 wrap-break-word text-sm sm:text-base text-zinc-600 dark:text-zinc-400">PyTorch</span>
+            <NextJSIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+              Next.js
+            </span>
+          </div>
+
+          <div className="flex min-w-0 items-center space-x-3">
+            <FlutterIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+              Flutter
+            </span>
+          </div>
+
+          <div className="flex min-w-0 items-center space-x-3">
+            <PyTorchIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+              PyTorch
+            </span>
           </div>
         </div>
       </section>
 
-
       {/* Certifications Section */}
-      <section id="certs" className="mt-16 rounded-xl bg-zinc-50 dark:bg-zinc-800/25 p-8 shadow-sm">
+      <section
+        id="certs"
+        className="mt-16 rounded-xl bg-zinc-50 p-8 shadow-sm dark:bg-zinc-800/25"
+      >
         <div className="flex items-center space-x-3">
           <CheckBadgeIcon className="h-7 w-7 text-yellow-500" />
-          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Certifications</h2>
+          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
+            Certifications
+          </h2>
         </div>
-        <ul className="mt-6 list-disc list-inside space-y-2 text-base text-zinc-600 dark:text-zinc-400">
+        <ul className="mt-6 list-inside list-disc space-y-2 text-base text-zinc-600 dark:text-zinc-400">
           <li>MTA: Introduction to Programming Using Java (Microsoft)</li>
         </ul>
       </section>
 
       {/* Fun Facts Section */}
-      <section id="fun" className="scroll-mt-28 mt-16 rounded-xl bg-zinc-50 dark:bg-zinc-800/25 p-8 shadow-sm">
+      <section
+        id="fun"
+        className="mt-16 scroll-mt-28 rounded-xl bg-zinc-50 p-8 shadow-sm dark:bg-zinc-800/25"
+      >
         <div className="flex items-center space-x-3">
           <SparklesIcon className="h-7 w-7 text-pink-500" />
-          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Fun Facts</h2>
+          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
+            Fun Facts
+          </h2>
         </div>
-        <ul className="mt-6 list-disc list-inside space-y-2 text-base text-zinc-600 dark:text-zinc-400">
+        <ul className="mt-6 list-inside list-disc space-y-2 text-base text-zinc-600 dark:text-zinc-400">
           <li>I compose music and play badminton in my free time.</li>
           <li>I enjoy watching TV shows and movies.</li>
           <li>I love traveling!</li>
@@ -366,7 +481,6 @@ export default function About() {
     </Container>
   )
 }
-
 
 // function Proficiency({ level = 3 }: { level?: 1 | 2 | 3 }) {
 //   return (
