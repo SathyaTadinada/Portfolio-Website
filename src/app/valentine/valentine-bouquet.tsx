@@ -364,7 +364,7 @@ export default function ValentineBouquet() {
         ctx.shadowBlur = 0;
         ctx.fillStyle = "rgba(255,255,255,0.65)";
         ctx.font = `500 28px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial`;
-        ctx.fillText("a bouquet made from your name", EXPORT_W / 2, 275);
+        ctx.fillText("a special bouquet for you", EXPORT_W / 2, 280);
         ctx.restore();
 
         const n = bouquetSpec.kinds.length;
