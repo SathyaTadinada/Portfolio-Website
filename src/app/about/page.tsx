@@ -1,5 +1,6 @@
 import { type Metadata } from 'next'
 import Image from 'next/image'
+import portraitImage from '@/images/portrait.jpg'
 
 import { Container } from '@/components/Container'
 import {
@@ -16,15 +17,19 @@ import {
   CIcon,
   RIcon,
   SQLIcon,
+  SwiftIcon,
+  DockerIcon,
+  ReactIcon,
+  GitHubIcon,
 } from '@/components/CodingIcons'
-import portraitImage from '@/images/portrait.jpg'
 
 import {
   BriefcaseIcon,
   GraduationCapIcon as AcademicCapIcon,
   CodeXmlIcon as CodeBracketIcon,
-  BadgeCheckIcon as CheckBadgeIcon,
   SparklesIcon,
+  UsersIcon,
+  WrenchIcon,
 } from 'lucide-react'
 
 function QuickNavChips() {
@@ -41,41 +46,52 @@ function QuickNavChips() {
       Icon: AcademicCapIcon,
       color: 'green',
     },
-    { href: '#tech', label: 'Tech', Icon: CodeBracketIcon, color: 'purple' },
     {
-      href: '#certs',
-      label: 'Certifications',
-      Icon: CheckBadgeIcon,
+      href: '#projects',
+      label: 'Projects',
+      Icon: CodeBracketIcon,
+      color: 'red',
+    },
+    {
+      href: '#activities',
+      label: 'Activities',
+      Icon: UsersIcon,
       color: 'amber',
     },
+    { href: '#skills', label: 'Skills', Icon: WrenchIcon, color: 'purple' },
     { href: '#fun', label: 'Fun Facts', Icon: SparklesIcon, color: 'pink' },
   ] as const
 
   const COLOR: Record<string, { light: string; dark: string }> = {
     blue: {
       light:
-        'hover:bg-blue-100 hover:text-blue-800 hover:ring-blue-300 focus-visible:ring-blue-400/60',
-      dark: 'dark:hover:bg-blue-400/10 dark:hover:text-blue-200 dark:hover:ring-blue-300/40',
+        'hover:bg-[#387DEA]/10 hover:text-[#387DEA] hover:ring-[#387DEA]/35 focus-visible:ring-[#387DEA]/55',
+      dark: 'dark:hover:bg-[#387DEA]/15 dark:hover:text-[#387DEA] dark:hover:ring-[#387DEA]/40',
     },
     green: {
       light:
-        'hover:bg-green-100 hover:text-green-800 hover:ring-green-300 focus-visible:ring-green-400/60',
-      dark: 'dark:hover:bg-green-400/10 dark:hover:text-green-200 dark:hover:ring-green-300/40',
+        'hover:bg-[#52B358]/10 hover:text-[#52B358] hover:ring-[#52B358]/35 focus-visible:ring-[#52B358]/55',
+      dark: 'dark:hover:bg-[#52B358]/15 dark:hover:text-[#52B358] dark:hover:ring-[#52B358]/40',
     },
-    purple: {
+    red: {
       light:
-        'hover:bg-purple-100 hover:text-purple-800 hover:ring-purple-300 focus-visible:ring-purple-400/60',
-      dark: 'dark:hover:bg-purple-400/10 dark:hover:text-purple-200 dark:hover:ring-purple-300/40',
+        'hover:bg-[#E55248]/10 hover:text-[#E55248] hover:ring-[#E55248]/35 focus-visible:ring-[#E55248]/55',
+      dark: 'dark:hover:bg-[#E55248]/15 dark:hover:text-[#E55248] dark:hover:ring-[#E55248]/40',
     },
     amber: {
       light:
         'hover:bg-amber-100 hover:text-amber-800 hover:ring-amber-300 focus-visible:ring-amber-400/60',
       dark: 'dark:hover:bg-amber-400/10 dark:hover:text-amber-200 dark:hover:ring-amber-300/40',
     },
+    purple: {
+      light:
+        'hover:bg-[#914EF4]/10 hover:text-[#914EF4] hover:ring-[#914EF4]/35 focus-visible:ring-[#914EF4]/55',
+      dark: 'dark:hover:bg-[#914EF4]/15 dark:hover:text-[#914EF4] dark:hover:ring-[#914EF4]/40',
+    },
     pink: {
       light:
-        'hover:bg-pink-100 hover:text-pink-800 hover:ring-pink-300 focus-visible:ring-pink-400/60',
-      dark: 'dark:hover:bg-pink-400/10 dark:hover:text-pink-200 dark:hover:ring-pink-300/40',
+        'hover:bg-[#E662A7]/10 hover:text-[#E662A7] hover:ring-[#E662A7]/35 focus-visible:ring-[#E662A7]/55',
+      dark: 'dark:hover:bg-[#E662A7]/15 dark:hover:text-[#E662A7] dark:hover:ring-[#E662A7]/40',
     },
   }
 
@@ -104,7 +120,6 @@ function QuickNavChips() {
                   dark,
                 ].join(' ')}
               >
-                {/* icon follows text color on hover via text-current */}
                 <Icon className="h-4 w-4 text-current" />
                 <span className="text-current">{label}</span>
               </a>
@@ -116,10 +131,26 @@ function QuickNavChips() {
   )
 }
 
+function TextBadge({ text }: { text: string }) {
+  return (
+    <div className="flex h-6 w-6 flex-none items-center justify-center rounded-md bg-zinc-200 text-[10px] font-semibold text-zinc-700 dark:bg-zinc-700/50 dark:text-zinc-200">
+      {text}
+    </div>
+  )
+}
+
+function Pill({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center rounded-lg bg-zinc-100 px-3 py-1 text-sm text-zinc-700 ring-1 ring-zinc-200 ring-inset dark:bg-zinc-900/40 dark:text-zinc-200 dark:ring-white/10">
+      {children}
+    </span>
+  )
+}
+
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'I’m Sathya Tadinada. I live in Salt Lake City, where I shape tomorrow’s potential.',
+    'I’m Sathya Tadinada — an Honors CS + Applied Math student at the University of Utah (incoming MS CS). I build full-stack systems and love theory-backed engineering.',
 }
 
 export default function About() {
@@ -145,25 +176,25 @@ export default function About() {
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              My journey in computer science started all the way back in middle
-              school, when I first interacted with computers and realized their
-              potential and usefulness as a vessel for creativity and
-              problem-solving, along with providing a personal platform to solve
-              any problems I came across in my day-to-day life. As such, I was
-              very intrigued by the realm of software development as a
-              professional parallel to my personal interests.
+              I’m an Honors Computer Science and Applied Mathematics student at
+              the University of Utah, and I love working at the intersection of
+              rigorous theory and practical systems.
             </p>
             <p>
-              In high school and college, I was introduced to the world of
-              theoretical computer science (including the mathematical
-              underpinnings of computation), which further solidified my
-              interest in the field. I was particularly fascinated by the idea
-              of using computers to solve complex problems and create new
-              technologies that could leave a positive impact on the world. As a
-              result, I’ve been very interested in pursuing any opportunities
-              that allow me to study mathematics and theoretical computer
-              science - along with the practical applications of these fields in
-              software development.
+              My journey in computer science started back in middle school, when
+              I first interacted with computers and realized their potential as
+              a vessel for creativity and problem-solving. I was especially
+              drawn to software development because it let me build tools to
+              solve problems I ran into day to day.
+            </p>
+            <p>
+              In high school and college, I was introduced to theoretical
+              computer science and the mathematical underpinnings of
+              computation, which further solidified my interest in the field. I
+              became fascinated by using computation to tackle complex problems
+              and build technology that can leave a positive impact, and I’ve
+              been seeking opportunities that blend mathematics, theory, and
+              practical software engineering.
             </p>
           </div>
         </div>
@@ -182,10 +213,11 @@ export default function About() {
         </div>
 
         <div className="mt-8 space-y-10 text-zinc-600 dark:text-zinc-400">
-          {/* Teaching Assistant */}
+          {/* Lead TA */}
           <div>
             <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
-              Lead Teaching Assistant: Kahlert School of Computing
+              Lead Teaching Assistant · University of Utah / Kahlert School of
+              Computing
             </h3>
             <p className="text-sm text-zinc-500 dark:text-zinc-400">
               Aug. 2024 – Present · Salt Lake City, UT
@@ -211,7 +243,7 @@ export default function About() {
           {/* SPS Internship */}
           <div>
             <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
-              Software Engineering Intern: Select Portfolio Servicing
+              Software Engineering Intern · Select Portfolio Servicing, Inc.
             </h3>
             <p className="text-sm text-zinc-500 dark:text-zinc-400">
               May 2025 – Aug. 2025 · West Valley City, UT
@@ -230,29 +262,7 @@ export default function About() {
               <li>
                 Improved reliability of an LLM-powered call summarization system
                 by implementing retry logic, structured error logging, and
-                pipeline validation - reducing failed summaries by 80%.
-              </li>
-            </ul>
-          </div>
-
-          {/* Ken Garff Esports */}
-          <div>
-            <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
-              Tech Track Mentor: Ken Garff Esports (Success in Education)
-            </h3>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">
-              Jul. 2024 – Aug. 2024 · West Valley City, UT
-            </p>
-            <ul className="mt-3 list-inside list-disc space-y-1.5 text-[15px] leading-relaxed">
-              <li>
-                Taught students foundational cybersecurity and software
-                development using the GameMaker engine, culminating in two
-                completed projects.
-              </li>
-              <li>
-                Delivered four technology career seminars, boosting summer camp
-                engagement by 25% and inspiring long-term interest in tech
-                pathways.
+                pipeline validation — reducing failed summaries by 80%.
               </li>
             </ul>
           </div>
@@ -260,25 +270,28 @@ export default function About() {
           {/* HCC Research */}
           <div>
             <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
-              Undergraduate Research Assistant: Human-Centered Computing Lab
+              Undergraduate Researcher · University of Utah / Human-Centered
+              Computing Research Lab
             </h3>
             <p className="text-sm text-zinc-500 dark:text-zinc-400">
-              Feb 2023 – Aug 2023 · Salt Lake City, UT
+              Feb. 2023 – Aug. 2023 · Salt Lake City, UT
             </p>
             <ul className="mt-3 list-inside list-disc space-y-1.5 text-[15px] leading-relaxed">
               <li>
-                Resolved code inconsistencies and improved code clarity by 25%,
-                accelerating project delivery timelines.
+                Improved software quality by resolving code inconsistencies and
+                standardizing coding conventions across research prototypes.
               </li>
               <li>
-                Synthesized qualitative data into eight actionable instructional
-                recommendations, improving student code quality metrics by 10%.
+                Collaborated with researchers to synthesize qualitative data
+                into 8 actionable recommendations for instructional
+                enhancements, improving coding style test metrics by 10%.
               </li>
             </ul>
           </div>
         </div>
       </section>
 
+      {/* Education Section */}
       <section
         id="education"
         className="mt-16 scroll-mt-28 rounded-xl bg-zinc-50 p-8 shadow-sm dark:bg-zinc-800/25"
@@ -290,175 +303,339 @@ export default function About() {
           </h2>
         </div>
 
-        <div className="mt-8 text-zinc-600 dark:text-zinc-400">
-          <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
-            University of Utah
-          </h3>
-
-          <p className="mt-2 text-xs text-zinc-500 sm:text-sm sm:whitespace-nowrap dark:text-zinc-400">
-            Honors B.S. Computer Science · B.S. Applied Mathematics · Minor in
-            Psychology
-          </p>
-          <p className="mt-1 text-xs text-zinc-500 sm:text-sm dark:text-zinc-400">
-            Expected Graduation: May 2026
-          </p>
-
-          <div className="my-6 border-t border-dashed border-zinc-200 dark:border-zinc-700/50" />
-
-          {/* Columns */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-10">
-            <div>
-              <h4 className="text-base font-semibold tracking-wide text-zinc-800 uppercase dark:text-zinc-100">
-                GPA &amp; Honors
-              </h4>
-              <p className="mt-2 text-sm leading-relaxed">
-                GPA: 3.98 · Dean’s List
-              </p>
-            </div>
-
-            <div>
-              <h4 className="text-base font-semibold tracking-wide text-zinc-800 uppercase dark:text-zinc-100">
-                Relevant Coursework
-              </h4>
-              <p className="mt-2 text-sm leading-relaxed">
-                Data Structures &amp; Algorithms, Software Practice I–II,
-                Discrete Mathematics, Linear Algebra, Models of Computation,
-                Computer Systems, Number Theory
-              </p>
-            </div>
+        <div className="mt-8 space-y-10 text-zinc-600 dark:text-zinc-400">
+          {/* MS */}
+          <div>
+            <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+              University of Utah
+            </h3>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+              Master of Science in Computer Science
+            </p>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+              Aug. 2026 – May 2027 · Salt Lake City, UT
+            </p>
           </div>
 
-          <div className="mt-8">
-            <h4 className="text-base font-semibold tracking-wide text-zinc-800 uppercase dark:text-zinc-100">
-              Notable Projects
-            </h4>
-            <ul className="mt-2 list-inside list-disc space-y-1.5 text-sm leading-relaxed">
+          <div className="border-t border-dashed border-zinc-200 dark:border-zinc-700/50" />
+
+          {/* BS */}
+          <div>
+            <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+              University of Utah
+            </h3>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+              Honors Bachelor of Science in Computer Science · Bachelor of
+              Science in Applied Mathematics
+            </p>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+              Aug. 2022 – May 2026 · Salt Lake City, UT
+            </p>
+
+            <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-10">
+              <div>
+                <h4 className="text-base font-semibold tracking-wide text-zinc-800 uppercase dark:text-zinc-100">
+                  GPA &amp; Honors
+                </h4>
+                <p className="mt-2 text-sm leading-relaxed">
+                  GPA: 3.950 · Dean’s List
+                </p>
+                <p className="mt-2 text-sm leading-relaxed">
+                  Minor: Psychology
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-base font-semibold tracking-wide text-zinc-800 uppercase dark:text-zinc-100">
+                  Courses
+                </h4>
+                <p className="mt-2 text-sm leading-relaxed">
+                  Discrete Mathematics, Linear Algebra, Computer Systems,
+                  Advanced Algorithms, Models of Computation
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section
+        id="projects"
+        className="mt-16 scroll-mt-28 rounded-xl bg-zinc-50 p-8 shadow-sm dark:bg-zinc-800/25"
+      >
+        <div className="flex items-center space-x-3">
+          <CodeBracketIcon className="h-7 w-7 text-red-500" />
+          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
+            Projects
+          </h2>
+        </div>
+
+        <div className="mt-8 space-y-10 text-zinc-600 dark:text-zinc-400">
+          {/* FreezeTag */}
+          <div>
+            <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+              FreezeTag: Self-Hosted Image Tagging Platform
+            </h3>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              Go, Next.js, TypeScript, Python, REST APIs · Aug. 2025 – Present
+            </p>
+            <ul className="mt-3 list-inside list-disc space-y-1.5 text-[15px] leading-relaxed">
               <li>
-                Built a spreadsheet app with C# + MAUI using the MVC pattern.
+                Designed and implemented a full-stack image management platform
+                with a Go (Gin) backend and Next.js frontend.
               </li>
-              <li>Developed a C# chat application using HTTPS/TCP.</li>
               <li>
-                Implemented a multiplayer snake game (networking &amp; sockets).
+                Built RESTful APIs for image metadata extraction, tagging, and
+                search with typed Result/Option abstractions.
               </li>
-              <li>Wrote a fully functional custom malloc in C.</li>
+              <li>
+                Implemented a modular architecture for automated tagging
+                (Python-based vision model integration) and third-party plugins.
+              </li>
+              <li>
+                Developed tag-based search and filtering UI with caching to
+                reduce redundant API calls and improve perceived load time.
+              </li>
+            </ul>
+          </div>
+
+          {/* Deferred Rendering */}
+          <div>
+            <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+              Deferred Rendering Engine
+            </h3>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              C++, OpenGL, FreeGLUT · Mar. 2025 – Apr. 2025
+            </p>
+            <ul className="mt-3 list-inside list-disc space-y-1.5 text-[15px] leading-relaxed">
+              <li>
+                Built a deferred rendering pipeline with geometry and lighting
+                passes, multiple render targets, and physically based shading.
+              </li>
+              <li>
+                Implemented light volume rendering supporting 128 dynamic lights
+                and optimized fragment shading for high-density scenes.
+              </li>
+            </ul>
+          </div>
+
+          {/* Allocator */}
+          <div>
+            <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+              Custom Memory Allocator
+            </h3>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              C, Makefile · Oct. 2024 – Nov. 2024
+            </p>
+            <ul className="mt-3 list-inside list-disc space-y-1.5 text-[15px] leading-relaxed">
+              <li>
+                Implemented a malloc-style memory allocator with free lists,
+                block splitting/coalescing, and alignment guarantees, validating
+                behavior under fragmentation stress tests.
+              </li>
             </ul>
           </div>
         </div>
       </section>
 
-      {/* Proficient Technologies Section */}
+      {/* Activities Section */}
       <section
-        id="tech"
-        className="mt-16 rounded-xl bg-zinc-50 p-8 shadow-sm dark:bg-zinc-800/25"
+        id="activities"
+        className="mt-16 scroll-mt-28 rounded-xl bg-zinc-50 p-8 shadow-sm dark:bg-zinc-800/25"
       >
         <div className="flex items-center space-x-3">
-          <CodeBracketIcon className="h-7 w-7 text-purple-500" />
+          <UsersIcon className="h-7 w-7 text-amber-500" />
           <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
-            Proficient Technologies
+            Activities
           </h2>
         </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-4 text-zinc-700 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 dark:text-zinc-300">
-          <div className="flex min-w-0 items-center space-x-3">
-            <JavaIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
-            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
-              Java
-            </span>
-          </div>
-
-          <div className="flex min-w-0 items-center space-x-3">
-            <RustIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
-            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
-              Rust
-            </span>
-          </div>
-
-          <div className="flex min-w-0 items-center space-x-3">
-            <PythonIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
-            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
-              Python
-            </span>
-          </div>
-
-          <div className="flex min-w-0 items-center space-x-3">
-            <TypeScriptIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
-            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
-              TypeScript
-            </span>
-          </div>
-
-          <div className="flex min-w-0 items-center space-x-3">
-            <CIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
-            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
-              C
-            </span>
-          </div>
-
-          <div className="flex min-w-0 items-center space-x-3">
-            <CPlusPlusIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
-            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
-              C++
-            </span>
-          </div>
-
-          <div className="flex min-w-0 items-center space-x-3">
-            <CSharpIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
-            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
-              C#
-            </span>
-          </div>
-
-          <div className="flex min-w-0 items-center space-x-3">
-            <SQLIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
-            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
-              SQL
-            </span>
-          </div>
-
-          <div className="flex min-w-0 items-center space-x-3">
-            <RIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
-            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
-              R
-            </span>
-          </div>
-
-          <div className="flex min-w-0 items-center space-x-3">
-            <NextJSIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
-            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
-              Next.js
-            </span>
-          </div>
-
-          <div className="flex min-w-0 items-center space-x-3">
-            <FlutterIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
-            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
-              Flutter
-            </span>
-          </div>
-
-          <div className="flex min-w-0 items-center space-x-3">
-            <PyTorchIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
-            <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
-              PyTorch
-            </span>
-          </div>
+        <div className="mt-8 text-zinc-600 dark:text-zinc-400">
+          <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+            Co-Founder, President · Software Development Club
+          </h3>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+            May 2023 – Present · Salt Lake City, UT
+          </p>
+          <ul className="mt-3 list-inside list-disc space-y-1.5 text-[15px] leading-relaxed">
+            <li>
+              Coordinated a month-long online hackathon and portfolio website
+              competition achieving 90%+ member participation.
+            </li>
+            <li>
+              Increased active member participation by 60% through strategic
+              partnerships and high-impact events.
+            </li>
+            <li>
+              Organized workshops, guest speaker events, and educational
+              activities to support member skill development.
+            </li>
+          </ul>
         </div>
       </section>
 
-      {/* Certifications Section */}
+      {/* Skills Section */}
       <section
-        id="certs"
+        id="skills"
         className="mt-16 rounded-xl bg-zinc-50 p-8 shadow-sm dark:bg-zinc-800/25"
       >
         <div className="flex items-center space-x-3">
-          <CheckBadgeIcon className="h-7 w-7 text-yellow-500" />
+          <WrenchIcon className="h-7 w-7 text-purple-500" />
           <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
-            Certifications
+            Skills
           </h2>
         </div>
-        <ul className="mt-6 list-inside list-disc space-y-2 text-base text-zinc-600 dark:text-zinc-400">
-          <li>MTA: Introduction to Programming Using Java (Microsoft)</li>
-        </ul>
+
+        {/* Languages */}
+        <div className="mt-8">
+          <h3 className="text-base font-semibold tracking-wide text-zinc-800 uppercase dark:text-zinc-100">
+            Languages
+          </h3>
+
+          <div className="mt-4 grid grid-cols-2 gap-4 text-zinc-700 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 dark:text-zinc-300">
+            <div className="flex min-w-0 items-center space-x-3">
+              <JavaIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+              <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+                Java
+              </span>
+            </div>
+
+            <div className="flex min-w-0 items-center space-x-3">
+              <PythonIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+              <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+                Python
+              </span>
+            </div>
+
+            <div className="flex min-w-0 items-center space-x-3">
+              <RustIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+              <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+                Rust
+              </span>
+            </div>
+
+            <div className="flex min-w-0 items-center space-x-3">
+              <CIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+              <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+                C
+              </span>
+            </div>
+
+            <div className="flex min-w-0 items-center space-x-3">
+              <CPlusPlusIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+              <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+                C++
+              </span>
+            </div>
+
+            <div className="flex min-w-0 items-center space-x-3">
+              <CSharpIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+              <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+                C#
+              </span>
+            </div>
+
+            <div className="flex min-w-0 items-center space-x-3">
+              <JavaScriptIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+              <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+                JavaScript
+              </span>
+            </div>
+
+            <div className="flex min-w-0 items-center space-x-3">
+              <TypeScriptIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+              <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+                TypeScript
+              </span>
+            </div>
+
+            <div className="flex min-w-0 items-center space-x-3">
+              <SQLIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+              <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+                SQL
+              </span>
+            </div>
+
+            <div className="flex min-w-0 items-center space-x-3">
+              <RIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+              <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+                R
+              </span>
+            </div>
+
+            <div className="flex min-w-0 items-center space-x-3">
+              <SwiftIcon className="h-6 w-6 flex-none fill-zinc-700 transition dark:fill-zinc-200" />
+              <span className="min-w-0 text-sm wrap-break-word text-zinc-600 sm:text-base dark:text-zinc-400">
+                Swift
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Frameworks & Libraries */}
+        <div className="mt-10">
+          <h3 className="text-base font-semibold tracking-wide text-zinc-800 uppercase dark:text-zinc-100">
+            Frameworks & Libraries
+          </h3>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <Pill>
+              <span className="mr-2">
+                <NextJSIcon className="inline h-4 w-4 fill-zinc-700 align-[-2px] dark:fill-zinc-200" />
+              </span>
+              Next.js
+            </Pill>
+            <Pill>
+              <span className="mr-2">
+                <ReactIcon className="inline h-4 w-4 fill-zinc-700 align-[-2px] dark:fill-zinc-200" />
+              </span>
+              React
+            </Pill>
+            <Pill>
+              <span className="mr-2">
+                <DockerIcon className="inline h-4 w-4 fill-zinc-700 align-[-2px] dark:fill-zinc-200" />
+              </span>
+              Docker
+            </Pill>
+            <Pill>
+              <span className="mr-2">
+                <PyTorchIcon className="inline h-4 w-4 fill-zinc-700 align-[-2px] dark:fill-zinc-200" />
+              </span>
+              PyTorch
+            </Pill>
+            <Pill>
+              <span className="mr-2">
+                <FlutterIcon className="inline h-4 w-4 fill-zinc-700 align-[-2px] dark:fill-zinc-200" />
+              </span>
+              Flutter
+            </Pill>
+            <Pill>OpenGL</Pill>
+            <Pill>GLUT</Pill>
+            <Pill>Spring Boot</Pill>
+            {/* <Pill>Java Swing</Pill> */}
+            <Pill>.NET MAUI</Pill>
+          </div>
+        </div>
+
+        {/* Tools */}
+        <div className="mt-10">
+          <h3 className="text-base font-semibold tracking-wide text-zinc-800 uppercase dark:text-zinc-100">
+            Tools
+          </h3>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <Pill>
+              <span className="mr-2">
+                <GitHubIcon className="inline h-4 w-4 fill-zinc-700 align-[-2px] dark:fill-zinc-200" />
+              </span>
+              GitHub
+            </Pill>
+            <Pill>TFS</Pill>
+            <Pill>TCP/HTTP/HTTPS sockets</Pill>
+            <Pill>JetBrains IDEs</Pill>
+            <Pill>VS Code</Pill>
+            <Pill>Visual Studio</Pill>
+          </div>
+        </div>
       </section>
 
       {/* Fun Facts Section */}
