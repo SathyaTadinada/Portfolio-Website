@@ -6,7 +6,6 @@ export const metadata: Metadata = {
   description: 'Things I’ve made trying to put my dent in the universe.',
 }
 
-// Optional: makes your intent explicit
 export const dynamic = 'force-static'
 
 export default function ProjectsPage() {

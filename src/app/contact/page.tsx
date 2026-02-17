@@ -9,7 +9,6 @@ import logoX from '@/images/logos/x.svg'
 import logoInstagram from '@/images/logos/instagram.svg'
 import logoMastodon from '@/images/logos/mastodon.svg'
 import logoMail from '@/images/logos/mail.svg'
-
 import logoLinkedIn from '@/images/logos/linkedin.svg'
 
 function DashedDivider({ padding }: { padding: number }) {

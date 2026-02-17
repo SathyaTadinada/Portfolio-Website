@@ -2,17 +2,17 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { useMemo } from 'react'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 
-import logoAnimaginary from '@/images/logos/animaginary.svg'
 import logoCosmos from '@/images/logos/cosmos.svg'
-import logoHelioStream from '@/images/logos/helio-stream.svg'
+import logoShaders from '@/images/logos/shaders.svg'
 import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
+import logoFreezeTag from '@/images/logos/freezetag.svg'
+import logoPortfolio from '@/images/photos/portfolio.jpg'
 
 type Project = {
   name: string
@@ -25,61 +25,63 @@ type Project = {
 const projects: Project[] = [
   {
     name: 'Portfolio Website',
-    description: 'The source code for this website, built with Next.js and Tailwind CSS.',
-    link: { href: 'https://github.com/SathyaTadinada/Portfolio-Website', label: 'github.com' },
-    logo: logoPlanetaria,
+    description:
+      'The source code for this website, built with Next.js and Tailwind CSS.',
+    link: {
+      href: 'https://github.com/SathyaTadinada/Portfolio-Website',
+      label: 'github.com',
+    },
+    logo: logoPortfolio,
     tags: ['TypeScript', 'Next.js', 'Tailwind', 'React'],
   },
   {
-    name: 'Animaginary',
-    description: 'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoAnimaginary,
-    tags: ['Rust', 'WASM', 'Animation'],
+    name: 'FreezeTag',
+    description:
+      'A self-hosted image tagging platform with custom plugin support.',
+    link: { href: 'https://freezetag.app', label: 'freezetag.app' },
+    logo: logoFreezeTag,
+    tags: ['Go', 'Next.js', 'React', 'Python'],
   },
   {
-    name: 'HelioStream',
-    description: 'Real-time video streaming library, optimized for interstellar transmission.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoHelioStream,
-    tags: ['Go', 'Streaming', 'WebRTC', 'C'],
+    name: 'Shader Showcase',
+    description:
+      'A collection and demonstration of various shaders in a comprehensive graphics project.',
+    link: { href: 'https://github.com/SathyaTadinada/Shader-Showcase', label: 'github.com' },
+    logo: logoShaders,
+    tags: ['C++', 'GLSL', 'OpenGL'],
   },
-  {
-    name: 'cosmOS',
-    description: 'The operating system that powers our Planetaria space shuttles.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoCosmos,
-    tags: ['C', 'Kernel', 'Embedded'],
-  },
-  {
-    name: 'OpenShuttle',
-    description: 'The schematics for the first rocket I designed that successfully made it to orbit.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoOpenShuttle,
-    tags: ['CAD', 'Aerospace'],
-  },
+  // {
+  //   name: 'cosmOS',
+  //   description:
+  //     'The operating system that powers our Planetaria space shuttles.',
+  //   link: { href: '#', label: 'github.com' },
+  //   logo: logoCosmos,
+  //   tags: ['C', 'Kernel', 'Embedded'],
+  // },
+  // {
+  //   name: 'OpenShuttle',
+  //   description:
+  //     'The schematics for the first rocket I designed that successfully made it to orbit.',
+  //   link: { href: '#', label: 'github.com' },
+  //   logo: logoOpenShuttle,
+  //   tags: ['CAD', 'Aerospace'],
+  // },
 ]
 
 function normalizeTags(input?: string | null) {
   if (!input) return []
-  return input
-    .split(',')
-    .filter(Boolean)
-    .map(decodeURIComponent)
+  return input.split(',').filter(Boolean).map(decodeURIComponent)
 }
 
 function hrefFor(tag: string, selected: string[]) {
   const next = selected.includes(tag)
-    ? selected.filter(t => t !== tag)
+    ? selected.filter((t) => t !== tag)
     : [...selected, tag]
 
   if (next.length === 0) return '/projects'
   return `/projects?tags=${next.map(encodeURIComponent).join(',')}`
 }
 
-// IMPORTANT: Link-based approach is crawlable.
-// We’ll keep Links, but: prefetch={false} to avoid background requests,
-// and rel="nofollow" to discourage bots from exploring combinatorics.
 function TagChip({ tag, selected }: { tag: string; selected: string[] }) {
   const isActive = tag !== 'All' && selected.includes(tag)
   const href = tag === 'All' ? '/projects' : hrefFor(tag, selected)
@@ -89,12 +91,11 @@ function TagChip({ tag, selected }: { tag: string; selected: string[] }) {
       href={href}
       prefetch={false}
       rel="nofollow"
-      className={`rounded-full px-3 py-1 text-sm font-medium ring-1 ring-zinc-300 dark:ring-zinc-700 transition
-        ${
-          isActive
-            ? 'bg-zinc-800 text-white dark:bg-zinc-200 dark:text-zinc-900'
-            : 'text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700'
-        }`}
+      className={`rounded-full px-3 py-1 text-sm font-medium ring-1 ring-zinc-300 transition dark:ring-zinc-700 ${
+        isActive
+          ? 'bg-zinc-800 text-white dark:bg-zinc-200 dark:text-zinc-900'
+          : 'text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700'
+      }`}
     >
       {tag}
     </Link>
@@ -117,25 +118,28 @@ export default function ProjectsClient() {
   const selected = useMemo(() => normalizeTags(sp.get('tags')), [sp])
 
   const allTags = useMemo(
-    () => Array.from(new Set(projects.flatMap(p => p.tags ?? []))).sort(),
+    () => Array.from(new Set(projects.flatMap((p) => p.tags ?? []))).sort(),
     [],
   )
 
   const visible = useMemo(() => {
     if (selected.length === 0) return projects
-    return projects.filter(p => selected.every(t => p.tags?.includes(t)))
+    return projects.filter((p) => selected.every((t) => p.tags?.includes(t)))
   }, [selected])
 
   return (
     <SimpleLayout
-      title="Things I’ve made trying to put my dent in the universe."
-      intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute!"
+      // title="Things I’ve made trying to put my dent in the universe."
+      title="Things I’ve been working on."
+      // intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute!"
+      // intro="These are a few standout projects from the things I’ve built over time. Most are open source, so you’re welcome to explore the implementation and collaborate!"
+      intro="I’m always tinkering, but these are the projects I’m happiest with. Many are open source, so if something catches your eye, you can dive into the repo!"
       gapClass="mt-12 sm:mt-8"
     >
       {allTags.length > 0 && (
         <div className="mb-10 flex flex-wrap gap-2">
           <TagChip tag="All" selected={selected} />
-          {allTags.map(tag => (
+          {allTags.map((tag) => (
             <TagChip key={tag} tag={tag} selected={selected} />
           ))}
         </div>
@@ -145,14 +149,28 @@ export default function ProjectsClient() {
         role="list"
         className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
       >
-        {visible.map(project => (
+        {visible.map((project) => (
           <Card as="li" key={project.name}>
-            <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
+            <div className="relative z-10 h-12 w-12 rounded-full bg-white shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+              {/* inset controls the "circular border" around icons/logos */}
+              <div className="absolute inset-1.5 overflow-hidden rounded-full">
+                <Image
+                  src={project.logo}
+                  alt={project.name}
+                  fill
+                  sizes="48px"
+                  unoptimized
+                  className="object-cover"
+                />
+              </div>
             </div>
 
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-              <Card.Link href={project.link.href} target="_blank" rel="noreferrer">
+              <Card.Link
+                href={project.link.href}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {project.name}
               </Card.Link>
             </h2>
@@ -164,7 +182,7 @@ export default function ProjectsClient() {
                 {project.tags
                   .slice()
                   .sort()
-                  .map(tag => (
+                  .map((tag) => (
                     <span
                       key={tag}
                       className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-600 dark:bg-zinc-700/40 dark:text-zinc-300"
@@ -188,7 +206,7 @@ export default function ProjectsClient() {
           No projects match&nbsp;
           {[...selected]
             .sort((a, b) => a.localeCompare(b))
-            .map(t => `"${t}"`)
+            .map((t) => `"${t}"`)
             .join(', ')}
           .
         </p>
