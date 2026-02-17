@@ -8,9 +8,7 @@ import { useMemo } from 'react'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 
-import logoCosmos from '@/images/logos/cosmos.svg'
 import logoShaders from '@/images/logos/shaders.svg'
-import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
 import logoFreezeTag from '@/images/logos/freezetag.svg'
 import logoPortfolio from '@/images/photos/portfolio.jpg'
 
