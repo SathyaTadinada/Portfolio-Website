@@ -1,0 +1,216 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Sathya Tadinada',
+  date: '2026-02-17',
+  title: 'Timestamps Are Hard: Unix Time, Time Zones, and UI Bugs',
+  description:
+    'Dates look simple until you ship them. This post covers the most common timestamp bugs (seconds vs ms, UTC vs local time), and a small set of patterns that keep your UI correct and consistent.',
+  tags: ['javascript', 'typescript', 'dates', 'debugging', 'web']
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default function Page({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>
+}
+
+Dates are the kind of problem that feels “done” right up until your UI says a photo was taken tomorrow 😅
+
+The reason is simple: time isn’t just a number. It’s a number **plus a timezone interpretation**, and a lot of web tooling makes silent assumptions.
+
+This post is a quick field guide to the timestamp bugs I see (and have personally hit), and a few patterns I now treat as non-negotiable.
+
+---
+
+## The Two Bugs That Cause 80% of Pain
+
+### 1) Seconds vs. milliseconds
+Unix timestamps show up in two common forms:
+
+- **seconds since epoch** (common in many APIs)
+- **milliseconds since epoch** (common in JS)
+
+If you feed seconds directly into `new Date(...)`, you’ll end up around January 1970.
+
+```ts
+// ❌ BUG: `ts` is in seconds, but JS expects milliseconds
+const d = new Date(1700000000)
+
+// ✅ FIX:
+const d2 = new Date(1700000000 * 1000)
+````
+
+If you don’t control the backend, build a tiny “make it sane” converter at the boundary:
+
+```ts
+function toUnixMs(ts: number) {
+  // crude but effective: any timestamp below 1e12 is probably seconds
+  return ts < 1e12 ? ts * 1000 : ts
+}
+```
+
+That’s not “mathematically perfect”, but it’s a pragmatic safety net for mixed data sources.
+
+---
+
+### 2) UTC storage vs. local display
+
+A timestamp can represent an instant in time (UTC), but **how you display it** depends on who’s looking at it.
+
+A common mistake is assuming that “the date” you want is always the user’s local timezone. That’s often correct for *events*, but not always correct for things like:
+
+* “date taken” from EXIF metadata
+* server-side timestamps stored in UTC
+* logs where you want exact ordering
+
+This one-liner is doing more than it looks like:
+
+```ts
+new Date(unixMs).toLocaleString()
+```
+
+It implicitly:
+
+* chooses the user’s local timezone
+* chooses a locale-dependent format
+* chooses defaults for 12/24h, month/day order, etc.
+
+If you want something consistent and explicit, use `Intl.DateTimeFormat`.
+
+---
+
+## A “Correct Enough” Date Formatting Helper
+
+Here’s a helper I use in TypeScript projects. It’s small, explicit, and avoids accidental time zone drift.
+
+```ts
+type DateStyle = 'short' | 'medium' | 'long'
+
+export function formatUnixTime(
+  ts: number,
+  opts?: {
+    timeZone?: string // e.g. "UTC" or "America/Denver"
+    withWeekday?: boolean
+    dateStyle?: DateStyle
+    timeStyle?: DateStyle
+  }
+) {
+  const unixMs = ts < 1e12 ? ts * 1000 : ts
+  const d = new Date(unixMs)
+
+  const formatter = new Intl.DateTimeFormat(undefined, {
+    timeZone: opts?.timeZone, // omit for local
+    weekday: opts?.withWeekday ? 'short' : undefined,
+    dateStyle: opts?.dateStyle ?? 'medium',
+    timeStyle: opts?.timeStyle,
+  })
+
+  return formatter.format(d)
+}
+```
+
+Usage:
+
+```ts
+formatUnixTime(1700000000, { timeZone: 'UTC' })
+// "Nov 14, 2023"
+
+formatUnixTime(1700000000, { withWeekday: true, timeStyle: 'short' })
+// "Tue, Nov 14, 2023, 5:13 PM" (example; depends on your locale)
+```
+
+Key idea: **you decide** whether the UI uses local time or a specific timezone like UTC.
+
+---
+
+## Picking a Policy: What Does “Date Taken” Mean?
+
+If you’re building anything with metadata (photos, uploads, logs), you eventually have to answer:
+
+> Is this date meant to reflect the viewer’s timezone, or the original source’s timezone?
+
+A few reasonable policies:
+
+* **Events (meetings, reminders, messages):** display in the viewer’s local timezone
+* **System timestamps (uploads, server logs):** display in UTC or in a “system timezone”
+* **Capture metadata (EXIF “date taken”):** often best displayed as *as-shot* time, which may not match the viewer’s current timezone
+
+Even if you don’t fully solve “as-shot timezone,” you can at least avoid accidental shifts by treating capture times as UTC for display (or labeling them).
+
+A UI can be honest:
+
+```txt
+Date taken: 2023-11-14 (UTC)
+Date uploaded: 2023-11-15 (local)
+```
+
+Being explicit beats being subtly wrong.
+
+---
+
+## The Silent Killer: Double-Applying Time Zones
+
+One of the nastiest bugs happens when you:
+
+1. convert a timestamp to a `Date`
+2. format it “as UTC”
+3. but your timestamp was already “localized” somewhere earlier
+
+Symptoms:
+
+* times that are off by exactly your offset (e.g., 7 hours)
+* dates that shift by one day around midnight
+
+This is why I like two rules:
+
+1. **Normalize at the boundary** (convert seconds→ms, and treat numbers as UTC instants)
+2. **Format at the edge** (decide timezone only in the display layer)
+
+If you keep conversions scattered throughout the codebase, you’ll eventually apply the offset twice.
+
+---
+
+## Quick Debug Checklist
+
+When a date looks wrong, I check these in order:
+
+1. **Units:** seconds or milliseconds?
+2. **Timezone assumptions:** did we intend local time or UTC?
+3. **Data model:** is the backend returning an instant (UTC) or a human-local “wall time”?
+4. **Formatting:** are we using `toLocaleString()` defaults unintentionally?
+5. **Boundary cases:** midnight, DST changes, and dates near “today”
+
+A good debug print is:
+
+```ts
+const d = new Date(toUnixMs(ts))
+console.log({
+  raw: ts,
+  iso: d.toISOString(),
+  local: d.toString(),
+})
+```
+
+If the ISO looks correct but the local looks wrong, it’s almost always a **timezone display** issue.
+If the ISO looks wrong, it’s almost always **units**.
+
+---
+
+## Wrap-Up
+
+Dates don’t need to be scary, but they do need a policy.
+
+If you:
+
+* normalize timestamps once (seconds vs ms),
+* store/transport them as UTC instants,
+* and format them explicitly at the UI boundary,
+
+…you’ll avoid most “my app says this happened yesterday” bugs.
+
+And if you ever catch yourself thinking “I’ll just use `toLocaleString()` real quick,”
+that’s your cue to reach for a helper. 🙂
