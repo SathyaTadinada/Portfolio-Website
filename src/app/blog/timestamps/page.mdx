@@ -9,11 +9,6 @@ export const article = {
   tags: ['javascript', 'typescript', 'dates', 'debugging', 'web']
 }
 
-export const metadata = {
-  title: article.title,
-  description: article.description,
-}
-
 export default function Page({ children }) {
   return <ArticleLayout article={article}>{children}</ArticleLayout>
 }

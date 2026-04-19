@@ -9,11 +9,6 @@ export const article = {
   tags: ['animation', 'planetaria']
 }
 
-export const metadata = {
-  title: article.title,
-  description: article.description,
-}
-
 export default function Page({ children }) {
   return <ArticleLayout article={article}>{children}</ArticleLayout>
 }
