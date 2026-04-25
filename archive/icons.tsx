@@ -86,3 +86,20 @@ function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     </svg>
   )
 }
+function ChevronRightIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+  return (
+    <svg
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      {...props}
+    >
+      <path
+        d="m 7.425 4.05 l 6.75 6.75 l -6.75 6.75"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
+    </svg>
+  )
+}
