@@ -4,9 +4,9 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import styles from './valentine-bouquet.module.css'
 import { Dices, RotateCcw, Eye, EyeOff, Eraser } from 'lucide-react'
 
-import { hashStringToSeed, makeRng } from '@/lib/valentine/rng'
-import { letterToFlowerKind, type FlowerKind } from '@/lib/valentine/flowers'
-import { renderBouquet } from '@/lib/valentine/render'
+import { hashStringToSeed, makeRng } from 'archive/valentine/valentine-lib/rng'
+import { letterToFlowerKind, type FlowerKind } from 'archive/valentine/valentine-lib/flowers'
+import { renderBouquet } from 'archive/valentine/valentine-lib/render'
 
 const DEFAULT_DISPLAY_NAME = 'Your Valentine'
 const DEFAULT_TAGLINE = 'a special bouquet for you'
