@@ -1,0 +1,105 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import PDF from '@/components/PDF'
+import YouTube from '@/components/YouTube'
+import freezetag from './freezetag.png'
+
+export const article = {
+  author: 'Sathya Tadinada',
+  date: '2026-04-25',
+  title: 'FreezeTag: An Open-Source, Self-Hosted Image Management App',
+  description:
+    "FreezeTag is a free, open-source, self-hosted image management platform I built as my undergraduate capstone. Here's what it is, how it works, and what I learned building it.",
+  tags: ['go', 'typescript', 'python', 'self-hosted', 'capstone', 'homelab', 'photography']
+}
+
+export default function Page({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>
+}
+
+<Image src={freezetag} alt="FreezeTag Logo" />
+
+I've been frustrated with photo apps for a while. Google Photos, Apple Photos, even Amazon Photos - they _work_, but using them means your entire photo library lives on someone else's servers and are subject to pricing that grows as your collection does.
+
+And moreover, the organization problem is even worse than the storage one. Folder hierarchies are the default everywhere, which is fine until your library gets large enough that a single photo reasonably belongs in multiple categories at once. Both Apple Photos and Google Photos has an AI/vector-based search, but they won't let you define your own structured labels. A self-hosted alternative, DigiKam, supports tags, but they feel grafted on to its folder model. None of these treat user-defined tagging as a primary feature.
+
+That's the gap we set out to fill.
+
+## What FreezeTag Is
+
+[FreezeTag](https://freezetag.app/) is a free, open-source, self-hosted image management app built for photographers, small businesses, and technically-inclined people who want actual control over how their photos are stored and organized. The whole system runs through Docker Compose, so standing up an instance is a single command regardless of OS. The interface is browser-based, so any device on the same network can connect without installing anything on the client. Your photos stay on your own hardware.
+
+The core design decision was making **tags the primary organization unit** instead of folders or albums. Any image can belong to multiple logical groupings at once, which a folder hierarchy simply can't do. A photographer can label a batch of images with `client:SteveJobs`, `location:SaltLake`, and `format:print` at upload time, then later pull exactly that subset by querying across any combination of those tags.
+
+FreezeTag also ships with an extensible **Python plugin system** for automated tagging. The first-party plugins include a local ML tagger, a lightweight RAM-constrained tagger for lower-end hardware, a face recognition plugin, and a Google Gemini tagger for people who are okay with the cloud-assisted tradeoff. Users can write their own too.
+
+You can read more at [freezetag.app](https://freezetag.app/) or browse the source on [GitHub](https://github.com/FreezeTagPhoto/FreezeTag).
+
+Here's a demo walkthrough we recorded at the end of the capstone:
+
+<YouTube id="jdchXelvKHA" />
+
+## The Team and My Role
+
+FreezeTag was my senior capstone project at the University of Utah, built with three other developers across two semesters (Fall 2025 and Spring 2026). We split into two frontend and two backend engineers, each owning a clearly defined area of the codebase from day one. My role was **frontend interface engineer**: visual design and CSS implementation across every user-facing page.
+
+The other frontend engineer, Brayden, handled the lower-level frontend concerns: API communication, authentication state, and how data flowed through the application. My work sat on top of that, taking what Brayden built and turning it into the interface users actually see. On the backend, Ethan owned API endpoints and core features like image storage and metadata parsing, while Max handled dependency management, the plugin environment, and deployment infrastructure.
+
+We ran the whole project as an Agile process organized around four-week sprints, tracked through a GitLab issue board with phase, domain, and state labels on every issue. We met three times a week: a Friday staff meeting in person, a Monday evening alignment check, and a mid-week progress review. Most day-to-day coordination was asynchronous over Discord.
+
+{/* IMAGE: GitLab issue board showing label columns and issue states */}
+
+## What I'm Proud Of
+
+What I'm most happy with is how seriously all four of us took this. FreezeTag wasn't a class assignment we put in minimum effort on. We started with a clear project vision in Fall 2025 and shipped that same vision in Spring 2026, no major pivots. The core idea, a self-hosted, tag-first image manager with an extensible plugin model, is exactly what we built. That kind of consistency from initial concept to finished product isn't something every capstone team achieves.
+
+Part of that comes down to how we ran the project day-to-day. Every merge request had to pass automated format, lint, and test checks before it was even eligible for a human reviewer. We enforced an 80% test coverage minimum across both the frontend and backend from the start, and finished the project at 95% and 85% respectively. For a student project, that's not a given.
+
+Technically, FreezeTag ended up surprisingly close to feature parity with Google Photos and Apple Photos. The features we have work well, and the combination of tag-based search with a user-extensible plugin system is something no major image management product currently offers. I didn't expect to be able to say that about a student project.
+
+A few specific pieces of the frontend I'm particularly happy with:
+
+The **Tags dropdown** in the gallery operates on an intersection model. Rather than naively listing every tag in the library, selecting a tag filters the gallery and immediately updates the dropdown to show only the tags that actually appear on the filtered images. You progressively narrow your search, and at every step the dropdown shows only genuinely relevant options. This was one of the more interesting design problems to work through.
+
+{/* IMAGE: gallery page with Tags dropdown open */}
+
+The **image preview** is the feature I underestimated the most going in. On the surface, clicking a photo and seeing it full-screen with a metadata sidebar sounds simple. In practice, it was one of the more technically complex things I built on this project. The zoom had to work relative to wherever the cursor was sitting, not just the center of the image, which turned out to be harder than it sounds. The navigation arrows had to be aware of whatever filters and sort order the gallery was currently using to determine which image came next, so cycling through photos in the overlay would respect the same ordering as the gallery below it. The metadata sidebar pulls all EXIF data extracted at upload time: resolution, date taken, date uploaded, GPS coordinates, camera model. Users can also add and remove tags per-image directly from the sidebar, or collapse it entirely if they just want to look at the photo.
+
+{/* IMAGE: image preview window showing full-resolution photo and metadata sidebar */}
+
+The **custom theme creation** feature is the one I found most interesting to think through from a design standpoint. FreezeTag ships with a set of built-in Catppuccin themes, and the goal was to let users define their own color palettes without needing to touch CSS directly. The question was what format to give them. We landed on building on top of Catppuccin's existing CSS variable naming conventions: users specify which variables they want to override and what color values to assign to each one. For anyone already familiar with Catppuccin, that system is immediately legible. For others, it's still approachable because we expose color pickers rather than raw text input. Themes can be exported and imported as JSON files, and on import the application validates the structure before applying anything. Getting the abstraction level right took a few iterations.
+
+{/* IMAGE: custom theme creation UI in the settings page */}
+
+## What Was Actually Hard
+
+Most of the challenges were technical, not interpersonal. The recurring theme was infrastructure compatibility: versioning conflicts between libraries, packages missing support for the specific functionality we needed, and unexpected interactions between different parts of the stack. These are hard to plan for because they don't show up until you're already deep into an implementation.
+
+Authentication and the job tracking system were the two that cost us the most. We had estimated authentication at about four weeks of dev time, but finished it ahead of schedule because `bcrypt` handled most of the hard parts for us. The jobs system went the other direction entirely. What looked like a straightforward progress-tracking feature turned out to require building an entirely new subsystem before we could even make it tractable. Estimates are only as good as what you can see before you start.
+
+Some features also got scoped down along the way. A plugin marketplace, where users could browse and install community plugins directly from inside the app, got cut in favor of keeping the core experience polished. The map feature was originally planned as a fully interactive embedded Leaflet map, but ended up as a toggleable component because integrating Leaflet cleanly into the sidebar layout at that stage was more work than it was worth. Both were deliberate tradeoffs. The plugin architecture is flexible enough that a marketplace could be added post-capstone without touching anything core.
+
+## What I'd Do Differently
+
+The biggest technical change I'd make is dropping Next.js for a simpler Node.js server setup. Next.js caused recurring friction throughout the project, mostly around the client/server component distinction and React hydration issues that were genuinely painful to diagnose. Some of that was probably React rather than Next.js specifically, but for an application like FreezeTag where the interface is stateful and server-side rendering doesn't provide much benefit, the added complexity wasn't worth it.
+
+I'd also have started active development earlier in Fall 2025. A significant chunk of that semester went into planning, designing, and evaluating options, which had value but could have been compressed. Our project vision was clear from the start. More runway for actual development would have helped.
+
+On the design side, I wish I'd pulled in UI/UX references much earlier in the process. A lot of the visual design work required backtracking because I was figuring out design principles as I went. The Sort dropdown is the clearest example: the first version embedded sort syntax directly in the search bar, so users would type things like `sortBy=DateAdded; sortOrder=Newest`. It worked, but watching non-technical users interact with it made immediately clear how undiscoverable it was. The tags management page followed a similar pattern: it wasn't in the original design at all, and only became obviously necessary once we were using the app with real photo collections.
+
+Working through those problems without a reference did teach me a lot, and I came out of it with a much stronger instinct for UI decisions than I had going in. But I could have learned the same lessons faster with better starting materials.
+
+## What Comes Next
+
+The plugin ecosystem has the most long-term potential. Right now, discovering and installing plugins requires some manual effort on the user's part. A plugin marketplace built into the app would make extensibility much more accessible, and the existing plugin architecture should make that relatively straightforward to build on top of.
+
+On the backend, there's an eventual case for rewriting it in Rust. Go handles concurrency well and served us fine throughout development, but for very large photo libraries or multi-user deployments, Rust's performance characteristics would be a better fit. That's a future direction rather than an immediate priority.
+
+After the capstone wraps this summer, FreezeTag will be released under the MIT open-source license, free to use, modify, and distribute.
+
+---
+
+If you want the full picture on design decisions and architecture, the thesis is embedded below. It's typeset in [Typst](https://typst.app/) and the source is on [GitHub](https://github.com/SathyaTadinada/Undergraduate-Thesis).
+
+<PDF src="/thesis.pdf" title="FreezeTag Undergraduate Thesis" />
+
+_Can't see the embed? [Open the thesis directly](/thesis.pdf)._
