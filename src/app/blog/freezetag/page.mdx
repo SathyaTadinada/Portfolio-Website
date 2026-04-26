@@ -20,7 +20,7 @@ export default function Page({ children }) {
 
 I've been frustrated with photo apps for a while. Google Photos, Apple Photos, even Amazon Photos - they _work_, but using them means your entire photo library lives on someone else's servers and are subject to pricing that grows as your collection does.
 
-And moreover, the organization problem is even worse than the storage one. Folder hierarchies are the default everywhere, which is fine until your library gets large enough that a single photo reasonably belongs in multiple categories at once. Both Apple Photos and Google Photos has an AI/vector-based search, but they won't let you define your own structured labels. A self-hosted alternative, DigiKam, supports tags, but they feel grafted on to its folder model. None of these treat user-defined tagging as a primary feature.
+And the organization problem is even worse than the storage one. Folder hierarchies are the default everywhere, which is fine until your library gets large enough that a single photo reasonably belongs in multiple categories at once. Both Apple Photos and Google Photos have AI/vector-based search, but they won't let you define your own structured labels. A self-hosted alternative, DigiKam, supports tags, but they feel grafted on to its folder model. None of these treat user-defined sorting as a primary feature.
 
 That's the gap we set out to fill.
 
@@ -30,7 +30,7 @@ That's the gap we set out to fill.
 
 The core design decision was making **tags the primary organization unit** instead of folders or albums. Any image can belong to multiple logical groupings at once, which a folder hierarchy simply can't do. A photographer can label a batch of images with `client:SteveJobs`, `location:SaltLake`, and `format:print` at upload time, then later pull exactly that subset by querying across any combination of those tags.
 
-FreezeTag also ships with an extensible **Python plugin system** for automated tagging. The first-party plugins include a local ML tagger, a lightweight RAM-constrained tagger for lower-end hardware, a face recognition plugin, and a Google Gemini tagger for people who are okay with the cloud-assisted tradeoff. Users can write their own too.
+FreezeTag also ships with an extensible **Python plugin system** for automated tagging. For now, first-party plugins include a local "Recognize Anything Model" (RAM) tagger, a face recognition plugin, a meme generator (non-negotiable), and a Google Gemini tagger for people who are okay with the cloud-assisted tradeoff in exchange for higher accuracy and detail of the tags. More will be coming soon™, and users can always write their own plugins in the meantime.
 
 You can read more at [freezetag.app](https://freezetag.app/) or browse the source on [GitHub](https://github.com/FreezeTagPhoto/FreezeTag).
 
@@ -58,13 +58,19 @@ Technically, FreezeTag ended up surprisingly close to feature parity with Google
 
 A few specific pieces of the frontend I'm particularly happy with:
 
+### Tags Dropdown
+
 The **Tags dropdown** in the gallery operates on an intersection model. Rather than naively listing every tag in the library, selecting a tag filters the gallery and immediately updates the dropdown to show only the tags that actually appear on the filtered images. You progressively narrow your search, and at every step the dropdown shows only genuinely relevant options. This was one of the more interesting design problems to work through.
 
 {/* IMAGE: gallery page with Tags dropdown open */}
 
+### Image Previews
+
 The **image preview** is the feature I underestimated the most going in. On the surface, clicking a photo and seeing it full-screen with a metadata sidebar sounds simple. In practice, it was one of the more technically complex things I built on this project. The zoom had to work relative to wherever the cursor was sitting, not just the center of the image, which turned out to be harder than it sounds. The navigation arrows had to be aware of whatever filters and sort order the gallery was currently using to determine which image came next, so cycling through photos in the overlay would respect the same ordering as the gallery below it. The metadata sidebar pulls all EXIF data extracted at upload time: resolution, date taken, date uploaded, GPS coordinates, camera model. Users can also add and remove tags per-image directly from the sidebar, or collapse it entirely if they just want to look at the photo.
 
 {/* IMAGE: image preview window showing full-resolution photo and metadata sidebar */}
+
+### Custom Theme Creation
 
 The **custom theme creation** feature is the one I found most interesting to think through from a design standpoint. FreezeTag ships with a set of built-in Catppuccin themes, and the goal was to let users define their own color palettes without needing to touch CSS directly. The question was what format to give them. We landed on building on top of Catppuccin's existing CSS variable naming conventions: users specify which variables they want to override and what color values to assign to each one. For anyone already familiar with Catppuccin, that system is immediately legible. For others, it's still approachable because we expose color pickers rather than raw text input. Themes can be exported and imported as JSON files, and on import the application validates the structure before applying anything. Getting the abstraction level right took a few iterations.
 
