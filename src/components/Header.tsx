@@ -170,7 +170,7 @@ function NavItem({
         {children}
         {isActive && (
           // highlight under active tab in header
-          <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-blue-500/0 via-blue-500/40 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0" />
+          <span className="absolute inset-x-1 -bottom-px h-px bg-linear-to-r from-blue-500/0 via-blue-500/40 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0" />
         )}
       </Link>
     </li>
@@ -217,8 +217,8 @@ function ThemeToggle() {
         [@media(prefers-color-scheme:dark)]:group-hover:fill-blue-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-blue-700" />
       <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-blue-400 transition dark:block 
         [@media(prefers-color-scheme:dark)]:group-hover:stroke-blue-200 
-        [@media_not_(prefers-color-scheme:dark)]:fill-blue-400/10 
-        [@media_not_(prefers-color-scheme:dark)]:stroke-blue-500" />
+        not-[@media_(prefers-color-scheme:dark)]:fill-blue-400/10 
+        not-[@media_(prefers-color-scheme:dark)]:stroke-blue-500" />
     </button>
   )
 }
@@ -392,7 +392,7 @@ export function Header() {
           <>
             <div
               ref={avatarRef}
-              className="order-last mt-[calc(theme(spacing.16)-theme(spacing.3))]"
+              className="order-last mt-[calc(--spacing(16)-(--spacing(3)))]"
             />
             <Container
               className="top-0 order-last -mb-3 pt-3"
@@ -402,7 +402,7 @@ export function Header() {
               }}
             >
               <div
-                className="top-[var(--avatar-top,theme(spacing.3))] w-full"
+                className="top-(--avatar-top,--spacing(3)) w-full"
                 style={{
                   position:
                     'var(--header-inner-position)' as React.CSSProperties['position'],
@@ -435,7 +435,7 @@ export function Header() {
           }}
         >
           <Container
-            className="top-[var(--header-top,theme(spacing.6))] w-full"
+            className="top-(--header-top,--spacing(6)) w-full"
             style={{
               position:
                 'var(--header-inner-position)' as React.CSSProperties['position'],
