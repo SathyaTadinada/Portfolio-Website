@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import clsx from 'clsx'
 import { ArrowLeft, ArrowUp } from 'lucide-react'
@@ -15,11 +15,64 @@ import { formatDate } from '@/lib/formatDate'
 const articleIconButtonClassName =
   'group flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 transition hover:shadow-lg dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 dark:ring-white/10 dark:hover:border-zinc-700 dark:hover:ring-white/20'
 
+function getScrollButtonInset() {
+  return window.matchMedia('(min-width: 640px)').matches ? 32 : 16
+}
+
 function ScrollToTopButton({ className }: { className?: string }) {
+  let [isVisible, setIsVisible] = useState(false)
+  let [bottomOffset, setBottomOffset] = useState(16)
+
+  useEffect(() => {
+    let frame: number | null = null
+
+    let updateButtonPosition = () => {
+      let inset = getScrollButtonInset()
+      let footerTop =
+        document.querySelector('footer')?.getBoundingClientRect().top ??
+        Infinity
+      let nextBottomOffset = Math.max(
+        inset,
+        window.innerHeight - footerTop + inset,
+      )
+
+      setIsVisible(window.scrollY > 240)
+      setBottomOffset((currentBottomOffset) =>
+        currentBottomOffset === nextBottomOffset
+          ? currentBottomOffset
+          : nextBottomOffset,
+      )
+    }
+
+    let scheduleUpdate = () => {
+      if (frame !== null) return
+
+      frame = window.requestAnimationFrame(() => {
+        frame = null
+        updateButtonPosition()
+      })
+    }
+
+    updateButtonPosition()
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', scheduleUpdate)
+
+    return () => {
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', scheduleUpdate)
+
+      if (frame !== null) {
+        window.cancelAnimationFrame(frame)
+      }
+    }
+  }, [])
+
   return (
     <button
       type="button"
       aria-label="Scroll back to top"
+      title="Scroll back to top"
+      disabled={!isVisible}
       onClick={() => {
         let prefersReducedMotion = window.matchMedia(
           '(prefers-reduced-motion: reduce)',
@@ -35,7 +88,15 @@ function ScrollToTopButton({ className }: { className?: string }) {
           behavior: prefersReducedMotion ? 'auto' : 'smooth',
         })
       }}
-      className={clsx(articleIconButtonClassName, className)}
+      className={clsx(
+        articleIconButtonClassName,
+        'duration-200',
+        isVisible
+          ? 'translate-y-0 opacity-100'
+          : 'pointer-events-none translate-y-2 opacity-0',
+        className,
+      )}
+      style={{ bottom: `${bottomOffset}px` }}
     >
       <ArrowUp className="h-4 w-4 stroke-zinc-500 transition group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400" />
     </button>
@@ -85,16 +146,13 @@ export function ArticleLayout({
             <TableOfContents className="mt-8 xl:hidden" variant="mobile" />
             <Prose data-article-content>{children}</Prose>
           </article>
-          <ScrollToTopButton className="fixed right-4 bottom-4 z-40 xl:hidden" />
         </div>
 
         <aside className="hidden xl:block">
-          <div className="sticky top-28 flex max-h-[calc(100svh-8rem)] flex-col items-start">
-            <TableOfContents className="min-h-0 w-full overflow-y-auto pr-3" />
-            <ScrollToTopButton className="mt-6 shrink-0" />
-          </div>
+          <TableOfContents className="sticky top-28 max-h-[calc(100svh-8rem)] overflow-y-auto pr-3" />
         </aside>
       </div>
+      <ScrollToTopButton className="fixed right-4 z-40 sm:right-8 xl:right-[max(2rem,calc((100vw-80rem)/2+4rem))]" />
     </Container>
   )
 }
