@@ -2,6 +2,10 @@ import { ArticleLayout } from '@/components/ArticleLayout'
 import PDF from '@/components/PDF'
 import YouTube from '@/components/YouTube'
 import freezetag from './freezetag.png'
+import gitlab_board from './GitLab Issue Board.png'
+import tags_dropdown from './Gallery with Tags Dropdown.png'
+import preview_window from './Preview Window.png'
+import theme_editor from './Custom Theme Creator.png'
 
 export const article = {
   author: 'Sathya Tadinada',
@@ -42,11 +46,11 @@ Here's a demo walkthrough we recorded at the end of the capstone:
 
 FreezeTag was my senior capstone project at the University of Utah, built with three other developers across two semesters (Fall 2025 and Spring 2026). We split into two frontend and two backend engineers, each owning a clearly defined area of the codebase from day one. My role was **frontend interface engineer**: visual design and CSS implementation across every user-facing page.
 
-The other frontend engineer, Brayden, handled the lower-level frontend concerns: API communication, authentication state, and how data flowed through the application. My work sat on top of that, taking what Brayden built and turning it into the interface users actually see. On the backend, Ethan owned API endpoints and core features like image storage and metadata parsing, while Max handled dependency management, the plugin environment, and deployment infrastructure.
+The other frontend engineer, [Brayden](https://www.linkedin.com/in/brayden-jonsson/), handled the lower-level frontend concerns: API communication, authentication state, and how data flowed through the application. My work sat on top of that, taking what Brayden built and turning it into the interface users actually see. On the backend, [Ethan](https://www.linkedin.com/in/ethan-collier/) owned API endpoints and core features like image storage and metadata parsing, while [Max](https://www.linkedin.com/in/max-petersen-b3652a251/) handled dependency management, the plugin environment, and deployment infrastructure.
 
 We ran the whole project as an Agile process organized around four-week sprints, tracked through a GitLab issue board with phase, domain, and state labels on every issue. We met three times a week: a Friday staff meeting in person, a Monday evening alignment check, and a mid-week progress review. Most day-to-day coordination was asynchronous over Discord.
 
-{/* IMAGE: GitLab issue board showing label columns and issue states */}
+<Image src={gitlab_board} alt="Screenshot of GitLab Issue Board" />
 
 ## What I'm Proud Of
 
@@ -60,21 +64,21 @@ A few specific pieces of the frontend I'm particularly happy with:
 
 ### Tags Dropdown
 
-The **Tags dropdown** in the gallery operates on an intersection model. Rather than naively listing every tag in the library, selecting a tag filters the gallery and immediately updates the dropdown to show only the tags that actually appear on the filtered images. You progressively narrow your search, and at every step the dropdown shows only genuinely relevant options. This was one of the more interesting design problems to work through.
+The Tags dropdown in the gallery operates on an intersection model. Rather than naively listing every tag in the library, selecting a tag filters the gallery and immediately updates the dropdown to show only the tags that actually appear on the filtered images. You progressively narrow your search, and at every step the dropdown shows only genuinely relevant options. This was one of the more interesting design problems to work through.
 
-{/* IMAGE: gallery page with Tags dropdown open */}
+<Image src={tags_dropdown} alt="Screenshot of Gallery with Tags Dropdown" />
 
 ### Image Previews
 
-The **image preview** is the feature I underestimated the most going in. On the surface, clicking a photo and seeing it full-screen with a metadata sidebar sounds simple. In practice, it was one of the more technically complex things I built on this project. The zoom had to work relative to wherever the cursor was sitting, not just the center of the image, which turned out to be harder than it sounds. The navigation arrows had to be aware of whatever filters and sort order the gallery was currently using to determine which image came next, so cycling through photos in the overlay would respect the same ordering as the gallery below it. The metadata sidebar pulls all EXIF data extracted at upload time: resolution, date taken, date uploaded, GPS coordinates, camera model. Users can also add and remove tags per-image directly from the sidebar, or collapse it entirely if they just want to look at the photo.
+The image preview window is the feature I underestimated the most going in. On the surface, clicking a photo and seeing it full-screen with a metadata sidebar sounds simple. In practice, it was one of the more technically complex things I built on this project. The zoom had to work relative to wherever the cursor was sitting, not just the center of the image, which turned out to be harder than it sounds. The navigation arrows had to be aware of whatever filters and sort order the gallery was currently using to determine which image came next, so cycling through photos in the overlay would respect the same ordering as the gallery below it. The metadata sidebar pulls all EXIF data extracted at upload time: resolution, date taken, date uploaded, GPS coordinates, camera model. Users can also add and remove tags per-image directly from the sidebar, or collapse it entirely if they just want to look at the photo.
 
-{/* IMAGE: image preview window showing full-resolution photo and metadata sidebar */}
+<Image src={preview_window} alt="Screenshot of Image Preview Window" />
 
 ### Custom Theme Creation
 
-The **custom theme creation** feature is the one I found most interesting to think through from a design standpoint. FreezeTag ships with a set of built-in Catppuccin themes, and the goal was to let users define their own color palettes without needing to touch CSS directly. The question was what format to give them. We landed on building on top of Catppuccin's existing CSS variable naming conventions: users specify which variables they want to override and what color values to assign to each one. For anyone already familiar with Catppuccin, that system is immediately legible. For others, it's still approachable because we expose color pickers rather than raw text input. Themes can be exported and imported as JSON files, and on import the application validates the structure before applying anything. Getting the abstraction level right took a few iterations.
+This feature was the one I found most interesting to think through from a design standpoint. FreezeTag ships with a set of built-in Catppuccin themes (Latte, Frappe, Macchiato, Mocha), and the goal was to let users define their own color palettes without needing to touch CSS directly. The question was what format to give them. We landed on building on top of Catppuccin's existing CSS variable naming conventions: users specify which variables they want to override and what color values to assign to each one. For anyone already familiar with Catppuccin, that system is immediately legible. For others, it's still approachable because we expose color pickers rather than raw text input. Themes can be exported and imported as JSON files, and on import the application validates the structure before applying anything. Getting the abstraction level right took a few iterations.
 
-{/* IMAGE: custom theme creation UI in the settings page */}
+<Image src={theme_editor} alt="Screenshot of Custom Theme Creator" />
 
 ## What Was Actually Hard
 
