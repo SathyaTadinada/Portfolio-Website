@@ -242,14 +242,16 @@ export function TableOfContents({
   }, [])
 
   useEffect(() => {
-    if (!activeId || !navRef.current) return
+    if (!activeId || variant !== 'desktop' || !navRef.current) return
+
+    if (navRef.current.offsetParent === null) return
 
     let activeLink = navRef.current.querySelector<HTMLAnchorElement>(
       `a[href="#${activeId}"]`,
     )
 
     activeLink?.scrollIntoView({ block: 'nearest' })
-  }, [activeId])
+  }, [activeId, variant])
 
   if (headings.length === 0) return null
 
