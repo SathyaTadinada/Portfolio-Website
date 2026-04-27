@@ -158,7 +158,7 @@ export function ArticleLayout({
           <TableOfContents className="sticky top-28 max-h-[calc(100svh-8rem)] overflow-y-auto pr-3" />
         </aside>
       </div>
-      <ScrollToTopButton className="fixed right-8 z-40 sm:right-16 lg:right-24 xl:right-[calc((100vw-64rem)/2+2rem)]" />
+      <ScrollToTopButton className="fixed right-8 z-40 sm:right-16 lg:right-24 xl:right-[calc((100vw-76rem)/2+2rem)]" />
     </Container>
   )
 }
