@@ -13,6 +13,7 @@ export default function CopyButton({ raw }: { raw: string }) {
 
   return (
     <button
+      type="button"
       onClick={copied ? undefined : copy}
       aria-label={copied ? 'Copied!' : 'Copy code'}
       title={copied ? 'Copied!' : 'Copy code'}

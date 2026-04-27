@@ -25,7 +25,7 @@ function normalizeTags(input?: string | null) {
 }
 
 function getArticleYear(article: ArticleWithSlug) {
-  return String(new Date(article.date).getFullYear())
+  return article.date.slice(0, 4)
 }
 
 function getYearId(year: string) {

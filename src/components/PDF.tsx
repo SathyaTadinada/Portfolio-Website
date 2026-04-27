@@ -19,7 +19,15 @@ export default function PDF({
         className,
       )}
     >
-      <iframe src={src} title={title} className="w-full" style={{ height }} />
+      <iframe
+        src={src}
+        title={title}
+        className="w-full"
+        style={{ height }}
+        loading="lazy"
+        referrerPolicy="no-referrer"
+        sandbox="allow-same-origin allow-scripts"
+      />
     </div>
   )
 }
