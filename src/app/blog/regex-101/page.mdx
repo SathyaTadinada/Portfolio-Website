@@ -34,7 +34,7 @@ Regex isn't "code" in the same sense as a general-purpose language (like Java or
 
 Behind the scenes, many regex engines turn your pattern into a **finite state machine** (FSM) and step through your input, deciding "match" or "no match".
 
-<Image src={regexDiagram} alt="State diagram for regex a(b|c)d+" />
+{/* <Image src={regexDiagram} alt="State diagram for regex a(b|c)d+" /> */}
 
 > TL;DR: Regex describes a set of strings. The engine checks whether your input is in that set.
 
@@ -44,7 +44,7 @@ Regex has only a handful of core ideas. Combine them and you can recognize surpr
 ### Literals
 Match exact characters.
 
-```txt
+```regex
 cat                         # matches "cat" in text
 ```
 
