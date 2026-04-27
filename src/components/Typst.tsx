@@ -51,10 +51,10 @@ async function compileTypstFile(inputPath: string, outputPath: string) {
   }
 }
 
-function wrapTypstSnippet(code: string) {
+function wrapTypstSnippet(code: string, textSize: string) {
   return [
     '#set page(width: auto, height: auto, margin: 12pt, fill: white)',
-    '#set text(size: 12pt)',
+    `#set text(size: ${textSize})`,
     code,
   ].join('\n')
 }
@@ -63,10 +63,12 @@ async function renderTypstSvg({
   code,
   src,
   fullDocument,
+  textSize,
 }: {
   code?: string
   src?: string
   fullDocument?: boolean
+  textSize: string
 }) {
   await fs.mkdir(typstCacheDir, { recursive: true })
 
@@ -91,7 +93,7 @@ async function renderTypstSvg({
     throw new Error('Typst content requires either `code`, `src`, or children.')
   }
 
-  const source = fullDocument ? code : wrapTypstSnippet(code)
+  const source = fullDocument ? code : wrapTypstSnippet(code, textSize)
   const hash = createHash('sha256')
     .update(`code:${source}`)
     .digest('hex')
@@ -111,6 +113,7 @@ export default async function Typst({
   caption,
   className,
   fullDocument = false,
+  textSize = '18pt',
 }: {
   code?: string
   src?: string
@@ -118,11 +121,13 @@ export default async function Typst({
   caption?: React.ReactNode
   className?: string
   fullDocument?: boolean
+  textSize?: string
 }) {
   const svg = await renderTypstSvg({
     code: code ?? nodeToString(children),
     src,
     fullDocument,
+    textSize,
   })
 
   return (

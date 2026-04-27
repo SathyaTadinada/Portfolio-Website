@@ -46,8 +46,8 @@ with the MDX component:
 <Typst src="src/app/blog/my-post/diagram.typ" caption="A Typst diagram" />
 ```
 
-Typst rendering uses the `typst` CLI during the Next.js build, so the build
-environment needs Typst installed and available on `PATH`.
+Typst rendering uses the `typst` CLI from the npm `typst` package during the
+Next.js build.
 
 ## Getting Started
 

@@ -7,6 +7,14 @@ import remarkMath from 'remark-math'
 const nextConfig = {
   output: 'export',
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.typ$/,
+      type: 'asset/source',
+    })
+
+    return config
+  },
   experimental: {
     // mdxRs: true,
     // reactCompiler: true, // consider adding this.
