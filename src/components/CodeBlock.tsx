@@ -1,6 +1,7 @@
 import { type ReactNode, type ReactElement, isValidElement } from 'react'
 import { codeToHtml } from 'shiki'
 import CopyButton from './CopyButton'
+import Typst from './Typst'
 
 function hasProps(
   node: ReactNode,
@@ -31,7 +32,11 @@ export default async function CodeBlock({
 }: PreProps) {
   const raw = nodeToString(children ?? '')
   const lang = getLang(children ?? '', className)
-  
+
+  if (lang === 'typst' || lang === 'typ') {
+    return <Typst code={raw} />
+  }
+
   const html = await codeToHtml(raw, {
     lang,
     theme: 'one-dark-pro',

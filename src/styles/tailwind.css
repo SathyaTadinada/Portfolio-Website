@@ -1,5 +1,5 @@
-@config "../../tailwind.config.ts";
-@plugin "@tailwindcss/typography";
+@config '../../tailwind.config.ts';
+@plugin '@tailwindcss/typography';
 @import 'tailwindcss';
 
 @layer utilities {
@@ -15,4 +15,17 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+[data-article-content] .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.25rem;
+}
+
+[data-typst-render] .typst-doc {
+  display: block;
+  margin-inline: auto;
+  max-width: 100%;
+  height: auto;
 }

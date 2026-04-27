@@ -3,6 +3,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 import NextImage, { type ImageProps } from 'next/image'
 
 import CodeBlock from '@/components/CodeBlock'
+import Typst from '@/components/Typst'
 import YouTube from '@/components/YouTube'
 
 type ImgProps = ComponentPropsWithoutRef<'img'> & { src: string }
@@ -30,6 +31,7 @@ function CaptionedImage({ caption, className, ...props }: CaptionedImageProps) {
 }
 
 const components = {
+  Typst,
   YouTube,
   pre: (props: ComponentPropsWithoutRef<'pre'>) => <CodeBlock {...props} />,
 

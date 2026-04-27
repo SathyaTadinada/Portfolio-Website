@@ -4,7 +4,7 @@
         <title>Sathya Tadinada</title>
         <link>https://tadinada.com</link>
         <description>This is my personal blog! I write about things I find interesting.</description>
-        <lastBuildDate>Wed, 04 Feb 2026 22:27:39 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 27 Apr 2026 17:54:45 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -14,162 +14,59 @@
         </image>
         <copyright>All rights reserved 2026</copyright>
         <item>
-            <title><![CDATA[Introducing Animaginary: High performance web animations]]></title>
-            <link>https://tadinada.com/blog/introducing-animaginary</link>
-            <guid isPermaLink="false">https://tadinada.com/blog/introducing-animaginary</guid>
-            <pubDate>Fri, 02 Sep 2022 00:00:00 GMT</pubDate>
-            <description><![CDATA[When you’re building a website for a company as ambitious as Planetaria, you need to make an impression. I wanted people to visit our website and see animations that looked more realistic than reality itself.]]></description>
-            <content:encoded><![CDATA[<p>When you’re building a website for a company as ambitious as Planetaria, you need to make an impression. I wanted people to visit our website and see animations that looked more realistic than reality itself.</p>
-<p>To make this possible, we needed to squeeze every drop of performance out of the browser possible. And so Animaginary was born.</p>
-<p>```js
-import { animate } from &#039;@planetaria/animaginary&#039;</p>
-<p>export function MyComponent({ open, children }) {
-  return (
-    &lt;animate.div
-      in={open}
-      animateFrom=&quot;opacity-0 scale-95&quot;
-      animateTo=&quot;opacity-100 scale-100&quot;
-      duration={350}
-    &gt;
-      {children}
-    &lt;/animate.div&gt;
-  )
-}
-```</p>
-<p>Animaginary is our new web animation library that redefines what you thought was possible on the web. Hand-written in optimized WASM, Animaginary can even animate the `height` property of an element at 60fps.</p>
-<p>## Sermone fata</p>
-<p>Lorem markdownum, bracchia in redibam! Terque unda puppi nec, linguae posterior
-in utraque respicere candidus Mimasque formae; quae conantem cervice. Parcite
-variatus, redolentia adeunt. Tyrioque dies, naufraga sua adit partibus celanda
-torquere temptata, erit maneat et ramos, [iam](#) ait dominari
-potitus! Tibi litora matremque fumantia condi radicibus opusque.</p>
-<p>Deus feram verumque, fecit, ira tamen, terras per alienae victum. Mutantur
-levitate quas ubi arcum ripas oculos abest. Adest [commissaque
-victae](#) in gemitus nectareis ire diva
-dotibus ora, et findi huic invenit; fatis? Fractaque dare superinposita
-nimiumque simulatoremque sanguine, at voce aestibus diu! Quid veterum hausit tu
-nil utinam paternos ima, commentaque.</p>
-<p>```c
-exbibyte_wins = gigahertz(3);
-grayscaleUtilityClient = control_uat;
-pcmciaHibernate = oop_virus_console(text_mountain);
-if (stateWaisFirewire &gt;= -2) {
-    jfs = 647065 / ldapVrml(tutorialRestore, 85);
-    metal_runtime_parse = roomComputingResolution - toolbarUpload +
-            ipx_nvram_open;
-} else {
-    maximizeSidebar *= suffix_url(flatbed + 2, requirements_encoding_node +
-            only_qbe_media, minicomputer);
-}
-```</p>
-<p>Aere repetiti cognataque natus. Habebat vela solutis saepe munus nondum adhuc
-oscula nomina pignora corpus deserat.</p>
-<p>## Lethaei Pindumve me quae dinumerat Pavor</p>
-<p>Idem se saxa fata pollentibus geminos; quos pedibus. Est urnis Herses omnes nec
-divite: et ille illa furit sim verbis Cyllenius.</p>
-<p>1. Captus inpleverunt collo
-2. Nec nam placebant
-3. Siquos vulgus
-4. Dictis carissime fugae
-5. A tacitos nulla viginti</p>
-<p>Ungues fistula annoso, ille addit linoque motatque uberior verso
-[rubuerunt](#) confine desuetaque. _Sanguine_ anteit
-emerguntque expugnacior est pennas iniqui ecce **haeret** genus: peiora imagine
-fossas Cephisos formosa! Refugitque amata [refelli](#)
-supplex. Summa brevis vetuere tenebas, hostes vetantis, suppressit, arreptum
-regna. Postquam conpescit iuvenis habet corpus, et erratica, perdere, tot mota
-ars talis.</p>
-<p>```c
-digital.webcam_dual_frequency = webmasterMms;
-if (5 + language_standalone_google) {
-    cc_inbox_layout *= file_character;
-    task += p;
-    lockUnicode += enterprise_monochrome(tokenFunctionPersonal, keyVirtual,
-            adf);
-}
-windows_binary_esports(87734, array(restoreRomTopology, adRaw(407314),
-        dongleBashThumbnail), interpreter);
-```</p>
-<p>Sit volat naturam; motu Cancri. Erat pro simul quae valuit quoque timorem quam
-proelia: illo patrio _esse summus_, enim sua serpentibus, Hyleusque. Est coniuge
-recuso; refert Coroniden ignotos manat, adfectu.</p>]]></content:encoded>
-            <author>sathya@tadinada.com (Sathya Tadinada)</author>
-        </item>
-        <item>
-            <title><![CDATA[Rewriting the cosmOS kernel in Rust]]></title>
-            <link>https://tadinada.com/blog/rewriting-the-cosmos-kernel-in-rust</link>
-            <guid isPermaLink="false">https://tadinada.com/blog/rewriting-the-cosmos-kernel-in-rust</guid>
-            <pubDate>Thu, 14 Jul 2022 00:00:00 GMT</pubDate>
-            <description><![CDATA[When we released the first version of cosmOS last year, it was written in Go. Go is a wonderful programming language, but it’s been a while since I’ve seen an article on the front page of Hacker News about rewriting some important tool in Go and I see articles on there about rewriting things in Rust every single week.]]></description>
-            <content:encoded><![CDATA[<p>When we released the first version of cosmOS last year, it was written in Go. Go is a wonderful programming language with a lot of benefits, but it’s been a while since I’ve seen an article on the front page of Hacker News about rewriting some important tool in Go and I see articles on there about rewriting things in Rust every single week.</p>
-<p>```rust
-use ferris_says::say;
-use std::io::{stdout, BufWriter};</p>
-<p>fn main() {
-    let stdout = stdout();
-    let message = String::from(&quot;Hello fellow hackers&quot;);
-    let width = message.chars().count();</p>
-<p>let mut writer = BufWriter::new(stdout.lock());
-    say(message.as_bytes(), width, &amp;mut writer).unwrap();
-}
-```</p>
-<p>I derive a large amount of my self-worth from whether or not Hacker News is impressed with the work I&#039;m doing, so when I realized this, I cancelled all of our existing projects and started migrating everything to Rust immediately.</p>
-<p>## Sermone fata</p>
-<p>Lorem markdownum, bracchia in redibam! Terque unda puppi nec, linguae posterior
-in utraque respicere candidus Mimasque formae; quae conantem cervice. Parcite
-variatus, redolentia adeunt. Tyrioque dies, naufraga sua adit partibus celanda
-torquere temptata, erit maneat et ramos, [iam](#) ait dominari
-potitus! Tibi litora matremque fumantia condi radicibus opusque.</p>
-<p>Deus feram verumque, fecit, ira tamen, terras per alienae victum. Mutantur
-levitate quas ubi arcum ripas oculos abest. Adest [commissaque
-victae](#) in gemitus nectareis ire diva
-dotibus ora, et findi huic invenit; fatis? Fractaque dare superinposita
-nimiumque simulatoremque sanguine, at voce aestibus diu! Quid veterum hausit tu
-nil utinam paternos ima, commentaque.</p>
-<p>```c
-exbibyte_wins = gigahertz(3);
-grayscaleUtilityClient = control_uat;
-pcmciaHibernate = oop_virus_console(text_mountain);
-if (stateWaisFirewire &gt;= -2) {
-    jfs = 647065 / ldapVrml(tutorialRestore, 85);
-    metal_runtime_parse = roomComputingResolution - toolbarUpload +
-            ipx_nvram_open;
-} else {
-    maximizeSidebar *= suffix_url(flatbed + 2, requirements_encoding_node +
-            only_qbe_media, minicomputer);
-}
-```</p>
-<p>Aere repetiti cognataque natus. Habebat vela solutis saepe munus nondum adhuc
-oscula nomina pignora corpus deserat.</p>
-<p>## Lethaei Pindumve me quae dinumerat Pavor</p>
-<p>Idem se saxa fata pollentibus geminos; quos pedibus. Est urnis Herses omnes nec
-divite: et ille illa furit sim verbis Cyllenius.</p>
-<p>1. Captus inpleverunt collo
-2. Nec nam placebant
-3. Siquos vulgus
-4. Dictis carissime fugae
-5. A tacitos nulla viginti</p>
-<p>Ungues fistula annoso, ille addit linoque motatque uberior verso
-[rubuerunt](#) confine desuetaque. _Sanguine_ anteit
-emerguntque expugnacior est pennas iniqui ecce **haeret** genus: peiora imagine
-fossas Cephisos formosa! Refugitque amata [refelli](#)
-supplex. Summa brevis vetuere tenebas, hostes vetantis, suppressit, arreptum
-regna. Postquam conpescit iuvenis habet corpus, et erratica, perdere, tot mota
-ars talis.</p>
-<p>```c
-digital.webcam_dual_frequency = webmasterMms;
-if (5 + language_standalone_google) {
-    cc_inbox_layout *= file_character;
-    task += p;
-    lockUnicode += enterprise_monochrome(tokenFunctionPersonal, keyVirtual,
-            adf);
-}
-windows_binary_esports(87734, array(restoreRomTopology, adRaw(407314),
-        dongleBashThumbnail), interpreter);
-```</p>
-<p>Sit volat naturam; motu Cancri. Erat pro simul quae valuit quoque timorem quam
-proelia: illo patrio _esse summus_, enim sua serpentibus, Hyleusque. Est coniuge
-recuso; refert Coroniden ignotos manat, adfectu.</p>]]></content:encoded>
+            <title><![CDATA[FreezeTag: An Open-Source, Self-Hosted Image Management App]]></title>
+            <link>https://tadinada.com/blog/freezetag</link>
+            <guid isPermaLink="false">https://tadinada.com/blog/freezetag</guid>
+            <pubDate>Sat, 25 Apr 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[FreezeTag is a free, open-source, self-hosted image management platform I built as my undergraduate capstone. Here's what it is, how it works, and what I learned building it.]]></description>
+            <content:encoded><![CDATA[<p>&lt;Image src={freezetag} alt=&quot;FreezeTag Logo&quot; /&gt;</p>
+<p>I&#039;ve been frustrated with photo apps for a while. All the mainstream ones, like Google Photos and Apple Photos, do a pretty decent job as far as storage is concerned. They work, and they make it easy to upload and access your photos from anywhere. The problem is that using them means your entire photo library lives on someone else&#039;s servers, and you&#039;re subject to pricing that grows as your collection does. For casual users, that might be an acceptable tradeoff for the convenience. But for people (like me) that take a lot of photos and want more control over their data, it&#039;s a pretty significant downside.</p>
+<p>The organization problem is even worse than the storage concerns. Take a photo that could easily belong in multiple categories at once (maybe it&#039;s a photo of your dog at a beach with a sunset, or a picture of a family gathering with various people). You might think you could just add it to an album or folder, but then you&#039;re stuck choosing one category to put it in, and you&#039;ve still got the same problem when you try to find it through any of the others. You try searching for it instead, but because there are so many parts to that photo, you&#039;re stuck having to scroll through thousands of photos to find that one specific moment.</p>
+<p>Both Google Photos and Apple Photos somewhat get around this with AI-powered search, but they don&#039;t let you define your own structured labels (so if they say a picture of &quot;sea turtles&quot; is actually a picture of &quot;birds&quot;, you&#039;re out of luck (true story)). A self-hosted alternative, DigiKam, does support tags, but they feel grafted on to its folder model. None of these treat user-defined organization as a primary feature.</p>
+<p>That&#039;s the gap FreezeTag set out to fill.</p>
+<p>## What FreezeTag Is</p>
+<p>[FreezeTag](https://freezetag.app/) is a free, open-source, self-hosted image management app built for photographers, small businesses, and anyone who wants actual control over how their photos are stored and organized. The whole system runs through Docker Compose, so standing up an instance is a single command. The interface is browser-based, so any device on the same network can connect without installing anything on the client. Your photos stay on your own hardware.</p>
+<p>The core design decision was making **tags the primary organization unit** instead of folders or albums. Any image can belong to multiple logical groupings at once, which a folder hierarchy simply can&#039;t do. A photographer can label a batch of images with `client:SteveJobs`, `location:SaltLake`, and `format:print` at upload time, then later pull exactly that subset by querying across any combination of those tags.</p>
+<p>FreezeTag also ships with an extensible **Python plugin system** for automated tagging. For now, first-party plugins include a local &quot;Recognize Anything Model&quot; (RAM) tagger, a face recognition plugin, a meme generator (non-negotiable), and a Google Gemini tagger for people who are okay with the cloud-assisted tradeoff in exchange for higher accuracy and detail of the tags. More will be coming soon™, and users can always write their own plugins in the meantime.</p>
+<p>Here&#039;s a demo walkthrough we recorded at the end of the capstone:</p>
+<p>&lt;YouTube id=&quot;jdchXelvKHA&quot; /&gt;</p>
+<p>## The Team and My Role</p>
+<p>&lt;Image src={group_picture} alt=&quot;Picture of the Capstone Team&quot; caption=&quot;From left to right: Brayden, Max, Sathya, Ethan&quot;/&gt;</p>
+<p>FreezeTag was my senior capstone project at the University of Utah, built with three other developers across two semesters (Fall 2025 and Spring 2026). We split into two frontend and two backend engineers, each owning a clearly defined area of the codebase from the start. My role was the **frontend interface developer**, which meant I was responsible for the overall visual design, UI/UX, and frontend implementation across every user-facing page, including the gallery, tag management, settings, and a custom theme creator (more on that in a bit).</p>
+<p>The other frontend engineer, [Brayden](https://www.linkedin.com/in/brayden-jonsson/), handled the lower-level frontend concerns (API communication, authentication state, and how data flowed through the application) that my work would sit on top of. On the backend side of development, [Ethan](https://www.linkedin.com/in/ethan-collier/) owned the API architecture and core features like albums, sharing, authentication, and permissions, while [Max](https://www.linkedin.com/in/max-petersen-b3652a251/) handled the plugin communication protocol, the async job system, ImageMagick integration, and the image database structure.</p>
+<p>We ran the whole project as an Agile process organized around four-week sprints, tracked through a GitLab issue board with phase, domain, and state labels on every issue. We met three times a week: a Monday evening sprint planning meeting, a Wednesday standup meeting, and a Friday in-person staff review. Most day-to-day coordination was asynchronous over Discord.</p>
+<p>&lt;Image src={gitlab_board} alt=&quot;Screenshot of GitLab Issue Board&quot; /&gt;</p>
+<p>## What I&#039;m Proud Of</p>
+<p>All four of us took this seriously in a way I didn&#039;t fully expect going in. We started Fall 2025 with a clear project vision and shipped that exact vision in Spring 2026, no major cuts, no scope creep in the wrong direction. As college seniors, I expected there to be some amount of &quot;well, we have to turn _something_ in, let&#039;s just throw something together at the end&quot; energy, but we were all super passionate about this project and wanted it to be a really good app, and that made a pretty big impact in how it turned out.</p>
+<p>The development process also helped a lot with this. Every merge request had to pass automated format, lint, and test checks before a human was even able to review it. We held an 80% test coverage minimum across the frontend and backend from day one, and finished at 95% and 85% respectively. I&#039;d be lying if I said it didn&#039;t feel like overkill at times, but it did also mean that we basically never broke each other&#039;s work.</p>
+<p>The part that still catches me off guard a little is how FreezeTag ended up surprisingly close to feature parity with Google Photos and Apple Photos for all the things that matter. The features we have work well, and the combination of tag-based search with a user-extensible plugin system isn&#039;t something any major image management product offers. I didn&#039;t expect to be able to say that about something I built in a class.</p>
+<p>A few specific pieces of the frontend I&#039;m particularly happy with:</p>
+<p>### Tags Dropdown</p>
+<p>The dropdown menu in the gallery filters by intersection, only showing tags that appear in the current view. Rather than naively listing every tag in the library, selecting a tag filters the gallery and immediately updates the dropdown to show only the tags that actually appear on the filtered images. As you narrow your search, the dropdown updates to reflect the current set of relevant tags, making it easy to refine searches and discover related tags without needing to know the exact library structure ahead of time. It also prevents users from getting lost in a sea of irrelevant tags (was a photo of your dog at the beach _really_ also tagged &quot;architecture&quot;?).</p>
+<p>&lt;Image src={tags_dropdown} alt=&quot;Screenshot of Gallery with Tags Dropdown&quot; /&gt;</p>
+<p>### Image Previews</p>
+<p>This was probably the most complex feature of the whole gallery page, and one I severely underestimated. On the surface, clicking a photo and seeing it full-screen with a metadata sidebar sounds simple. In practice, there were a lot of moving parts. The zoom had to work relative to wherever the cursor was sitting, not just the center of the image, and getting that math right took longer than expected. The navigation arrows had to respect whatever filters and sort order the gallery was currently using, so cycling through photos in the overlay would follow the same ordering as the gallery below it. The metadata sidebar pulls all EXIF data extracted at upload time (resolution, date taken, date uploaded, GPS coordinates, camera model), and users can add or remove tags per-image directly from the sidebar, or collapse it entirely if they just want to look at the photo.</p>
+<p>&lt;Image src={preview_window} alt=&quot;Screenshot of Image Preview Window&quot; /&gt;</p>
+<p>### Custom Theme Creation</p>
+<p>If you&#039;ve been paying attention to the previous screenshots, you might have noticed they&#039;re all using different themes. FreezeTag ships with a set of built-in Catppuccin themes (Latte, Frappe, Macchiato, Mocha), but the goal was to let users also define their own color palettes without needing to touch CSS directly. The question was what format to give them. We landed on building on top of Catppuccin&#039;s existing CSS variable naming conventions: users specify which variables they want to override and what color values to assign to each one. For anyone already familiar with Catppuccin, that system is immediately familiar. For others, it&#039;s still approachable because we expose color pickers rather than raw text input. Themes can be exported and imported as JSON files, and on import the application validates the structure before applying anything. As a purely hypothetical scenario (of course), if you&#039;re a _huge_ fan of St. Patrick&#039;s Day and _really_ want FreezeTag to reflect that energy, who are we to stop you?</p>
+<p>&lt;Image src={theme_editor} alt=&quot;Screenshot of Custom Theme Creator&quot; /&gt;</p>
+<p>## What Was Actually Hard</p>
+<p>Most of the challenges with FreezeTag were technical ones. The thing that kept coming up was infrastructure compatibility, where versioning conflicts between libraries, packages missing support for the specific functionality we needed, and unexpected interactions between different parts of the stack all caused headaches in their own way. These problems also don&#039;t show up until you&#039;re already knee-deep into an implementation, which makes them almost impossible to plan around.</p>
+<p>Authentication and the job tracking system were the two that cost us the most time. We had estimated authentication at about four weeks of dev time, but finished it ahead of schedule because [`bcrypt`](https://en.wikipedia.org/wiki/Bcrypt) handled most of the hard parts for us. The jobs system was the opposite. What looked like a straightforward progress-tracking feature turned out to require building an entirely new subsystem before we could even get started on the actual feature. We did not see that coming when we wrote the estimate, and that ended up making us have to rework the timeline we set up at the beginning of the semester.</p>
+<p>Some features also got scoped down along the way. For example, a plugin marketplace, where users could browse and install community plugins directly from inside the app, got cut so we could keep the core experience polished (this is still something that might happen in the future, but for now, a user can upload plugins through a Git repo upload menu). The map feature was originally planned as a fully interactive embedded Leaflet map as an optional plugin, but ended up as a toggleable component since integrating Leaflet cleanly into the sidebar layout (and in general, writing plugins that directly modify the UI) wasn&#039;t worth the effort.</p>
+<p>## What I&#039;d Do Differently</p>
+<p>The biggest technical change I&#039;d make is dropping Next.js for a simpler Node.js server setup. Next.js caused recurring friction throughout the project, mostly around the client/server component distinction and React hydration issues that were _very_ painful to diagnose. Some of that was probably React rather than Next.js specifically, but for a stateful application where server-side rendering doesn&#039;t provide much benefit, the added complexity wasn&#039;t worth it.</p>
+<p>I&#039;d also have started active development earlier in Fall 2025. A significant chunk of that semester went into planning, designing, and evaluating options. Our project vision was clear from the start, so a lot of that could have been compressed into more actual development time.</p>
+<p>On the design side, I wish I&#039;d pulled in UI/UX references much earlier in the process. A lot of the visual design work required backtracking because I was figuring out design principles as I went. The Sort dropdown is the clearest example, where the first version embedded sort syntax directly in the search bar, so users would type things like `sortBy=DateAdded;` and `sortOrder=Newest;`. It _technically_ worked, but watching non-technical users interact with it made immediately clear how undiscoverable it was. The tag management page is similar, in that it wasn&#039;t in the original design at all (our original plan was to have users modify tags only on a per-image basis), and only became obviously necessary once we were using the app with real photo collections.</p>
+<p>I came out of it with a much stronger instinct for UI decisions than I had going in. Better starting materials would definitely have gotten me there faster, though.</p>
+<p>## What Comes Next</p>
+<p>The plugin ecosystem is where I see the most room to grow. Right now, discovering and installing plugins requires some manual effort. A marketplace built into the app would make extensibility much more accessible, and the existing plugin architecture should make that relatively straightforward to build on top of.</p>
+<p>On the backend, it might be worth considering Rewriting It In Rust™ (for more reasons than just the meme). Go handled concurrency well and never really bottlenecked us, but for very large photo libraries or multi-user deployments, Rust would likely handle the load better. Not an immediate priority, but not off the table either.</p>
+<p>FreezeTag is released under the MIT open-source license. You can view the source code on [GitHub](https://github.com/FreezeTagPhoto/FreezeTag) and the app itself will be available on [Docker Hub](https://hub.docker.com/r/freezetag/freezetag) for easy deployment.</p>
+<p>---</p>
+<p>If you want the full picture on design decisions and architecture, my honors thesis is embedded below. It&#039;s typeset in [Typst](https://typst.app/) and its source is on [GitHub](https://github.com/SathyaTadinada/Undergraduate-Thesis).</p>
+<p>&lt;PDF src=&quot;/thesis.pdf&quot; title=&quot;FreezeTag Undergraduate Thesis&quot; /&gt;</p>
+<p>_Can&#039;t see the embed? [Open the thesis directly](/thesis.pdf)._</p>]]></content:encoded>
             <author>sathya@tadinada.com (Sathya Tadinada)</author>
         </item>
         <item>
@@ -181,6 +78,11 @@ recuso; refert Coroniden ignotos manat, adfectu.</p>]]></content:encoded>
             <content:encoded><![CDATA[<p>Regular expressions (regex) have a reputation for looking like arcane symbols from a hacker movie.</p>
 <p>```regex
 ^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$
+```
+```typst
+$ 
+    integral_0^1 x^2 d x = 1/3 
+$
 ```</p>
 <p>If that looks like keyboard mash to you, you&#039;re not alone. The truth is, regex can be complex and intimidating at first glance.
 However, regex is nothing more than a language for describing patterns in text, and under the hood it works like a tiny machine that reads
@@ -190,13 +92,13 @@ you with practical tips for writing patterns that you&#039;ll still be able to u
 <p>## What Regex Really Is</p>
 <p>Regex isn&#039;t &quot;code&quot; in the same sense as a general-purpose language (like Java or Rust). It&#039;s **declarative**: you describe the shape of the text you want, and the regex engine figures out how to _find_ it.</p>
 <p>Behind the scenes, many regex engines turn your pattern into a **finite state machine** (FSM) and step through your input, deciding &quot;match&quot; or &quot;no match&quot;.</p>
-<p>&lt;Image src={regexDiagram} alt=&quot;State diagram for regex a(b|c)d+&quot; /&gt;</p>
+<p>{/* &lt;Image src={regexDiagram} alt=&quot;State diagram for regex a(b|c)d+&quot; /&gt; */}</p>
 <p>&gt; TL;DR: Regex describes a set of strings. The engine checks whether your input is in that set.</p>
 <p>## The Building Blocks
 Regex has only a handful of core ideas. Combine them and you can recognize surprisingly complex patterns.</p>
 <p>### Literals
 Match exact characters.</p>
-<p>```txt
+<p>```regex
 cat                         # matches &quot;cat&quot; in text
 ```</p>
 <p>### Character Classes

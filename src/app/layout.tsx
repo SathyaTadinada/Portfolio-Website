@@ -3,13 +3,13 @@ import { type Metadata } from 'next'
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
 
+import 'katex/dist/katex.min.css'
 import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
   title: {
     template: '%s - Sathya Tadinada',
-    default:
-      'Sathya Tadinada: Personal Portfolio',
+    default: 'Sathya Tadinada: Personal Portfolio',
   },
   description:
     'I’m Sathya Tadinada, a software developer and college student based in Salt Lake City. I’m excited to grow my skills in the tech field and make a positive impact through my work.',
@@ -27,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
-      <meta name='theme-color'></meta>
+      <meta name="theme-color"></meta>
       <body className="flex h-full bg-zinc-50 dark:bg-black">
         <Providers>
           <div className="flex w-full">

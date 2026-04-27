@@ -19,6 +19,36 @@ A single place to explore my work, projects, experience, and thoughts. Built wit
 - [**Cloudflare Pages**](https://pages.cloudflare.com): Hosting and deployment
 - [**GitHub**](https://github.com/): Version control
 
+## Blog Authoring
+
+MDX blog posts support LaTeX math via KaTeX:
+
+```mdx
+Inline math uses $E = mc^2$.
+
+$$
+\int_0^1 x^2\,dx = \frac{1}{3}
+$$
+```
+
+Typst snippets can be rendered to SVG at build time with a `typst` code fence:
+
+````mdx
+```typst
+$ integral_0^1 x^2 dif x = 1/3 $
+```
+````
+
+For larger diagrams or documents, add a `.typ` file to the repo and render it
+with the MDX component:
+
+```mdx
+<Typst src="src/app/blog/my-post/diagram.typ" caption="A Typst diagram" />
+```
+
+Typst rendering uses the `typst` CLI during the Next.js build, so the build
+environment needs Typst installed and available on `PATH`.
+
 ## Getting Started
 
 Clone the repository and install dependencies:
@@ -45,7 +75,7 @@ Finally, open [http://localhost:3000](http://localhost:3000) in your browser to 
 
 ## Design and Contributors
 
-This site began as the **Spotlight** template from [Tailwind UI](https://tailwindcss.com/plus/templates/spotlight), but has been significantly customized and extended to include my own layout changes, blog functionality, tag filtering, and more. 
+This site began as the **Spotlight** template from [Tailwind UI](https://tailwindcss.com/plus/templates/spotlight), but has been significantly customized and extended to include my own layout changes, blog functionality, tag filtering, and more.
 
 While the vast majority of the code, design, and content for this site was created by me, I welcome occasional contributions and use [automated tools](https://github.com/dependabot) to help maintain the project.
 
