@@ -6,6 +6,7 @@ import clsx from 'clsx'
 import { ArrowLeft, ArrowUp } from 'lucide-react'
 
 import { AppContext } from '@/app/providers'
+import { Comments } from '@/components/Comments'
 import { Container } from '@/components/Container'
 import { Prose } from '@/components/Prose'
 import { TableOfContents } from '@/components/TableOfContents'
@@ -146,6 +147,7 @@ export function ArticleLayout({
             <TableOfContents className="mt-8 xl:hidden" variant="mobile" />
             <Prose data-article-content>{children}</Prose>
           </article>
+          <Comments />
         </div>
 
         <aside className="hidden xl:block">
