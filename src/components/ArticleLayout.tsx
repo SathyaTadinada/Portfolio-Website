@@ -1,9 +1,10 @@
 'use client'
 
 import { useContext, useEffect, useState } from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import clsx from 'clsx'
-import { ArrowLeft, ArrowUp } from 'lucide-react'
+import { Archive, ArrowLeft, ArrowUp } from 'lucide-react'
 
 import { AppContext } from '@/app/providers'
 import { Comments } from '@/components/Comments'
@@ -108,6 +109,44 @@ function ScrollToTopButton({ className }: { className?: string }) {
   )
 }
 
+function ArchivedArticleNotice() {
+  return (
+    <div className="mt-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950 dark:border-amber-500/20 dark:bg-amber-500/10 dark:text-amber-100">
+      <div className="flex gap-3">
+        <Archive className="mt-0.5 h-4 w-4 flex-none text-amber-600 dark:text-amber-300" />
+        <div>
+          <p className="font-medium">Archived post</p>
+          <p className="mt-1 text-amber-900/80 dark:text-amber-100/75">
+            This post is preserved for reference and may reflect older writing,
+            APIs, or project details.
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function ArticleTags({ tags }: { tags?: string[] }) {
+  if (!tags?.length) return null
+
+  return (
+    <div className="mt-5 flex flex-wrap gap-2" aria-label="Article tags">
+      {tags
+        .slice()
+        .sort((a, b) => a.localeCompare(b))
+        .map((tag) => (
+          <Link
+            key={tag}
+            href={`/blog?tags=${encodeURIComponent(tag)}`}
+            className="rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-600 transition hover:bg-zinc-200 hover:text-zinc-800 dark:bg-zinc-800/80 dark:text-zinc-300 dark:hover:bg-zinc-700 dark:hover:text-zinc-100"
+          >
+            {tag}
+          </Link>
+        ))}
+    </div>
+  )
+}
+
 export function ArticleLayout({
   article,
   children,
@@ -140,6 +179,7 @@ export function ArticleLayout({
               <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
                 {article.title}
               </h1>
+              <ArticleTags tags={article.tags} />
               <time
                 dateTime={article.date}
                 className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
@@ -148,6 +188,7 @@ export function ArticleLayout({
                 <span className="ml-3">{formatDate(article.date)}</span>
               </time>
             </header>
+            {article.archived && <ArchivedArticleNotice />}
             <TableOfContents className="mt-8 xl:hidden" variant="mobile" />
             <Prose data-article-content>{children}</Prose>
           </article>

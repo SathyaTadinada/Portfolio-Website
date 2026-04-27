@@ -21,7 +21,7 @@ export default function Page({ children }) {
   return <ArticleLayout article={article}>{children}</ArticleLayout>
 }
 
-<Image src={freezetag} alt="FreezeTag Logo" />
+<Image src={freezetag} alt="FreezeTag Logo" loading="eager" />
 
 I've been frustrated with photo apps for a while. All the mainstream ones, like Google Photos and Apple Photos, do a pretty decent job as far as storage is concerned. They work, and they make it easy to upload and access your photos from anywhere. The problem is that using them means your entire photo library lives on someone else's servers, and you're subject to pricing that grows as your collection does. For casual users, that might be an acceptable tradeoff for the convenience. But for people (like me) that take a lot of photos and want more control over their data, it's a pretty significant downside.
 
