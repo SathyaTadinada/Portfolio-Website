@@ -147,6 +147,49 @@ function withoutTrailingSlash(url) {
   return url.replace(/\/+$/, '')
 }
 
+function normalizeSiteUrlCandidate(candidate) {
+  if (typeof candidate !== 'string') return null
+
+  let value = candidate.trim()
+  if (!value) return null
+
+  if (/^https?:\/\//i.test(value)) {
+    try {
+      let parsed = new URL(value)
+      return parsed.origin
+    } catch {
+      return null
+    }
+  }
+
+  if (/^[^\s/]+\.[^\s/]+(?:\/.*)?$/.test(value)) {
+    try {
+      let parsed = new URL(`https://${value}`)
+      return parsed.origin
+    } catch {
+      return null
+    }
+  }
+
+  return null
+}
+
+function resolveSiteUrl() {
+  let candidates = [
+    process.env.NEXT_PUBLIC_SITE_URL,
+    process.env.SITE_URL,
+    process.env.CF_PAGES_URL,
+    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null,
+  ]
+
+  for (let candidate of candidates) {
+    let siteUrl = normalizeSiteUrlCandidate(candidate)
+    if (siteUrl) return siteUrl
+  }
+
+  return null
+}
+
 function toAbsoluteUrl(siteUrl, href) {
   if (typeof href !== 'string' || href.length === 0) return href
   if (/^[a-z][a-z\d+.-]*:/i.test(href)) return href
@@ -372,10 +415,10 @@ async function mdxBodyToHtml({ body, source, mdxPath, siteUrl, slug }) {
 }
 
 async function main() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+  const siteUrl = resolveSiteUrl()
   if (!siteUrl) {
     console.log(
-      '[generate-feed] Skipping feed generation: NEXT_PUBLIC_SITE_URL is not set.',
+      '[generate-feed] Skipping feed generation: no valid public site URL was found.',
     )
     return
   }
