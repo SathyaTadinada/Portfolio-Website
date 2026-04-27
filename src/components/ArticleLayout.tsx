@@ -17,12 +17,13 @@ const articleIconButtonClassName =
   'group flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 transition hover:shadow-lg dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 dark:ring-white/10 dark:hover:border-zinc-700 dark:hover:ring-white/20'
 
 function getScrollButtonInset() {
-  return window.matchMedia('(min-width: 640px)').matches ? 32 : 16
+  return 32
 }
 
 function ScrollToTopButton({ className }: { className?: string }) {
+  let [hasMounted, setHasMounted] = useState(false)
   let [isVisible, setIsVisible] = useState(false)
-  let [bottomOffset, setBottomOffset] = useState(16)
+  let [bottomOffset, setBottomOffset] = useState(32)
 
   useEffect(() => {
     let frame: number | null = null
@@ -54,6 +55,7 @@ function ScrollToTopButton({ className }: { className?: string }) {
       })
     }
 
+    setHasMounted(true)
     updateButtonPosition()
     window.addEventListener('scroll', scheduleUpdate, { passive: true })
     window.addEventListener('resize', scheduleUpdate)
@@ -67,6 +69,8 @@ function ScrollToTopButton({ className }: { className?: string }) {
       }
     }
   }, [])
+
+  if (!hasMounted) return null
 
   return (
     <button
@@ -125,7 +129,7 @@ export function ArticleLayout({
               aria-label="Go back to blogs"
               className={clsx(
                 articleIconButtonClassName,
-                'mb-8 lg:absolute lg:-left-5 lg:-mt-2 lg:mb-0 xl:-top-1.5 xl:-left-14 xl:mt-0',
+                'mb-8 xl:absolute xl:-top-1.5 xl:-left-14 xl:mt-0 xl:mb-0',
               )}
             >
               <ArrowLeft className="h-4 w-4 stroke-zinc-500 transition group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400" />
@@ -154,7 +158,7 @@ export function ArticleLayout({
           <TableOfContents className="sticky top-28 max-h-[calc(100svh-8rem)] overflow-y-auto pr-3" />
         </aside>
       </div>
-      <ScrollToTopButton className="fixed right-4 z-40 sm:right-8 xl:right-[max(2rem,calc((100vw-80rem)/2+4rem))]" />
+      <ScrollToTopButton className="fixed right-8 z-40 sm:right-16 lg:right-24 xl:right-[calc((100vw-64rem)/2+2rem)]" />
     </Container>
   )
 }
