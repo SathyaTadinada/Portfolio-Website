@@ -7,6 +7,7 @@ interface Article {
   author: string
   date: string
   tags?: string[]
+  archived?: boolean
 }
 
 export interface ArticleWithSlug extends Article {
@@ -27,14 +28,21 @@ async function importArticle(
   }
 }
 
+async function getAllArticlesIncludingArchived() {
+  const blogDir = path.join(process.cwd(), 'src/app/blog')
+  const articleFilenames = await glob('*/page.mdx', { cwd: blogDir })
+  const articles = await Promise.all(articleFilenames.map(importArticle))
+  return articles.sort((a, z) => +new Date(z.date) - +new Date(a.date))
+}
+
 export async function getAllArticles() {
-  const blogDir = path.join(process.cwd(), 'src/app/blog');
+  const articles = await getAllArticlesIncludingArchived()
+  return articles.filter((article) => !article.archived)
+}
 
-  const articleFilenames = await glob('*/page.mdx', { cwd: blogDir });
-
-  const articles = await Promise.all(articleFilenames.map(importArticle));
-
-  return articles.sort((a, z) => +new Date(z.date) - +new Date(a.date));
+export async function getArchivedArticles() {
+  const articles = await getAllArticlesIncludingArchived()
+  return articles.filter((article) => article.archived)
 }
 
 // export async function getAllArticles() {

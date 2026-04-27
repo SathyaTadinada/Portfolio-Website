@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useMemo } from 'react'
+import { ChevronDown } from 'lucide-react'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
@@ -15,7 +16,9 @@ function normalizeTags(input?: string | null) {
 }
 
 function hrefFor(tag: string, selected: string[]) {
-  const next = selected.includes(tag) ? selected.filter(t => t !== tag) : [...selected, tag]
+  const next = selected.includes(tag)
+    ? selected.filter((t) => t !== tag)
+    : [...selected, tag]
   if (next.length === 0) return '/blog'
   return `/blog?tags=${next.map(encodeURIComponent).join(',')}`
 }
@@ -45,45 +48,92 @@ function Article({ article: post }: { article: ArticleWithSlug }) {
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
         <Card.Title href={`/blog/${post.slug}`}>{post.title}</Card.Title>
-        <Card.Eyebrow as="time" dateTime={post.date} className="md:hidden" decorate>
+        <Card.Eyebrow
+          as="time"
+          dateTime={post.date}
+          className="md:hidden"
+          decorate
+        >
           {formatDate(post.date)}
         </Card.Eyebrow>
         <Card.Description>{post.description}</Card.Description>
 
         {!!post.tags?.length && (
           <div className="relative z-10 mt-4 flex flex-wrap gap-2">
-            {post.tags.slice().sort().map(t => (
-              <span
-                key={t}
-                className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-600 dark:bg-zinc-700/40 dark:text-zinc-300"
-              >
-                {t}
-              </span>
-            ))}
+            {post.tags
+              .slice()
+              .sort()
+              .map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-600 dark:bg-zinc-700/40 dark:text-zinc-300"
+                >
+                  {t}
+                </span>
+              ))}
           </div>
         )}
 
         <Card.Cta>Read post</Card.Cta>
       </Card>
-      <Card.Eyebrow as="time" dateTime={post.date} className="mt-1 hidden md:block">
+      <Card.Eyebrow
+        as="time"
+        dateTime={post.date}
+        className="mt-1 hidden md:block"
+      >
         {formatDate(post.date)}
       </Card.Eyebrow>
     </article>
   )
 }
 
-export default function BlogClient({ articles }: { articles: ArticleWithSlug[] }) {
+function EmptyPostsMessage({
+  selected,
+  hasArchivedArticles,
+}: {
+  selected: string[]
+  hasArchivedArticles: boolean
+}) {
+  if (selected.length === 0) {
+    return (
+      <p className="text-zinc-500 dark:text-zinc-400">
+        {hasArchivedArticles
+          ? 'No current posts are available. Archived posts are below.'
+          : 'No posts are available yet.'}
+      </p>
+    )
+  }
+
+  return (
+    <p className="text-zinc-500 dark:text-zinc-400">
+      No posts match{' '}
+      {[...selected]
+        .sort((a, b) => a.localeCompare(b))
+        .map((s) => `"${s}"`)
+        .join(', ')}
+      .
+    </p>
+  )
+}
+
+export default function BlogClient({
+  articles,
+  archivedArticles = [],
+}: {
+  articles: ArticleWithSlug[]
+  archivedArticles?: ArticleWithSlug[]
+}) {
   const sp = useSearchParams()
   const selected = useMemo(() => normalizeTags(sp.get('tags')), [sp])
 
   const allTags = useMemo(
-    () => Array.from(new Set(articles.flatMap(a => a.tags ?? []))).sort(),
+    () => Array.from(new Set(articles.flatMap((a) => a.tags ?? []))).sort(),
     [articles],
   )
 
   const visible = useMemo(() => {
     if (selected.length === 0) return articles
-    return articles.filter(a => selected.every(t => a.tags?.includes(t)))
+    return articles.filter((a) => selected.every((t) => a.tags?.includes(t)))
   }, [articles, selected])
 
   return (
@@ -95,7 +145,7 @@ export default function BlogClient({ articles }: { articles: ArticleWithSlug[] }
       {allTags.length > 0 && (
         <div className="mb-10 flex flex-wrap gap-2">
           <TagChip tag="All" selected={selected} />
-          {allTags.map(t => (
+          {allTags.map((t) => (
             <TagChip key={t} tag={t} selected={selected} />
           ))}
         </div>
@@ -103,22 +153,36 @@ export default function BlogClient({ articles }: { articles: ArticleWithSlug[] }
 
       <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
         <div className="flex max-w-3xl flex-col space-y-12 sm:space-y-16">
-          {visible.map(article => (
+          {visible.map((article) => (
             <Article key={article.slug} article={article} />
           ))}
 
           {visible.length === 0 && (
-            <p className="text-zinc-500 dark:text-zinc-400">
-              No posts match{' '}
-              {[...selected]
-                .sort((a, b) => a.localeCompare(b))
-                .map(s => `"${s}"`)
-                .join(', ')}
-              .
-            </p>
+            <EmptyPostsMessage
+              selected={selected}
+              hasArchivedArticles={archivedArticles.length > 0}
+            />
           )}
         </div>
       </div>
+
+      {archivedArticles.length > 0 && (
+        <details className="group/archived mt-16 sm:mt-20">
+          <summary className="flex cursor-pointer list-none items-center gap-2 marker:hidden [&::-webkit-details-marker]:hidden">
+            <span className="text-sm font-medium text-zinc-400 transition group-hover/archived:text-zinc-600 dark:text-zinc-500 dark:group-hover/archived:text-zinc-300">
+              Archived ({archivedArticles.length})
+            </span>
+            <ChevronDown className="h-3.5 w-3.5 text-zinc-400 transition-transform group-open/archived:rotate-180 dark:text-zinc-500" />
+          </summary>
+          <div className="mt-10 md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+            <div className="flex max-w-3xl flex-col space-y-12 opacity-60 sm:space-y-16">
+              {archivedArticles.map((article) => (
+                <Article key={article.slug} article={article} />
+              ))}
+            </div>
+          </div>
+        </details>
+      )}
     </SimpleLayout>
   )
 }

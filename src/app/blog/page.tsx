@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getAllArticles } from '@/lib/articles'
+import { getAllArticles, getArchivedArticles } from '@/lib/articles'
 import BlogClient from './BlogClient'
 
 export const metadata: Metadata = {
@@ -10,6 +10,9 @@ export const metadata: Metadata = {
 export const dynamic = 'force-static'
 
 export default async function BlogPage() {
-  const articles = await getAllArticles()
-  return <BlogClient articles={articles} />
+  const [articles, archivedArticles] = await Promise.all([
+    getAllArticles(),
+    getArchivedArticles(),
+  ])
+  return <BlogClient articles={articles} archivedArticles={archivedArticles} />
 }
