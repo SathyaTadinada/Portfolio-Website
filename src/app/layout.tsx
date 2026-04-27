@@ -18,6 +18,9 @@ export const metadata: Metadata = {
       'application/rss+xml': '/feed.xml',
     },
   },
+  icons: {
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+  },
 }
 
 export default function RootLayout({
