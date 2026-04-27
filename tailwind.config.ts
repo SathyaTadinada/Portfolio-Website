@@ -31,14 +31,20 @@ export default {
               backgroundColor: theme('colors.zinc.100'),
               color: theme('colors.zinc.800'),
               padding: '0.125rem 0.125rem', // py-0.5 px-0.5
-              borderRadius: '0.375rem',     // rounded-md
+              borderRadius: '0.375rem', // rounded-md
               borderWidth: '1px',
               borderColor: theme('colors.zinc.300 / 0.6'),
               fontWeight: '500',
-              whiteSpace: 'nowrap'
+              whiteSpace: 'nowrap',
             },
             ':where(code):not(:where(pre code))::before': { content: '""' },
             ':where(code):not(:where(pre code))::after': { content: '""' },
+            'a :where(code):not(:where(pre code))': {
+              color: theme('colors.blue.500'),
+            },
+            'a:hover :where(code):not(:where(pre code))': {
+              color: theme('colors.blue.700'),
+            },
 
             // Remove extra padding from fenced code
             ':where(pre code)': {
@@ -68,7 +74,9 @@ export default {
               overflow: 'hidden',
               transitionProperty: 'background-color, border-color, box-shadow',
               transitionDuration: theme('transitionDuration.200'),
-              transitionTimingFunction: theme('transitionTimingFunction.in-out'),
+              transitionTimingFunction: theme(
+                'transitionTimingFunction.in-out',
+              ),
             },
 
             // Summary header
@@ -87,9 +95,9 @@ export default {
               transitionProperty: 'background-color, color',
               transitionDuration: theme('transitionDuration.150'),
               userSelect: 'none',
-              WebkitUserSelect: 'none', 
-              MsUserSelect: 'none',     
-              WebkitTouchCallout: 'none', 
+              WebkitUserSelect: 'none',
+              MsUserSelect: 'none',
+              WebkitTouchCallout: 'none',
             },
             ':where(details) > :where(summary):hover': {
               backgroundColor: theme('colors.zinc.100'),
@@ -99,7 +107,9 @@ export default {
             },
 
             // Hide default marker
-            ':where(details) > :where(summary)::-webkit-details-marker': { display: 'none' },
+            ':where(details) > :where(summary)::-webkit-details-marker': {
+              display: 'none',
+            },
 
             // Custom chevron
             ':where(details) > :where(summary)::before': {
@@ -108,8 +118,10 @@ export default {
               height: theme('spacing.4'),
               flexShrink: '0',
               backgroundColor: theme('colors.zinc.600'),
-              WebkitClipPath: 'polygon(40% 5%, 85% 50%, 40% 95%, 30% 85%, 65% 50%, 30% 15%)',
-              clipPath:       'polygon(40% 5%, 85% 50%, 40% 95%, 30% 85%, 65% 50%, 30% 15%)',
+              WebkitClipPath:
+                'polygon(40% 5%, 85% 50%, 40% 95%, 30% 85%, 65% 50%, 30% 15%)',
+              clipPath:
+                'polygon(40% 5%, 85% 50%, 40% 95%, 30% 85%, 65% 50%, 30% 15%)',
               transition: `transform ${theme('transitionDuration.200')} ${theme('transitionTimingFunction.in-out')}`,
               pointerEvents: 'none',
             },
@@ -131,7 +143,6 @@ export default {
                 transition: 'none',
               },
             },
-
           },
         },
         invert: {
@@ -148,6 +159,12 @@ export default {
               backgroundColor: theme('colors.zinc.800 / 0.6'),
               color: theme('colors.zinc.100'),
               borderColor: theme('colors.zinc.700 / 0.6'),
+            },
+            'a :where(code):not(:where(pre code))': {
+              color: theme('colors.blue.400'),
+            },
+            'a:hover :where(code):not(:where(pre code))': {
+              color: theme('colors.blue.400'),
             },
             blockquote: {
               color: theme('colors.zinc.400'),
@@ -169,7 +186,6 @@ export default {
               borderTopColor: theme('colors.zinc.700'),
               color: 'var(--tw-prose-invert-body)',
             },
-
           },
         },
       }),
