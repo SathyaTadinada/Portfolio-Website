@@ -136,7 +136,7 @@ export default function Contact() {
           </h3>
           <ul
             role="list"
-            className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2"
+            className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2"
           >
             {primaryContact.map((contact) => (
               <ContactCard key={contact.name} contact={contact} />
@@ -152,7 +152,7 @@ export default function Contact() {
           </h3>
           <ul
             role="list"
-            className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4"
+            className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-4"
           >
             {otherProfiles.map((contact) => (
               <ContactCard key={contact.name} contact={contact} />

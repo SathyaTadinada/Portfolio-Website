@@ -129,13 +129,17 @@ function NavItem({
       <Link
         href={href}
         className={clsx(
-          'relative block px-3 py-2 transition',
+          'group relative block px-3 py-2 transition',
           isActive
             ? 'text-blue-500 dark:text-blue-400' // active tab color (light mode, dark mode)
             : 'hover:text-blue-300 dark:hover:text-blue-200', // hover tab color (light mode, dark mode)
         )}
       >
-        {children}
+        <span
+          aria-hidden="true"
+          className="absolute inset-x-0 inset-y-1 z-0 scale-95 rounded-full bg-zinc-100 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-700/50"
+        />
+        <span className="relative z-10">{children}</span>
         {isActive && (
           // highlight under active tab in header
           <span className="absolute inset-x-1 -bottom-px h-px bg-linear-to-r from-blue-500/0 via-blue-500/40 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0" />
