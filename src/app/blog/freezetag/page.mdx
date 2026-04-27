@@ -106,7 +106,7 @@ I came out of it with a much stronger instinct for UI decisions than I had going
 
 The plugin ecosystem is where I see the most room to grow. Right now, discovering and installing plugins requires some manual effort. A marketplace built into the app would make extensibility much more accessible, and the existing plugin architecture should make that relatively straightforward to build on top of.
 
-On the backend, it might be worth considering Rewriting It In Rust™ (for more reasons than just the meme). Go handled concurrency well and never really bottlenecked us, but for very large photo libraries or multi-user deployments, Rust would likely handle the load better. Not an immediate priority, but not off the table either.
+On the backend, we initially thought it might be worth considering Rewriting It In Rust™ (for more reasons than just the meme). However, after looking into Rust asynchronous programming and benchmarking some of the more intensive operations, we concluded that Go's performance and convenience was much better for us, and the development speed and ecosystem familiarity it offered were more valuable for this project. So that won't happen (until a very avid Rust fan inevitably rewrites it anyway).
 
 FreezeTag is released under the MIT open-source license. You can view the source code on [GitHub](https://github.com/FreezeTagPhoto/FreezeTag) and the app itself will be available on [Docker Hub](https://hub.docker.com/r/freezetag/freezetag) for easy deployment.
 
