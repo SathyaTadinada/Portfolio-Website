@@ -151,7 +151,7 @@ export function ArticleLayout({
             <TableOfContents className="mt-8 xl:hidden" variant="mobile" />
             <Prose data-article-content>{children}</Prose>
           </article>
-          <Comments />
+          {!article.archived && <Comments />}
         </div>
 
         <aside className="hidden xl:block">
