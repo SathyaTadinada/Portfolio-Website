@@ -2,15 +2,36 @@
 
 import Giscus from '@giscus/react'
 import { useTheme } from 'next-themes'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
+const productionSiteUrl = 'https://tadinada.com'
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '')
+const publicSiteUrl =
+  configuredSiteUrl && !configuredSiteUrl.includes('localhost')
+    ? configuredSiteUrl
+    : productionSiteUrl
+
 export function Comments() {
+  const pathname = usePathname()
+  const canonicalUrl = `${publicSiteUrl}${pathname}`
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    let backlinkMeta = document.querySelector<HTMLMetaElement>(
+      'meta[name="giscus:backlink"]',
+    )
+
+    if (!backlinkMeta) {
+      backlinkMeta = document.createElement('meta')
+      backlinkMeta.name = 'giscus:backlink'
+      document.head.append(backlinkMeta)
+    }
+
+    backlinkMeta.content = canonicalUrl
     setMounted(true)
-  }, [])
+  }, [canonicalUrl])
 
   return (
     <section
@@ -31,7 +52,8 @@ export function Comments() {
             repoId="R_kgDOLbK7qA"
             category="General"
             categoryId="DIC_kwDOLbK7qM4C7xTb"
-            mapping="pathname"
+            mapping="specific"
+            term={canonicalUrl}
             strict="0"
             reactionsEnabled="1"
             emitMetadata="0"
