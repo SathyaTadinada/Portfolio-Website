@@ -20,6 +20,8 @@ type TableOfContentsVariant = 'desktop' | 'mobile'
 
 const CONTENT_SELECTOR = '[data-article-content]'
 const HEADING_SELECTOR = `${CONTENT_SELECTOR} h1, ${CONTENT_SELECTOR} h2, ${CONTENT_SELECTOR} h3, ${CONTENT_SELECTOR} h4, ${CONTENT_SELECTOR} h5, ${CONTENT_SELECTOR} h6`
+const EXTRA_HEADING_SELECTOR = '[data-toc-heading]'
+const TOC_HEADING_SELECTOR = `${HEADING_SELECTOR}, ${EXTRA_HEADING_SELECTOR}`
 const ACTIVE_HEADING_OFFSET = 112
 const HEADING_SCROLL_OFFSET = 88
 const ACTIVATION_TOLERANCE = 2
@@ -123,7 +125,7 @@ export function TableOfContents({
 
   useEffect(() => {
     let headingElements = Array.from(
-      document.querySelectorAll<HTMLElement>(HEADING_SELECTOR),
+      document.querySelectorAll<HTMLElement>(TOC_HEADING_SELECTOR),
     ).filter((element) => getHeadingText(element).length > 0)
 
     if (headingElements.length === 0) {
