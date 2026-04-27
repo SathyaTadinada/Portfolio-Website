@@ -4,7 +4,7 @@
         <title>Sathya Tadinada</title>
         <link>https://tadinada.com</link>
         <description>This is my personal blog! I write about things I find interesting.</description>
-        <lastBuildDate>Mon, 27 Apr 2026 18:32:05 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 27 Apr 2026 20:14:22 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -19,54 +19,54 @@
             <guid isPermaLink="false">https://tadinada.com/blog/freezetag</guid>
             <pubDate>Sat, 25 Apr 2026 00:00:00 GMT</pubDate>
             <description><![CDATA[FreezeTag is a free, open-source, self-hosted image management platform I built as my undergraduate capstone. Here's what it is, how it works, and what I learned building it.]]></description>
-            <content:encoded><![CDATA[<p>&lt;Image src={freezetag} alt=&quot;FreezeTag Logo&quot; /&gt;</p>
-<p>I&#039;ve been frustrated with photo apps for a while. All the mainstream ones, like Google Photos and Apple Photos, do a pretty decent job as far as storage is concerned. They work, and they make it easy to upload and access your photos from anywhere. The problem is that using them means your entire photo library lives on someone else&#039;s servers, and you&#039;re subject to pricing that grows as your collection does. For casual users, that might be an acceptable tradeoff for the convenience. But for people (like me) that take a lot of photos and want more control over their data, it&#039;s a pretty significant downside.</p>
-<p>The organization problem is even worse than the storage concerns. Take a photo that could easily belong in multiple categories at once (maybe it&#039;s a photo of your dog at a beach with a sunset, or a picture of a family gathering with various people). You might think you could just add it to an album or folder, but then you&#039;re stuck choosing one category to put it in, and you&#039;ve still got the same problem when you try to find it through any of the others. You try searching for it instead, but because there are so many parts to that photo, you&#039;re stuck having to scroll through thousands of photos to find that one specific moment.</p>
-<p>Both Google Photos and Apple Photos somewhat get around this with AI-powered search, but they don&#039;t let you define your own structured labels (so if they say a picture of &quot;sea turtles&quot; is actually a picture of &quot;birds&quot;, you&#039;re out of luck (true story)). A self-hosted alternative, DigiKam, does support tags, but they feel grafted on to its folder model. None of these treat user-defined organization as a primary feature.</p>
-<p>That&#039;s the gap FreezeTag set out to fill.</p>
-<p>## What FreezeTag Is</p>
-<p>[FreezeTag](https://freezetag.app/) is a free, open-source, self-hosted image management app built for photographers, small businesses, and anyone who wants actual control over how their photos are stored and organized. The whole system runs through Docker Compose, so standing up an instance is a single command. The interface is browser-based, so any device on the same network can connect without installing anything on the client. Your photos stay on your own hardware.</p>
-<p>The core design decision was making **tags the primary organization unit** instead of folders or albums. Any image can belong to multiple logical groupings at once, which a folder hierarchy simply can&#039;t do. A photographer can label a batch of images with `client:SteveJobs`, `location:SaltLake`, and `format:print` at upload time, then later pull exactly that subset by querying across any combination of those tags.</p>
-<p>FreezeTag also ships with an extensible **Python plugin system** for automated tagging. For now, first-party plugins include a local &quot;Recognize Anything Model&quot; (RAM) tagger, a face recognition plugin, a meme generator (non-negotiable), and a Google Gemini tagger for people who are okay with the cloud-assisted tradeoff in exchange for higher accuracy and detail of the tags. More will be coming soon™, and users can always write their own plugins in the meantime.</p>
-<p>Here&#039;s a demo walkthrough we recorded at the end of the capstone:</p>
-<p>&lt;YouTube id=&quot;jdchXelvKHA&quot; /&gt;</p>
-<p>## The Team and My Role</p>
-<p>&lt;Image src={group_picture} alt=&quot;Picture of the Capstone Team&quot; caption=&quot;From left to right: Brayden, Max, Sathya, Ethan&quot;/&gt;</p>
-<p>FreezeTag was my senior capstone project at the University of Utah, built with three other developers across two semesters (Fall 2025 and Spring 2026). We split into two frontend and two backend engineers, each owning a clearly defined area of the codebase from the start. My role was the **frontend interface developer**, which meant I was responsible for the overall visual design, UI/UX, and frontend implementation across every user-facing page, including the gallery, tag management, settings, and a custom theme creator (more on that in a bit).</p>
-<p>The other frontend engineer, [Brayden](https://www.linkedin.com/in/brayden-jonsson/), handled the lower-level frontend concerns (API communication, authentication state, and how data flowed through the application) that my work would sit on top of. On the backend side of development, [Ethan](https://www.linkedin.com/in/ethan-collier/) owned the API architecture and core features like albums, sharing, authentication, and permissions, while [Max](https://www.linkedin.com/in/max-petersen-b3652a251/) handled the plugin communication protocol, the async job system, ImageMagick integration, and the image database structure.</p>
+            <content:encoded><![CDATA[<img src="https://tadinada.com/blog/freezetag/freezetag.png" alt="FreezeTag Logo">
+<p>I've been frustrated with photo apps for a while. All the mainstream ones, like Google Photos and Apple Photos, do a pretty decent job as far as storage is concerned. They work, and they make it easy to upload and access your photos from anywhere. The problem is that using them means your entire photo library lives on someone else's servers, and you're subject to pricing that grows as your collection does. For casual users, that might be an acceptable tradeoff for the convenience. But for people (like me) that take a lot of photos and want more control over their data, it's a pretty significant downside.</p>
+<p>The organization problem is even worse than the storage concerns. Take a photo that could easily belong in multiple categories at once (maybe it's a photo of your dog at a beach with a sunset, or a picture of a family gathering with various people). You might think you could just add it to an album or folder, but then you're stuck choosing one category to put it in, and you've still got the same problem when you try to find it through any of the others. You try searching for it instead, but because there are so many parts to that photo, you're stuck having to scroll through thousands of photos to find that one specific moment.</p>
+<p>Both Google Photos and Apple Photos somewhat get around this with AI-powered search, but they don't let you define your own structured labels (so if they say a picture of "sea turtles" is actually a picture of "birds", you're out of luck (true story)). A self-hosted alternative, DigiKam, does support tags, but they feel grafted on to its folder model. None of these treat user-defined organization as a primary feature.</p>
+<p>That's the gap FreezeTag set out to fill.</p>
+<h2>What FreezeTag Is</h2>
+<p><a href="https://freezetag.app/">FreezeTag</a> is a free, open-source, self-hosted image management app built for photographers, small businesses, and anyone who wants actual control over how their photos are stored and organized. The whole system runs through Docker Compose, so standing up an instance is a single command. The interface is browser-based, so any device on the same network can connect without installing anything on the client. Your photos stay on your own hardware.</p>
+<p>The core design decision was making <strong>tags the primary organization unit</strong> instead of folders or albums. Any image can belong to multiple logical groupings at once, which a folder hierarchy simply can't do. A photographer can label a batch of images with <code>client:SteveJobs</code>, <code>location:SaltLake</code>, and <code>format:print</code> at upload time, then later pull exactly that subset by querying across any combination of those tags.</p>
+<p>FreezeTag also ships with an extensible <strong>Python plugin system</strong> for automated tagging. For now, first-party plugins include a local "Recognize Anything Model" (RAM) tagger, a face recognition plugin, a meme generator (non-negotiable), and a Google Gemini tagger for people who are okay with the cloud-assisted tradeoff in exchange for higher accuracy and detail of the tags. More will be coming soon™, and users can always write their own plugins in the meantime.</p>
+<p>Here's a demo walkthrough we recorded at the end of the capstone:</p>
+<figure><a href="https://www.youtube.com/watch?v=jdchXelvKHA"><img src="https://img.youtube.com/vi/jdchXelvKHA/hqdefault.jpg" alt="YouTube video thumbnail"></a><figcaption><a href="https://www.youtube.com/watch?v=jdchXelvKHA">Watch on YouTube</a></figcaption></figure>
+<h2>The Team and My Role</h2>
+<figure><img src="https://tadinada.com/blog/freezetag/Capstone%20Group%20Picture.png" alt="Picture of the Capstone Team"><figcaption>From left to right: Brayden, Max, Sathya, Ethan</figcaption></figure>
+<p>FreezeTag was my senior capstone project at the University of Utah, built with three other developers across two semesters (Fall 2025 and Spring 2026). We split into two frontend and two backend engineers, each owning a clearly defined area of the codebase from the start. My role was the <strong>frontend interface developer</strong>, which meant I was responsible for the overall visual design, UI/UX, and frontend implementation across every user-facing page, including the gallery, tag management, settings, and a custom theme creator (more on that in a bit).</p>
+<p>The other frontend engineer, <a href="https://www.linkedin.com/in/brayden-jonsson/">Brayden</a>, handled the lower-level frontend concerns (API communication, authentication state, and how data flowed through the application) that my work would sit on top of. On the backend side of development, <a href="https://www.linkedin.com/in/ethan-collier/">Ethan</a> owned the API architecture and core features like albums, sharing, authentication, and permissions, while <a href="https://www.linkedin.com/in/max-petersen-b3652a251/">Max</a> handled the plugin communication protocol, the async job system, ImageMagick integration, and the image database structure.</p>
 <p>We ran the whole project as an Agile process organized around four-week sprints, tracked through a GitLab issue board with phase, domain, and state labels on every issue. We met three times a week: a Monday evening sprint planning meeting, a Wednesday standup meeting, and a Friday in-person staff review. Most day-to-day coordination was asynchronous over Discord.</p>
-<p>&lt;Image src={gitlab_board} alt=&quot;Screenshot of GitLab Issue Board&quot; /&gt;</p>
-<p>## What I&#039;m Proud Of</p>
-<p>All four of us took this seriously in a way I didn&#039;t fully expect going in. We started Fall 2025 with a clear project vision and shipped that exact vision in Spring 2026, no major cuts, no scope creep in the wrong direction. As college seniors, I expected there to be some amount of &quot;well, we have to turn _something_ in, let&#039;s just throw something together at the end&quot; energy, but we were all super passionate about this project and wanted it to be a really good app, and that made a pretty big impact in how it turned out.</p>
-<p>The development process also helped a lot with this. Every merge request had to pass automated format, lint, and test checks before a human was even able to review it. We held an 80% test coverage minimum across the frontend and backend from day one, and finished at 95% and 85% respectively. I&#039;d be lying if I said it didn&#039;t feel like overkill at times, but it did also mean that we basically never broke each other&#039;s work.</p>
-<p>The part that still catches me off guard a little is how FreezeTag ended up surprisingly close to feature parity with Google Photos and Apple Photos for all the things that matter. The features we have work well, and the combination of tag-based search with a user-extensible plugin system isn&#039;t something any major image management product offers. I didn&#039;t expect to be able to say that about something I built in a class.</p>
-<p>A few specific pieces of the frontend I&#039;m particularly happy with:</p>
-<p>### Tags Dropdown</p>
-<p>The dropdown menu in the gallery filters by intersection, only showing tags that appear in the current view. Rather than naively listing every tag in the library, selecting a tag filters the gallery and immediately updates the dropdown to show only the tags that actually appear on the filtered images. As you narrow your search, the dropdown updates to reflect the current set of relevant tags, making it easy to refine searches and discover related tags without needing to know the exact library structure ahead of time. It also prevents users from getting lost in a sea of irrelevant tags (was a photo of your dog at the beach _really_ also tagged &quot;architecture&quot;?).</p>
-<p>&lt;Image src={tags_dropdown} alt=&quot;Screenshot of Gallery with Tags Dropdown&quot; /&gt;</p>
-<p>### Image Previews</p>
+<img src="https://tadinada.com/blog/freezetag/GitLab%20Issue%20Board.png" alt="Screenshot of GitLab Issue Board">
+<h2>What I'm Proud Of</h2>
+<p>All four of us took this seriously in a way I didn't fully expect going in. We started Fall 2025 with a clear project vision and shipped that exact vision in Spring 2026, no major cuts, no scope creep in the wrong direction. As college seniors, I expected there to be some amount of "well, we have to turn <em>something</em> in, let's just throw something together at the end" energy, but we were all super passionate about this project and wanted it to be a really good app, and that made a pretty big impact in how it turned out.</p>
+<p>The development process also helped a lot with this. Every merge request had to pass automated format, lint, and test checks before a human was even able to review it. We held an 80% test coverage minimum across the frontend and backend from day one, and finished at 95% and 85% respectively. I'd be lying if I said it didn't feel like overkill at times, but it did also mean that we basically never broke each other's work.</p>
+<p>The part that still catches me off guard a little is how FreezeTag ended up surprisingly close to feature parity with Google Photos and Apple Photos for all the things that matter. The features we have work well, and the combination of tag-based search with a user-extensible plugin system isn't something any major image management product offers. I didn't expect to be able to say that about something I built in a class.</p>
+<p>A few specific pieces of the frontend I'm particularly happy with:</p>
+<h3>Tags Dropdown</h3>
+<p>The dropdown menu in the gallery filters by intersection, only showing tags that appear in the current view. Rather than naively listing every tag in the library, selecting a tag filters the gallery and immediately updates the dropdown to show only the tags that actually appear on the filtered images. As you narrow your search, the dropdown updates to reflect the current set of relevant tags, making it easy to refine searches and discover related tags without needing to know the exact library structure ahead of time. It also prevents users from getting lost in a sea of irrelevant tags (was a photo of your dog at the beach <em>really</em> also tagged "architecture"?).</p>
+<img src="https://tadinada.com/blog/freezetag/Gallery%20with%20Tags%20Dropdown.png" alt="Screenshot of Gallery with Tags Dropdown">
+<h3>Image Previews</h3>
 <p>This was probably the most complex feature of the whole gallery page, and one I severely underestimated. On the surface, clicking a photo and seeing it full-screen with a metadata sidebar sounds simple. In practice, there were a lot of moving parts. The zoom had to work relative to wherever the cursor was sitting, not just the center of the image, and getting that math right took longer than expected. The navigation arrows had to respect whatever filters and sort order the gallery was currently using, so cycling through photos in the overlay would follow the same ordering as the gallery below it. The metadata sidebar pulls all EXIF data extracted at upload time (resolution, date taken, date uploaded, GPS coordinates, camera model), and users can add or remove tags per-image directly from the sidebar, or collapse it entirely if they just want to look at the photo.</p>
-<p>&lt;Image src={preview_window} alt=&quot;Screenshot of Image Preview Window&quot; /&gt;</p>
-<p>### Custom Theme Creation</p>
-<p>If you&#039;ve been paying attention to the previous screenshots, you might have noticed they&#039;re all using different themes. FreezeTag ships with a set of built-in Catppuccin themes (Latte, Frappe, Macchiato, Mocha), but the goal was to let users also define their own color palettes without needing to touch CSS directly. The question was what format to give them. We landed on building on top of Catppuccin&#039;s existing CSS variable naming conventions: users specify which variables they want to override and what color values to assign to each one. For anyone already familiar with Catppuccin, that system is immediately familiar. For others, it&#039;s still approachable because we expose color pickers rather than raw text input. Themes can be exported and imported as JSON files, and on import the application validates the structure before applying anything. As a purely hypothetical scenario (of course), if you&#039;re a _huge_ fan of St. Patrick&#039;s Day and _really_ want FreezeTag to reflect that energy, who are we to stop you?</p>
-<p>&lt;Image src={theme_editor} alt=&quot;Screenshot of Custom Theme Creator&quot; /&gt;</p>
-<p>## What Was Actually Hard</p>
-<p>Most of the challenges with FreezeTag were technical ones. The thing that kept coming up was infrastructure compatibility, where versioning conflicts between libraries, packages missing support for the specific functionality we needed, and unexpected interactions between different parts of the stack all caused headaches in their own way. These problems also don&#039;t show up until you&#039;re already knee-deep into an implementation, which makes them almost impossible to plan around.</p>
-<p>Authentication and the job tracking system were the two that cost us the most time. We had estimated authentication at about four weeks of dev time, but finished it ahead of schedule because [`bcrypt`](https://en.wikipedia.org/wiki/Bcrypt) handled most of the hard parts for us. The jobs system was the opposite. What looked like a straightforward progress-tracking feature turned out to require building an entirely new subsystem before we could even get started on the actual feature. We did not see that coming when we wrote the estimate, and that ended up making us have to rework the timeline we set up at the beginning of the semester.</p>
-<p>Some features also got scoped down along the way. For example, a plugin marketplace, where users could browse and install community plugins directly from inside the app, got cut so we could keep the core experience polished (this is still something that might happen in the future, but for now, a user can upload plugins through a Git repo upload menu). The map feature was originally planned as a fully interactive embedded Leaflet map as an optional plugin, but ended up as a toggleable component since integrating Leaflet cleanly into the sidebar layout (and in general, writing plugins that directly modify the UI) wasn&#039;t worth the effort.</p>
-<p>## What I&#039;d Do Differently</p>
-<p>The biggest technical change I&#039;d make is dropping Next.js for a simpler Node.js server setup. Next.js caused recurring friction throughout the project, mostly around the client/server component distinction and React hydration issues that were _very_ painful to diagnose. Some of that was probably React rather than Next.js specifically, but for a stateful application where server-side rendering doesn&#039;t provide much benefit, the added complexity wasn&#039;t worth it.</p>
-<p>I&#039;d also have started active development earlier in Fall 2025. A significant chunk of that semester went into planning, designing, and evaluating options. Our project vision was clear from the start, so a lot of that could have been compressed into more actual development time.</p>
-<p>On the design side, I wish I&#039;d pulled in UI/UX references much earlier in the process. A lot of the visual design work required backtracking because I was figuring out design principles as I went. The Sort dropdown is the clearest example, where the first version embedded sort syntax directly in the search bar, so users would type things like `sortBy=DateAdded;` and `sortOrder=Newest;`. It _technically_ worked, but watching non-technical users interact with it made immediately clear how undiscoverable it was. The tag management page is similar, in that it wasn&#039;t in the original design at all (our original plan was to have users modify tags only on a per-image basis), and only became obviously necessary once we were using the app with real photo collections.</p>
+<img src="https://tadinada.com/blog/freezetag/Preview%20Window.png" alt="Screenshot of Image Preview Window">
+<h3>Custom Theme Creation</h3>
+<p>If you've been paying attention to the previous screenshots, you might have noticed they're all using different themes. FreezeTag ships with a set of built-in Catppuccin themes (Latte, Frappe, Macchiato, Mocha), but the goal was to let users also define their own color palettes without needing to touch CSS directly. The question was what format to give them. We landed on building on top of Catppuccin's existing CSS variable naming conventions: users specify which variables they want to override and what color values to assign to each one. For anyone already familiar with Catppuccin, that system is immediately familiar. For others, it's still approachable because we expose color pickers rather than raw text input. Themes can be exported and imported as JSON files, and on import the application validates the structure before applying anything. As a purely hypothetical scenario (of course), if you're a <em>huge</em> fan of St. Patrick's Day and <em>really</em> want FreezeTag to reflect that energy, who are we to stop you?</p>
+<img src="https://tadinada.com/blog/freezetag/Custom%20Theme%20Creator.png" alt="Screenshot of Custom Theme Creator">
+<h2>What Was Actually Hard</h2>
+<p>Most of the challenges with FreezeTag were technical ones. The thing that kept coming up was infrastructure compatibility, where versioning conflicts between libraries, packages missing support for the specific functionality we needed, and unexpected interactions between different parts of the stack all caused headaches in their own way. These problems also don't show up until you're already knee-deep into an implementation, which makes them almost impossible to plan around.</p>
+<p>Authentication and the job tracking system were the two that cost us the most time. We had estimated authentication at about four weeks of dev time, but finished it ahead of schedule because <a href="https://en.wikipedia.org/wiki/Bcrypt"><code>bcrypt</code></a> handled most of the hard parts for us. The jobs system was the opposite. What looked like a straightforward progress-tracking feature turned out to require building an entirely new subsystem before we could even get started on the actual feature. We did not see that coming when we wrote the estimate, and that ended up making us have to rework the timeline we set up at the beginning of the semester.</p>
+<p>Some features also got scoped down along the way. For example, a plugin marketplace, where users could browse and install community plugins directly from inside the app, got cut so we could keep the core experience polished (this is still something that might happen in the future, but for now, a user can upload plugins through a Git repo upload menu). The map feature was originally planned as a fully interactive embedded Leaflet map as an optional plugin, but ended up as a toggleable component since integrating Leaflet cleanly into the sidebar layout (and in general, writing plugins that directly modify the UI) wasn't worth the effort.</p>
+<h2>What I'd Do Differently</h2>
+<p>The biggest technical change I'd make is dropping Next.js for a simpler Node.js server setup. Next.js caused recurring friction throughout the project, mostly around the client/server component distinction and React hydration issues that were <em>very</em> painful to diagnose. Some of that was probably React rather than Next.js specifically, but for a stateful application where server-side rendering doesn't provide much benefit, the added complexity wasn't worth it.</p>
+<p>I'd also have started active development earlier in Fall 2025. A significant chunk of that semester went into planning, designing, and evaluating options. Our project vision was clear from the start, so a lot of that could have been compressed into more actual development time.</p>
+<p>On the design side, I wish I'd pulled in UI/UX references much earlier in the process. A lot of the visual design work required backtracking because I was figuring out design principles as I went. The Sort dropdown is the clearest example, where the first version embedded sort syntax directly in the search bar, so users would type things like <code>sortBy=DateAdded;</code> and <code>sortOrder=Newest;</code>. It <em>technically</em> worked, but watching non-technical users interact with it made immediately clear how undiscoverable it was. The tag management page is similar, in that it wasn't in the original design at all (our original plan was to have users modify tags only on a per-image basis), and only became obviously necessary once we were using the app with real photo collections.</p>
 <p>I came out of it with a much stronger instinct for UI decisions than I had going in. Better starting materials would definitely have gotten me there faster, though.</p>
-<p>## What Comes Next</p>
+<h2>What Comes Next</h2>
 <p>The plugin ecosystem is where I see the most room to grow. Right now, discovering and installing plugins requires some manual effort. A marketplace built into the app would make extensibility much more accessible, and the existing plugin architecture should make that relatively straightforward to build on top of.</p>
 <p>On the backend, it might be worth considering Rewriting It In Rust™ (for more reasons than just the meme). Go handled concurrency well and never really bottlenecked us, but for very large photo libraries or multi-user deployments, Rust would likely handle the load better. Not an immediate priority, but not off the table either.</p>
-<p>FreezeTag is released under the MIT open-source license. You can view the source code on [GitHub](https://github.com/FreezeTagPhoto/FreezeTag) and the app itself will be available on [Docker Hub](https://hub.docker.com/r/freezetag/freezetag) for easy deployment.</p>
-<p>---</p>
-<p>If you want the full picture on design decisions and architecture, my honors thesis is embedded below. It&#039;s typeset in [Typst](https://typst.app/) and its source is on [GitHub](https://github.com/SathyaTadinada/Undergraduate-Thesis).</p>
-<p>&lt;PDF src=&quot;/thesis.pdf&quot; title=&quot;FreezeTag Undergraduate Thesis&quot; /&gt;</p>
-<p>_Can&#039;t see the embed? [Open the thesis directly](/thesis.pdf)._</p>]]></content:encoded>
+<p>FreezeTag is released under the MIT open-source license. You can view the source code on <a href="https://github.com/FreezeTagPhoto/FreezeTag">GitHub</a> and the app itself will be available on <a href="https://hub.docker.com/r/freezetag/freezetag">Docker Hub</a> for easy deployment.</p>
+<hr>
+<p>If you want the full picture on design decisions and architecture, my honors thesis is embedded below. It's typeset in <a href="https://typst.app/">Typst</a> and its source is on <a href="https://github.com/SathyaTadinada/Undergraduate-Thesis">GitHub</a>.</p>
+<p><a href="https://tadinada.com/thesis.pdf">FreezeTag Undergraduate Thesis</a></p>
+<p><em>Can't see the embed? <a href="https://tadinada.com/thesis.pdf">Open the thesis directly</a>.</em></p>]]></content:encoded>
             <author>sathya@tadinada.com (Sathya Tadinada)</author>
         </item>
         <item>
@@ -76,270 +76,225 @@
             <pubDate>Sun, 10 Aug 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[Regular expressions (regex) are a powerful tool for pattern matching and text manipulation. In this article, we will explore the fundamentals of regex, its syntax, and practical applications.]]></description>
             <content:encoded><![CDATA[<p>Regular expressions (regex) have a reputation for looking like arcane symbols from a hacker movie.</p>
-<p>```regex
-^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$
-```</p>
-<p>```typst
-$ integral_0^1 x^2 d x = 1/3 $
-```</p>
-<p>$$
-\int_0^1 x^2\,dx = \frac{1}{3}
-$$</p>
-<p>If that looks like keyboard mash to you, you&#039;re not alone. The truth is, regex can be complex and intimidating at first glance.
+<pre><code class="language-regex">^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$
+</code></pre>
+<p>If that looks like keyboard mash to you, you're not alone. The truth is, regex can be complex and intimidating at first glance.
 However, regex is nothing more than a language for describing patterns in text, and under the hood it works like a tiny machine that reads
 your string one character at a time.</p>
-<p>In this post, we&#039;ll walk through regex one step at a time, connect it to some computer science theory, and leave 
-you with practical tips for writing patterns that you&#039;ll still be able to understand six months from now.</p>
-<p>## What Regex Really Is</p>
-<p>Regex isn&#039;t &quot;code&quot; in the same sense as a general-purpose language (like Java or Rust). It&#039;s **declarative**: you describe the shape of the text you want, and the regex engine figures out how to _find_ it.</p>
-<p>Behind the scenes, many regex engines turn your pattern into a **finite state machine** (FSM) and step through your input, deciding &quot;match&quot; or &quot;no match&quot;.</p>
-<p>{/* &lt;Image src={regexDiagram} alt=&quot;State diagram for regex a(b|c)d+&quot; /&gt; */}</p>
-<p>&gt; TL;DR: Regex describes a set of strings. The engine checks whether your input is in that set.</p>
-<p>## The Building Blocks
-Regex has only a handful of core ideas. Combine them and you can recognize surprisingly complex patterns.</p>
-<p>### Literals
-Match exact characters.</p>
-<p>```regex
-cat                         # matches &quot;cat&quot; in text
-```</p>
-<p>### Character Classes
-Match _one_ character from a set.</p>
-<p>```regex
-[abc]                       # &quot;a&quot; or &quot;b&quot; or &quot;c&quot;
+<p>In this post, we'll walk through regex one step at a time, connect it to some computer science theory, and leave
+you with practical tips for writing patterns that you'll still be able to understand six months from now.</p>
+<h2>What Regex Really Is</h2>
+<p>Regex isn't "code" in the same sense as a general-purpose language (like Java or Rust). It's <strong>declarative</strong>: you describe the shape of the text you want, and the regex engine figures out how to <em>find</em> it.</p>
+<p>Behind the scenes, many regex engines turn your pattern into a <strong>finite state machine</strong> (FSM) and step through your input, deciding "match" or "no match".</p>
+
+<blockquote>
+<p>TL;DR: Regex describes a set of strings. The engine checks whether your input is in that set.</p>
+</blockquote>
+<h2>The Building Blocks</h2>
+<p>Regex has only a handful of core ideas. Combine them and you can recognize surprisingly complex patterns.</p>
+<h3>Literals</h3>
+<p>Match exact characters.</p>
+<pre><code class="language-regex">cat                         # matches "cat" in text
+</code></pre>
+<h3>Character Classes</h3>
+<p>Match <em>one</em> character from a set.</p>
+<pre><code class="language-regex">[abc]                       # "a" or "b" or "c"
 [0-9]                       # any digit
 \w                          # any letter, digit, or underscore
 \s                          # whitespace (space, tab, newline)
 .                           # any character (except newline in many engines)
-```</p>
-<p>&gt; Pro tip: In a class, `-` creates ranges (`[A-Z]`). To match a literal `-`, put it first or last: `[-A-Z]` or `[A-Z-]`.</p>
-<p>### Quantifiers
-Specify how many times to match the preceding element.</p>
-<p>```regex
-a+                          # one or more a&#039;s
-b*                          # zero or more b&#039;s
+</code></pre>
+<blockquote>
+<p>Pro tip: In a class, <code>-</code> creates ranges (<code>[A-Z]</code>). To match a literal <code>-</code>, put it first or last: <code>[-A-Z]</code> or <code>[A-Z-]</code>.</p>
+</blockquote>
+<h3>Quantifiers</h3>
+<p>Specify how many times to match the preceding element.</p>
+<pre><code class="language-regex">a+                          # one or more a's
+b*                          # zero or more b's
 c?                          # zero or one c
-d{2,4}                      # between 2 and 4 d&#039;s
-```</p>
-<p>### Anchors and Groups
-Specify positions and group sub-patterns.</p>
-<p>```regex
-^abc$                       # match exactly &quot;abc&quot; from start to end
-(abc)                       # capture &quot;abc&quot; as group 1
+d{2,4}                      # between 2 and 4 d's
+</code></pre>
+<h3>Anchors and Groups</h3>
+<p>Specify positions and group sub-patterns.</p>
+<pre><code class="language-regex">^abc$                       # match exactly "abc" from start to end
+(abc)                       # capture "abc" as group 1
 (?:abc)                     # non-capturing group
-```</p>
-<p>### Boundaries
-Control word/line boundaries.</p>
-<p>```regex
-\bword\b                    # &quot;word&quot; as a whole word
+</code></pre>
+<h3>Boundaries</h3>
+<p>Control word/line boundaries.</p>
+<pre><code class="language-regex">\bword\b                    # "word" as a whole word
 ^line                       # start of line (with multiline flag)
 line$                       # end of line (with multiline flag)
-```</p>
-<p>## Flags (aka Modifiers)
-Flags change how a pattern behaves.</p>
-<p>| Flag | Common name | Effect |
-| ---- | ----------- | ------ |
-| `i`  | ignore case | Case-insensitive matching |
-| `m`  | multiline   | `^` and `$` match line boundaries, not just start/end of whole string |
-| `s`  | dotall      | `.` also matches newlines |
-| `g`  | global      | (JS) find all matches, not just the first |
-| `u`  | unicode     | (JS) full Unicode mode (enables things like `\p{Letter}`) |
-| `x`  | extended    | (PCRE/Python) allow whitespace/comments inside the pattern |</p>
-<p>&gt; Python uses inline flags like `re.IGNORECASE` or `(?i)`. JavaScript uses regex literals like `/pattern/imsu`.</p>
-<p>## Greedy vs. Lazy
-By default, quantifiers are **greedy**: they match as much as possible.</p>
-<p>```regex
-&lt;.*&gt;                        # greedy: &quot;&lt;tag&gt;content&lt;/tag&gt;&quot; → one giant match
-&lt;.*?&gt;                       # lazy: minimal match, &quot;&lt;tag&gt;&quot;
-```</p>
-<p>&gt; If your pattern &quot;eats&quot; too much, try the lazy `?` variant: `*?`, `+?`, `??`, `{m,n}?`.</p>
-<p>## Alternation &amp; Precedence
-`|` means &quot;or&quot;. Group to control scope.</p>
-<p>```regex
-colou?r                     # &quot;color&quot; or &quot;colour&quot;
-(https?|ftp)                # &quot;http&quot;, &quot;https&quot;, or &quot;ftp&quot;
-```</p>
-<p>Without parentheses, alternation applies only to the nearest pieces: `ab|cd` ≠ `a(b|c)d`.</p>
-<p>## Capturing, Naming, and Reusing
-Capturing groups let you pull data out and reuse matches.</p>
-<p>```regex
-(\d{4})-(\d{2})-(\d{2})     # year-month-day
-```</p>
+</code></pre>
+<h2>Flags (aka Modifiers)</h2>
+<p>Flags change how a pattern behaves.</p>
+<table><thead><tr><th>Flag</th><th>Common name</th><th>Effect</th></tr></thead><tbody><tr><td><code>i</code></td><td>ignore case</td><td>Case-insensitive matching</td></tr><tr><td><code>m</code></td><td>multiline</td><td><code>^</code> and <code>$</code> match line boundaries, not just start/end of whole string</td></tr><tr><td><code>s</code></td><td>dotall</td><td><code>.</code> also matches newlines</td></tr><tr><td><code>g</code></td><td>global</td><td>(JS) find all matches, not just the first</td></tr><tr><td><code>u</code></td><td>unicode</td><td>(JS) full Unicode mode (enables things like <code>\p{Letter}</code>)</td></tr><tr><td><code>x</code></td><td>extended</td><td>(PCRE/Python) allow whitespace/comments inside the pattern</td></tr></tbody></table>
+<blockquote>
+<p>Python uses inline flags like <code>re.IGNORECASE</code> or <code>(?i)</code>. JavaScript uses regex literals like <code>/pattern/imsu</code>.</p>
+</blockquote>
+<h2>Greedy vs. Lazy</h2>
+<p>By default, quantifiers are <strong>greedy</strong>: they match as much as possible.</p>
+<pre><code class="language-regex">&lt;.*&gt;                        # greedy: "&lt;tag&gt;content&lt;/tag&gt;" → one giant match
+&lt;.*?&gt;                       # lazy: minimal match, "&lt;tag&gt;"
+</code></pre>
+<blockquote>
+<p>If your pattern "eats" too much, try the lazy <code>?</code> variant: <code>*?</code>, <code>+?</code>, <code>??</code>, <code>{m,n}?</code>.</p>
+</blockquote>
+<h2>Alternation &amp; Precedence</h2>
+<p><code>|</code> means "or". Group to control scope.</p>
+<pre><code class="language-regex">colou?r                     # "color" or "colour"
+(https?|ftp)                # "http", "https", or "ftp"
+</code></pre>
+<p>Without parentheses, alternation applies only to the nearest pieces: <code>ab|cd</code> ≠ <code>a(b|c)d</code>.</p>
+<h2>Capturing, Naming, and Reusing</h2>
+<p>Capturing groups let you pull data out and reuse matches.</p>
+<pre><code class="language-regex">(\d{4})-(\d{2})-(\d{2})     # year-month-day
+</code></pre>
 <p>Named groups (engine-specific syntax):</p>
-<p>```regex
-(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})
-```</p>
+<pre><code class="language-regex">(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})
+</code></pre>
 <p>Backreferences:</p>
-<p>```regex
-&lt;(\w+)[^&gt;]*&gt;.*?&lt;\/\1&gt;       # start/end tags must match the same name
-```</p>
-<p>&gt; JavaScript backreference to a named group: `\k&lt;year&gt;`. Python: `(?P&lt;year&gt;...)` and `(?P=year)`.</p>
-<p>## Lookarounds (Zero-Width Assertions)
-Lookarounds assert context without consuming characters.</p>
-<p>```regex
-(?=...)                     # positive lookahead
+<pre><code class="language-regex">&lt;(\w+)[^&gt;]*&gt;.*?&lt;\/\1&gt;       # start/end tags must match the same name
+</code></pre>
+<blockquote>
+<p>JavaScript backreference to a named group: <code>\k&lt;year&gt;</code>. Python: <code>(?P&lt;year&gt;...)</code> and <code>(?P=year)</code>.</p>
+</blockquote>
+<h2>Lookarounds (Zero-Width Assertions)</h2>
+<p>Lookarounds assert context without consuming characters.</p>
+<pre><code class="language-regex">(?=...)                     # positive lookahead
 (?!...)                     # negative lookahead
 (?&lt;=...)                    # positive lookbehind (engine support varies)
 (?&lt;!...)                    # negative lookbehind
-```</p>
+</code></pre>
 <p>Examples:</p>
-<p>```regex
-\d+(?=\sUSD)                # numbers followed by &quot; USD&quot;
-(?&lt;!\w)cat(?!\w)            # &quot;cat&quot; as a whole word (alternative to \b)
-```</p>
-<p>## Multi-Language Examples
-Same idea, different APIs.</p>
-<p>```javascript
-// JavaScript
+<pre><code class="language-regex">\d+(?=\sUSD)                # numbers followed by " USD"
+(?&lt;!\w)cat(?!\w)            # "cat" as a whole word (alternative to \b)
+</code></pre>
+<h2>Multi-Language Examples</h2>
+<p>Same idea, different APIs.</p>
+<pre><code class="language-javascript">// JavaScript
 const phone = /^\(\d{3}\) \d{3}-\d{4}$/;
-phone.test(&#039;(123) 456-7890&#039;); // true
-```</p>
-<p>```python
-# Python
+phone.test('(123) 456-7890'); // true
+</code></pre>
+<pre><code class="language-python"># Python
 import re
-phone = re.compile(r&quot;^\(\d{3}\) \d{3}-\d{4}$&quot;)
-bool(phone.fullmatch(&#039;(123) 456-7890&#039;))  # True
-```</p>
-<p>```rust
-// Rust (regex crate)
+phone = re.compile(r"^\(\d{3}\) \d{3}-\d{4}$")
+bool(phone.fullmatch('(123) 456-7890'))  # True
+</code></pre>
+<pre><code class="language-rust">// Rust (regex crate)
 use regex::Regex;
 fn main() {
-    let re = Regex::new(r&quot;^\(\d{3}\) \d{3}-\d{4}$&quot;).unwrap();
-    println!(&quot;{}&quot;, re.is_match(&quot;(123) 456-7890&quot;)); // true
+    let re = Regex::new(r"^\(\d{3}\) \d{3}-\d{4}$").unwrap();
+    println!("{}", re.is_match("(123) 456-7890")); // true
 }
-```</p>
-<p>```java
-// Java
+</code></pre>
+<pre><code class="language-java">// Java
 import java.util.regex.*;
-var re = Pattern.compile(&quot;^\\(\\d{3}\\) \\d{3}-\\d{4}$&quot;);
-System.out.println(re.matcher(&quot;(123) 456-7890&quot;).matches()); // true
-```</p>
-<p>&gt; String literal escapes differ! In many languages you need to double backslashes in strings. Prefer raw strings when available (`r&quot;...&quot;` in Python, Rust).</p>
-<p>## Step-by-Step Matching
-Let&#039;s take `a(?:b|c)d+` and walk through matching `&quot;acddd&quot;`.</p>
-<p>| Step | Current State | Read Char | Action     |
-| ---- | ------------- | --------- | ---------- |
-| 1    | Start         | `a`       | Match `a`  |
-| 2    | After `a`     | `c`       | Match `c`  |
-| 3    | After `c`     | `d`       | Match loop |
-| 4    | Loop          | `d`       | Loop again |
-| 5    | Loop          | `d`       | Loop again |
-| 6    | End           | —         | Accept!    |</p>
-<p>## Practical Recipes
-A few patterns you can adapt.</p>
-<p>```regex
-# ISO date (YYYY-MM-DD)
+var re = Pattern.compile("^\\(\\d{3}\\) \\d{3}-\\d{4}$");
+System.out.println(re.matcher("(123) 456-7890").matches()); // true
+</code></pre>
+<blockquote>
+<p>String literal escapes differ! In many languages you need to double backslashes in strings. Prefer raw strings when available (<code>r"..."</code> in Python, Rust).</p>
+</blockquote>
+<h2>Step-by-Step Matching</h2>
+<p>Let's take <code>a(?:b|c)d+</code> and walk through matching <code>"acddd"</code>.</p>
+<table><thead><tr><th>Step</th><th>Current State</th><th>Read Char</th><th>Action</th></tr></thead><tbody><tr><td>1</td><td>Start</td><td><code>a</code></td><td>Match <code>a</code></td></tr><tr><td>2</td><td>After <code>a</code></td><td><code>c</code></td><td>Match <code>c</code></td></tr><tr><td>3</td><td>After <code>c</code></td><td><code>d</code></td><td>Match loop</td></tr><tr><td>4</td><td>Loop</td><td><code>d</code></td><td>Loop again</td></tr><tr><td>5</td><td>Loop</td><td><code>d</code></td><td>Loop again</td></tr><tr><td>6</td><td>End</td><td>—</td><td>Accept!</td></tr></tbody></table>
+<h2>Practical Recipes</h2>
+<p>A few patterns you can adapt.</p>
+<pre><code class="language-regex"># ISO date (YYYY-MM-DD)
 ^(?&lt;year&gt;\d{4})-(?&lt;month&gt;0[1-9]|1[0-2])-(?&lt;day&gt;0[1-9]|[12]\d|3[01])$
-```</p>
-<p>```regex
-# Slug (lowercase words separated by dashes)
+</code></pre>
+<pre><code class="language-regex"># Slug (lowercase words separated by dashes)
 ^[a-z0-9]+(?:-[a-z0-9]+)*$
-```</p>
-<p>```regex
-# Trim from start/end (use in replace)
+</code></pre>
+<pre><code class="language-regex"># Trim from start/end (use in replace)
 ^\s+|\s+$
-```</p>
-<p>```regex
-# Simple (not RFC-perfect) email — good enough for UI validation
+</code></pre>
+<pre><code class="language-regex"># Simple (not RFC-perfect) email — good enough for UI validation
 ^[^\s@]+@[^\s@]+\.[^\s@]+$
-```</p>
-<p>&gt; For anything security-sensitive (like email parsing on a server), prefer a real parser over a single monstrous regex.</p>
-<p>## Replacing Text with Captures</p>
-<p>```javascript
-// Reformat YYYY-MM-DD → DD/MM/YYYY
-&#039;2025-08-10&#039;.replace(/(\d{4})-(\d{2})-(\d{2})/, &#039;$3/$2/$1&#039;)
-// → &#039;10/08/2025&#039;
-```</p>
-<p>```python
-import re
+</code></pre>
+<blockquote>
+<p>For anything security-sensitive (like email parsing on a server), prefer a real parser over a single monstrous regex.</p>
+</blockquote>
+<h2>Replacing Text with Captures</h2>
+<pre><code class="language-javascript">// Reformat YYYY-MM-DD → DD/MM/YYYY
+'2025-08-10'.replace(/(\d{4})-(\d{2})-(\d{2})/, '$3/$2/$1')
+// → '10/08/2025'
+</code></pre>
+<pre><code class="language-python">import re
 re.sub(
-    r&quot;(?P&lt;y&gt;\d{4})-(?P&lt;m&gt;\d{2})-(?P&lt;d&gt;\d{2})&quot;, 
-    r&quot;\g&lt;d&gt;/\g&lt;m&gt;/\g&lt;y&gt;&quot;, &quot;2025-08-10&quot;
+    r"(?P&lt;y&gt;\d{4})-(?P&lt;m&gt;\d{2})-(?P&lt;d&gt;\d{2})", 
+    r"\g&lt;d&gt;/\g&lt;m&gt;/\g&lt;y&gt;", "2025-08-10"
 )
-```</p>
-<p>## Unicode &amp; \p Properties
-Modern engines support Unicode character classes.</p>
-<p>```regex
-\p{Letter}+         # one or more letters in any language
+</code></pre>
+<h2>Unicode &amp; \p Properties</h2>
+<p>Modern engines support Unicode character classes.</p>
+<pre><code class="language-regex">\p{Letter}+         # one or more letters in any language
 \p{Greek}+          # Greek letters
 \p{Emoji}           # depends on engine; alternatives exist
-```</p>
-<p>&gt; In JavaScript, use the `u` flag for Unicode escapes and categories. In Python, Unicode is default in 3.x.</p>
-<p>## Performance: Avoiding Catastrophic Backtracking
-Certain patterns can take exponential time on tricky inputs (&quot;catastrophic backtracking&quot;). Classic offenders combine nested quantifiers and wildcards:</p>
-<p>```regex
-^(a+)+$             # dangerous
+</code></pre>
+<blockquote>
+<p>In JavaScript, use the <code>u</code> flag for Unicode escapes and categories. In Python, Unicode is default in 3.x.</p>
+</blockquote>
+<h2>Performance: Avoiding Catastrophic Backtracking</h2>
+<p>Certain patterns can take exponential time on tricky inputs ("catastrophic backtracking"). Classic offenders combine nested quantifiers and wildcards:</p>
+<pre><code class="language-regex">^(a+)+$             # dangerous
 ^(.+)+$             # dangerous
-```</p>
+</code></pre>
 <p>Safer alternatives:</p>
-<p>- Prefer explicit character classes over `.` when feasible.
-- Use lazy quantifiers with anchors: `^.*?foo` instead of `^.*foo` when appropriate.
-- Where supported (e.g., Java, PCRE), consider **possessive quantifiers** (`*+`, `++`, `?+`, `{m,n}+`) or **atomic groups** (`(?&gt;...)`) to prevent backtracking.
-- In Rust&#039;s `regex` crate, many problematic features (like backreferences and lookaround) are intentionally unsupported; patterns run in linear time.</p>
-<p>## When _Not_ to Use Regex
-- Parsing nested, recursive structures (HTML, JSON, source code) → use a parser/DOM/AST.
-- Handling complex, locale-sensitive formats (dates, numbers) → use libraries.
-- Anything where clarity and maintainability beat clever one-liners → write code.</p>
-<p>## A Method for Writing Maintainable Regex
-1. **Write the examples first**: What should match? What should not?
-2. **Build in layers**: Start with literals, then introduce classes and quantifiers.
-3. **Name your groups**: Future-you will thank you.
-4. **Comment your pattern**: Use the &quot;extended&quot; flag (`x`) where available and add inline comments.
-5. **Test against edge cases**: Empty strings, long strings, weird Unicode, punctuation.
-6. **Benchmark if needed**: Especially for user-supplied input.</p>
-<p>### Example with Comments (PCRE/Python `re.VERBOSE`)</p>
-<p>```regex
-^                                   # start of string
+<ul>
+<li>Prefer explicit character classes over <code>.</code> when feasible.</li>
+<li>Use lazy quantifiers with anchors: <code>^.*?foo</code> instead of <code>^.*foo</code> when appropriate.</li>
+<li>Where supported (e.g., Java, PCRE), consider <strong>possessive quantifiers</strong> (<code>*+</code>, <code>++</code>, <code>?+</code>, <code>{m,n}+</code>) or <strong>atomic groups</strong> (<code>(?&gt;...)</code>) to prevent backtracking.</li>
+<li>In Rust's <code>regex</code> crate, many problematic features (like backreferences and lookaround) are intentionally unsupported; patterns run in linear time.</li>
+</ul>
+<h2>When <em>Not</em> to Use Regex</h2>
+<ul>
+<li>Parsing nested, recursive structures (HTML, JSON, source code) → use a parser/DOM/AST.</li>
+<li>Handling complex, locale-sensitive formats (dates, numbers) → use libraries.</li>
+<li>Anything where clarity and maintainability beat clever one-liners → write code.</li>
+</ul>
+<h2>A Method for Writing Maintainable Regex</h2>
+<ol>
+<li><strong>Write the examples first</strong>: What should match? What should not?</li>
+<li><strong>Build in layers</strong>: Start with literals, then introduce classes and quantifiers.</li>
+<li><strong>Name your groups</strong>: Future-you will thank you.</li>
+<li><strong>Comment your pattern</strong>: Use the "extended" flag (<code>x</code>) where available and add inline comments.</li>
+<li><strong>Test against edge cases</strong>: Empty strings, long strings, weird Unicode, punctuation.</li>
+<li><strong>Benchmark if needed</strong>: Especially for user-supplied input.</li>
+</ol>
+<h3>Example with Comments (PCRE/Python <code>re.VERBOSE</code>)</h3>
+<pre><code class="language-regex">^                                   # start of string
 (?&lt;area&gt;\(\d{3}\))\s                # (123) and a space
 (?&lt;prefix&gt;\d{3})-                   # 456-
 (?&lt;line&gt;\d{4})                      # 7890
 $                                   # end of string
-```</p>
-<p>## Mini-Exercises
-Try these before peeking at the answers.</p>
-<p>1. Match IPv4 addresses (0–255 in each octet).
-2. Extract the domain from a URL.
-3. Split a CSV line that allows quoted commas.</p>
-<p>&lt;details&gt;
-&lt;summary&gt;Show solutions&lt;/summary&gt;</p>
-<p>```regex
-# 1) IPv4 (concise, not perfect but reasonable)
+</code></pre>
+<h2>Mini-Exercises</h2>
+<p>Try these before peeking at the answers.</p>
+<ol>
+<li>Match IPv4 addresses (0–255 in each octet).</li>
+<li>Extract the domain from a URL.</li>
+<li>Split a CSV line that allows quoted commas.</li>
+</ol>
+<details><summary>Show solutions</summary><pre><code class="language-regex"># 1) IPv4 (concise, not perfect but reasonable)
 ^(25[0-5]|2[0-4]\d|1?\d?\d)(?:\.(25[0-5]|2[0-4]\d|1?\d?\d)){3}$
-```</p>
-<p>```regex
-# 2) Domain from URL (scheme optional)
+</code></pre><pre><code class="language-regex"># 2) Domain from URL (scheme optional)
 ^(?:https?:\/\/)?(?:www\.)?([^\/\n?#]+)
-```</p>
-<p>```regex
-# 3) CSV split (use a parser in production!)
-,(?=(?:[^\&quot;]*\&quot;[^\&quot;]*\&quot;)*[^\&quot;]*$)
-```</p>
-<p>&lt;/details&gt;</p>
-<p>## Theory Corner (Short &amp; Sweet)
-- **Regular languages** are those recognized by finite automata.
-- Most popular engines (PCRE, JS, Python) are **backtracking NFAs**: powerful, feature-rich, can backtrack.
-- Some (like Rust&#039;s `regex`) compile to automata that execute in **linear time** by avoiding backtracking-only features.</p>
+</code></pre><pre><code class="language-regex"># 3) CSV split (use a parser in production!)
+,(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)
+</code></pre></details>
+<h2>Theory Corner (Short &amp; Sweet)</h2>
+<ul>
+<li><strong>Regular languages</strong> are those recognized by finite automata.</li>
+<li>Most popular engines (PCRE, JS, Python) are <strong>backtracking NFAs</strong>: powerful, feature-rich, can backtrack.</li>
+<li>Some (like Rust's <code>regex</code>) compile to automata that execute in <strong>linear time</strong> by avoiding backtracking-only features.</li>
+</ul>
 <p>The big idea: features like backreferences and some lookarounds make patterns more expressive than regular languages, which is why engines use richer algorithms than a pure DFA.</p>
-<p>## Quick Reference</p>
-<p>| Concept | Pattern | Notes |
-| --- | --- | --- |
-| Digit / non-digit | `\d` / `\D` | ASCII vs Unicode depends on engine/flags |
-| Word char / non-word | `\w` / `\W` | includes `_` |
-| Whitespace / non-space | `\s` / `\S` | space, tab, newline |
-| Word boundary | `\b` | opposite: `\B` |
-| Start / end | `^` / `$` | with `m`, apply per-line |
-| Optional | `x?` | zero or one |
-| One or more | `x+` | greedy |
-| Zero or more | `x*` | greedy |
-| Lazy quantifier | `x+?` | minimal |
-| Exactly n | `x{n}` | repeats |
-| Range | `x{m,n}` | between m and n |
-| Grouping | `( ... )` | capturing |
-| Non-capturing | `(?: ... )` | groups without capturing |
-| Alternation | `x\|y` | either x or y |
-| Lookahead | `(?=...)` / `(?!...)` | zero-width |
-| Lookbehind | `(?&lt;=...)` / `(?&lt;!...)` | engine support varies |</p>
-<p>## Wrap-Up
-Regex is a compact way to describe patterns. Start simple, add features deliberately, and test with real data. When you need more than pattern matching, reach for a parser. When regex _is_ the right tool, the techniques above will keep your patterns readable and fast.</p>]]></content:encoded>
+<h2>Quick Reference</h2>
+<table><thead><tr><th>Concept</th><th>Pattern</th><th>Notes</th></tr></thead><tbody><tr><td>Digit / non-digit</td><td><code>\d</code> / <code>\D</code></td><td>ASCII vs Unicode depends on engine/flags</td></tr><tr><td>Word char / non-word</td><td><code>\w</code> / <code>\W</code></td><td>includes <code>_</code></td></tr><tr><td>Whitespace / non-space</td><td><code>\s</code> / <code>\S</code></td><td>space, tab, newline</td></tr><tr><td>Word boundary</td><td><code>\b</code></td><td>opposite: <code>\B</code></td></tr><tr><td>Start / end</td><td><code>^</code> / <code>$</code></td><td>with <code>m</code>, apply per-line</td></tr><tr><td>Optional</td><td><code>x?</code></td><td>zero or one</td></tr><tr><td>One or more</td><td><code>x+</code></td><td>greedy</td></tr><tr><td>Zero or more</td><td><code>x*</code></td><td>greedy</td></tr><tr><td>Lazy quantifier</td><td><code>x+?</code></td><td>minimal</td></tr><tr><td>Exactly n</td><td><code>x{n}</code></td><td>repeats</td></tr><tr><td>Range</td><td><code>x{m,n}</code></td><td>between m and n</td></tr><tr><td>Grouping</td><td><code>( ... )</code></td><td>capturing</td></tr><tr><td>Non-capturing</td><td><code>(?: ... )</code></td><td>groups without capturing</td></tr><tr><td>Alternation</td><td><code>x|y</code></td><td>either x or y</td></tr><tr><td>Lookahead</td><td><code>(?=...)</code> / <code>(?!...)</code></td><td>zero-width</td></tr><tr><td>Lookbehind</td><td><code>(?&lt;=...)</code> / <code>(?&lt;!...)</code></td><td>engine support varies</td></tr></tbody></table>
+<h2>Wrap-Up</h2>
+<p>Regex is a compact way to describe patterns. Start simple, add features deliberately, and test with real data. When you need more than pattern matching, reach for a parser. When regex <em>is</em> the right tool, the techniques above will keep your patterns readable and fast.</p>]]></content:encoded>
             <author>sathya@tadinada.com (Sathya Tadinada)</author>
         </item>
     </channel>
