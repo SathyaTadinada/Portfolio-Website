@@ -26,7 +26,6 @@ export default function PDF({
         style={{ height }}
         loading="lazy"
         referrerPolicy="no-referrer"
-        sandbox="allow-same-origin allow-scripts"
       />
     </div>
   )
