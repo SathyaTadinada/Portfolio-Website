@@ -7,8 +7,20 @@ import { useEffect, useState } from 'react'
 
 const productionSiteUrl = 'https://tadinada.com'
 const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '')
+
+function isLocalSiteUrl(url: string) {
+  try {
+    let hostname = new URL(url).hostname
+    return (
+      hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1'
+    )
+  } catch {
+    return true
+  }
+}
+
 const publicSiteUrl =
-  configuredSiteUrl && !configuredSiteUrl.includes('localhost')
+  configuredSiteUrl && !isLocalSiteUrl(configuredSiteUrl)
     ? configuredSiteUrl
     : productionSiteUrl
 
@@ -52,8 +64,7 @@ export function Comments() {
             repoId="R_kgDOLbK7qA"
             category="General"
             categoryId="DIC_kwDOLbK7qM4C7xTb"
-            mapping="specific"
-            term={canonicalUrl}
+            mapping="pathname"
             strict="0"
             reactionsEnabled="1"
             emitMetadata="0"
