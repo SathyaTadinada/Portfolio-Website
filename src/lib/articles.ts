@@ -32,7 +32,12 @@ async function getAllArticlesIncludingArchived() {
   const blogDir = path.join(process.cwd(), 'src/app/blog')
   const articleFilenames = await glob('*/page.mdx', { cwd: blogDir })
   const articles = await Promise.all(articleFilenames.map(importArticle))
-  return articles.sort((a, z) => +new Date(z.date) - +new Date(a.date))
+  return articles.sort((a, z) => {
+    let dateOrder = +new Date(z.date) - +new Date(a.date)
+    if (dateOrder !== 0) return dateOrder
+
+    return a.slug.localeCompare(z.slug)
+  })
 }
 
 export async function getAllArticles() {
