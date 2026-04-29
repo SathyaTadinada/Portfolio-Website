@@ -40,6 +40,15 @@ async function getAllArticlesIncludingArchived() {
     let dateOrder = +new Date(z.date) - +new Date(a.date)
     if (dateOrder !== 0) return dateOrder
 
+    // order series reverse chronologically (higher part numbers first)
+    if (
+      a.series &&
+      z.series &&
+      a.series.slug === z.series.slug
+    ) {
+      return z.series.part - a.series.part
+    }
+
     return a.slug.localeCompare(z.slug)
   })
 }
