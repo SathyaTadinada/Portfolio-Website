@@ -61,9 +61,9 @@ export function Comments() {
         {mounted && (
           <Giscus
             repo="SathyaTadinada/Portfolio-Website"
-            repoId="R_kgDOLbK7qA"
+            repoId="R_kgDOSPiEHw"
             category="General"
-            categoryId="DIC_kwDOLbK7qM4C7xTb"
+            categoryId="DIC_kwDOSPiEH84C78Ji"
             mapping="pathname"
             strict="0"
             reactionsEnabled="1"
