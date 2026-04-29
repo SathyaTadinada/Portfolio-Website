@@ -1,12 +1,15 @@
 import glob from 'fast-glob'
 import path from 'path'
 
-interface Article {
+import { type ArticleSeriesRef } from '@/lib/series'
+
+export interface Article {
   title: string
   description: string
   author: string
   date: string
   readingMinutes?: number
+  series?: ArticleSeriesRef
   tags?: string[]
   archived?: boolean
 }

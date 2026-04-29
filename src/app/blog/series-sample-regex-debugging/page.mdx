@@ -1,0 +1,36 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Sathya Tadinada',
+  date: '2026-03-11',
+  title: 'Regex Toolkit, Part 2: Debugging Patterns',
+  description:
+    'A sample follow-up post showing previous and next behavior for another series.',
+  readingMinutes: 4,
+  series: {
+    slug: 'regex-toolkit',
+    part: 2,
+  },
+  tags: ['sample', 'series', 'regex'],
+  archived: true,
+}
+
+export default function Page({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>
+}
+
+This is placeholder content for testing the second part of the Regex Toolkit
+series.
+
+## Debugging Is A Separate Skill
+
+Once readers know the basic syntax, the next useful topic is how to reason about
+patterns that do not behave as expected.
+
+## What This Post Would Cover
+
+- Testing against examples.
+- Identifying greedy matches.
+- Simplifying patterns before optimizing them.
+
+The series box above should link back to part one.

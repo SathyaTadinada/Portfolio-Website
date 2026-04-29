@@ -1,0 +1,35 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Sathya Tadinada',
+  date: '2026-03-10',
+  title: 'Regex Toolkit, Part 1: Pattern Basics',
+  description:
+    'A sample series post showing how tutorial content can be split into ordered parts.',
+  readingMinutes: 3,
+  series: {
+    slug: 'regex-toolkit',
+    part: 1,
+  },
+  tags: ['sample', 'series', 'regex'],
+  archived: true,
+}
+
+export default function Page({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>
+}
+
+This is placeholder content for testing a second independent series.
+
+## Start With Small Patterns
+
+The first post in a tutorial series should establish the vocabulary readers need
+for later entries.
+
+## What This Post Would Cover
+
+- Literals and character classes.
+- Repetition with quantifiers.
+- Anchors and grouping.
+
+The series box above should show this as part one of the Regex Toolkit series.

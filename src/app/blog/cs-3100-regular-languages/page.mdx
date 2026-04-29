@@ -1,0 +1,38 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Sathya Tadinada',
+  date: '2026-04-20',
+  title: 'CS 3100: Regular Languages',
+  description:
+    'A sample series post serving as a proof of concept for how the first entry in a series is linked from the article layout.',
+  readingMinutes: 4,
+  series: {
+    slug: 'cs-3100',
+    part: 1,
+  },
+  tags: ['regular languages', 'cs 3100', 'sipser'],
+  // archived: true,
+}
+
+export default function Page({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>
+}
+
+This is placeholder content for testing series navigation. It is archived so it
+does not appear in the main blog list unless the archived section is expanded.
+
+## Why Product Decisions Come First
+
+A series works best when each post has a clear job. This first entry would focus
+on the product constraints, audience, and tradeoffs that shaped the project
+before implementation details entered the picture.
+
+## What This Post Would Cover
+
+- The storage and ownership problem.
+- Why tags became the primary organization model.
+- What the team chose not to build in the first version.
+
+The series box above should show this as part one and link forward to the
+architecture notes.
