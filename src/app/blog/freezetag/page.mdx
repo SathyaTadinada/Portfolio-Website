@@ -14,7 +14,16 @@ export const article = {
   title: 'FreezeTag: An Open-Source, Self-Hosted Image Management App',
   description:
     "FreezeTag is a free, open-source, self-hosted image management platform I built as my undergraduate capstone. Here's what it is, how it works, and what I learned building it.",
-  tags: ['go', 'typescript', 'python', 'self-hosted', 'capstone', 'homelab', 'photography']
+  readingMinutes: 9,
+  tags: [
+    'go',
+    'typescript',
+    'python',
+    'self-hosted',
+    'capstone',
+    'homelab',
+    'photography',
+  ],
 }
 
 export default function Page({ children }) {
@@ -31,7 +40,6 @@ Both Google Photos and Apple Photos somewhat get around this with AI-powered sea
 
 That's the gap FreezeTag set out to fill.
 
-
 ## What FreezeTag Is
 
 [FreezeTag](https://freezetag.app/) is a free, open-source, self-hosted image management app built for photographers, small businesses, and anyone who wants actual control over how their photos are stored and organized. The whole system runs through Docker Compose, so standing up an instance is a single command. The interface is browser-based, so any device on the same network can connect without installing anything on the client. Your photos stay on your own hardware.
@@ -46,7 +54,11 @@ Here's a demo walkthrough we recorded at the end of the capstone:
 
 ## The Team and My Role
 
-<Image src={group_picture} alt="Picture of the Capstone Team" caption="From left to right: Brayden, Max, Sathya, Ethan"/>
+<Image
+  src={group_picture}
+  alt="Picture of the Capstone Team"
+  caption="From left to right: Brayden, Max, Sathya, Ethan"
+/>
 
 FreezeTag was my senior capstone project at the University of Utah, built with three other developers across two semesters (Fall 2025 and Spring 2026). We split into two frontend and two backend engineers, each owning a clearly defined area of the codebase from the start. My role was the **frontend interface developer**, which meant I was responsible for the overall visual design, UI/UX, and frontend implementation across every user-facing page, including the gallery, tag management, settings, and a custom theme creator (more on that in a bit).
 
@@ -92,7 +104,7 @@ Most of the challenges with FreezeTag were technical ones. The thing that kept c
 
 Authentication and the job tracking system were the two that cost us the most time. We had estimated authentication at about four weeks of dev time, but finished it ahead of schedule because [`bcrypt`](https://en.wikipedia.org/wiki/Bcrypt) handled most of the hard parts for us. The jobs system was the opposite. What looked like a straightforward progress-tracking feature turned out to require building an entirely new subsystem before we could even get started on the actual feature. We did not see that coming when we wrote the estimate, and that ended up making us have to rework the timeline we set up at the beginning of the semester.
 
-Some features also got scoped down along the way. For example, a plugin marketplace, where users could browse and install community plugins directly from inside the app, got cut so we could keep the core experience polished (this is still something that might happen in the future, but for now, a user can upload plugins through a Git repo upload menu). The map feature was originally planned as a fully interactive embedded Leaflet map as an optional plugin, but ended up as a toggleable component since integrating Leaflet cleanly into the sidebar layout (and in general, writing plugins that directly modify the UI) wasn't worth the effort. 
+Some features also got scoped down along the way. For example, a plugin marketplace, where users could browse and install community plugins directly from inside the app, got cut so we could keep the core experience polished (this is still something that might happen in the future, but for now, a user can upload plugins through a Git repo upload menu). The map feature was originally planned as a fully interactive embedded Leaflet map as an optional plugin, but ended up as a toggleable component since integrating Leaflet cleanly into the sidebar layout (and in general, writing plugins that directly modify the UI) wasn't worth the effort.
 
 ## What I'd Do Differently
 

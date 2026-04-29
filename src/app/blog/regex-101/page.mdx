@@ -2,13 +2,14 @@ import { ArticleLayout } from '@/components/ArticleLayout'
 import regexDiagram from './planetaria-design-system.png'
 
 export const article = {
-    author: 'Sathya Tadinada',
-    date: '2025-08-10',
-    title: 'Regex Demystified: Intro to Pattern Matching',
-    description:
-        'Regular expressions (regex) are a powerful tool for pattern matching and text manipulation. In this article, we will explore the fundamentals of regex, its syntax, and practical applications.',
-    tags: ['regex', 'tutorial', 'programming', 'theory'],
-    archived: true
+  author: 'Sathya Tadinada',
+  date: '2025-08-10',
+  title: 'Regex Demystified: Intro to Pattern Matching',
+  description:
+    'Regular expressions (regex) are a powerful tool for pattern matching and text manipulation. In this article, we will explore the fundamentals of regex, its syntax, and practical applications.',
+  readingMinutes: 6,
+  tags: ['regex', 'tutorial', 'programming', 'theory'],
+  archived: true,
 }
 
 export default function Page({ children }) {
@@ -25,7 +26,7 @@ If that looks like keyboard mash to you, you're not alone. The truth is, regex c
 However, regex is nothing more than a language for describing patterns in text, and under the hood it works like a tiny machine that reads
 your string one character at a time.
 
-In this post, we'll walk through regex one step at a time, connect it to some computer science theory, and leave 
+In this post, we'll walk through regex one step at a time, connect it to some computer science theory, and leave
 you with practical tips for writing patterns that you'll still be able to understand six months from now.
 
 ## What Regex Really Is
@@ -39,9 +40,11 @@ Behind the scenes, many regex engines turn your pattern into a **finite state ma
 > TL;DR: Regex describes a set of strings. The engine checks whether your input is in that set.
 
 ## The Building Blocks
+
 Regex has only a handful of core ideas. Combine them and you can recognize surprisingly complex patterns.
 
 ### Literals
+
 Match exact characters.
 
 ```regex
@@ -49,6 +52,7 @@ cat                         # matches "cat" in text
 ```
 
 ### Character Classes
+
 Match _one_ character from a set.
 
 ```regex
@@ -62,6 +66,7 @@ Match _one_ character from a set.
 > Pro tip: In a class, `-` creates ranges (`[A-Z]`). To match a literal `-`, put it first or last: `[-A-Z]` or `[A-Z-]`.
 
 ### Quantifiers
+
 Specify how many times to match the preceding element.
 
 ```regex
@@ -72,6 +77,7 @@ d{2,4}                      # between 2 and 4 d's
 ```
 
 ### Anchors and Groups
+
 Specify positions and group sub-patterns.
 
 ```regex
@@ -81,6 +87,7 @@ Specify positions and group sub-patterns.
 ```
 
 ### Boundaries
+
 Control word/line boundaries.
 
 ```regex
@@ -90,20 +97,22 @@ line$                       # end of line (with multiline flag)
 ```
 
 ## Flags (aka Modifiers)
+
 Flags change how a pattern behaves.
 
-| Flag | Common name | Effect |
-| ---- | ----------- | ------ |
-| `i`  | ignore case | Case-insensitive matching |
+| Flag | Common name | Effect                                                                |
+| ---- | ----------- | --------------------------------------------------------------------- |
+| `i`  | ignore case | Case-insensitive matching                                             |
 | `m`  | multiline   | `^` and `$` match line boundaries, not just start/end of whole string |
-| `s`  | dotall      | `.` also matches newlines |
-| `g`  | global      | (JS) find all matches, not just the first |
-| `u`  | unicode     | (JS) full Unicode mode (enables things like `\p{Letter}`) |
-| `x`  | extended    | (PCRE/Python) allow whitespace/comments inside the pattern |
+| `s`  | dotall      | `.` also matches newlines                                             |
+| `g`  | global      | (JS) find all matches, not just the first                             |
+| `u`  | unicode     | (JS) full Unicode mode (enables things like `\p{Letter}`)             |
+| `x`  | extended    | (PCRE/Python) allow whitespace/comments inside the pattern            |
 
 > Python uses inline flags like `re.IGNORECASE` or `(?i)`. JavaScript uses regex literals like `/pattern/imsu`.
 
 ## Greedy vs. Lazy
+
 By default, quantifiers are **greedy**: they match as much as possible.
 
 ```regex
@@ -114,6 +123,7 @@ By default, quantifiers are **greedy**: they match as much as possible.
 > If your pattern "eats" too much, try the lazy `?` variant: `*?`, `+?`, `??`, `{m,n}?`.
 
 ## Alternation & Precedence
+
 `|` means "or". Group to control scope.
 
 ```regex
@@ -124,6 +134,7 @@ colou?r                     # "color" or "colour"
 Without parentheses, alternation applies only to the nearest pieces: `ab|cd` ≠ `a(b|c)d`.
 
 ## Capturing, Naming, and Reusing
+
 Capturing groups let you pull data out and reuse matches.
 
 ```regex
@@ -145,6 +156,7 @@ Backreferences:
 > JavaScript backreference to a named group: `\k<year>`. Python: `(?P<year>...)` and `(?P=year)`.
 
 ## Lookarounds (Zero-Width Assertions)
+
 Lookarounds assert context without consuming characters.
 
 ```regex
@@ -162,12 +174,13 @@ Examples:
 ```
 
 ## Multi-Language Examples
+
 Same idea, different APIs.
 
 ```javascript
 // JavaScript
-const phone = /^\(\d{3}\) \d{3}-\d{4}$/;
-phone.test('(123) 456-7890'); // true
+const phone = /^\(\d{3}\) \d{3}-\d{4}$/
+phone.test('(123) 456-7890') // true
 ```
 
 ```python
@@ -196,6 +209,7 @@ System.out.println(re.matcher("(123) 456-7890").matches()); // true
 > String literal escapes differ! In many languages you need to double backslashes in strings. Prefer raw strings when available (`r"..."` in Python, Rust).
 
 ## Step-by-Step Matching
+
 Let's take `a(?:b|c)d+` and walk through matching `"acddd"`.
 
 | Step | Current State | Read Char | Action     |
@@ -208,6 +222,7 @@ Let's take `a(?:b|c)d+` and walk through matching `"acddd"`.
 | 6    | End           | —         | Accept!    |
 
 ## Practical Recipes
+
 A few patterns you can adapt.
 
 ```regex
@@ -243,12 +258,13 @@ A few patterns you can adapt.
 ```python
 import re
 re.sub(
-    r"(?P<y>\d{4})-(?P<m>\d{2})-(?P<d>\d{2})", 
+    r"(?P<y>\d{4})-(?P<m>\d{2})-(?P<d>\d{2})",
     r"\g<d>/\g<m>/\g<y>", "2025-08-10"
 )
 ```
 
 ## Unicode & \p Properties
+
 Modern engines support Unicode character classes.
 
 ```regex
@@ -260,6 +276,7 @@ Modern engines support Unicode character classes.
 > In JavaScript, use the `u` flag for Unicode escapes and categories. In Python, Unicode is default in 3.x.
 
 ## Performance: Avoiding Catastrophic Backtracking
+
 Certain patterns can take exponential time on tricky inputs ("catastrophic backtracking"). Classic offenders combine nested quantifiers and wildcards:
 
 ```regex
@@ -275,11 +292,13 @@ Safer alternatives:
 - In Rust's `regex` crate, many problematic features (like backreferences and lookaround) are intentionally unsupported; patterns run in linear time.
 
 ## When _Not_ to Use Regex
+
 - Parsing nested, recursive structures (HTML, JSON, source code) → use a parser/DOM/AST.
 - Handling complex, locale-sensitive formats (dates, numbers) → use libraries.
 - Anything where clarity and maintainability beat clever one-liners → write code.
 
 ## A Method for Writing Maintainable Regex
+
 1. **Write the examples first**: What should match? What should not?
 2. **Build in layers**: Start with literals, then introduce classes and quantifiers.
 3. **Name your groups**: Future-you will thank you.
@@ -298,6 +317,7 @@ $                                   # end of string
 ```
 
 ## Mini-Exercises
+
 Try these before peeking at the answers.
 
 1. Match IPv4 addresses (0–255 in each octet).
@@ -325,6 +345,7 @@ Try these before peeking at the answers.
 </details>
 
 ## Theory Corner (Short & Sweet)
+
 - **Regular languages** are those recognized by finite automata.
 - Most popular engines (PCRE, JS, Python) are **backtracking NFAs**: powerful, feature-rich, can backtrack.
 - Some (like Rust's `regex`) compile to automata that execute in **linear time** by avoiding backtracking-only features.
@@ -333,24 +354,25 @@ The big idea: features like backreferences and some lookarounds make patterns mo
 
 ## Quick Reference
 
-| Concept | Pattern | Notes |
-| --- | --- | --- |
-| Digit / non-digit | `\d` / `\D` | ASCII vs Unicode depends on engine/flags |
-| Word char / non-word | `\w` / `\W` | includes `_` |
-| Whitespace / non-space | `\s` / `\S` | space, tab, newline |
-| Word boundary | `\b` | opposite: `\B` |
-| Start / end | `^` / `$` | with `m`, apply per-line |
-| Optional | `x?` | zero or one |
-| One or more | `x+` | greedy |
-| Zero or more | `x*` | greedy |
-| Lazy quantifier | `x+?` | minimal |
-| Exactly n | `x{n}` | repeats |
-| Range | `x{m,n}` | between m and n |
-| Grouping | `( ... )` | capturing |
-| Non-capturing | `(?: ... )` | groups without capturing |
-| Alternation | `x\|y` | either x or y |
-| Lookahead | `(?=...)` / `(?!...)` | zero-width |
-| Lookbehind | `(?<=...)` / `(?<!...)` | engine support varies |
+| Concept                | Pattern                 | Notes                                    |
+| ---------------------- | ----------------------- | ---------------------------------------- |
+| Digit / non-digit      | `\d` / `\D`             | ASCII vs Unicode depends on engine/flags |
+| Word char / non-word   | `\w` / `\W`             | includes `_`                             |
+| Whitespace / non-space | `\s` / `\S`             | space, tab, newline                      |
+| Word boundary          | `\b`                    | opposite: `\B`                           |
+| Start / end            | `^` / `$`               | with `m`, apply per-line                 |
+| Optional               | `x?`                    | zero or one                              |
+| One or more            | `x+`                    | greedy                                   |
+| Zero or more           | `x*`                    | greedy                                   |
+| Lazy quantifier        | `x+?`                   | minimal                                  |
+| Exactly n              | `x{n}`                  | repeats                                  |
+| Range                  | `x{m,n}`                | between m and n                          |
+| Grouping               | `( ... )`               | capturing                                |
+| Non-capturing          | `(?: ... )`             | groups without capturing                 |
+| Alternation            | `x\|y`                  | either x or y                            |
+| Lookahead              | `(?=...)` / `(?!...)`   | zero-width                               |
+| Lookbehind             | `(?<=...)` / `(?<!...)` | engine support varies                    |
 
 ## Wrap-Up
+
 Regex is a compact way to describe patterns. Start simple, add features deliberately, and test with real data. When you need more than pattern matching, reach for a parser. When regex _is_ the right tool, the techniques above will keep your patterns readable and fast.

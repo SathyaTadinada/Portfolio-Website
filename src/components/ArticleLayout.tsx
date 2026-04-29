@@ -186,6 +186,17 @@ export function ArticleLayout({
               >
                 <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
                 <span className="ml-3">{formatDate(article.date)}</span>
+                {article.readingMinutes && (
+                  <>
+                    <span
+                      className="mx-3 text-zinc-300 dark:text-zinc-600"
+                      aria-hidden="true"
+                    >
+                      ·
+                    </span>
+                    <span>{article.readingMinutes} min read</span>
+                  </>
+                )}
               </time>
             </header>
             {article.archived && <ArchivedArticleNotice />}

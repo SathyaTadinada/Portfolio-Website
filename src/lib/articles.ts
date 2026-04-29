@@ -6,6 +6,7 @@ interface Article {
   description: string
   author: string
   date: string
+  readingMinutes?: number
   tags?: string[]
   archived?: boolean
 }
