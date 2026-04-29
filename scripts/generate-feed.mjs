@@ -432,6 +432,7 @@ async function main() {
     title: author.name,
     description:
       'This is my personal blog! I write about things I find interesting.',
+    language: 'en',
     author,
     id: siteUrl,
     link: siteUrl,
@@ -477,7 +478,6 @@ async function main() {
         typeof meta.description === 'string' ? meta.description : undefined,
       content: content || undefined,
       author: [author],
-      contributor: [author],
       date: new Date(dateStr),
     })
   }
