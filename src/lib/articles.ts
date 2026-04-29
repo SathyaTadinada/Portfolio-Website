@@ -1,12 +1,15 @@
 import glob from 'fast-glob'
 import path from 'path'
 
-interface Article {
+import { type ArticleSeriesRef } from '@/lib/series'
+
+export interface Article {
   title: string
   description: string
   author: string
   date: string
   readingMinutes?: number
+  series?: ArticleSeriesRef
   tags?: string[]
   archived?: boolean
 }
@@ -36,6 +39,15 @@ async function getAllArticlesIncludingArchived() {
   return articles.sort((a, z) => {
     let dateOrder = +new Date(z.date) - +new Date(a.date)
     if (dateOrder !== 0) return dateOrder
+
+    // order series reverse chronologically (higher part numbers first)
+    if (
+      a.series &&
+      z.series &&
+      a.series.slug === z.series.slug
+    ) {
+      return z.series.part - a.series.part
+    }
 
     return a.slug.localeCompare(z.slug)
   })

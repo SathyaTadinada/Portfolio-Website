@@ -450,6 +450,7 @@ async function main() {
     const source = await fs.readFile(mdxPath, 'utf8')
     const meta = extractArticleMeta(source)
     if (!meta) continue
+    if (meta.archived === true) continue
 
     const slug = path.basename(path.dirname(mdxPath))
     const publicUrl = `${siteUrl}/blog/${slug}`

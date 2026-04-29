@@ -9,6 +9,7 @@ import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { formatDate } from '@/lib/formatDate'
 import type { ArticleWithSlug } from '@/lib/articles'
+import { getArticleSeries } from '@/lib/series'
 
 interface YearLink {
   year: string
@@ -88,10 +89,17 @@ function TagChip({ tag, selected }: { tag: string; selected: string[] }) {
 }
 
 function Article({ article: post }: { article: ArticleWithSlug }) {
+  let series = getArticleSeries(post.series?.slug)
+
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
         <Card.Title href={`/blog/${post.slug}`}>{post.title}</Card.Title>
+        {series && post.series && (
+          <p className="relative z-10 mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+            {series.title} · Part {post.series.part}
+          </p>
+        )}
         <Card.Eyebrow
           as="time"
           dateTime={post.date}

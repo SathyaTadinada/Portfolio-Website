@@ -4,7 +4,7 @@
         <title>Sathya Tadinada</title>
         <link>https://tadinada.com</link>
         <description>This is my personal blog! I write about things I find interesting.</description>
-        <lastBuildDate>Mon, 27 Apr 2026 21:30:33 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 29 Apr 2026 07:19:16 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -40,6 +40,7 @@
 <p>All four of us took this seriously in a way I didn't fully expect going in. We started Fall 2025 with a clear project vision and shipped that exact vision in Spring 2026, no major cuts, no scope creep in the wrong direction. As college seniors, I expected there to be some amount of "well, we have to turn <em>something</em> in, let's just throw something together at the end" energy, but we were all super passionate about this project and wanted it to be a really good app, and that made a pretty big impact in how it turned out.</p>
 <p>The development process also helped a lot with this. Every merge request had to pass automated format, lint, and test checks before a human was even able to review it. We held an 80% test coverage minimum across the frontend and backend from day one, and finished at 95% and 85% respectively. I'd be lying if I said it didn't feel like overkill at times, but it did also mean that we basically never broke each other's work.</p>
 <p>The part that still catches me off guard a little is how FreezeTag ended up surprisingly close to feature parity with Google Photos and Apple Photos for all the things that matter. The features we have work well, and the combination of tag-based search with a user-extensible plugin system isn't something any major image management product offers. I didn't expect to be able to say that about something I built in a class.</p>
+<p>We also presented FreezeTag at the end-of-semester Kahlert School of Computing Capstone Demo Day and were selected as Finalists by a vote from the judges (which was a good confirmation that we weren't the only ones who thought it turned out well).</p>
 <p>A few specific pieces of the frontend I'm particularly happy with:</p>
 <h3>Tags Dropdown</h3>
 <p>The dropdown menu in the gallery filters by intersection, only showing tags that appear in the current view. Rather than naively listing every tag in the library, selecting a tag filters the gallery and immediately updates the dropdown to show only the tags that actually appear on the filtered images. As you narrow your search, the dropdown updates to reflect the current set of relevant tags, making it easy to refine searches and discover related tags without needing to know the exact library structure ahead of time. It also prevents users from getting lost in a sea of irrelevant tags (was a photo of your dog at the beach <em>really</em> also tagged "architecture"?).</p>
@@ -61,240 +62,12 @@
 <p>I came out of it with a much stronger instinct for UI decisions than I had going in. Better starting materials would definitely have gotten me there faster, though.</p>
 <h2>What Comes Next</h2>
 <p>The plugin ecosystem is where I see the most room to grow. Right now, discovering and installing plugins requires some manual effort. A marketplace built into the app would make extensibility much more accessible, and the existing plugin architecture should make that relatively straightforward to build on top of.</p>
-<p>On the backend, it might be worth considering Rewriting It In Rust™ (for more reasons than just the meme). Go handled concurrency well and never really bottlenecked us, but for very large photo libraries or multi-user deployments, Rust would likely handle the load better. Not an immediate priority, but not off the table either.</p>
+<p>On the backend, we initially thought it might be worth considering Rewriting It In Rust™ (for more reasons than just the meme). However, after looking into Rust asynchronous programming and benchmarking some of the more intensive operations, we concluded that Go's performance and convenience was much better for us, and the development speed and ecosystem familiarity it offered were more valuable for this project. So that won't happen (until a very avid Rust fan inevitably rewrites it anyway).</p>
 <p>FreezeTag is released under the MIT open-source license. You can view the source code on <a href="https://github.com/FreezeTagPhoto/FreezeTag">GitHub</a> and the app itself will be available on <a href="https://hub.docker.com/r/freezetag/freezetag">Docker Hub</a> for easy deployment.</p>
 <hr>
 <p>If you want the full picture on design decisions and architecture, my honors thesis is embedded below. It's typeset in <a href="https://typst.app/">Typst</a> and its source is on <a href="https://github.com/SathyaTadinada/Undergraduate-Thesis">GitHub</a>.</p>
 <p><a href="https://tadinada.com/thesis.pdf">FreezeTag Undergraduate Thesis</a></p>
 <p><em>Can't see the embed? <a href="https://tadinada.com/thesis.pdf">Open the thesis directly</a>.</em></p>]]></content:encoded>
-            <author>sathya@tadinada.com (Sathya Tadinada)</author>
-        </item>
-        <item>
-            <title><![CDATA[Regex Demystified: Intro to Pattern Matching]]></title>
-            <link>https://tadinada.com/blog/regex-101</link>
-            <guid isPermaLink="false">https://tadinada.com/blog/regex-101</guid>
-            <pubDate>Sun, 10 Aug 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[Regular expressions (regex) are a powerful tool for pattern matching and text manipulation. In this article, we will explore the fundamentals of regex, its syntax, and practical applications.]]></description>
-            <content:encoded><![CDATA[<p>Regular expressions (regex) have a reputation for looking like arcane symbols from a hacker movie.</p>
-<pre><code class="language-regex">^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$
-</code></pre>
-<p>If that looks like keyboard mash to you, you're not alone. The truth is, regex can be complex and intimidating at first glance.
-However, regex is nothing more than a language for describing patterns in text, and under the hood it works like a tiny machine that reads
-your string one character at a time.</p>
-<p>In this post, we'll walk through regex one step at a time, connect it to some computer science theory, and leave
-you with practical tips for writing patterns that you'll still be able to understand six months from now.</p>
-<h2>What Regex Really Is</h2>
-<p>Regex isn't "code" in the same sense as a general-purpose language (like Java or Rust). It's <strong>declarative</strong>: you describe the shape of the text you want, and the regex engine figures out how to <em>find</em> it.</p>
-<p>Behind the scenes, many regex engines turn your pattern into a <strong>finite state machine</strong> (FSM) and step through your input, deciding "match" or "no match".</p>
-
-<blockquote>
-<p>TL;DR: Regex describes a set of strings. The engine checks whether your input is in that set.</p>
-</blockquote>
-<h2>The Building Blocks</h2>
-<p>Regex has only a handful of core ideas. Combine them and you can recognize surprisingly complex patterns.</p>
-<h3>Literals</h3>
-<p>Match exact characters.</p>
-<pre><code class="language-regex">cat                         # matches "cat" in text
-</code></pre>
-<h3>Character Classes</h3>
-<p>Match <em>one</em> character from a set.</p>
-<pre><code class="language-regex">[abc]                       # "a" or "b" or "c"
-[0-9]                       # any digit
-\w                          # any letter, digit, or underscore
-\s                          # whitespace (space, tab, newline)
-.                           # any character (except newline in many engines)
-</code></pre>
-<blockquote>
-<p>Pro tip: In a class, <code>-</code> creates ranges (<code>[A-Z]</code>). To match a literal <code>-</code>, put it first or last: <code>[-A-Z]</code> or <code>[A-Z-]</code>.</p>
-</blockquote>
-<h3>Quantifiers</h3>
-<p>Specify how many times to match the preceding element.</p>
-<pre><code class="language-regex">a+                          # one or more a's
-b*                          # zero or more b's
-c?                          # zero or one c
-d{2,4}                      # between 2 and 4 d's
-</code></pre>
-<h3>Anchors and Groups</h3>
-<p>Specify positions and group sub-patterns.</p>
-<pre><code class="language-regex">^abc$                       # match exactly "abc" from start to end
-(abc)                       # capture "abc" as group 1
-(?:abc)                     # non-capturing group
-</code></pre>
-<h3>Boundaries</h3>
-<p>Control word/line boundaries.</p>
-<pre><code class="language-regex">\bword\b                    # "word" as a whole word
-^line                       # start of line (with multiline flag)
-line$                       # end of line (with multiline flag)
-</code></pre>
-<h2>Flags (aka Modifiers)</h2>
-<p>Flags change how a pattern behaves.</p>
-<table><thead><tr><th>Flag</th><th>Common name</th><th>Effect</th></tr></thead><tbody><tr><td><code>i</code></td><td>ignore case</td><td>Case-insensitive matching</td></tr><tr><td><code>m</code></td><td>multiline</td><td><code>^</code> and <code>$</code> match line boundaries, not just start/end of whole string</td></tr><tr><td><code>s</code></td><td>dotall</td><td><code>.</code> also matches newlines</td></tr><tr><td><code>g</code></td><td>global</td><td>(JS) find all matches, not just the first</td></tr><tr><td><code>u</code></td><td>unicode</td><td>(JS) full Unicode mode (enables things like <code>\p{Letter}</code>)</td></tr><tr><td><code>x</code></td><td>extended</td><td>(PCRE/Python) allow whitespace/comments inside the pattern</td></tr></tbody></table>
-<blockquote>
-<p>Python uses inline flags like <code>re.IGNORECASE</code> or <code>(?i)</code>. JavaScript uses regex literals like <code>/pattern/imsu</code>.</p>
-</blockquote>
-<h2>Greedy vs. Lazy</h2>
-<p>By default, quantifiers are <strong>greedy</strong>: they match as much as possible.</p>
-<pre><code class="language-regex">&lt;.*&gt;                        # greedy: "&lt;tag&gt;content&lt;/tag&gt;" → one giant match
-&lt;.*?&gt;                       # lazy: minimal match, "&lt;tag&gt;"
-</code></pre>
-<blockquote>
-<p>If your pattern "eats" too much, try the lazy <code>?</code> variant: <code>*?</code>, <code>+?</code>, <code>??</code>, <code>{m,n}?</code>.</p>
-</blockquote>
-<h2>Alternation &amp; Precedence</h2>
-<p><code>|</code> means "or". Group to control scope.</p>
-<pre><code class="language-regex">colou?r                     # "color" or "colour"
-(https?|ftp)                # "http", "https", or "ftp"
-</code></pre>
-<p>Without parentheses, alternation applies only to the nearest pieces: <code>ab|cd</code> ≠ <code>a(b|c)d</code>.</p>
-<h2>Capturing, Naming, and Reusing</h2>
-<p>Capturing groups let you pull data out and reuse matches.</p>
-<pre><code class="language-regex">(\d{4})-(\d{2})-(\d{2})     # year-month-day
-</code></pre>
-<p>Named groups (engine-specific syntax):</p>
-<pre><code class="language-regex">(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})
-</code></pre>
-<p>Backreferences:</p>
-<pre><code class="language-regex">&lt;(\w+)[^&gt;]*&gt;.*?&lt;\/\1&gt;       # start/end tags must match the same name
-</code></pre>
-<blockquote>
-<p>JavaScript backreference to a named group: <code>\k&lt;year&gt;</code>. Python: <code>(?P&lt;year&gt;...)</code> and <code>(?P=year)</code>.</p>
-</blockquote>
-<h2>Lookarounds (Zero-Width Assertions)</h2>
-<p>Lookarounds assert context without consuming characters.</p>
-<pre><code class="language-regex">(?=...)                     # positive lookahead
-(?!...)                     # negative lookahead
-(?&lt;=...)                    # positive lookbehind (engine support varies)
-(?&lt;!...)                    # negative lookbehind
-</code></pre>
-<p>Examples:</p>
-<pre><code class="language-regex">\d+(?=\sUSD)                # numbers followed by " USD"
-(?&lt;!\w)cat(?!\w)            # "cat" as a whole word (alternative to \b)
-</code></pre>
-<h2>Multi-Language Examples</h2>
-<p>Same idea, different APIs.</p>
-<pre><code class="language-javascript">// JavaScript
-const phone = /^\(\d{3}\) \d{3}-\d{4}$/;
-phone.test('(123) 456-7890'); // true
-</code></pre>
-<pre><code class="language-python"># Python
-import re
-phone = re.compile(r"^\(\d{3}\) \d{3}-\d{4}$")
-bool(phone.fullmatch('(123) 456-7890'))  # True
-</code></pre>
-<pre><code class="language-rust">// Rust (regex crate)
-use regex::Regex;
-fn main() {
-    let re = Regex::new(r"^\(\d{3}\) \d{3}-\d{4}$").unwrap();
-    println!("{}", re.is_match("(123) 456-7890")); // true
-}
-</code></pre>
-<pre><code class="language-java">// Java
-import java.util.regex.*;
-var re = Pattern.compile("^\\(\\d{3}\\) \\d{3}-\\d{4}$");
-System.out.println(re.matcher("(123) 456-7890").matches()); // true
-</code></pre>
-<blockquote>
-<p>String literal escapes differ! In many languages you need to double backslashes in strings. Prefer raw strings when available (<code>r"..."</code> in Python, Rust).</p>
-</blockquote>
-<h2>Step-by-Step Matching</h2>
-<p>Let's take <code>a(?:b|c)d+</code> and walk through matching <code>"acddd"</code>.</p>
-<table><thead><tr><th>Step</th><th>Current State</th><th>Read Char</th><th>Action</th></tr></thead><tbody><tr><td>1</td><td>Start</td><td><code>a</code></td><td>Match <code>a</code></td></tr><tr><td>2</td><td>After <code>a</code></td><td><code>c</code></td><td>Match <code>c</code></td></tr><tr><td>3</td><td>After <code>c</code></td><td><code>d</code></td><td>Match loop</td></tr><tr><td>4</td><td>Loop</td><td><code>d</code></td><td>Loop again</td></tr><tr><td>5</td><td>Loop</td><td><code>d</code></td><td>Loop again</td></tr><tr><td>6</td><td>End</td><td>—</td><td>Accept!</td></tr></tbody></table>
-<h2>Practical Recipes</h2>
-<p>A few patterns you can adapt.</p>
-<pre><code class="language-regex"># ISO date (YYYY-MM-DD)
-^(?&lt;year&gt;\d{4})-(?&lt;month&gt;0[1-9]|1[0-2])-(?&lt;day&gt;0[1-9]|[12]\d|3[01])$
-</code></pre>
-<pre><code class="language-regex"># Slug (lowercase words separated by dashes)
-^[a-z0-9]+(?:-[a-z0-9]+)*$
-</code></pre>
-<pre><code class="language-regex"># Trim from start/end (use in replace)
-^\s+|\s+$
-</code></pre>
-<pre><code class="language-regex"># Simple (not RFC-perfect) email — good enough for UI validation
-^[^\s@]+@[^\s@]+\.[^\s@]+$
-</code></pre>
-<blockquote>
-<p>For anything security-sensitive (like email parsing on a server), prefer a real parser over a single monstrous regex.</p>
-</blockquote>
-<h2>Replacing Text with Captures</h2>
-<pre><code class="language-javascript">// Reformat YYYY-MM-DD → DD/MM/YYYY
-'2025-08-10'.replace(/(\d{4})-(\d{2})-(\d{2})/, '$3/$2/$1')
-// → '10/08/2025'
-</code></pre>
-<pre><code class="language-python">import re
-re.sub(
-    r"(?P&lt;y&gt;\d{4})-(?P&lt;m&gt;\d{2})-(?P&lt;d&gt;\d{2})", 
-    r"\g&lt;d&gt;/\g&lt;m&gt;/\g&lt;y&gt;", "2025-08-10"
-)
-</code></pre>
-<h2>Unicode &amp; \p Properties</h2>
-<p>Modern engines support Unicode character classes.</p>
-<pre><code class="language-regex">\p{Letter}+         # one or more letters in any language
-\p{Greek}+          # Greek letters
-\p{Emoji}           # depends on engine; alternatives exist
-</code></pre>
-<blockquote>
-<p>In JavaScript, use the <code>u</code> flag for Unicode escapes and categories. In Python, Unicode is default in 3.x.</p>
-</blockquote>
-<h2>Performance: Avoiding Catastrophic Backtracking</h2>
-<p>Certain patterns can take exponential time on tricky inputs ("catastrophic backtracking"). Classic offenders combine nested quantifiers and wildcards:</p>
-<pre><code class="language-regex">^(a+)+$             # dangerous
-^(.+)+$             # dangerous
-</code></pre>
-<p>Safer alternatives:</p>
-<ul>
-<li>Prefer explicit character classes over <code>.</code> when feasible.</li>
-<li>Use lazy quantifiers with anchors: <code>^.*?foo</code> instead of <code>^.*foo</code> when appropriate.</li>
-<li>Where supported (e.g., Java, PCRE), consider <strong>possessive quantifiers</strong> (<code>*+</code>, <code>++</code>, <code>?+</code>, <code>{m,n}+</code>) or <strong>atomic groups</strong> (<code>(?&gt;...)</code>) to prevent backtracking.</li>
-<li>In Rust's <code>regex</code> crate, many problematic features (like backreferences and lookaround) are intentionally unsupported; patterns run in linear time.</li>
-</ul>
-<h2>When <em>Not</em> to Use Regex</h2>
-<ul>
-<li>Parsing nested, recursive structures (HTML, JSON, source code) → use a parser/DOM/AST.</li>
-<li>Handling complex, locale-sensitive formats (dates, numbers) → use libraries.</li>
-<li>Anything where clarity and maintainability beat clever one-liners → write code.</li>
-</ul>
-<h2>A Method for Writing Maintainable Regex</h2>
-<ol>
-<li><strong>Write the examples first</strong>: What should match? What should not?</li>
-<li><strong>Build in layers</strong>: Start with literals, then introduce classes and quantifiers.</li>
-<li><strong>Name your groups</strong>: Future-you will thank you.</li>
-<li><strong>Comment your pattern</strong>: Use the "extended" flag (<code>x</code>) where available and add inline comments.</li>
-<li><strong>Test against edge cases</strong>: Empty strings, long strings, weird Unicode, punctuation.</li>
-<li><strong>Benchmark if needed</strong>: Especially for user-supplied input.</li>
-</ol>
-<h3>Example with Comments (PCRE/Python <code>re.VERBOSE</code>)</h3>
-<pre><code class="language-regex">^                                   # start of string
-(?&lt;area&gt;\(\d{3}\))\s                # (123) and a space
-(?&lt;prefix&gt;\d{3})-                   # 456-
-(?&lt;line&gt;\d{4})                      # 7890
-$                                   # end of string
-</code></pre>
-<h2>Mini-Exercises</h2>
-<p>Try these before peeking at the answers.</p>
-<ol>
-<li>Match IPv4 addresses (0–255 in each octet).</li>
-<li>Extract the domain from a URL.</li>
-<li>Split a CSV line that allows quoted commas.</li>
-</ol>
-<details><summary>Show solutions</summary><pre><code class="language-regex"># 1) IPv4 (concise, not perfect but reasonable)
-^(25[0-5]|2[0-4]\d|1?\d?\d)(?:\.(25[0-5]|2[0-4]\d|1?\d?\d)){3}$
-</code></pre><pre><code class="language-regex"># 2) Domain from URL (scheme optional)
-^(?:https?:\/\/)?(?:www\.)?([^\/\n?#]+)
-</code></pre><pre><code class="language-regex"># 3) CSV split (use a parser in production!)
-,(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)
-</code></pre></details>
-<h2>Theory Corner (Short &amp; Sweet)</h2>
-<ul>
-<li><strong>Regular languages</strong> are those recognized by finite automata.</li>
-<li>Most popular engines (PCRE, JS, Python) are <strong>backtracking NFAs</strong>: powerful, feature-rich, can backtrack.</li>
-<li>Some (like Rust's <code>regex</code>) compile to automata that execute in <strong>linear time</strong> by avoiding backtracking-only features.</li>
-</ul>
-<p>The big idea: features like backreferences and some lookarounds make patterns more expressive than regular languages, which is why engines use richer algorithms than a pure DFA.</p>
-<h2>Quick Reference</h2>
-<table><thead><tr><th>Concept</th><th>Pattern</th><th>Notes</th></tr></thead><tbody><tr><td>Digit / non-digit</td><td><code>\d</code> / <code>\D</code></td><td>ASCII vs Unicode depends on engine/flags</td></tr><tr><td>Word char / non-word</td><td><code>\w</code> / <code>\W</code></td><td>includes <code>_</code></td></tr><tr><td>Whitespace / non-space</td><td><code>\s</code> / <code>\S</code></td><td>space, tab, newline</td></tr><tr><td>Word boundary</td><td><code>\b</code></td><td>opposite: <code>\B</code></td></tr><tr><td>Start / end</td><td><code>^</code> / <code>$</code></td><td>with <code>m</code>, apply per-line</td></tr><tr><td>Optional</td><td><code>x?</code></td><td>zero or one</td></tr><tr><td>One or more</td><td><code>x+</code></td><td>greedy</td></tr><tr><td>Zero or more</td><td><code>x*</code></td><td>greedy</td></tr><tr><td>Lazy quantifier</td><td><code>x+?</code></td><td>minimal</td></tr><tr><td>Exactly n</td><td><code>x{n}</code></td><td>repeats</td></tr><tr><td>Range</td><td><code>x{m,n}</code></td><td>between m and n</td></tr><tr><td>Grouping</td><td><code>( ... )</code></td><td>capturing</td></tr><tr><td>Non-capturing</td><td><code>(?: ... )</code></td><td>groups without capturing</td></tr><tr><td>Alternation</td><td><code>x|y</code></td><td>either x or y</td></tr><tr><td>Lookahead</td><td><code>(?=...)</code> / <code>(?!...)</code></td><td>zero-width</td></tr><tr><td>Lookbehind</td><td><code>(?&lt;=...)</code> / <code>(?&lt;!...)</code></td><td>engine support varies</td></tr></tbody></table>
-<h2>Wrap-Up</h2>
-<p>Regex is a compact way to describe patterns. Start simple, add features deliberately, and test with real data. When you need more than pattern matching, reach for a parser. When regex <em>is</em> the right tool, the techniques above will keep your patterns readable and fast.</p>]]></content:encoded>
             <author>sathya@tadinada.com (Sathya Tadinada)</author>
         </item>
     </channel>

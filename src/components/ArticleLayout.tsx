@@ -13,6 +13,7 @@ import { Prose } from '@/components/Prose'
 import { TableOfContents } from '@/components/TableOfContents'
 import { type ArticleWithSlug } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
+import { getArticleSeries, getArticleSeriesPost } from '@/lib/series'
 
 const articleIconButtonClassName =
   'group flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 transition hover:shadow-lg dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 dark:ring-white/10 dark:hover:border-zinc-700 dark:hover:ring-white/20'
@@ -147,6 +148,105 @@ function ArticleTags({ tags }: { tags?: string[] }) {
   )
 }
 
+function ArticleSeriesNavigation({ article }: { article: ArticleWithSlug }) {
+  let series = getArticleSeries(article.series?.slug)
+  if (!series || !article.series) return null
+
+  let currentPost = getArticleSeriesPost(series, article.series.part)
+  let currentIndex = series.posts.findIndex(
+    (post) => post.part === article.series?.part,
+  )
+  let previousPost = currentIndex > 0 ? series.posts[currentIndex - 1] : null
+  let nextPost =
+    currentIndex >= 0 && currentIndex < series.posts.length - 1
+      ? series.posts[currentIndex + 1]
+      : null
+
+  return (
+    <section className="mt-8 rounded-lg border border-zinc-200 p-4 dark:border-zinc-700/60">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <div>
+          <p className="text-xs font-semibold tracking-widest text-zinc-400 uppercase dark:text-zinc-500">
+            Series
+          </p>
+          <h2 className="mt-1 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+            {series.title}
+          </h2>
+        </div>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400">
+          Part {article.series.part} of {series.posts.length}
+        </p>
+      </div>
+
+      <ol className="mt-4 space-y-2">
+        {series.posts.map((post) => {
+          let isCurrent = post.part === article.series?.part
+
+          return (
+            <li key={post.href} className="flex gap-3 text-sm">
+              <span
+                className={clsx(
+                  'mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full text-xs font-medium',
+                  isCurrent
+                    ? 'bg-blue-500 text-white dark:bg-blue-400 dark:text-zinc-950'
+                    : 'bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400',
+                )}
+              >
+                {post.part}
+              </span>
+              {isCurrent ? (
+                <span
+                  aria-current="page"
+                  className="font-medium text-zinc-900 dark:text-zinc-100"
+                >
+                  {post.title}
+                </span>
+              ) : (
+                <Link
+                  href={post.href}
+                  className="text-zinc-600 transition hover:text-blue-500 dark:text-zinc-400 dark:hover:text-blue-400"
+                >
+                  {post.title}
+                </Link>
+              )}
+            </li>
+          )
+        })}
+      </ol>
+
+      {(previousPost || nextPost) && (
+        <div className="mt-4 flex flex-col gap-2 border-t border-zinc-100 pt-4 text-sm sm:flex-row sm:justify-between dark:border-zinc-800">
+          {previousPost ? (
+            <Link
+              href={previousPost.href}
+              className="font-medium text-blue-500 transition hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+            >
+              Previous: {previousPost.title}
+            </Link>
+          ) : (
+            <span />
+          )}
+          {nextPost && (
+            <Link
+              href={nextPost.href}
+              className="font-medium text-blue-500 transition hover:text-blue-600 sm:text-right dark:text-blue-400 dark:hover:text-blue-300"
+            >
+              Next: {nextPost.title}
+            </Link>
+          )}
+        </div>
+      )}
+
+      {!currentPost && (
+        <p className="mt-4 text-sm text-amber-600 dark:text-amber-300">
+          This post references a series part that is not listed in the series
+          registry.
+        </p>
+      )}
+    </section>
+  )
+}
+
 export function ArticleLayout({
   article,
   children,
@@ -200,6 +300,7 @@ export function ArticleLayout({
               </time>
             </header>
             {article.archived && <ArchivedArticleNotice />}
+            <ArticleSeriesNavigation article={article} />
             <TableOfContents className="mt-8 xl:hidden" variant="mobile" />
             <Prose data-article-content>{children}</Prose>
           </article>
