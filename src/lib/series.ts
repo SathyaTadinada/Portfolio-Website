@@ -15,45 +15,32 @@ export interface ArticleSeries {
   posts: ArticleSeriesPost[]
 }
 
-export const articleSeries = [
-  {
-    slug: 'cs-3100',
-    title: 'CS 3100: Theory of Computation',
-    posts: [
-      {
-        part: 1,
-        title: 'Regular Languages',
-        href: '/blog/cs-3100-regular-languages',
-      },
-      {
-        part: 2,
-        title: 'Context-Free Languages and Pushdown Automata',
-        href: '/blog/cs-3100-context-free-languages',
-      },
-      {
-        part: 3,
-        title: 'Turing Machines and Decidability',
-        href: '/blog/cs-3100-turing-machines',
-      },
-    ],
-  },
-  {
-    slug: 'regex-toolkit',
-    title: 'Regex Toolkit',
-    posts: [
-      {
-        part: 1,
-        title: 'Pattern Basics',
-        href: '/blog/series-sample-regex-basics',
-      },
-      {
-        part: 2,
-        title: 'Debugging Patterns',
-        href: '/blog/series-sample-regex-debugging',
-      },
-    ],
-  },
-] satisfies ArticleSeries[]
+// To add a series, append an entry here and set `series: { slug, part }` in
+// each post's `article` export. Parts are 1-indexed.
+
+// Example:
+// {
+//   slug: 'series-identifier',
+//   title: 'My Series Title',
+//   posts: [
+//     { part: 1, title: 'Part One Title', href: '/blog/my-series-part-1' },
+//     { part: 2, title: 'Part Two Title', href: '/blog/my-series-part-2' },
+//   ],
+// },
+
+// In the blog/ directory, you would have:
+// my-series-part-1/page.mdx:
+// export const article = {
+//   ...,
+//   series: { slug: 'series-identifier', part: 1 },
+// }
+
+// my-series-part-2/page.mdx
+// export const article = {
+//   ...,
+//   series: { slug: 'series-identifier', part: 2 },
+// }
+export const articleSeries: ArticleSeries[] = []
 
 export function getArticleSeries(slug?: string) {
   if (!slug) return undefined
