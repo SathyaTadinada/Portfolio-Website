@@ -4,14 +4,14 @@ import { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import clsx from 'clsx'
-import { Archive, ArrowLeft, ArrowUp } from 'lucide-react'
+import { Archive, ArrowLeft, ArrowUp, BookOpen, FileText, Globe, Mic2, SquarePlay } from 'lucide-react'
 
 import { AppContext } from '@/app/providers'
 import { Comments } from '@/components/Comments'
 import { Container } from '@/components/Container'
 import { Prose } from '@/components/Prose'
 import { TableOfContents } from '@/components/TableOfContents'
-import { type ArticleWithSlug } from '@/lib/articles'
+import { type ArticleReference, type ArticleReferenceType, type ArticleWithSlug } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 import { getArticleSeries, getArticleSeriesPost } from '@/lib/series'
 
@@ -247,6 +247,117 @@ function ArticleSeriesNavigation({ article }: { article: ArticleWithSlug }) {
   )
 }
 
+const referenceTypeConfig: Record<
+  ArticleReferenceType,
+  {
+    badgeClass: string
+    Icon: React.ComponentType<{ className?: string }>
+    label: string
+  }
+> = {
+  online: {
+    badgeClass:
+      'bg-rose-100 text-rose-600 dark:bg-rose-500/20 dark:text-rose-400',
+    Icon: Globe,
+    label: 'online',
+  },
+  paper: {
+    badgeClass:
+      'bg-blue-100 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400',
+    Icon: FileText,
+    label: 'paper',
+  },
+  book: {
+    badgeClass:
+      'bg-violet-100 text-violet-600 dark:bg-violet-500/20 dark:text-violet-400',
+    Icon: BookOpen,
+    label: 'book',
+  },
+  video: {
+    badgeClass:
+      'bg-amber-100 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400',
+    Icon: SquarePlay,
+    label: 'video',
+  },
+  talk: {
+    badgeClass:
+      'bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400',
+    Icon: Mic2,
+    label: 'talk',
+  },
+}
+
+function ArticleReferences({
+  references,
+}: {
+  references: ArticleReference[]
+}) {
+  return (
+    <section
+      aria-labelledby="references"
+      className="mt-16 border-t border-zinc-100 pt-10 dark:border-zinc-700/40"
+    >
+      <h2
+        id="references"
+        data-toc-heading
+        className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100"
+      >
+        References
+      </h2>
+      <ol className="mt-4 space-y-4">
+        {references.map((ref, i) => {
+          const typeConfig = ref.type
+            ? referenceTypeConfig[ref.type]
+            : null
+          const badgeClass = typeConfig?.badgeClass ??
+            'bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400'
+          const Icon = typeConfig?.Icon ?? null
+          const meta = [ref.authors, ref.year, ref.publisher]
+            .filter(Boolean)
+            .join(' · ')
+
+          return (
+            <li key={i} className="flex gap-3">
+              <span
+                className={clsx(
+                  'mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full text-xs font-medium',
+                  badgeClass,
+                )}
+              >
+                {i + 1}
+              </span>
+              <div className="min-w-0">
+                {ref.url ? (
+                  <a
+                    href={ref.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium text-zinc-800 underline decoration-zinc-300 underline-offset-2 transition hover:text-blue-500 hover:decoration-blue-300 dark:text-zinc-200 dark:decoration-zinc-600 dark:hover:text-blue-400 dark:hover:decoration-blue-500"
+                  >
+                    {ref.title}
+                  </a>
+                ) : (
+                  <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
+                    {ref.title}
+                  </span>
+                )}
+                {(ref.type || meta) && (
+                  <p className="mt-0.5 flex items-center gap-1 text-xs text-zinc-500 dark:text-zinc-400">
+                    {Icon && (
+                      <Icon className="h-3 w-3 flex-none" aria-hidden="true" />
+                    )}
+                    {meta && <span>{meta}</span>}
+                  </p>
+                )}
+              </div>
+            </li>
+          )
+        })}
+      </ol>
+    </section>
+  )
+}
+
 export function ArticleLayout({
   article,
   children,
@@ -304,6 +415,9 @@ export function ArticleLayout({
             <TableOfContents className="mt-8 xl:hidden" variant="mobile" />
             <Prose data-article-content>{children}</Prose>
           </article>
+          {article.references && article.references.length > 0 && (
+            <ArticleReferences references={article.references} />
+          )}
           {!article.archived && <Comments />}
         </div>
 

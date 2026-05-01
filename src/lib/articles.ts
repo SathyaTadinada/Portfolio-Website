@@ -3,6 +3,52 @@ import path from 'path'
 
 import { type ArticleSeriesRef } from '@/lib/series'
 
+export type ArticleReferenceType = 'online' | 'paper' | 'book' | 'video' | 'talk'
+
+/**
+ * A single entry in a post's references section.
+ *
+ * To add references to a post:
+ *   1. Create a `references.json` file in the post's folder.
+ *   2. Add `import refs from './references.json'` at the top of `page.mdx`.
+ *   3. Add `references: refs` to the `article` export object.
+ *
+ * Only `title` is required. `type` controls the badge color and icon:
+ *   - 'online'  rose    Globe
+ *   - 'paper'   blue    FileText
+ *   - 'book'    violet  BookOpen
+ *   - 'video'   amber   Video
+ *   - 'talk'    emerald Mic2
+ *   Entries without a type get a plain zinc badge and no icon.
+ *
+ * @example
+ * [
+ *   {
+ *     "title": "Attention Is All You Need",
+ *     "type": "paper",
+ *     "authors": "Vaswani et al.",
+ *     "year": 2017,
+ *     "publisher": "NeurIPS",
+ *     "url": "https://arxiv.org/abs/1706.03762"
+ *   },
+ *   {
+ *     "title": "The Pragmatic Programmer",
+ *     "type": "book",
+ *     "authors": "Hunt & Thomas",
+ *     "year": 2019,
+ *     "publisher": "Addison-Wesley"
+ *   }
+ * ]
+ */
+export interface ArticleReference {
+  title: string
+  type?: ArticleReferenceType
+  url?: string
+  authors?: string
+  year?: number | string
+  publisher?: string
+}
+
 export interface Article {
   title: string
   description: string
@@ -12,6 +58,7 @@ export interface Article {
   series?: ArticleSeriesRef
   tags?: string[]
   archived?: boolean
+  references?: ArticleReference[]
 }
 
 export interface ArticleWithSlug extends Article {
