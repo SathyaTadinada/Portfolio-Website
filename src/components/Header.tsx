@@ -7,7 +7,11 @@ import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { Popover, Transition } from '@headlessui/react'
 import clsx from 'clsx'
-import { Sun as SunIcon, MoonStar as MoonIcon } from 'lucide-react'
+import {
+  Sun as SunIcon,
+  MoonStar as MoonIcon,
+  Monitor as MonitorIcon,
+} from 'lucide-react'
 
 import { Container } from '@/components/Container'
 import avatarImage from '@/images/avatar.jpg'
@@ -166,24 +170,49 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   )
 }
 
+const THEME_CYCLE: Record<string, string> = {
+  light: 'dark',
+  dark: 'system',
+  system: 'light',
+}
+
+const THEME_LABELS: Record<string, string> = {
+  light: 'Light',
+  dark: 'Dark',
+  system: 'System',
+}
+
 function ThemeToggle() {
-  let { resolvedTheme, setTheme } = useTheme()
-  let otherTheme = resolvedTheme === 'dark' ? 'light' : 'dark'
+  let { theme, setTheme } = useTheme()
   let [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
+  let currentTheme = mounted ? (theme ?? 'system') : 'light'
+  let nextTheme = THEME_CYCLE[currentTheme] ?? 'system'
+
+  let currentLabel = THEME_LABELS[currentTheme] ?? 'System'
+  let nextLabel = THEME_LABELS[nextTheme] ?? 'System'
+
   return (
     <button
       type="button"
-      aria-label={mounted ? `Switch to ${otherTheme} theme` : 'Toggle theme'}
+      aria-label={`${currentLabel} theme: switch to ${nextLabel}`}
+      title={`${currentLabel} theme: click for ${nextLabel}`}
       className="group rounded-full bg-white/90 px-3 py-2 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
-      onClick={() => setTheme(otherTheme)}
+      onClick={() => setTheme(nextTheme)}
     >
-      <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-blue-50 [@media(prefers-color-scheme:dark)]:stroke-blue-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-blue-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-blue-700" />
-      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-blue-400 transition not-[@media_(prefers-color-scheme:dark)]:fill-blue-400/10 not-[@media_(prefers-color-scheme:dark)]:stroke-blue-500 dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-blue-200" />
+      {currentTheme === 'light' && (
+        <SunIcon className="h-6 w-6 fill-blue-50 stroke-blue-500 transition group-hover:fill-blue-50 group-hover:stroke-blue-700" />
+      )}
+      {currentTheme === 'dark' && (
+        <MoonIcon className="h-6 w-6 fill-zinc-700 stroke-blue-400 transition group-hover:stroke-blue-300" />
+      )}
+      {currentTheme === 'system' && (
+        <MonitorIcon className="h-6 w-6 fill-blue-50 stroke-blue-500 transition group-hover:fill-blue-50 group-hover:stroke-blue-700 dark:fill-zinc-700 dark:stroke-blue-400 dark:group-hover:stroke-blue-300" />
+      )}
     </button>
   )
 }
