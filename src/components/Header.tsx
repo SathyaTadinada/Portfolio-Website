@@ -211,7 +211,7 @@ function ThemeToggle() {
         <MoonIcon className="h-6 w-6 fill-zinc-700 stroke-blue-400 transition group-hover:stroke-blue-300" />
       )}
       {currentTheme === 'system' && (
-        <MonitorIcon className="h-6 w-6 fill-blue-50 stroke-blue-500 transition group-hover:fill-blue-50 group-hover:stroke-blue-700 dark:fill-zinc-700 dark:stroke-blue-400 dark:group-hover:stroke-blue-300" />
+        <MonitorIcon className="h-6 w-6 fill-blue-50 stroke-blue-500 transition group-hover:fill-blue-50 group-hover:stroke-blue-700 dark:fill-zinc-700 dark:stroke-blue-400 dark:group-hover:stroke-blue-300 dark:group-hover:fill-zinc-700" />
       )}
     </button>
   )
