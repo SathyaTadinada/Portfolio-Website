@@ -6,7 +6,10 @@ import { Layout } from '@/components/Layout'
 import 'katex/dist/katex.min.css'
 import '@/styles/tailwind.css'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://tadinada.com'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     template: '%s - Sathya Tadinada',
     default: 'Sathya Tadinada: Personal Portfolio',
