@@ -204,7 +204,7 @@ function publicBlogAssetUrl(siteUrl, slug, filename) {
 function extractLocalAssetImports(source) {
   const imports = new Map()
   const importPattern =
-    /import\s+([A-Za-z_$][\w$]*)\s+from\s+['"](\.[^'"]+)['"]/g
+    /^\s*import\s+([A-Za-z_$][\w$]*)\s+from\s+['"](\.[^'"]+)['"]/gm
 
   for (const match of source.matchAll(importPattern)) {
     const [, identifier, relativePath] = match

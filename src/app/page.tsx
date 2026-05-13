@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
+import { FormattedArticleText } from '@/components/FormattedArticleText'
 import {
   GitHubIcon,
   InstagramIcon,
@@ -35,11 +36,21 @@ import { formatDate } from '@/lib/formatDate'
 function Article({ post: post }: { post: ArticleWithSlug }) {
   return (
     <Card as="article">
-      <Card.Title href={`/blog/${post.slug}`}>{post.title}</Card.Title>
+      <Card.Title href={`/blog/${post.slug}`}>
+        <FormattedArticleText
+          text={post.title}
+          italicizedPhrases={post.italicizedPhrases}
+        />
+      </Card.Title>
       <Card.Eyebrow as="time" dateTime={post.date} decorate>
         {formatDate(post.date)}
       </Card.Eyebrow>
-      <Card.Description>{post.description}</Card.Description>
+      <Card.Description>
+        <FormattedArticleText
+          text={post.description}
+          italicizedPhrases={post.italicizedPhrases}
+        />
+      </Card.Description>
       <Card.Cta>Read post</Card.Cta>
     </Card>
   )

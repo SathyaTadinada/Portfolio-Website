@@ -6,7 +6,22 @@ import { Layout } from '@/components/Layout'
 import 'katex/dist/katex.min.css'
 import '@/styles/tailwind.css'
 
+function resolveSiteUrl() {
+  let siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+
+  if (siteUrl) {
+    try {
+      return new URL(siteUrl).origin
+    } catch {
+      // Ignore invalid deploy placeholder values and use the canonical site.
+    }
+  }
+
+  return 'https://tadinada.com'
+}
+
 export const metadata: Metadata = {
+  metadataBase: new URL(resolveSiteUrl()),
   title: {
     template: '%s - Sathya Tadinada',
     default: 'Sathya Tadinada: Personal Portfolio',

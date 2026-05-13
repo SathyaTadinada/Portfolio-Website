@@ -57,6 +57,7 @@ export interface Article {
   readingMinutes?: number
   series?: ArticleSeriesRef
   tags?: string[]
+  italicizedPhrases?: string[]
   archived?: boolean
   references?: ArticleReference[]
 }
