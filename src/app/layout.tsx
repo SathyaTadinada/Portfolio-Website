@@ -1,4 +1,4 @@
-import { type Metadata } from 'next'
+import { type Metadata, type Viewport } from 'next'
 
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
@@ -38,6 +38,10 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  themeColor: '#3b82f6',
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -50,7 +54,6 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
-      <meta name="theme-color"></meta>
       <body className="flex h-full bg-zinc-50 dark:bg-black">
         <Providers>
           <div className="flex w-full">
