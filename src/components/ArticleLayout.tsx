@@ -9,6 +9,7 @@ import { Archive, ArrowLeft, ArrowUp, BookOpen, FileText, Globe, Mic2, SquarePla
 import { AppContext } from '@/app/providers'
 import { Comments } from '@/components/Comments'
 import { Container } from '@/components/Container'
+import { FormattedArticleText } from '@/components/FormattedArticleText'
 import { Prose } from '@/components/Prose'
 import { TableOfContents } from '@/components/TableOfContents'
 import { type ArticleReference, type ArticleReferenceType, type ArticleWithSlug } from '@/lib/articles'
@@ -388,7 +389,10 @@ export function ArticleLayout({
           <article>
             <header className="flex flex-col">
               <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-                {article.title}
+                <FormattedArticleText
+                  text={article.title}
+                  italicizedPhrases={article.italicizedPhrases}
+                />
               </h1>
               <ArticleTags tags={article.tags} />
               <time

@@ -1,0 +1,34 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import { Callout } from '@/components/Callout'
+// import refs from './references.json'
+// import cover from './cover.png'
+
+export const article = {
+  author: 'Sathya Tadinada',
+  date: '2026-05-13',
+  title: 'Ranking the Music in Hollow Knight: Silksong',
+  description:
+    'A completely objective and unbiased tier list of the music in Hollow Knight: Silksong, ranked from S to F.',
+  readingMinutes: 1,
+  tags: ['hollow knight', 'silksong', 'music', 'tier list'],
+  italicizedPhrases: ['Hollow Knight: Silksong'],
+  // series: { slug: 'series-identifier', part: 1 },
+  // archived: true,
+  // references: refs,
+}
+
+export default function Page({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>
+}
+
+GARAMA
+
+{/* <Image src={cover} alt="Description of the image" loading="eager" /> */}
+
+## First Section
+
+SHAW
+
+<Callout type="warning">
+  Spoilers ahead! If you haven't played _Hollow Knight: Silksong_ yet, you might want to play the game before reading this article.
+</Callout>

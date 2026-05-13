@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 
 import { Card } from '@/components/Card'
+import { FormattedArticleText } from '@/components/FormattedArticleText'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { formatDate } from '@/lib/formatDate'
 import type { ArticleWithSlug } from '@/lib/articles'
@@ -94,7 +95,12 @@ function Article({ article: post }: { article: ArticleWithSlug }) {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
-        <Card.Title href={`/blog/${post.slug}`}>{post.title}</Card.Title>
+        <Card.Title href={`/blog/${post.slug}`}>
+          <FormattedArticleText
+            text={post.title}
+            italicizedPhrases={post.italicizedPhrases}
+          />
+        </Card.Title>
         {series && post.series && (
           <p className="relative z-10 mt-1 text-sm text-zinc-500 dark:text-zinc-400">
             {series.title} · Part {post.series.part}
@@ -108,7 +114,12 @@ function Article({ article: post }: { article: ArticleWithSlug }) {
         >
           {formatDate(post.date)}
         </Card.Eyebrow>
-        <Card.Description>{post.description}</Card.Description>
+        <Card.Description>
+          <FormattedArticleText
+            text={post.description}
+            italicizedPhrases={post.italicizedPhrases}
+          />
+        </Card.Description>
 
         {!!post.tags?.length && (
           <div className="relative z-10 mt-4 flex flex-wrap gap-2">
