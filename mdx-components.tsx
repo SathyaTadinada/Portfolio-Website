@@ -2,6 +2,7 @@ import type { MDXComponents } from 'mdx/types'
 import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 import NextImage, { type ImageProps } from 'next/image'
 
+import { Callout } from '@/components/Callout'
 import CodeBlock from '@/components/CodeBlock'
 import Typst from '@/components/Typst'
 import YouTube from '@/components/YouTube'
@@ -31,6 +32,7 @@ function CaptionedImage({ caption, className, ...props }: CaptionedImageProps) {
 }
 
 const components = {
+  Callout,
   Typst,
   YouTube,
   pre: (props: ComponentPropsWithoutRef<'pre'>) => <CodeBlock {...props} />,
